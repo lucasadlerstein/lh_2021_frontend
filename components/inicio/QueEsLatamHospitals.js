@@ -30,7 +30,7 @@ const QueEsLatamHospitals = ({textoA, textoB, t}) => {
                     <p>{textoA}</p>
                     <p style={{marginBottom: '3rem'}}>{textoB}</p>
                     <Link href="https://2020.latamhospitals.com/agenda">
-                        <a className="btn-lh btn-prim fs-2">Ver agenda del 2020</a>
+                        <a className="btn-lh btn-prim fs-2">Ver contenidos del 2020</a>
                         {/* {t('QueEs.BotonUno')} */}
                     </Link>
                     {/* <Link href="#newsletter">

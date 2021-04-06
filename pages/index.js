@@ -25,8 +25,8 @@ const Inicio = ({t}) => {
         <Encuentro />
         <BannerVideo />
         <QueEsLatamHospitals
-          textoA={"Es un evento virtual que une a la Ciencia y la Industria en un ciclo de conferencias y MasterTalks contando las novedades de la nueva normalidad en el sector salud."}
-          textoB={"Unimos profesionales y empresas para generar un intercambio positivo en este contexto de incertidumbre y cambios constantes."}
+          textoA={"Es una plataforma virtual que une a la Ciencia y la Industria en un ciclo de conferencias y MasterTalks contando las novedades de la nueva normalidad en el sector salud."}
+          textoB={"Unimos profesionales, instituciones científicas, cámaras y empresas para generar un intercambio positivo en este contexto de incertidumbre y cambios constantes."}
         />
         <Participan />
         <Alcance />

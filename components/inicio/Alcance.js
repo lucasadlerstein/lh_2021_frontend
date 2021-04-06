@@ -47,13 +47,13 @@ const Alcance = ({t}) => {
                         <p>+18.000.000</p>
                         <span>{t('Alcance.Personas')}</span>
                     </Numero>
-                    <Link href="#quiero-participar">
+                    <Link href="/contacto">
                         <a className="btn-lh btn-prim fs-2">Quiero participar</a>
                     </Link>
                     {/* {t('Alcance.BotonUno')} */}
-                    <Link href="/contacto">
+                    {/* <Link href="/contacto">
                         <a className="btn-lh btn-sec fs-2">Contáctenos</a>
-                    </Link>
+                    </Link> */}
                 </Col>
                 <Col className="hide-mobile" sm={12} md={4}>
                     <img style={{margin: 'auto 0 -100px 0', width: '100%'}} src="img/IlustracionHome2.png" alt={t('Alcance.Titulo')}/>
