@@ -1,0 +1,19 @@
+{
+    "SEO": {
+        "Titulo": "LATAM Hospitals - Evento Virual de Salud",
+        "PalabrasClave": "Evento virtual salud, salud, charlas, conferencias, latinoamerica, medicos, latam hospitals, novedades salud",
+        "Descripcion": "Encuentro interdisciplinario de la Salud. Conferencias y MasterTalks de especialistas y grandes empresas del rubro."
+    },
+    "Franja": {
+        "Titulo": "Encuentro virtual interdisciplinario de la salud",
+        "FechaDesktop": "Este 2021 nos renovamos y traemos nuevas propuestas. Para mantenerse al día pueden seguirnos en",
+        "FechaMobile": "Este 2021 nos renovamos y traemos nuevas propuestas. Para mantenerse al día pueden seguirnos en"
+    },
+    "CuentaRegresiva": {
+        "Titulo": "Faltan sólo",
+        "Dias": "días",
+        "Horas": "horas",
+        "Minutos": "mins",
+        "Segundos": "segs"
+    }
+}

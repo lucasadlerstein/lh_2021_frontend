@@ -1,0 +1,49 @@
+{
+    "QueEs": {
+        "Titulo": "¿Qué es Latam Hospitals?",
+        "Parrafo1": "Es un evento virtual que une a la Ciencia y la Industria en un ciclo de conferencias y MasterTalks contando las novedades de la nueva normalidad en el sector salud.",
+        "Parrafo2": "Unimos profesionales y empresas para generar un intercambio positivo en este contexto de incertidumbre y cambios constantes.",
+        "BotonUno": "Ver agenda",
+        "BotonDos": "Inscribirme"
+    },
+    "Instituciones": {
+        "Titulo": {
+            "1": "Empresas que participaron en 2020",
+            "2": "Cámaras que avalan LATAM HOSPITALS",
+            "3": "Instituciones que apoyan el evento",
+            "4": "Media partners"
+        }
+    },
+    "Alcance": {    
+        "Titulo": "Alcance de la audiencia",
+        "Subtitulo": "Entre profesionales de la salud, empresas de la industria y comunidad científica.",
+        "Personas": "de personas en todo Latinoamérica",
+        "BotonUno": "Quiero participar",
+        "BotonDos": "Ver actividades"
+    },
+    "Agenda": {
+        "Titulo": "¡INSCRÍBETE Y PARTICIPA DE CONFERENCIAS Y MASTER-TALKS CON LOS MEJORES ESPECIALISTAS! 100% GRATUITO.",
+        "Inscribirme": "Inscribirme",
+        "Proximamente": "Próximamente...",
+        "SEO": {
+            "Titulo": "Agenda - LATAM Hospitals",
+            "PalabrasClave": "agenda latam hospitals, agenda evento salud, fechas eventos salud, evento virtual salud, conferencias, charlas salud zoom noviembre",
+            "Descripcion": "Ingresa y descubre las charlas con especialistas de muchas áreas y empresas de la salud. Novedades e intercambio del 23/11 al 2/12."
+        }
+    },
+    "Alertas": {
+        "Titulos": {
+            "Exito": "Excelente",
+            "Error": "Error"
+        },
+        "Textos": {
+            "MensajeExito": "Gracias por su mensaje. Pronto estaremos en contacto contigo",
+            "MensajeError": "No pudimos enviar el mensaje. Vuelva a intentar en unos minutos",
+            "CamposObligatorios": "Todos los campos son obligatorios",
+            "SuscripcionExito": "Suscripto con éxito",
+            "SuscripcionError": "No pudimos suscribirte",
+            "DobleSuscripcion": "Ya te has suscripto previamente",
+            "VolveIntentar": "Vuelve a intentarlo en unos minutos"
+        }
+    }
+}

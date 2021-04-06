@@ -1,0 +1,19 @@
+{
+    "Newsletter": {
+        "Titulo": {
+            "1": "Inscríbete y recibe novedades",
+            "2": "de conferencias y master-talks"
+        },
+        "Nombre": "Nombre",
+        "Apellido": "Apellido",
+        "Email": "Email",
+        "Profesion": "Profesión",
+        "Boton": "Suscribirme ahora"
+    },
+    "Navegacion": {
+        "Inicio": "Inicio",
+        "ElEvento": "El evento",
+        "Agenda": "Agenda",
+        "Contacto": "Contacto"
+    }
+}

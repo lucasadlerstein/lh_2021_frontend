@@ -1,0 +1,2 @@
+export const DIA_SIGUIENTE = 'DIA_SIGUIENTE';
+export const DIA_ANTERIOR = 'DIA_ANTERIOR';

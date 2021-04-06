@@ -1,0 +1,37 @@
+{
+    "Contacto": {
+        "SEO": {
+            "Titulo": "Contacto - LATAM Hospitals",
+            "PalabrasClave": "contacto, latam hospitals, evento salud, evento virtual, medicina, conferencias, latam",
+            "Descripcion": "¿Tienes alguna duda? Puedes escribirnos. ¿Quieres participar del evento? ¡Entonces también!"
+        },
+        "Titulo": "Contáctate con nosotros",
+        "Subtitulo": "¿Tienes dudas?",
+        "TituloPersonas": {
+            "A": "¿Sos una ",
+            "Bold": "persona",
+            "C": " y querés contactarnos?"
+        },
+        "SoyEmpresa": "Soy una empresa",
+        "TituloEmpresas": {
+            "A": "¿Sos una ",
+            "Bold": "empresa",
+            "C": " y querés contactarnos?"
+        },
+        "SoyPersona": "Soy un particular",
+        "FormLabel": {
+            "Boton": "Enviar",
+            "Nombre": "Nombre",
+            "NombreEnEmpresa": "Nombre y Apellido",
+            "Apellido": "Apellido",
+            "Email": "Email",
+            "Celular": "Celular",
+            "Pais": "Pais",
+            "Asunto": "Asunto",
+            "Mensaje": "Mensaje",
+            "Empresa": "Institución/Empresa",
+            "NombreEmpresa": "Nombre de la empresa",
+            "Rubro": "Rubro"
+        }
+    }
+}
