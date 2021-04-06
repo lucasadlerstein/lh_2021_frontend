@@ -29,7 +29,7 @@ const CabeceraAgenda = ({t}) => {
                         </Link> */}
                     </Col>
                     <Col xs={12} lg={3}>
-                        <Imagen src="/img/IlustracionAgenda.png" alt="Agenda Latam Hospitals 2020" />
+                        <Imagen src="/img/IlustracionAgenda.png" alt="Agenda Latam Hospitals" />
                     </Col>
                 </Row>
             </Container>
