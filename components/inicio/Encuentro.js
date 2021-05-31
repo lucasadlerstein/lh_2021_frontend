@@ -6,13 +6,14 @@ import { withTranslation } from '../../i18n';
 const Titulo = styled.h1`
     text-transform: uppercase;
     font-size: 3.5rem;
+    margin-top: .5rem;
 `;
 
 const Fecha = styled.p`
     /* font-weight: bold; */
     font-size: 2.5rem;
     color: var(--colorPrimario);
-    margin: 1rem auto 0 auto;
+    margin: 1rem auto;
     width: 80%;
 `;
 
@@ -51,6 +52,9 @@ const Encuentro = ({t}) => {
 
     return (
         <Container className="text-center mx-auto py-5">
+            {
+                (ancho > 768) ? <Fecha>18 al 22 de Octubre</Fecha> : <Fecha>18/10 - 22/10</Fecha>
+            }
             <Titulo>{t('Franja.Titulo')}</Titulo>
             {
                 (ancho > 768) ? <Fecha>{t('Franja.FechaDesktop')}</Fecha> : <Fecha>{t('Franja.FechaMobile')}</Fecha>
