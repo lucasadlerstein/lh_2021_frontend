@@ -10,6 +10,9 @@ import EditarDatos from '../components/perfil/EditarDatos';
 import {AlertaSwal} from '../helpers/helpers';
 import clienteAxios from '../config/axios';
 import { withTranslation } from '../i18n';
+import { CircularProgress } from 'material-ui';
+import { useRouter } from 'next/router'
+ 
 
 
 
@@ -145,9 +148,11 @@ const Der = styled.div`
 
 const Signup = () => {
 
+    const router = useRouter();
+
     const [loadingForm, setLoadingForm] = useState(false);
     const [persona, setPersona] = useState({
-        prefijo: '',
+        prefijo: 'Dr.',
         nombre: '',
         apellido: '',
         profesion: '',
@@ -155,7 +160,7 @@ const Signup = () => {
         email2: '',
         password: '',
         password2: '',
-        celular: '',
+        telefono: '',
         pais: '',
         cargo: '',
         empresa: ''
@@ -180,7 +185,44 @@ const Signup = () => {
     
     const enviarFormulario = async e => {
         e.preventDefault();
+        if( persona.prefijo === '' ||
+            persona.nombre === '' ||
+            persona.apellido === '' ||
+            persona.email === '' ||
+            persona.email2 === '' ||
+            persona.password === '' ||
+            persona.password2 === '' ||
+            persona.profesion === '' ||
+            persona.telefono === '' ||
+            persona.pais === '' ||
+            persona.cargo === '' ||
+            persona.empresa === '' ) {
+                AlertaSwal('Error', 'Todos los campos son obligatorios', 'error', 2500);
+        } else if (persona.email !== persona.email2) {
+            AlertaSwal('Error', 'Los emails no coinciden', 'error', 3000);
+        } else if (persona.password !== persona.password2) {
+            AlertaSwal('Error', 'Las contraseñas no coindicen', 'error', 3000);
+        } else {
+            await clienteAxios.post('/usuarios/nuevo', persona)
+                .then( async resp => {
+                    await clienteAxios.post('/usuarios/login', {email: persona.email, password: persona.password})
+                        .then(respuestaLogin => {
+                            console.log(respuestaLogin)
+                            if(respuestaLogin.data.token) {
+                                localStorage.setItem('token', respuestaLogin.data.token);
+                                router.push('/');
+                            }
+                        })
+                        .catch(errorLogin => {
+                            router.push('/');
+                        })
+                })
+                .catch(error => {
+                    console.log(error);
+                    AlertaSwal('Error', 'No pudimos registrarte.', 'error', 3000);
 
+                })
+        }
     }
 
 
@@ -236,7 +278,7 @@ const Signup = () => {
                                         <Input type="text"  name="profesion" value={persona.profesion} onChange={handleChange} placeholder="Profesión" />
                                     </Col>
                                     <Col xs={12} sm={6} md={4}>
-                                        <Input type="tel"  name="celular" value={persona.celular} onChange={handleChange} placeholder="Teléfono" />
+                                        <Input type="tel"  name="telefono" value={persona.telefono} onChange={handleChange} placeholder="Teléfono" />
                                     </Col>
                                     <Col xs={12} sm={6} md={4}>
                                         <Input type="text"  name="pais" value={persona.pais} onChange={handleChange} placeholder="País" />
