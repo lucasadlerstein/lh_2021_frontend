@@ -10,7 +10,7 @@ import EditarDatos from '../components/perfil/EditarDatos';
 import {AlertaSwal} from '../helpers/helpers';
 import clienteAxios from '../config/axios';
 import { withTranslation } from '../i18n';
-
+import { useRouter } from 'next/router'
 
 
 const Titulo = styled.h1`
@@ -64,11 +64,11 @@ const Input = styled.input`
 `;
 
 const BotonEnviar = styled.button`
-    background-color: var(--colorPrimario);
-    color: white;
+    background-color: white;
+    color: var(--colorPrimario);
     font-size: 2rem;
     font-weight: bold;
-    border: none;
+    border: 3px solid  var(--colorPrimario);
     padding: 1rem 3rem;
     border-radius: 3rem;  
     margin-left: 1rem;
@@ -144,7 +144,23 @@ const Der = styled.div`
 
 `;
 
+const NoTengoCuenta = styled.a`
+    &:hover {
+        color: var(--colorVioletaOscuro)
+    }
+`;
+
+const BtnsLogin = styled.div`
+    margin-top: 2rem;
+    display: grid;
+    a {
+        margin-bottom: 1rem;
+    }
+`;
+
 const Login = () => {
+
+    const router = useRouter();
 
     const [loadingForm, setLoadingForm] = useState(false);
     const [persona, setPersona] = useState({
@@ -161,8 +177,47 @@ const Login = () => {
     
     const enviarFormulario = async e => {
         e.preventDefault();
+        setLoadingForm(true);
 
+        if(persona.email === '' || persona.password === '') {
+            AlertaSwal('Error', 'Debe ingresar email y contraseña.', 'error', 3000);
+        } else {
+            await clienteAxios.post('/usuarios/login', persona)
+                .then(respuestaLogin => {
+                    // console.log(respuestaLogin)
+                    if(respuestaLogin.data.token) {
+                        localStorage.setItem('token-21', respuestaLogin.data.token);
+                        router.push('/');
+                    }
+                })
+                .catch(errorLogin => {
+                    // console.log(errorLogin);
+                    if(errorLogin.error === 'WrongPassword' || errorLogin.e_name === 'WrongPassword') {
+                        AlertaSwal('Error', 'El email y/o contraseña no son correctos.', 'error', 3000);
+                    } else {
+                        AlertaSwal('Error', 'No pudimos iniciar su sesión.', 'error', 3000);
+                    }
+                })
+
+        }
+        setLoadingForm(false);
     }
+
+    async function olvidePass() {
+
+        if(persona.email === '' || !persona.email.includes('@')) {
+            AlertaSwal('Atención', 'Escriba su email y luego vuelva a hacer clic para recuperar la contraseña.', 'warning', 5000);
+        } else {
+            await clienteAxios.post('/usuarios/recuperar-password', persona)
+                .then(resp => {
+                    AlertaSwal('Listo', 'Recibirás instrucciones a tu email para cambiar la contraseña.', 'success', 5000);
+                })
+                .catch(err => {
+                    // console.log(err)
+                })
+        }
+
+    } 
 
 
 
@@ -194,14 +249,20 @@ const Login = () => {
                                         <BotonEnviar type="submit">
                                             {
                                                 (loadingForm === true) ? (
-                                                    <div class="spinner">
-                                                        <div class="bounce1"></div>
-                                                        <div class="bounce2"></div>
-                                                        <div class="bounce3"></div>
+                                                    <div className="spinner">
+                                                        <div className="bounce1"></div>
+                                                        <div className="bounce2"></div>
+                                                        <div className="bounce3"></div>
                                                     </div>
-                                                ) : 'Iniciar sesión' 
+                                                ) : 'Iniciar sesión'
                                             }
                                         </BotonEnviar>
+                                        <BtnsLogin>
+                                            <Link href="/signup">
+                                                <NoTengoCuenta className="normal-test">No tengo cuenta, quiero registrarme.</NoTengoCuenta>
+                                            </Link>
+                                            <NoTengoCuenta className="normal-test" onClick={() => olvidePass()}>Olvidé mi contraseña.</NoTengoCuenta>
+                                        </BtnsLogin>
                                     </Col>
                                 </Row>
                             </Formulario>

@@ -25,7 +25,13 @@ const Titulo = styled.h2`
     margin-left: 2rem;
 `;
 
+const BtnVerAgenda = styled.a`
+    width: 100%;
+`;
+
 const Inscripciones = () => {
+
+  
     
 
     return (
@@ -56,8 +62,9 @@ const Inscripciones = () => {
                         />
                     </Col>
                 </Row>
-
-                <a className="btn-lh btn-blanco">Ver agenda completa</a>
+                <Link href="/agenda">
+                    <BtnVerAgenda className="btn-lh btn-blanco text-center mx-auto mt-5" id="certificados">Ver agenda completa</BtnVerAgenda>
+                </Link>
 
             </Container>
         </Fondo>

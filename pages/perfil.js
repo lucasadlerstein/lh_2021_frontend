@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Head from 'next/head';
 import Layout from '../components/general/Layout';
 import {Container, Row, Col} from 'reactstrap';
@@ -25,9 +25,9 @@ const SubTitulo = styled.p`
         text-decoration: none;
         color: var(--colorPrimario);
         font-size: 2rem;
-        margin-right: .5rem;
+        margin-right: 1rem;
         border-right: 1px solid var(--colorPrimario);
-        padding-right: .5rem;
+        padding-right: 1rem;
     }
     a:last-of-type {
         margin-right: 0;
@@ -140,15 +140,25 @@ const Formulario = styled.form`
 
 const Perfil = () => {
 
-    const [persona, setPersona] = useState({
-        nombre: '',
-        apellido: '',
-        pais: '',
-        email: '',
-        
-    });
+    const [persona, setPersona] = useState();
+
+    useEffect( () => {
+        async function traerInformacion() {
+            await clienteAxios.get('/usuarios/info')
+                .then(resp => {
+                    setPersona(resp.data.resp);
+                    console.log(persona)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+
+        traerInformacion();
+    }, [])
 
     return (
+
         <>
             <Head>
                 {/* <title>{t('Contacto.SEO.Titulo')}</title> */}
@@ -161,21 +171,25 @@ const Perfil = () => {
                         <Col sm={12} md={12} lg={7}>
                             <Titulo>Mi perfil</Titulo>
                             <SubTitulo>Aquí podrás ver tus inscripciones, solicitar tus certificados, modificar tus intereses, y editar tus datos personales.</SubTitulo>
-                            <SubTitulo>
+                            <SubTitulo id="inscripciones">
                                 <Link href="#"><a>Inscripciones</a></Link>
                                 <Link href="#"><a>Certificados</a></Link>
-                                <Link href="#"><a>Intereses</a></Link>
-                                <Link href="#"><a>Mis Datos</a></Link>
+                                <Link href="#intereses"><a>Intereses</a></Link>
+                                <Link href="#datos" ><a>Mis Datos</a></Link>
                             </SubTitulo>
                         </Col>
                         <Col sm={0} md={0} lg={5}>
-                            <img src="" alt="Mi Perfil | Latam Hospitals" />
+                            <img src="" alt="Mi Perfil | Latam Hospitals"    />
                         </Col>
                     </Row>
                 </Container>
-                <Inscripciones />
-                <Intereses />
-                <EditarDatos />
+                {/* <Inscripciones /> */}
+                <Intereses
+                 inter={persona}
+                  />
+                <EditarDatos 
+                datos={persona}
+                 />
             </Layout>
         </>
     );

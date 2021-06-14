@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {Container, Row, Col} from 'reactstrap';
 import styled from '@emotion/styled';
 import Link from 'next/link';
+import {ListaIntereses} from '../../InteresesListado.js'
+import clienteAxios from '../../config/axios';
 
 const Fondo = styled.div`
-    background-image: url('img/fondo-participan.jpg');
+    background-image: url('img/fondo-banners.jpg');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -30,8 +32,82 @@ const SubTitulo = styled.p`
     margin: 1rem 0 0 0;
 `;
 
-const Intereses = () => {
-    
+const Buscador = styled.input`
+    background-color: white;
+    color: var(--colorPrimario);
+    border-radius: 1.5rem;
+    font-size: 1.8rem;
+    border: 2px solid var(--colorPrimario);
+    padding: 1rem 2rem;
+    max-width: 100%;
+    width: 100%;
+    margin: 1rem 0;
+    font-weight: bold;
+    max-width: 100%;
+
+    &:focus {
+        outline: none;
+    }
+
+    @media (min-width: 768px){
+        max-width: 50%;
+    }
+`;
+
+const InteresInd = styled.button`
+    background-color: white;
+    color: var(--colorPrimario);
+    display: block;
+    width: fit-content;
+    padding: 1rem 2rem;
+    font-size: 2rem;
+    font-weight: bold;
+    border-radius: 1rem;
+    margin: .2rem;
+    transition: all .3s ease;
+    &:hover {
+        background-color: #b8b8b8;
+    }
+    &:focus {
+        outline: none;
+    }
+    @media (max-width: 540px){
+        width: 100%;
+    }
+`;
+const Intereses = ({inter}) => {
+
+    const [buscador, setBuscador] = useState('');
+    const [misIntereses, setMisIntereses] = useState('covid');
+
+    useEffect( () => {
+        if ( inter ) {
+            if(inter.intereses !== "") {
+                setMisIntereses(inter.intereses)
+            }
+        }
+        // eslint-disable-next-line
+    }, [inter]);
+
+    const handleChangeBuscador = e => { setBuscador(e.target.value); }
+
+    async function clickInteres(intCode) {
+        let intNow = misIntereses;
+        if(intNow.includes(intCode)) {
+            setMisIntereses(intNow.replace(intCode, ''));
+            intNow = intNow.replace(intCode, '');
+        } else {
+            setMisIntereses(intNow.concat(' ', intCode));
+            intNow = intNow.concat(' ', intCode);            
+        }
+        await clienteAxios.post(`/usuarios/cambiar-intereses`, {nuevos: intNow} )
+            .then(resp => {
+                console.log(resp)
+            }) 
+            .catch(err => {
+                console.log(err)
+            })
+    }
 
     return (
         <Fondo>
@@ -42,8 +118,27 @@ const Intereses = () => {
                 </TituloBox>
                 <SubTitulo>Al hacer clic podrás elegir tus intereses</SubTitulo>
                 <SubTitulo className="mt-0">para tener una mejor experiencia en LATAM Hospitals.</SubTitulo>
-                <p>Si está con fondo blanco, no está seleccionado.</p>
-
+                <p className="text-white">Si está con fondo blanco, no está seleccionado.</p>
+                <Buscador type="text" name="buscador" value={buscador} onChange={handleChangeBuscador} placeholder="Buscador por palabra clave" />
+                <Row className="text-center mx-auto">
+                    {ListaIntereses.map(interes => {
+                        if (buscador === '' ||
+                            interes.ES.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(buscador.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
+                            interes.EN.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(buscador.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
+                            interes.PR.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(buscador.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
+                            interes.COD.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(buscador.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ) {
+                                
+                                return (
+                                    <InteresInd
+                                        className={misIntereses.includes(interes.COD) ? 'bg-interesado' : null}
+                                        key={interes.COD}
+                                        onClick={() => clickInteres(interes.COD)}
+                                            >{interes.ES}
+                                    </InteresInd>
+                                )
+                            }
+                    })}
+                </Row>
 
                 
             </Container>

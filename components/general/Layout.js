@@ -1,9 +1,29 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Head from 'next/head';
 import Navegacion from './Navegacion';
 import Footer from './Footer';
+import {useRouter} from 'next/router';
+import tokenAuth from '../../config/tokenAuth';
 
 const Layout = ({children}) => {
+    
+    const router = useRouter();
+
+    useEffect(() => {
+        if(!(window.location.href.includes('login') || window.location.href.includes('signup'))){
+            setTimeout(() => {
+                if(!localStorage.getItem('token-21')) {
+                    router.push('/login');
+                }
+            }, 5000);
+        }
+        // Revisar si hay token
+        const token = localStorage.getItem('token-21');
+        if(token){
+            tokenAuth(token);
+        }
+        // eslint-disable-next-line
+    }, []);
     return (
         <>
             <Head>

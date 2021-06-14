@@ -1,15 +1,21 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Link from 'next/link';
 import styled from '@emotion/styled';
 import {
+    Container,
     Collapse,
     Navbar,
     NavbarToggler,
+    Dropdown,
     NavbarBrand,
     Nav,
     NavItem,
-    Container
+    UncontrolledDropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem
 } from 'reactstrap';
+import {useRouter} from 'next/router';
 
 import {withTranslation} from '../../i18n';
 
@@ -52,7 +58,7 @@ const MenuA = styled.a`
     color: white!important;
     border-bottom: 1px solid transparent;
     transition: all .3s ease;
-    margin-left: 1rem;
+    margin-right: 1rem;
     font-weight: 300;
 
     &:hover {
@@ -60,38 +66,107 @@ const MenuA = styled.a`
     }
 `;
 
+const MenuB = styled(MenuA)`
+    color: var(--colorPrimario)!important;
+    font-weight: 400;
+    text-transform: unset;
+`;
+
 const Navegacion = ({t}) => {
+
     const [isOpen, setIsOpen] = useState(false);
+    const [isOpenDropdownProfile, setIsOpenDropdownProfile] = useState(false);
+    const [profile, setProfile] = useState(false);
+    const toggleProfile = () => setIsOpenDropdownProfile(!isOpenDropdownProfile);
     const toggle = () => setIsOpen(!isOpen);
+
+    useEffect(() => {
+        if (localStorage.getItem('token-21')) {
+            setProfile(true);
+        }
+        // eslint-disable-next-line
+    }, [])
+
+    const router = useRouter();
+
+    function cerrarSesion() {
+        localStorage.removeItem('token-21');
+        router.push('/login');
+    }
 
     return (
         <header>
             <NavBarP dark expand="md" className="navfixed">
                 <Container>
                     <NavBarBrandP href="/">Latam Hospitals</NavBarBrandP>
-                    <NavbarToggler onClick={toggle} />
+                    <div style={{display: 'flex'}}>
+                        <NavbarToggler onClick={toggle} />
+                        {
+                            (profile === true) ? (
+                                <div className="mt-0 hide-desktop">
+                                    <Link href="/perfil">
+                                        <a className="nav-link">
+                                            <img src="/img/iconos/n_perfil_usuario.svg" alt="Perfil del usuario" />
+                                        </a>
+                                    </Link>
+                                </div>
+                            ) : null 
+                        }
+                    </div>
                     <Collapse isOpen={isOpen} navbar>
                         <Nav className="ml-auto" navbar>
-                            <NavItem>
+                            <NavItem className="my-auto">
                                 <Link href="/">
                                     <MenuA className="nav-link">{t('Navegacion.Inicio')}</MenuA>
                                 </Link>
                             </NavItem>
-                            <NavItem>
+                            <NavItem className="my-auto">
                                 <MenuA target="_blank" href="https://2020.latamhospitals.com/agenda" className="nav-link">Edición 2020</MenuA>
                             </NavItem>
-                            <NavItem>
+                            <NavItem className="my-auto">
                                 <Link href="#empresas">
                                     <MenuA className="nav-link">Empresas</MenuA>
                                 </Link>
                             </NavItem>
-                            <NavItem>
+                            <NavItem className="my-auto">
                                 <Link href="/contacto">
                                     <MenuA className="nav-link">{t('Navegacion.Contacto')}</MenuA>
                                 </Link>
                             </NavItem>
+                            {
+                                (profile === true) ? (
+                                <Dropdown toggle={() => router.push('/perfil')} isOpen={isOpenDropdownProfile} onMouseEnter={() => setIsOpenDropdownProfile(true)} onMouseLeave={() => setIsOpenDropdownProfile(false)}  nav inNavbar>
+                                    <DropdownToggle nav>
+                                        <NavItem className="my-auto hide-mobile">
+                                            <Link href="/perfil">
+                                                <a className="nav-link">
+                                                    <img src="/img/iconos/n_perfil_usuario.svg" alt="Perfil del usuario" />
+                                                </a>
+                                            </Link>
+                                        </NavItem>
+                                    </DropdownToggle>
+                                    <DropdownMenu left>
+                                        <DropdownItem>
+                                            <Link href="/perfil#intereses">
+                                                <MenuB className="nav-link">Intereses</MenuB>
+                                            </Link>
+                                        </DropdownItem>
+                                        <DropdownItem>
+                                            <Link href="/perfil#editar">
+                                                <MenuB className="nav-link">Editar perfil</MenuB>
+                                            </Link>
+                                        </DropdownItem>
+                                        <DropdownItem divider />
+                                        <DropdownItem onClick={() => cerrarSesion()}>
+                                            <MenuB className="nav-link">Cerrar sesión</MenuB>
+                                        </DropdownItem>
+                                    </DropdownMenu>
+                                </Dropdown>
+                                ) : null
+                            }
                         </Nav>
                     </Collapse>
+                    
                 </Container>
             </NavBarP>
         </header>  

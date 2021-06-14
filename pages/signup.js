@@ -12,8 +12,6 @@ import clienteAxios from '../config/axios';
 import { withTranslation } from '../i18n';
 import { CircularProgress } from 'material-ui';
 import { useRouter } from 'next/router'
- 
-
 
 
 const Titulo = styled.h1`
@@ -67,11 +65,11 @@ const Input = styled.input`
 `;
 
 const BotonEnviar = styled.button`
-    background-color: var(--colorPrimario);
-    color: white;
+    background-color: white;
+    color: var(--colorPrimario);
     font-size: 2rem;
     font-weight: bold;
-    border: none;
+    border: 3px solid var(--colorPrimario);
     padding: 1rem 3rem;
     border-radius: 3rem;  
     margin-left: 1rem;
@@ -93,7 +91,7 @@ const BotonEnviar = styled.button`
 const Formulario = styled.form`
     border: 4px solid white;
     border-radius: 4rem;
-    padding: 2rem;
+    padding: 4rem;
     margin: 0 auto;
     @media (max-width: 768px){
         margin-bottom: 3rem;
@@ -146,10 +144,18 @@ const Der = styled.div`
 
 `;
 
+const NoTengoCuenta = styled.a`
+    text-align: center;
+    &:hover {
+        color: var(--colorVioletaOscuro)
+    }
+`;
+
 const Signup = () => {
 
     const router = useRouter();
 
+    const [etapaSignUp, setEtapaSignUp] = useState(1);
     const [loadingForm, setLoadingForm] = useState(false);
     const [persona, setPersona] = useState({
         prefijo: 'Dr.',
@@ -185,6 +191,7 @@ const Signup = () => {
     
     const enviarFormulario = async e => {
         e.preventDefault();
+        setLoadingForm(true);
         if( persona.prefijo === '' ||
             persona.nombre === '' ||
             persona.apellido === '' ||
@@ -209,12 +216,12 @@ const Signup = () => {
                         .then(respuestaLogin => {
                             console.log(respuestaLogin)
                             if(respuestaLogin.data.token) {
-                                localStorage.setItem('token', respuestaLogin.data.token);
+                                localStorage.setItem('token-21', respuestaLogin.data.token);
                                 router.push('/');
                             }
                         })
                         .catch(errorLogin => {
-                            router.push('/');
+                            router.push('/login');
                         })
                 })
                 .catch(error => {
@@ -222,6 +229,27 @@ const Signup = () => {
                     AlertaSwal('Error', 'No pudimos registrarte.', 'error', 3000);
 
                 })
+        }
+        setLoadingForm(false);
+    }
+
+    function irSiguienteForm() {
+        if( persona.prefijo === '' ||
+        persona.nombre === '' ||
+        persona.apellido === '' ||
+        persona.email === '' ||
+        persona.email2 === '' ||
+        persona.password === '' ||
+        persona.password2 === '') {
+            AlertaSwal('Error', 'Todos los campos son obligatorios.', 'error', 3000);
+        } else if (persona.email !== persona.email2) {
+            AlertaSwal('Error', 'Los emails no coinciden.', 'error', 3000);
+        } else if (persona.password !== persona.password2) {
+            AlertaSwal('Error', 'Las contraseñas no coinciden.', 'error', 3000);
+        } else if (persona.password.length < 6) {
+            AlertaSwal('Error', 'La contraseña debe tener al menos 6 caracteres.', 'error', 3000);
+        } else {
+            setEtapaSignUp(2);
         }
     }
 
@@ -240,68 +268,91 @@ const Signup = () => {
                 <General>
                     <Izq></Izq>
                     <Der>
-                        <Container className="text-center mt-5">
+                        <Container className="text-center pt-10">
                             <Titulo>Regístrate en Latam Hospitals</Titulo>
                             <SubTitulo>Completá tus datos para una mejor experiencia.</SubTitulo>
 
                             <Formulario onSubmit={enviarFormulario}>
                                 <Row>
-                                    <Col xs={12} sm={12} md={4}>
-                                        <Select
-                                            onChange={(e) => handleChangePrefijo(e)}
-                                            value={persona.prefijo}
-                                        >
-                                            <option value="dr">Dr.</option>
-                                            <option value="dra">Dra.</option>
-                                        </Select>
-                                    </Col>
-                                    <Col xs={12} sm={6} md={4}>
-                                        <Input type="text" required name="nombre" value={persona.nombre} onChange={handleChange} placeholder="Nombre" />
-                                    </Col>
-                                    <Col xs={12} sm={6} md={4}>
-                                        <Input type="text" required name="apellido" value={persona.apellido} onChange={handleChange} placeholder="Apellido" />
-                                    </Col>
-                                    
-                                    <Col xs={12} sm={6} md={6}>
-                                        <Input type="email"  name="email" value={persona.email} onChange={handleChange} placeholder="Email" />
-                                    </Col>
-                                    <Col xs={12} sm={6} md={6}>
-                                        <Input type="email"  name="email2" value={persona.email2} onChange={handleChange} placeholder="Confirmá tu Email" />
-                                    </Col>
-                                    <Col xs={12} sm={6} md={6}>
-                                        <Input type="password"  name="password" value={persona.password} onChange={handleChange} placeholder="Contraseña" />
-                                    </Col>
-                                    <Col xs={12} sm={6} md={6}>
-                                        <Input type="password"  name="password2" value={persona.password2} onChange={handleChange} placeholder="Confirmá tu contraseña" />
-                                    </Col>
-                                    <Col xs={12} sm={6} md={4}>
-                                        <Input type="text"  name="profesion" value={persona.profesion} onChange={handleChange} placeholder="Profesión" />
-                                    </Col>
-                                    <Col xs={12} sm={6} md={4}>
-                                        <Input type="tel"  name="telefono" value={persona.telefono} onChange={handleChange} placeholder="Teléfono" />
-                                    </Col>
-                                    <Col xs={12} sm={6} md={4}>
-                                        <Input type="text"  name="pais" value={persona.pais} onChange={handleChange} placeholder="País" />
-                                    </Col>
-                                    <Col xs={12} sm={6} md={6}>
-                                        <Input type="text"  name="cargo" value={persona.cargo} onChange={handleChange} placeholder="Cargo" />
-                                    </Col>
-                                    <Col xs={12} sm={6} md={6}>
-                                        <Input type="text"  name="empresa" value={persona.empresa} onChange={handleChange} placeholder="Empresa" />
-                                    </Col>
-                                    <Col xs={12} md={12} className="mx-auto text-center mt-5">
-                                        <BotonEnviar type="submit">
-                                            {
-                                                (loadingForm === true) ? (
-                                                    <div class="spinner">
-                                                        <div class="bounce1"></div>
-                                                        <div class="bounce2"></div>
-                                                        <div class="bounce3"></div>
-                                                    </div>
-                                                ) : 'Registrarme' 
-                                            }
-                                        </BotonEnviar>
-                                    </Col>
+                                    {
+                                        (etapaSignUp === 1) ? (
+                                            <>
+                                            <Col xs={12} sm={12} md={4}>
+                                                <Select
+                                                    onChange={(e) => handleChangePrefijo(e)}
+                                                    value={persona.prefijo}
+                                                >
+                                                    <option value="dr">Dr.</option>
+                                                    <option value="dra">Dra.</option>
+                                                </Select>
+                                            </Col>
+                                            <Col xs={12} sm={6} md={4}>
+                                                <Input type="text" required name="nombre" value={persona.nombre} onChange={handleChange} placeholder="Nombre" />
+                                            </Col>
+                                            <Col xs={12} sm={6} md={4}>
+                                                <Input type="text" required name="apellido" value={persona.apellido} onChange={handleChange} placeholder="Apellido" />
+                                            </Col>
+                                            
+                                            <Col xs={12} sm={6} md={6}>
+                                                <Input type="email"  name="email" value={persona.email} onChange={handleChange} placeholder="Email" />
+                                            </Col>
+                                            <Col xs={12} sm={6} md={6}>
+                                                <Input className={persona.email !== persona.email2 ? 'border-grosor-5 border-red' : 'border-grosor-5 border-green'} type="email"  name="email2" value={persona.email2} onChange={handleChange} placeholder="Confirmá tu Email" />
+                                            </Col>
+                                            <Col xs={12} sm={6} md={6}>
+                                                <Input className={persona.password.length < 6  ? 'border-grosor-5 border-red' : 'border-grosor-5 border-green'} type="password"  name="password" value={persona.password} onChange={handleChange} placeholder="Contraseña" />
+                                            </Col>
+                                            <Col xs={12} sm={6} md={6}>
+                                                <Input className={persona.password !== persona.password2 ? 'border-grosor-5 border-red' : 'border-grosor-5 border-green'} type="password"  name="password2" value={persona.password2} onChange={handleChange} placeholder="Confirmá tu contraseña" />
+                                            </Col>
+                                            <Col xs={12} md={12} className="mt-4 justify-content-end" style={{display: 'flex'}}>
+                                                <BotonEnviar onClick={() => irSiguienteForm()}>
+                                                    Siguiente
+                                                </BotonEnviar>
+                                            </Col>
+                                            </>
+    
+                                        ) : (
+                                            <>
+                                            <Col xs={12} sm={6} md={4}>
+                                                <Input type="text"  name="profesion" value={persona.profesion} onChange={handleChange} placeholder="Profesión" />
+                                            </Col>
+                                            <Col xs={12} sm={6} md={4}>
+                                                <Input type="tel"  name="telefono" value={persona.telefono} onChange={handleChange} placeholder="Teléfono" />
+                                            </Col>
+                                            <Col xs={12} sm={6} md={4}>
+                                                <Input type="text"  name="pais" value={persona.pais} onChange={handleChange} placeholder="País" />
+                                            </Col>
+                                            <Col xs={12} sm={6} md={6}>
+                                                <Input type="text"  name="cargo" value={persona.cargo} onChange={handleChange} placeholder="Cargo" />
+                                            </Col>
+                                            <Col xs={12} sm={6} md={6}>
+                                                <Input type="text"  name="empresa" value={persona.empresa} onChange={handleChange} placeholder="Empresa" />
+                                            </Col>
+                                            <Col xs={12} md={12} className="mt-4 justify-content-between" style={{display: 'flex'}}>
+                                                <BotonEnviar onClick={() => setEtapaSignUp(1)}>Volver</BotonEnviar>
+                                                <BotonEnviar type="submit">
+                                                    {
+                                                        (loadingForm === true) ? (
+                                                            <div className="spinner">
+                                                                <div className="bounce1"></div>
+                                                                <div className="bounce2"></div>
+                                                                <div className="bounce3"></div>
+                                                            </div>
+                                                        ) : 'Registrarme' 
+                                                    }
+                                                </BotonEnviar>
+                                            </Col>
+                                            </>
+                                        )
+                                    }
+                                    <div className="mt-5 w-100">
+                                        <Link href="/login">
+                                            <NoTengoCuenta className="normal-test">Ya tengo cuenta, quiero iniciar sesión.</NoTengoCuenta>
+                                        </Link>
+                                    </div>
+
+
                                 </Row>
                             </Formulario>
                         </Container>
