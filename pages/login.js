@@ -187,6 +187,7 @@ const Login = () => {
                     // console.log(respuestaLogin)
                     if(respuestaLogin.data.token) {
                         localStorage.setItem('token-21', respuestaLogin.data.token);
+                        localStorage.setItem('usuario', JSON.stringify(respuestaLogin.data.usuario));
                         router.push('/');
                     }
                 })

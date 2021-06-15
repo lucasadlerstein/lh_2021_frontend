@@ -217,6 +217,7 @@ const Signup = () => {
                             console.log(respuestaLogin)
                             if(respuestaLogin.data.token) {
                                 localStorage.setItem('token-21', respuestaLogin.data.token);
+                                localStorage.setItem('usuario', JSON.stringify(respuestaLogin.data.usuario));
                                 router.push('/');
                             }
                         })
@@ -282,8 +283,13 @@ const Signup = () => {
                                                     onChange={(e) => handleChangePrefijo(e)}
                                                     value={persona.prefijo}
                                                 >
-                                                    <option value="dr">Dr.</option>
-                                                    <option value="dra">Dra.</option>
+                                                    <option value="Dr">Dr.</option>
+                                                    <option value="Dra">Dra.</option>
+                                                    <option value="Sr">Sr.</option>
+                                                    <option value="Sra">Sra.</option>
+                                                    <option value="Srta">Srta.</option>
+                                                    <option value="Ing">Ing.</option>
+                                                    <option value="Lic">Lic.</option>
                                                 </Select>
                                             </Col>
                                             <Col xs={12} sm={6} md={4}>

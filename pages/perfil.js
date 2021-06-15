@@ -166,7 +166,7 @@ const Perfil = () => {
                 {/* <meta name="keywords" content={t('Contacto.SEO.PalabrasClave')} /> */}
             </Head>
             <Layout>
-                <Container className="mx-auto py-5">
+                <Container className="mx-auto pt-5 pb-0">
                     <Row>
                         <Col sm={12} md={12} lg={7}>
                             <Titulo>Mi perfil</Titulo>
@@ -178,8 +178,8 @@ const Perfil = () => {
                                 <Link href="#datos" ><a>Mis Datos</a></Link>
                             </SubTitulo>
                         </Col>
-                        <Col sm={0} md={0} lg={5}>
-                            <img src="" alt="Mi Perfil | Latam Hospitals"    />
+                        <Col sm={0} md={0} lg={5} className="text-center">
+                            <img style={{maxHeight: '250px'}} src="/img/n_mi_perfil.png" alt="Mi Perfil | Latam Hospitals"    />
                         </Col>
                     </Row>
                 </Container>

@@ -77,12 +77,17 @@ const Navegacion = ({t}) => {
     const [isOpen, setIsOpen] = useState(false);
     const [isOpenDropdownProfile, setIsOpenDropdownProfile] = useState(false);
     const [profile, setProfile] = useState(false);
+    const [nomAp, setNomAp] = useState('Su perfil');
     const toggleProfile = () => setIsOpenDropdownProfile(!isOpenDropdownProfile);
     const toggle = () => setIsOpen(!isOpen);
 
     useEffect(() => {
         if (localStorage.getItem('token-21')) {
             setProfile(true);
+        }
+        if(localStorage.getItem('usuario')) {
+            const usuario = JSON.parse(localStorage.getItem('usuario'));
+            setNomAp(`${usuario.prefijo} ${usuario.apellido}`)
         }
         // eslint-disable-next-line
     }, [])
@@ -91,6 +96,7 @@ const Navegacion = ({t}) => {
 
     function cerrarSesion() {
         localStorage.removeItem('token-21');
+        localStorage.removeItem('usuario');
         router.push('/login');
     }
 
@@ -145,7 +151,12 @@ const Navegacion = ({t}) => {
                                             </Link>
                                         </NavItem>
                                     </DropdownToggle>
-                                    <DropdownMenu left>
+                                    <DropdownMenu right>
+                                        <DropdownItem>
+                                            <Link href="/perfil">
+                                                <MenuB className="nav-link">{nomAp}</MenuB>
+                                            </Link>
+                                        </DropdownItem>
                                         <DropdownItem>
                                             <Link href="/perfil#intereses">
                                                 <MenuB className="nav-link">Intereses</MenuB>
