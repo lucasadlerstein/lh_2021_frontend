@@ -355,3 +355,11 @@ img {
 .dropdown-item.active, .dropdown-item:active {
   background-color: transparent!important;
 }
+
+.dropdown-toggle::after {
+  display:none!important;
+}
+
+.nav-item::marker {
+  display:none!important;
+}

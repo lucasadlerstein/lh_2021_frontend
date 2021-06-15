@@ -110,14 +110,40 @@ const Navegacion = ({t}) => {
                         {
                             (profile === true) ? (
                                 <div className="mt-0 hide-desktop">
-                                    <Link href="/perfil">
-                                        <a className="nav-link">
-                                            <img src="/img/iconos/n_perfil_usuario.svg" alt="Perfil del usuario" />
-                                        </a>
-                                    </Link>
+                                    <Dropdown toggle={() => setIsOpenDropdownProfile(!isOpenDropdownProfile)} isOpen={isOpenDropdownProfile} onMouseEnter={() => setIsOpenDropdownProfile(true)} onMouseLeave={() => setIsOpenDropdownProfile(false)}  nav inNavbar>
+                                        <DropdownToggle nav>
+                                            <NavItem style={{marginTop: '-1rem'}} className="list-unstyled">
+                                                <a href="#" className="nav-link">
+                                                    <img src="/img/iconos/n_perfil_usuario.svg" alt="Perfil del usuario" />
+                                                </a>
+                                            </NavItem>
+                                        </DropdownToggle>
+                                        <DropdownMenu right>
+                                            <DropdownItem>
+                                                <Link href="/perfil">
+                                                    <MenuB className="nav-link">{nomAp}</MenuB>
+                                                </Link>
+                                            </DropdownItem>
+                                            <DropdownItem>
+                                                <Link href="/perfil#intereses">
+                                                    <MenuB className="nav-link">Intereses</MenuB>
+                                                </Link>
+                                            </DropdownItem>
+                                            <DropdownItem>
+                                                <Link href="/perfil#datos">
+                                                    <MenuB className="nav-link">Editar perfil</MenuB>
+                                                </Link>
+                                            </DropdownItem>
+                                            <DropdownItem divider />
+                                            <DropdownItem onClick={() => cerrarSesion()}>
+                                                <MenuB className="nav-link">Cerrar sesión</MenuB>
+                                            </DropdownItem>
+                                        </DropdownMenu>
+                                    </Dropdown>
+
                                 </div>
-                            ) : null 
-                        }
+                                ) : null
+                            }
                     </div>
                     <Collapse isOpen={isOpen} navbar>
                         <Nav className="ml-auto" navbar>
@@ -141,7 +167,10 @@ const Navegacion = ({t}) => {
                             </NavItem>
                             {
                                 (profile === true) ? (
-                                <Dropdown toggle={() => router.push('/perfil')} isOpen={isOpenDropdownProfile} onMouseEnter={() => setIsOpenDropdownProfile(true)} onMouseLeave={() => setIsOpenDropdownProfile(false)}  nav inNavbar>
+                                <Dropdown className="hide-mobile" 
+                                toggle={() => setIsOpenDropdownProfile(!isOpenDropdownProfile)}
+                                // toggle={() => router.push('/perfil')}
+                                 isOpen={isOpenDropdownProfile} onMouseEnter={() => setIsOpenDropdownProfile(true)} onMouseLeave={() => setIsOpenDropdownProfile(false)}  nav inNavbar>
                                     <DropdownToggle nav>
                                         <NavItem className="my-auto hide-mobile">
                                             <Link href="/perfil">
@@ -163,7 +192,7 @@ const Navegacion = ({t}) => {
                                             </Link>
                                         </DropdownItem>
                                         <DropdownItem>
-                                            <Link href="/perfil#editar">
+                                            <Link href="/perfil#datos">
                                                 <MenuB className="nav-link">Editar perfil</MenuB>
                                             </Link>
                                         </DropdownItem>

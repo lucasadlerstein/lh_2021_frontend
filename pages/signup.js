@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Head from 'next/head';
 import Layout from '../components/general/Layout';
 import {Container, Row, Col} from 'reactstrap';
@@ -171,6 +171,14 @@ const Signup = () => {
         cargo: '',
         empresa: ''
     })
+
+    useEffect(() => {
+        // if(localStorage.getItem('persona')) {
+            // const persLS = JSON.parse(localStorage.getItem('persona'));
+            // setPersona({ ...persona, persLS });
+        // }
+        // eslint-disable-next-line
+    }, []);
 
     const handleChange = e => {
         setPersona({
