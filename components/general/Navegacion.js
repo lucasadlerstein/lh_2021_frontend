@@ -87,7 +87,7 @@ const Navegacion = ({t}) => {
         }
         if(localStorage.getItem('usuario')) {
             const usuario = JSON.parse(localStorage.getItem('usuario'));
-            setNomAp(`${usuario.prefijo} ${usuario.apellido}`)
+            setNomAp(`${usuario.prefijo}. ${usuario.apellido}`)
         }
         // eslint-disable-next-line
     }, [])

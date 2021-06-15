@@ -160,6 +160,8 @@ const EditarDatos = ({datos}) => {
             } else {
                 await clienteAxios.put('/usuarios/editar', persona)
                     .then( async resp => {
+                        const usuario = { nombre: persona.nombre, apellido: persona.apellido, prefijo: persona.prefijo }
+                        localStorage.setItem('usuario', JSON.stringify(usuario));
                         AlertaSwal('Listo', 'Cambios guardados con éxito.', 'success', 3000);
                     })
                     .catch(error => {
@@ -188,6 +190,9 @@ const EditarDatos = ({datos}) => {
                     <Titulo>Editar mis datos</Titulo>
                 </TituloBox>
                 <Formulario onSubmit={enviarFormulario}>
+                <input id="email" style={{display: 'none'}} type="email" name="fakeemail" />
+                <input id="password" style={{display: 'none'}} type="password" name="fakepassword" />
+
                     <Row>
                         <Col xs={12} sm={12} md={2}>
                             <Select
