@@ -212,22 +212,30 @@ const Signup = () => {
         } else {
             await clienteAxios.post('/usuarios/nuevo', persona)
                 .then( async resp => {
-                    await clienteAxios.post('/usuarios/login', {email: persona.email, password: persona.password})
-                        .then(respuestaLogin => {
-                            console.log(respuestaLogin)
-                            if(respuestaLogin.data.token) {
-                                localStorage.setItem('token-21', respuestaLogin.data.token);
-                                localStorage.setItem('usuario', JSON.stringify(respuestaLogin.data.usuario));
-                                router.push('/');
-                            }
-                        })
-                        .catch(errorLogin => {
-                            router.push('/login');
-                        })
+                    if(resp.data.registro === 'false' || resp.data.registro === false) {
+                        if (resp.data.e_name === 'SequelizeUniqueConstraintError') {
+                            AlertaSwal('Error', 'Parece que su email ya se registró.', 'error', 3000);
+                        } else {
+                            AlertaSwal('Error', 'No pudimos crear su cuenta.', 'error', 3000);
+                        }
+                    } else {
+                        await clienteAxios.post('/usuarios/login', {email: persona.email, password: persona.password})
+                            .then(respuestaLogin => {
+                                console.log(respuestaLogin)
+                                if(respuestaLogin.data.token) {
+                                    localStorage.setItem('token-21', respuestaLogin.data.token);
+                                    localStorage.setItem('usuario', JSON.stringify(respuestaLogin.data.usuario));
+                                    router.push('/');
+                                }
+                            })
+                            .catch(errorLogin => {
+                                router.push('/login');
+                            })
+                    }
                 })
                 .catch(error => {
                     console.log(error);
-                    AlertaSwal('Error', 'No pudimos registrarte.', 'error', 3000);
+                    AlertaSwal('Error', 'No pudimos crear su cuenta.', 'error', 3000);
 
                 })
         }
