@@ -363,3 +363,39 @@ img {
 .nav-item::marker {
   display:none!important;
 }
+
+.btn-secondary {
+  border-color: transparent!important;
+  background-color: transparent!important;
+  box-shadow: none!important;
+
+}
+
+.btn-secondary:focus {
+  outline: none!important;
+  box-shadow: none!important;
+  border-color: transparent!important;
+}
+
+.carousel .slider-wrapper {
+  overflow-x: hidden;
+  overflow: visible;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.carousel .control-next.control-arrow:before,
+.carousel.carousel-slider .control-arrow,
+.carousel .control-prev.control-arrow:before {
+  border-left-color: white!important;
+  border-right-color: white!important;
+}
+
+.carousel.carousel-slider .control-arrow:hover {
+  background: rgba(0,0,0,0.6)!important;
+  height: 50rem!important;
+  margin-top: auto!important;
+  margin-bottom: auto!important; 
+  border-left-color: white!important;
+  border-right-color: white!important;
+}

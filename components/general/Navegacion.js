@@ -110,13 +110,15 @@ const Navegacion = ({t}) => {
                         {
                             (profile === true) ? (
                                 <div className="mt-0 hide-desktop">
-                                    <Dropdown toggle={() => setIsOpenDropdownProfile(!isOpenDropdownProfile)} isOpen={isOpenDropdownProfile} onMouseEnter={() => setIsOpenDropdownProfile(true)} onMouseLeave={() => setIsOpenDropdownProfile(false)}  nav inNavbar>
-                                        <DropdownToggle nav>
-                                            <NavItem style={{marginTop: '-1rem'}} className="list-unstyled">
-                                                <a href="#" className="nav-link">
+                                    <Dropdown
+                                        isOpen={isOpenDropdownProfile}>
+                                        toggle={toggleProfile} 
+                                        <DropdownToggle  caret>
+                                            {/* <NavItem style={{marginTop: '-1rem'}} className="list-unstyled"> */}
+                                                {/* <a href="#" className="nav-link"> */}
                                                     <img src="/img/iconos/n_perfil_usuario.svg" alt="Perfil del usuario" />
-                                                </a>
-                                            </NavItem>
+                                                {/* </a> */}
+                                            {/* </NavItem> */}
                                         </DropdownToggle>
                                         <DropdownMenu right>
                                             <DropdownItem>

@@ -20,14 +20,14 @@ const Informacion = styled.div`
     }
 `;
 
-const MasInfo = ({descripcion, t}) => {
+const MasInfo = ({funcionBotonInscribirme, descripcion, t}) => {
     return (
         <Fondo className="py-10">
             <Container>
                 <Informacion>    
                     <h2 className="text-white">{t('Charla.QueTemas')}</h2>
                     <p className="text-white fs-2">{descripcion}</p>
-                    <a href="#inscripcion" className="fs-2 btn-lh btn-sec btn-blanco no-border bor-rad-5" style={{marginTop: '2rem', padding: '1rem 5rem'}}>{t('Charla.Inscribirme')}</a>
+                    <button onClick={() => funcionBotonInscribirme()} className="fs-2 btn-lh btn-sec btn-blanco no-border bor-rad-5" style={{marginTop: '2rem', padding: '1rem 5rem'}}>{t('Charla.Inscribirme')}</button>
                 </Informacion>
             </Container>
         </Fondo>

@@ -15,14 +15,6 @@ const EventoNet = ({imagen, titulo}) => {
         border-radius: 30px;
         min-height: 60rem;
         padding: 3rem;
-        margin-left: .5rem;
-        margin-right: .5rem;
-        transition: all .3s ease;
-        &:hover {
-            transform: scale(1.07);
-            position: relative;
-            z-index: 999;
-        }
     `;
     
     return (

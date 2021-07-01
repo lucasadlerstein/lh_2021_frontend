@@ -13,7 +13,7 @@ module.exports = {
       },
     shallowRender: true,
     env: {
-        backendURL: 'https://p.api.latamhospitals.com',
+        backendURL: 'https://api.latamhospitals.com',
         frontendURL: 'https://latamhospitals.com',
     }
 }

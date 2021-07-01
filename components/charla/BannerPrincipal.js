@@ -51,7 +51,7 @@ const Speaker = styled.h3`
         max-width: 70%;
     }
 `;
-const BotonInscribirme = styled.a`
+const BotonInscribirme = styled.button`
     border: 2px solid transparent;
     border-radius: 5rem;
     padding: 1rem 4rem;
@@ -96,7 +96,7 @@ const SolapaBlanca = styled.div`
 
 `;
 
-const BannerPrincipal = ({slug, titulo, desc, nombre, nombre2, nombre3, nombre4, logo, empresa, t}) => {
+const BannerPrincipal = ({slug, titulo, desc, nombre, nombre2, nombre3, nombre4, logo, empresa, funcionBotonInscribirme, t}) => {
     return (
         <Fondo>
             <Container>
@@ -116,9 +116,7 @@ const BannerPrincipal = ({slug, titulo, desc, nombre, nombre2, nombre3, nombre4,
                                 (nombre4.trim() !== '') ? `, ${nombre4}` : null
                             }
                         </Speaker>
-                        <Link href={`${slug}#inscripcion`}>
-                            <BotonInscribirme className="btn-lh btn-prim fs-2">{t('Charla.Inscribirme')}</BotonInscribirme>
-                        </Link>
+                        <BotonInscribirme onClick={() => funcionBotonInscribirme(1)} className="btn-lh btn-prim fs-2">{t('Charla.Inscribirme')}</BotonInscribirme>
                     </div>
                     {
                         (logo === '' || logo === null || logo === undefined ) ? null : (

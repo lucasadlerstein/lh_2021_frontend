@@ -67,7 +67,6 @@ const Inscripcion = ({id, charla, titulo, dia, inscriptos, zoom_link, t}) => {
 
     const [persona, setPersona] = useState({
         charla: id,
-        nombre: '',
         apellido: '',
         pais: '',
         email: '',
