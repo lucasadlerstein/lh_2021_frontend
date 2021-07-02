@@ -36,16 +36,24 @@ const FranjaContenido = ({titulo, eventosMostrar}) => {
             setIndicadores(false);
         }
 
-        if (window.innerWidth > 1000) {
-            setAnchoEvento(30);
+        if (window.innerWidth > 1600) {
+            // setAnchoEvento(30);
+            setAnchoEvento(18);
+        } else if (window.innerWidth > 1200) {
+            // setAnchoEvento(30);
+            setAnchoEvento(23);
+        } else if (window.innerWidth > 991) {
+            setAnchoEvento(35);
         } else if (window.innerWidth > 768) {
-            setAnchoEvento(50);
+            // setAnchoEvento(50);
+            setAnchoEvento(40);
         } else if (window.innerWidth > 650) {
-            setAnchoEvento(60);
+            // setAnchoEvento(60);
+            setAnchoEvento(50);
         } else if (window.innerWidth > 540) {
-            setAnchoEvento(70);
+            setAnchoEvento(55);
         } else {
-            setAnchoEvento(90);
+            setAnchoEvento(95);
         } 
 
         // eslint-disable-next-line
@@ -54,8 +62,8 @@ const FranjaContenido = ({titulo, eventosMostrar}) => {
     return (
         <>
         
-            <Container className="pt-5r px-0">
-                <Titulo>{titulo}</Titulo>
+            <div className="pt-5r px-0">
+                <Titulo className="text-center">{titulo}</Titulo>
                 <CarouselPersonalizado showStatus={false}
                 showIndicators={indicadores}
                 stopOnHover={true}
@@ -81,7 +89,7 @@ const FranjaContenido = ({titulo, eventosMostrar}) => {
                         ))
                     }
                 </CarouselPersonalizado>
-            </Container>
+            </div>
         </>
     );
 }

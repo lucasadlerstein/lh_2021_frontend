@@ -391,6 +391,7 @@ img {
   border-left-color: white!important;
   border-right-color: white!important;
   border-radius: 5rem!important;
+  
 }
 
 .carousel .control-arrow:before, .carousel.carousel-slider .control-arrow:before {
@@ -399,4 +400,9 @@ img {
   border-top: 15px solid transparent!important;
   border-bottom: 15px solid transparent!important;
   content: '';
+}
+
+.carousel.carousel-slider .control-arrow {
+  margin-left: 1rem!important;
+  margin-right: 1rem!important;
 }

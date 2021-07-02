@@ -14,6 +14,7 @@ const EventoNet = ({imagen, titulo, link}) => {
         background-repeat: no-repeat;
         border-radius: 30px;
         min-height: 60rem;
+        height: 100%;
         padding: 3rem;
         margin-left: .5rem;
         margin-right: .5rem;
