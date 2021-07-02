@@ -17,8 +17,8 @@ const Contenido2020 = () => {
             <Titulo className="text-center">REVIVE LAS CONFERENCIAS Y MASTERTALKS DEL 2020</Titulo>
             
             <FranjaContenido eventosMostrar={conferenciasEmpresas2020} titulo={'CONFERENCIAS DE EMPRESAS'} />
-            <FranjaContenido eventosMostrar={camarasInstituciones2020} titulo={'CÁMARAS E INSTITUCIONES'} />
             <FranjaContenido eventosMostrar={mastertalks2020} titulo={'MASTERTALKS'} />
+            <FranjaContenido eventosMostrar={camarasInstituciones2020} titulo={'CÁMARAS E INSTITUCIONES'} />
         </div>
     );
 }
