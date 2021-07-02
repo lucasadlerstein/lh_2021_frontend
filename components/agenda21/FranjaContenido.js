@@ -42,16 +42,23 @@ const FranjaContenido = ({titulo, eventosMostrar}) => {
         } else if (window.innerWidth > 1200) {
             // setAnchoEvento(30);
             setAnchoEvento(23);
-        } else if (window.innerWidth > 991) {
+        } else if (window.innerWidth > 1050) {
             setAnchoEvento(35);
+        } else if (window.innerWidth > 991) {
+            setAnchoEvento(40);
+        } else if (window.innerWidth > 850) {
+            // setAnchoEvento(50);
+            setAnchoEvento(45);
         } else if (window.innerWidth > 768) {
             // setAnchoEvento(50);
-            setAnchoEvento(40);
+            setAnchoEvento(50);
         } else if (window.innerWidth > 650) {
             // setAnchoEvento(60);
-            setAnchoEvento(50);
-        } else if (window.innerWidth > 540) {
-            setAnchoEvento(55);
+            setAnchoEvento(60);
+        } else if (window.innerWidth > 530) {
+            setAnchoEvento(70);
+        } else if (window.innerWidth > 450) {
+            setAnchoEvento(80);
         } else {
             setAnchoEvento(95);
         } 
