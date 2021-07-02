@@ -9,6 +9,7 @@ import Participan from '../components/inicio/Participan';
 import Alcance from '../components/inicio/Alcance';
 import CuentaRegresiva from '../components/inicio/CuentaRegresiva';
 import QuieroParticipar from '../components/general/QuieroParticipar';
+import Contenido2020 from '../components/agenda21/Contenido2020';
 
 import { withTranslation } from '../i18n';
 
@@ -29,6 +30,7 @@ const Inicio = ({t}) => {
           textoB={"Unimos profesionales, instituciones científicas, cámaras y empresas para generar un intercambio positivo en este contexto de incertidumbre y cambios constantes."}
         />
         <Participan /> 
+        <Contenido2020 />
         <Alcance />
         {/* <CuentaRegresiva /> */}
         <QuieroParticipar />
