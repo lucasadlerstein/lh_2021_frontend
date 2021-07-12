@@ -5,6 +5,7 @@ import Link from 'next/link';
 import EventoNet from './EventoNet';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
+import {ListaIntereses} from '../../InteresesListado.js';
 
 const CarouselPersonalizado = styled(Carousel)`
     .carousel .slide {
@@ -19,7 +20,7 @@ const Titulo = styled.h3`
     text-transform: uppercase;
 `;
 
-const FranjaContenido = ({titulo, eventosMostrar}) => {
+const FranjaContenidoTematica = ({titulo, eventosMostrar, codigoInteres}) => {
 
     const [indicadores, setIndicadores] = useState(false);
     const [anchoEvento, setAnchoEvento] = useState(false);
@@ -70,7 +71,18 @@ const FranjaContenido = ({titulo, eventosMostrar}) => {
         <>
         
             <div className="pt-5r px-0">
-                <Titulo className="text-center">{titulo}</Titulo>
+                <Titulo className="text-center">
+                    {
+                        ListaIntereses.map(interThis => {
+                            if(interThis.COD === titulo) {
+                                return (
+                                    interThis.ES
+                                )
+                            }
+                            return;
+                        })
+                    }
+                </Titulo>
                 <CarouselPersonalizado showStatus={false}
                 showIndicators={indicadores}
                 stopOnHover={true}
@@ -87,14 +99,18 @@ const FranjaContenido = ({titulo, eventosMostrar}) => {
                 // swipeScrollTolerance={2}
                 >
                     {
-                        eventosMostrar.map(ev => (
-                            <EventoNet
-                                // titulo=""
-                                imagen={`${process.env.backendURL}/static/${ev.portada_imagen}`}
-                                alt={ev.es_titulo}
-                                link={`${process.env.frontendURL}/${Number(ev.categoria) === 1 ? 'mastertalk' : 'conferencia'}/${ev.slug}`}
-                            />
-                        ))
+                        eventosMostrar.map(ev => {
+                            if(ev.intereses.includes(codigoInteres)) {
+                                return (
+                                    <EventoNet
+                                        // titulo=""
+                                        imagen={`${process.env.backendURL}/static/${ev.portada_imagen}`}
+                                        alt={ev.es_titulo}
+                                        link={`${process.env.frontendURL}/${Number(ev.categoria) === 1 ? 'mastertalk' : 'conferencia'}/${ev.slug}`}
+                                    />
+                                )
+                            }
+                        })
                     }
                 </CarouselPersonalizado>
             </div>
@@ -102,4 +118,4 @@ const FranjaContenido = ({titulo, eventosMostrar}) => {
     );
 }
  
-export default FranjaContenido;
+export default FranjaContenidoTematica;

@@ -93,7 +93,7 @@ const Charla = ({enlace, t}) => {
         return (
             <>
                 <Head>
-                    <title>{enlace.es_titulo} | Latam Hospitals 2020</title>
+                    <title>{enlace.es_titulo} | Latam Hospitals</title>
                     <meta name="description" content={enlace.es_breve_descripcion} />
                     <meta name="keywords" content={`latam hospitals, conferencia, latam, hospitals, master talk, mastertalk, salud, ${enlace.orador_nombre} ${enlace.orador_apellido}, ${enlace.es_titulo}`} />
                 </Head>

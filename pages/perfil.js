@@ -147,7 +147,6 @@ const Perfil = () => {
             await clienteAxios.get('/usuarios/info')
                 .then(resp => {
                     setPersona(resp.data.resp);
-                    console.log(persona)
                 })
                 .catch(err => {
                     console.log(err)
@@ -155,6 +154,7 @@ const Perfil = () => {
         }
 
         traerInformacion();
+        // eslint-disable-next-line
     }, [])
 
     return (
@@ -185,10 +185,10 @@ const Perfil = () => {
                 </Container>
                 {/* <Inscripciones /> */}
                 <Intereses
-                 inter={persona}
+                    inter={persona}
                   />
                 <EditarDatos 
-                datos={persona}
+                    datos={persona}
                  />
             </Layout>
         </>

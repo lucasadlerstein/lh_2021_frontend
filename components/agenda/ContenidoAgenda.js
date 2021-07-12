@@ -5,6 +5,7 @@ import ContenidoFecha from './ContenidoFecha.js';
 import Buscador from './Buscador.js';
 import clienteAxios from '../../config/axios';
 import styled from '@emotion/styled';
+import {conferenciasEmpresas2020, mastertalks2020} from '../../arrEventos2020.js';
 
 const BotonCambiarFiltro = styled.button`
     background-color: transparent;
@@ -29,7 +30,6 @@ const ContenidoAgenda = () => {
     
     useEffect(() => {
         async function traerEventos() {
-            console.log('traer eventos')
             await clienteAxios.get('/charlas/agenda')
                 .then(respuesta => {
                     const ordenado = respuesta.data.resp.sort(function(a, b){
@@ -38,7 +38,6 @@ const ContenidoAgenda = () => {
                     })
                     setEventos(ordenado);
                     // setCargando(false);
-                    console.log(ordenado)
                 })
                 .catch(err => {
                     console.log(err)
@@ -51,8 +50,8 @@ const ContenidoAgenda = () => {
     return (
         <>
             <Buscador />
-            <Container className="py-5r">
-                <div style={{display: 'flex'}}>
+            <div className="py-5r">
+                <Container style={{display: 'flex'}}>
                     <img width="40px" src="/img/iconos/n_filtro.svg" alt="Cambiar filtro a fecha o temática" />
                     <BotonCambiarFiltro
                         onClick={() => setOrden('fecha')}
@@ -62,9 +61,9 @@ const ContenidoAgenda = () => {
                         onClick={() => setOrden('tematica')}
                         style={orden === 'tematica' ? {fontWeight: 'bold'} : {fontWeight: 'normal'}}
                     >Temática</BotonCambiarFiltro>
-                </div>
+                </Container>
                 { (orden === 'tematica') ? <ContenidoTematica eventos={eventos} /> : <ContenidoFecha eventos={eventos} /> }
-            </Container>
+            </div>
         </>
     );
 }

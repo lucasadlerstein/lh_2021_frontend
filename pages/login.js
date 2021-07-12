@@ -238,12 +238,12 @@ const Login = () => {
                             <Titulo>Inicia sesión en Latam Hospitals</Titulo>
                             <SubTitulo>¿listo para más Latam Hospitals?</SubTitulo>
 
-                            <Formulario onSubmit={enviarFormulario}>
+                            <Formulario onSubmit={enviarFormulario} className="text-center">
                                 <Row>
-                                    <Col xs={12} sm={6} md={6} lg={4} className="ml-auto">
+                                    <Col xs={12} sm={12} md={10} lg={8} className="mx-auto">
                                         <Input type="email"  name="email" value={persona.email} onChange={handleChange} placeholder="Email" />
                                     </Col>
-                                    <Col xs={12} sm={6} md={6} lg={4} className="mr-auto">
+                                    <Col xs={12} sm={12} md={10} lg={8} className="mx-auto">
                                         <Input type="password"  name="password" value={persona.password} onChange={handleChange} placeholder="Contraseña" />
                                     </Col>
                                     <Col xs={12} md={12} className="mx-auto text-center mt-3">

@@ -39,6 +39,9 @@ const FechaCharla = ({fecha, hora}) => {
     localizacion: 'Arg/Bra/Chi/Par/Uru'
   })
 
+  const dateOptions = { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' };
+  const fechaJS = new Date(Date.parse(fecha.replace(/-/g, '/')));
+
     useEffect(() => {
       async function chequearZonaHoraria() {
         if(localStorage.getItem('pais-lh')) {
@@ -68,57 +71,9 @@ const FechaCharla = ({fecha, hora}) => {
       // eslint-disable-next-line
     }, [])
 
-    const dias = [
-        {
-          dia: 1,
-          fecha: '23 de Noviembre'
-        },
-        {
-          dia: 2,
-          fecha: '24 de Noviembre'
-        },
-        {
-          dia: 3,
-          fecha: '25 de Noviembre'
-        },
-        {
-          dia: 4,
-          fecha: '26 de Noviembre'
-        },
-        {
-          dia: 5,
-          fecha: '27 de Noviembre'
-        },
-        {
-          dia: 6,
-          fecha: '28 de Noviembre'
-        },
-        {
-          dia: 7,
-          fecha: '29 de Noviembre'
-        },
-        {
-          dia: 8,
-          fecha: '30 de Noviembre'
-        },
-        {
-          dia: 9,
-          fecha: '01 de Diciembre'
-        },
-        {
-          dia: 10,
-          fecha: '02 de Diciembre'
-        }
-    ]
     return (
       <Franja>
-          <p>
-              {dias.map(dia => {
-                  if(dia.dia === fecha) {
-                      return dia.fecha
-                  }
-              })}
-          <span> - {horaActualizada.hora}hs</span></p>
+          <p>{fechaJS.toLocaleDateString("es-ES", dateOptions)}<span> - {horaActualizada.hora}hs</span></p>
           <TimeZone>({horaActualizada.localizacion})</TimeZone>
       </Franja>
     );
