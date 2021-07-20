@@ -1,4 +1,5 @@
 import {useEffect} from 'react';
+import { withTranslation } from '../i18n';
 
 const Error = () => {
     useEffect(() => {
@@ -9,9 +10,9 @@ const Error = () => {
         null
     )
 }
- 
-Error.getInitialProps = async () => ({
-    namespacesRequired: [],
-});
 
-export default Error;
+Error.with18nextTranslation = async () => ({
+    namespacesRequired: ['inicio'],
+  });
+   
+export default withTranslation('inicio')(Error);
