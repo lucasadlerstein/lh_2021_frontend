@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Layout from '../components/general/Layout';
-import CabeceraAgenda from '../components/agenda/CabeceraAgenda';
+// import CabeceraAgenda from '../components/agenda/CabeceraAgenda';
 import AgendaComponente from '../components/agenda/AgendaComponente';
 
 import AgendaState from '../context/agendaState';
@@ -20,7 +20,7 @@ const Agenda = ({t}) => {
             </Head>
             <Layout>
                 <AgendaState>
-                    <CabeceraAgenda />
+                    {/* <CabeceraAgenda /> */}
                     {
                         (terminado === true) ? <AgendaComponente /> : (
                             <div className="container text-center py-10">
