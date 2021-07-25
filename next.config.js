@@ -13,9 +13,9 @@ module.exports = {
       },
     shallowRender: true,
     env: {
-        // backendURL: 'https://p.api.latamhospitals.com',
-        backendURL: 'http://localhost:4000',
-        // frontendURL: 'https://latamhospitals.com',
-        frontendURL: 'http://localhost:3000',
+        backendURL: 'https://p.api.latamhospitals.com',
+        // backendURL: 'http://localhost:4000',
+        frontendURL: 'https://latamhospitals.com',
+        // frontendURL: 'http://localhost:3000',
     }
 }
