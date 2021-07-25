@@ -6,6 +6,7 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 import Inscripciones from '../components/perfil/Inscripciones';
 import Intereses from '../components/perfil/Intereses';
+import Certificados from '../components/perfil/Certificados';
 import EditarDatos from '../components/perfil/EditarDatos';
 import {AlertaSwal} from '../helpers/helpers';
 import clienteAxios from '../config/axios';
@@ -141,6 +142,8 @@ const Formulario = styled.form`
 const Perfil = () => {
 
     const [persona, setPersona] = useState();
+    const [eventos, setEventos] = useState([]);
+    const [inscripciones, setInscripciones] = useState([]);
 
     useEffect( () => {
         async function traerInformacion() {
@@ -153,7 +156,35 @@ const Perfil = () => {
                 })
         }
 
+        async function traerInscripciones() {
+            await clienteAxios.get('inscripciones/usuario')
+                .then(resp => {
+                    setInscripciones(resp.data.resp)
+
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+
+        async function traerEventos() {
+            await clienteAxios.get('/charlas/agenda')
+                .then(respuesta => {
+                    const ordenado = respuesta.data.resp.sort(function(a, b){
+                        if(a.hora < b.hora) return -1;
+                        if(a.hora > b.hora) return 1;
+                    })
+                    setEventos(ordenado);
+                    // setCargando(false);
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+
         traerInformacion();
+        traerInscripciones();
+        traerEventos();
         // eslint-disable-next-line
     }, [])
 
@@ -183,13 +214,10 @@ const Perfil = () => {
                         </Col>
                     </Row>
                 </Container>
-                {/* <Inscripciones /> */}
-                <Intereses
-                    inter={persona}
-                  />
-                <EditarDatos 
-                    datos={persona}
-                 />
+                <Inscripciones eventos={eventos} misInscripciones={inscripciones} />
+                <Certificados eventos={eventos} misInscripciones={inscripciones} />
+                <Intereses inter={persona} />
+                <EditarDatos datos={persona} />
             </Layout>
         </>
     );

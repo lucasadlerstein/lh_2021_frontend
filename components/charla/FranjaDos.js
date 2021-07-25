@@ -118,20 +118,24 @@ const FranjaDos = ({duracion, titulo, fechaEvento, horaEvento, descripcionEvento
             duration: [duracion, "minutes"],
         };
 
-        let fechaInicia = '';
+        // let fechaInicia = '';
     
-        dias.forEach(day => {
-            if(day.dia === fechaEvento) {
-                fechaInicia = day.start;
-            }
-        });
+        // dias.forEach(day => {
+        //     if(day.dia === fechaEvento) {
+        //         fechaInicia = day.start;
+        //     }
+        // });
 
-        event.start = fechaInicia + horaEvento.slice(0, 2) + ':' + horaEvento.slice(3, 5) + ':00 -0300';
-        eventOutlook.start = fechaInicia + horaEvento.slice(0, 2) + ':' + horaEvento.slice(3, 5) + ':00 +0000';
+        console.log(fechaEvento.replaceAll('-', '/'))
+
+        event.start = fechaEvento.replaceAll('-', '') + 'T' + horaEvento.slice(0, 2) + '' + horaEvento.slice(3, 5) + '000300Z';
+        eventOutlook.start = fechaEvento.replaceAll('-', '/') + horaEvento.slice(0, 2) + ':' + horaEvento.slice(3, 5) + ':00 +0000';
 
         setLinkGoogle(google(event));
         setLinkOutlook(outlook(eventOutlook));
         setIcsArchivo(ics(event));
+
+        console.log(event)
     }
 
     return (

@@ -19,7 +19,24 @@ const Titulo = styled.h3`
     text-transform: uppercase;
 `;
 
-const FranjaContenido = ({titulo, eventosMostrar}) => {
+const BotonCertificado = styled.button`
+    border-radius: 5rem;
+    border: 2px solid var(--colorPrimario);
+    color: white;
+    background-color: var(--colorSecundario);
+    font-size: 2rem;
+    padding: 1rem 2rem;
+    margin-top: 1.5rem;
+    transition: all .5s ease;
+    &:hover {
+        background-color: var(--colorPrimario);
+    }
+    &:focus {
+        outline: none;
+    }
+`;
+
+const FranjaContenidoCertificados = ({titulo, eventosMostrar}) => {
 
     const [indicadores, setIndicadores] = useState(false);
     const [anchoEvento, setAnchoEvento] = useState(false);
@@ -66,15 +83,21 @@ const FranjaContenido = ({titulo, eventosMostrar}) => {
         // eslint-disable-next-line
     }, [])
 
+    function solicitarCertificado(charla) {
+        // PAGAR
+
+
+        // SI el pago es exitoso, entonces cambiar en la BDD
+    }
+
+    function descargarCertificado(charla) {
+        // Generar y descargar certificado PDF
+    }
+
     return (
         <>
-        
             <div className="pt-5r px-0">
-                {
-                    (titulo !== '') ? (
-                        <Titulo className="text-center">{titulo}</Titulo>
-                    ) : null
-                }
+                <Titulo className="text-center">{titulo}</Titulo>
                 <CarouselPersonalizado showStatus={false}
                 showIndicators={indicadores}
                 stopOnHover={true}
@@ -92,12 +115,29 @@ const FranjaContenido = ({titulo, eventosMostrar}) => {
                 >
                     {
                         eventosMostrar.map(ev => (
-                            <EventoNet
-                                // titulo=""
-                                imagen={`${process.env.backendURL}/static/${ev.portada_imagen}`}
-                                alt={ev.es_titulo}
-                                link={`${process.env.frontendURL}/${Number(ev.categoria) === 1 ? 'mastertalk' : 'conferencia'}/${ev.slug}`}
-                            />
+                            <>
+                                <EventoNet
+                                    // titulo=""
+                                    imagen={`${process.env.backendURL}/static/${ev.portada_imagen}`}
+                                    alt={ev.es_titulo}
+                                    link={`${process.env.frontendURL}/${Number(ev.categoria) === 1 ? 'mastertalk' : 'conferencia'}/${ev.slug}`}
+                                />
+                                {
+                                    (titulo === 'PENDIENTES') ? (
+                                    <BotonCertificado
+                                        onClick={() => solicitarCertificado(ev.id)}
+                                    >
+                                        Solicitar certificado
+                                    </BotonCertificado>
+                                    ) : (
+                                        <BotonCertificado
+                                            onClick={() => descargarCertificado(ev.id)}
+                                        >
+                                            Descargar
+                                        </BotonCertificado>
+                                    )
+                                }
+                            </>
                         ))
                     }
                 </CarouselPersonalizado>
@@ -106,4 +146,4 @@ const FranjaContenido = ({titulo, eventosMostrar}) => {
     );
 }
  
-export default FranjaContenido;
+export default FranjaContenidoCertificados;

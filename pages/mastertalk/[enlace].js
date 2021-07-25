@@ -46,23 +46,37 @@ const Charla = ({enlace, t}) => {
 
     const router = useRouter();
 
-    const quieroInscribirme = (idCharla) => {
+    const quieroInscribirme = idCharla => {
+
+        const infoInscripcion = {
+            charla: idCharla,
+            nombre_charla: enlace.es_titulo,
+            zoom_link: enlace.zoom_link,
+            dia_charla: enlace.fecha
+        }
+
         Swal.fire({
             title: '¿Seguro quieres inscribirte?',
-            text: enlace.es_titulo,
+            text: `"${enlace.es_titulo}"`,
             icon: 'question',
             showCancelButton: true,
             confirmButtonColor: 'var(--colorPrimario)',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Si, quiero inscribirme.',
             cancelButtonText: 'Cancelar'
-          }).then((result) => {
+          }).then( async result => {
             if (result.isConfirmed) {
-              Swal.fire(
-                'Excelente',
-                'Inscripción realizada con éxito.',
-                'success'
-              )
+                await clienteAxios.post('/inscripciones', infoInscripcion)
+                    .then(resp => {
+                        Swal.fire(
+                          'Excelente',
+                          'Inscripción realizada con éxito.',
+                          'success'
+                        )
+                    })
+                    .catch(err => {
+                            console.log(err)
+                    })
             }
         })
     }
