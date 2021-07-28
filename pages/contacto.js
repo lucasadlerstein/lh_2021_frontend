@@ -7,6 +7,7 @@ import Link from 'next/link';
 import {AlertaSwal} from '../helpers/helpers';
 import clienteAxios from '../config/axios';
 import { withTranslation } from '../i18n';
+import {useRouter} from 'next/router';
 
 const Titulo = styled.h1`
     text-transform: uppercase;
@@ -123,29 +124,14 @@ const Formulario = styled.form`
 `;
 
 const Contacto = ({t}) => {
-
+    
+    const router = useRouter();
     const [persona, setPersona] = useState({
-        nombre: '',
-        apellido: '',
-        pais: '',
-        email: '',
         asunto: '',
         mensaje: ''
     });
 
-    const [empresa, setEmpresa] = useState({
-        empresa: '',
-        rubro: '',
-        pais: '',
-        nombre: '',
-        asunto: '',
-        email: '',
-        mensaje: ''
-    });
-
-    const [loadingPersona, setLoadingPersona] = useState(false);
-    const [loadingEmpresa, setLoadingEmpresa] = useState(false);
- 
+    const [loadingPersona, setLoadingPersona] = useState(false); 
 
     const handleChangePersona = e => {
         setPersona({
@@ -154,27 +140,23 @@ const Contacto = ({t}) => {
         })
     }
 
-    const handleChangeEmpresa = e => {
-        setEmpresa({
-            ...empresa,
-            [e.target.name]: e.target.value
-        })
-    }
-
     const enviarFormularioPersonas = async e => {
         e.preventDefault();
         // Validar
-        if(persona.nombre === '' || persona.apellido === '' || persona.email === '' || persona.pais === '' || persona.asunto === '' || persona.mensaje === '') {
+        if(persona.asunto === '' || persona.mensaje === '') {
             AlertaSwal('Error', 'Todos los campos son obligatorios', 'error', 2500);
             return;
         }
 
         setLoadingPersona(true);
 
-        await clienteAxios.post('contacto/persona', persona)
+        await clienteAxios.post('contacto/logueado', persona)
             .then(respuesta => {
                 if(respuesta.data.enviado === true) {
                     AlertaSwal('Excelente', 'Gracias por su mensaje. Pronto estaremos en contacto contigo', 'success', 3000);
+                    setTimeout(() => {
+                        router.push('/');
+                    }, 5000);
                 } else {
                     AlertaSwal('Error', 'No pudimos enviar el mensaje. Vuelva a intentar en unos minutos.', 'error', 5000);
                 }
@@ -183,31 +165,6 @@ const Contacto = ({t}) => {
             .catch(error => {
                 AlertaSwal('Error', 'No pudimos enviar el mensaje. Vuelva a intentar en unos minutos.', 'error', 5000);
                 setLoadingPersona(false);
-            })
-    }
-
-    const enviarFormularioEmpresas = async e => {
-        e.preventDefault();
-        // Validar
-        if(empresa.nombre === '' || empresa.empresa === '' || empresa.rubro === '' || empresa.email === '' || empresa.pais === '' || empresa.asunto === '' || empresa.mensaje === '') {
-            AlertaSwal('Error', 'Todos los campos son obligatorios', 'error', 2500);
-            return;
-        }
-
-        setLoadingEmpresa(true);
-
-        await clienteAxios.post('contacto/empresa', empresa)
-            .then(respuesta => {
-                if(respuesta.data.enviado === true) {
-                    AlertaSwal('Excelente', 'Gracias por su mensaje. Pronto estaremos en contacto contigo', 'success', 3000);
-                } else {
-                    AlertaSwal('Error', 'No pudimos enviar el mensaje. Vuelva a intentar en unos minutos.', 'error', 5000);
-                }
-                setLoadingEmpresa(false);
-            })
-            .catch(error => {
-                AlertaSwal('Error', 'No pudimos enviar el mensaje. Vuelva a intentar en unos minutos.', 'error', 5000);
-                setLoadingEmpresa(false);
             })
     }
 
@@ -228,88 +185,32 @@ const Contacto = ({t}) => {
                     <Link href="#empresas">
                         <a className="btn-lh btn-blanco text-uppercase bor-rad-5 mb-5 hide-desktop">{t('Contacto.SoyEmpresa')}</a>
                     </Link>
-                        <Row>
-                            <Col xs={12} lg={6}>
-                                <Formulario onSubmit={enviarFormularioPersonas}>
-                                    <Quien>Contacto <strong>asistentes</strong></Quien>
-                                    <Row>
-                                        <Col xs={12} md={6}>
-                                            <Input type="text" required name="nombre" value={persona.nombre} onChange={handleChangePersona} placeholder={t('Contacto.FormLabel.Nombre')} />
-                                        </Col>
-                                        <Col xs={12} md={6}>
-                                            <Input type="text" required name="apellido" value={persona.apellido} onChange={handleChangePersona} placeholder={t('Contacto.FormLabel.Apellido')} />
-                                        </Col>
-                                        <Col xs={12} md={6}>
-                                            <Input type="text" required name="pais" value={persona.pais} onChange={handleChangePersona} placeholder={t('Contacto.FormLabel.Pais')} />
-                                        </Col>
-                                        <Col xs={12} md={6}>
-                                            <Input type="text" required name="asunto" value={persona.asunto} onChange={handleChangePersona} placeholder={t('Contacto.FormLabel.Asunto')} />
-                                        </Col>
-                                        <Col xs={12} md={12}>
-                                            <Input type="email" required name="email" value={persona.email} onChange={handleChangePersona} placeholder={t('Contacto.FormLabel.Email')} />
-                                        </Col>
-                                        <Col xs={12} md={12}>
-                                            <InputTextArea type="textarea" required name="mensaje" value={persona.mensaje} onChange={handleChangePersona} placeholder={t('Contacto.FormLabel.Mensaje')} />
-                                        </Col>
-                                        <Col xs={12} md={12} className="text-center margin-5-mobile">
-                                            <BotonEnviar type="submit">
-                                                {
-                                                    (loadingPersona === true) ? (
-                                                        <div className="spinner">
-                                                            <div className="bounce1"></div>
-                                                            <div className="bounce2"></div>
-                                                            <div className="bounce3"></div>
-                                                        </div>
-                                                    ) : t('Contacto.FormLabel.Boton') 
-                                                }
-                                            </BotonEnviar>
-                                        </Col>
-                                    </Row>
-                                </Formulario>
-                            </Col>
-
-                            <Col xs={12} lg={6} id="empresas">
-                                <Formulario onSubmit={enviarFormularioEmpresas}>
-                                    <Quien>Contacto <strong>empresas</strong></Quien>
-                                    <Row>
-                                        <Col xs={12} md={6}>
-                                            <Input type="text" required name="empresa" value={empresa.empresa} onChange={handleChangeEmpresa} placeholder={t('Contacto.FormLabel.NombreEmpresa')} />
-                                        </Col>
-                                        <Col xs={12} md={6}>
-                                            <Input type="text" required name="rubro" value={empresa.rubro} onChange={handleChangeEmpresa} placeholder={t('Contacto.FormLabel.Rubro')} />
-                                        </Col>
-                                        <Col xs={12} md={6}>
-                                            <Input type="text" required name="pais" value={empresa.pais} onChange={handleChangeEmpresa} placeholder={t('Contacto.FormLabel.Pais')} />
-                                        </Col>
-                                        <Col xs={12} md={6}>
-                                            <Input type="text" required name="nombre" value={empresa.nombre} onChange={handleChangeEmpresa} placeholder={t('Contacto.FormLabel.NombreEnEmpresa')} />
-                                        </Col>
-                                        <Col xs={12} md={6}>
-                                            <Input type="text" required name="asunto" value={empresa.asunto} onChange={handleChangeEmpresa} placeholder={t('Contacto.FormLabel.Asunto')} />
-                                        </Col>
-                                        <Col xs={12} md={6}>
-                                            <Input type="email" required name="email" value={empresa.email} onChange={handleChangeEmpresa} placeholder={t('Contacto.FormLabel.Email')} />
-                                        </Col>
-                                        <Col xs={12} md={12}>
-                                            <InputTextArea type="textarea" required name="mensaje" value={empresa.mensaje} onChange={handleChangeEmpresa} placeholder={t('Contacto.FormLabel.Mensaje')} />
-                                        </Col>
-                                        <Col xs={12} md={12} className="text-center">
+                        <div className="mx-auto" style={{maxWidth: '80%'}}>
+                            <Formulario onSubmit={enviarFormularioPersonas}>
+                                <Quien>Contacto <strong>LH</strong></Quien>
+                                <Row>
+                                    <Col xs={12} md={12}>
+                                        <Input type="text" required name="asunto" value={persona.asunto} onChange={handleChangePersona} placeholder={t('Contacto.FormLabel.Asunto')} />
+                                    </Col>
+                                    <Col xs={12} md={12}>
+                                        <InputTextArea type="textarea" required name="mensaje" value={persona.mensaje} onChange={handleChangePersona} placeholder={t('Contacto.FormLabel.Mensaje')} />
+                                    </Col>
+                                    <Col xs={12} md={12} className="text-center margin-5-mobile">
                                         <BotonEnviar type="submit">
-                                                {
-                                                    (loadingEmpresa === true) ? (
-                                                        <div class="spinner">
-                                                            <div class="bounce1"></div>
-                                                            <div class="bounce2"></div>
-                                                            <div class="bounce3"></div>
-                                                        </div>
-                                                    ) : t('Contacto.FormLabel.Boton') 
-                                                }
-                                            </BotonEnviar>
-                                        </Col>
-                                    </Row>
-                                </Formulario>
-                            </Col>
-                        </Row>
+                                            {
+                                                (loadingPersona === true) ? (
+                                                    <div className="spinner">
+                                                        <div className="bounce1"></div>
+                                                        <div className="bounce2"></div>
+                                                        <div className="bounce3"></div>
+                                                    </div>
+                                                ) : t('Contacto.FormLabel.Boton') 
+                                            }
+                                        </BotonEnviar>
+                                    </Col>
+                                </Row>
+                            </Formulario>
+                        </div>
                     </Container>
                 </FondoUno>
             </Layout>

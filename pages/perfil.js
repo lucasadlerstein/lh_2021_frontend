@@ -6,6 +6,7 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 import Inscripciones from '../components/perfil/Inscripciones';
 import Intereses from '../components/perfil/Intereses';
+import InteresesString from '../components/perfil/InteresesString';
 import Certificados from '../components/perfil/Certificados';
 import EditarDatos from '../components/perfil/EditarDatos';
 import {AlertaSwal} from '../helpers/helpers';
@@ -217,6 +218,7 @@ const Perfil = () => {
                 <Inscripciones eventos={eventos} misInscripciones={inscripciones} />
                 <Certificados eventos={eventos} misInscripciones={inscripciones} />
                 <Intereses inter={persona} />
+                <InteresesString inter={persona} />
                 <EditarDatos datos={persona} />
             </Layout>
         </>

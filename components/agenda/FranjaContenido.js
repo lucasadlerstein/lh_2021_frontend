@@ -96,7 +96,7 @@ const FranjaContenido = ({titulo, eventosMostrar}) => {
                                 // titulo=""
                                 imagen={`${process.env.backendURL}/static/${ev.portada_imagen}`}
                                 alt={ev.es_titulo}
-                                link={`${process.env.frontendURL}/${Number(ev.categoria) === 1 ? 'mastertalk' : 'conferencia'}/${ev.slug}`}
+                                link={`/${Number(ev.categoria) === 1 ? 'mastertalk' : 'conferencia'}/${ev.slug}`}
                             />
                         ))
                     }

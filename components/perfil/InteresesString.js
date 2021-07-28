@@ -76,7 +76,7 @@ const InteresInd = styled.button`
         width: 100%;
     }
 `;
-const Intereses = ({persona}) => {
+const InteresesString = ({persona}) => {
 
     const [buscador, setBuscador] = useState('');
     const [misIntereses, setMisIntereses] = useState('covid');
@@ -154,4 +154,4 @@ const Intereses = ({persona}) => {
     );
 }
  
-export default Intereses;
+export default InteresesString;
