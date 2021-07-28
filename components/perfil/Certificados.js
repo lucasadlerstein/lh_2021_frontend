@@ -34,24 +34,27 @@ const Certificados = ({eventos, misInscripciones}) => {
         
         function separarEventos() {
             let mCerPend = [], mCerPagos = [];
-            misInscripciones.forEach(ins => {
-                if (ins.certificado === 0) {
-                    mCerPend.push(ins.charla);
-                } else if (ins.certificado === 1) {
-                    mCerPagos.push(ins.charla);
-                }
-            })
+            if(misInscripciones) {
+                misInscripciones.forEach(ins => {
+                    if (ins.certificado === 0) {
+                        mCerPend.push(ins.charla);
+                    } else if (ins.certificado === 1) {
+                        mCerPagos.push(ins.charla);
+                    }
+                })
+            }
 
             console.log('pendientes ', mCerPend);
             console.log('pagos ', mCerPagos);
-
-            eventos.forEach(ev => {  
-                if(mCerPend.includes(ev.id)) {
-                    setMisCertificadosPendientes([...misCertificadosPendientes, ev])
-                } else if (mCerPagos.includes(ev.id)) {
-                    setMisCertificadosPagos([...misCertificadosPagos, ev])
-                }
-            })
+            if(eventos) {
+                eventos.forEach(ev => {  
+                    if(mCerPend.includes(ev.id)) {
+                        setMisCertificadosPendientes([...misCertificadosPendientes, ev])
+                    } else if (mCerPagos.includes(ev.id)) {
+                        setMisCertificadosPagos([...misCertificadosPagos, ev])
+                    }
+                })
+            }
         }
         separarEventos();
 

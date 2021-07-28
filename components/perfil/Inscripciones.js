@@ -40,14 +40,16 @@ const Inscripciones = ({eventos, misInscripciones}) => {
     useEffect(() => {
         
         function separarEventos() {
-            const misInscripcionesSoloCharlas = misInscripciones.map(ins => {
-                return ins.charla;
-            })
-            eventos.forEach(ev => {
-                if(misInscripcionesSoloCharlas.includes(ev.id)) {
-                    setMisEnventosInscriptos([...misEventosInscriptos, ev])
-                }
-            })
+            if(misInscripciones && eventos) {
+                const misInscripcionesSoloCharlas = misInscripciones.map(ins => {
+                    return ins.charla;
+                })
+                eventos.forEach(ev => {
+                    if(misInscripcionesSoloCharlas.includes(ev.id)) {
+                        setMisEnventosInscriptos([...misEventosInscriptos, ev])
+                    }
+                })
+            }
         }
         separarEventos();
         

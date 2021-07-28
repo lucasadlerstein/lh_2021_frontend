@@ -32,6 +32,7 @@ const ContenidoAgenda = () => {
         async function traerEventos() {
             await clienteAxios.get('/charlas/agenda')
                 .then(respuesta => {
+                    console.log(respuesta);
                     const ordenado = respuesta.data.resp.sort(function(a, b){
                         if(a.hora < b.hora) return -1;
                         if(a.hora > b.hora) return 1;
