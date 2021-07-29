@@ -174,6 +174,9 @@ const Signup = () => {
             // const persLS = JSON.parse(localStorage.getItem('persona'));
             // setPersona({ ...persona, persLS });
         // }
+        if(localStorage.getItem('token-21')) {
+            router.push('/');
+        }
         // eslint-disable-next-line
     }, []);
 
@@ -284,7 +287,7 @@ const Signup = () => {
                     <Der>
                         <Container className="text-center pt-10">
                             <Titulo>Regístrate en Latam Hospitals</Titulo>
-                            <SubTitulo>Completá tus datos para una mejor experiencia.</SubTitulo>
+                            <SubTitulo>Complete sus datos para una mejor experiencia.</SubTitulo>
 
                             <Formulario onSubmit={enviarFormulario}>
                                 <Row>

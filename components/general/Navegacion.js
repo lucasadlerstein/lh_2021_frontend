@@ -123,8 +123,8 @@ const Navegacion = ({t}) => {
                             (profile === true) ? (
                                 <div className="mt-0 hide-desktop">
                                     <Dropdown
-                                        isOpen={isOpenDropdownProfile}>
-                                        toggle={toggleProfile} 
+                                        isOpen={isOpenDropdownProfile}
+                                        toggle={toggleProfile} >
                                         <DropdownToggle caret>
                                             {/* <NavItem style={{marginTop: '-1rem'}} className="list-unstyled"> */}
                                                 {/* <a href="#" className="nav-link"> */}

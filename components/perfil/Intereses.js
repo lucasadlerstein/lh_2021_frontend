@@ -96,17 +96,8 @@ const Intereses = ({persona}) => {
         let intNow = misIntereses;
         if(intNow.includes(intCode)) {
             intNow = intNow.filter(e => e !== intCode);
-            // if(intNow.includes(`, ["${intCode}"]`)) { // no es el primero
-                // intNow = intNow.replace(`, ["${intCode}"]`, '');
-            // } else { // es el primero
-                // intNow = intNow.replace(intCode, '');
-            // }
         } else {
             intNow.push(intCode);
-            // let agregar = JSON.parse(intNow);
-            // console.log('agregar', agregar);
-            // agregar.push(intCode);
-            // intNow = JSON.stringify(agregar);
         }
         setMisIntereses(intNow);
 

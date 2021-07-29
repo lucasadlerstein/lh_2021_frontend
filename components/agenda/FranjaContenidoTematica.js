@@ -69,51 +69,56 @@ const FranjaContenidoTematica = ({titulo, eventosMostrar, codigoInteres}) => {
 
     return (
         <>
+        {
+            (eventosMostrar.length > 0) ? (
+                <div className="pt-5r px-0">
+                    <Titulo className="text-center">
+                        {
+                            ListaIntereses.map(interThis => {
+                                if(interThis.COD === titulo) {
+                                    return (
+                                        interThis.ES
+                                    )
+                                }
+                                return;
+                            })
+                        }
+                    </Titulo>
+                    <CarouselPersonalizado showStatus={false}
+                    showIndicators={indicadores}
+                    stopOnHover={true}
+                    swipeable={true}
+                    interval={3000}
+                    infiniteLoop={true}
+                    autoPlay={true}
+                    transitionTime={1000}
+                    // emulateTouch={true}
+                    showThumbs={false}
+                    // useKeyboardArrows={true}
+                    centerMode={true}
+                    centerSlidePercentage={anchoEvento}
+                    // swipeScrollTolerance={2}
+                    >
+                        {
+                            eventosMostrar.map(ev => {
+                                if(ev.intereses.includes(codigoInteres)) {
+                                    return (
+                                        <EventoNet
+                                            // titulo=""
+                                            imagen={`${process.env.backendURL}/static/${ev.portada_imagen}`}
+                                            alt={ev.es_titulo}
+                                            link={`${process.env.frontendURL}/${Number(ev.categoria) === 1 ? 'mastertalk' : 'conferencia'}/${ev.slug}`}
+                                        />
+                                    )
+                                }
+                            })
+                        }
+                    </CarouselPersonalizado>
+                </div>
+            ) : null
+        }
         
-            <div className="pt-5r px-0">
-                <Titulo className="text-center">
-                    {
-                        ListaIntereses.map(interThis => {
-                            if(interThis.COD === titulo) {
-                                return (
-                                    interThis.ES
-                                )
-                            }
-                            return;
-                        })
-                    }
-                </Titulo>
-                <CarouselPersonalizado showStatus={false}
-                showIndicators={indicadores}
-                stopOnHover={true}
-                swipeable={true}
-                interval={3000}
-                infiniteLoop={true}
-                autoPlay={true}
-                transitionTime={1000}
-                // emulateTouch={true}
-                showThumbs={false}
-                // useKeyboardArrows={true}
-                centerMode={true}
-                centerSlidePercentage={anchoEvento}
-                // swipeScrollTolerance={2}
-                >
-                    {
-                        eventosMostrar.map(ev => {
-                            if(ev.intereses.includes(codigoInteres)) {
-                                return (
-                                    <EventoNet
-                                        // titulo=""
-                                        imagen={`${process.env.backendURL}/static/${ev.portada_imagen}`}
-                                        alt={ev.es_titulo}
-                                        link={`${process.env.frontendURL}/${Number(ev.categoria) === 1 ? 'mastertalk' : 'conferencia'}/${ev.slug}`}
-                                    />
-                                )
-                            }
-                        })
-                    }
-                </CarouselPersonalizado>
-            </div>
+            
         </>
     );
 }

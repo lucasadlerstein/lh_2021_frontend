@@ -6,7 +6,6 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 import Inscripciones from '../components/perfil/Inscripciones';
 import Intereses from '../components/perfil/Intereses';
-import InteresesString from '../components/perfil/InteresesString';
 import Certificados from '../components/perfil/Certificados';
 import EditarDatos from '../components/perfil/EditarDatos';
 import {AlertaSwal} from '../helpers/helpers';
@@ -151,6 +150,7 @@ const Perfil = () => {
             await clienteAxios.get('/usuarios/info')
                 .then(resp => {
                     setPersona(resp.data.resp);
+                    console.log(resp.data.resp);
                 })
                 .catch(err => {
                     console.log(err)
@@ -217,8 +217,7 @@ const Perfil = () => {
                 </Container>
                 <Inscripciones eventos={eventos} misInscripciones={inscripciones} />
                 <Certificados eventos={eventos} misInscripciones={inscripciones} />
-                <Intereses inter={persona} />
-                <InteresesString inter={persona} />
+                <Intereses persona={persona} />
                 <EditarDatos datos={persona} />
             </Layout>
         </>

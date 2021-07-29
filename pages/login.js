@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Head from 'next/head';
 import Layout from '../components/general/Layout';
 import {Container, Row, Col} from 'reactstrap';
@@ -162,7 +162,15 @@ const Login = () => {
 
     const router = useRouter();
 
+    useEffect(() => {
+        if(localStorage.getItem('token-21')) {
+            router.push('/');
+        }
+        // eslint-disable-next-line
+    }, []);
+
     const [loadingForm, setLoadingForm] = useState(false);
+    const [loadingOlvidePass, setLoadingOlvidePass] = useState(false);
     const [persona, setPersona] = useState({
         email: '',
         password: ''
@@ -209,13 +217,17 @@ const Login = () => {
         if(persona.email === '' || !persona.email.includes('@')) {
             AlertaSwal('Atención', 'Escriba su email y luego vuelva a hacer clic para recuperar la contraseña.', 'warning', 5000);
         } else {
+            setLoadingOlvidePass(true);
             await clienteAxios.post('/usuarios/recuperar-password', persona)
                 .then(resp => {
-                    AlertaSwal('Listo', 'Recibirás instrucciones a tu email para cambiar la contraseña.', 'success', 5000);
+                    AlertaSwal('Listo', 'Recibirá instrucciones a su email para cambiar la contraseña.', 'success', 5000);
+
                 })
                 .catch(err => {
                     // console.log(err)
                 })
+            setLoadingOlvidePass(false);
+
         }
 
     } 
@@ -262,7 +274,17 @@ const Login = () => {
                                             <Link href="/signup">
                                                 <NoTengoCuenta className="normal-test">No tengo cuenta, quiero registrarme.</NoTengoCuenta>
                                             </Link>
-                                            <NoTengoCuenta className="normal-test" onClick={() => olvidePass()}>Olvidé mi contraseña.</NoTengoCuenta>
+                                            {
+                                                (loadingOlvidePass === true) ? (
+                                                    <div className="spinner">
+                                                        <div className="bounce1"></div>
+                                                        <div className="bounce2"></div>
+                                                        <div className="bounce3"></div>
+                                                    </div>
+                                                ) : (
+                                                    <NoTengoCuenta className="normal-test" onClick={() => olvidePass()}>Olvidé mi contraseña.</NoTengoCuenta>
+                                                )
+                                            }
                                         </BtnsLogin>
                                     </Col>
                                 </Row>
