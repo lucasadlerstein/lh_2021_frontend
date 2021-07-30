@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import FranjaContenido from './FranjaContenido';
 
-const ContenidoFecha = ({eventos}) => {
+const ContenidoFecha = ({eventos, busqueda}) => {
 
     const [dia18, setDia18] = useState([]);
     const [dia19, setDia19] = useState([]);
@@ -42,11 +42,11 @@ const ContenidoFecha = ({eventos}) => {
     
     return (
         <>
-            <FranjaContenido eventosMostrar={dia18} titulo={'18 DE OCTUBRE'} />
-            <FranjaContenido eventosMostrar={dia19} titulo={'19 DE OCTUBRE'} />
-            <FranjaContenido eventosMostrar={dia20} titulo={'20 DE OCTUBRE'} />
-            <FranjaContenido eventosMostrar={dia21} titulo={'21 DE OCTUBRE'} />
-            <FranjaContenido eventosMostrar={dia22} titulo={'22 DE OCTUBRE'} />
+            <FranjaContenido busqueda={busqueda} eventosMostrar={dia18} titulo={'18 DE OCTUBRE'} />
+            <FranjaContenido busqueda={busqueda} eventosMostrar={dia19} titulo={'19 DE OCTUBRE'} />
+            <FranjaContenido busqueda={busqueda} eventosMostrar={dia20} titulo={'20 DE OCTUBRE'} />
+            <FranjaContenido busqueda={busqueda} eventosMostrar={dia21} titulo={'21 DE OCTUBRE'} />
+            <FranjaContenido busqueda={busqueda} eventosMostrar={dia22} titulo={'22 DE OCTUBRE'} />
         </>
     );
 }

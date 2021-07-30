@@ -96,7 +96,9 @@ const Intereses = ({persona}) => {
         let intNow = misIntereses;
         if(intNow.includes(intCode)) {
             intNow = intNow.filter(e => e !== intCode);
+            document.querySelector(`#${intCode}`).classList.remove('bg-interesado');
         } else {
+            document.querySelector(`#${intCode}`).classList.add('bg-interesado');
             intNow.push(intCode);
         }
         setMisIntereses(intNow);
@@ -137,6 +139,7 @@ const Intereses = ({persona}) => {
                                     <InteresInd
                                         className={misIntereses.includes(interes.COD) ? 'bg-interesado' : null}
                                         key={interes.COD}
+                                        id={interes.COD}
                                         onClick={() => clickInteres(interes.COD)}
                                             >{interes.ES}
                                     </InteresInd>

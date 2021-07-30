@@ -20,7 +20,7 @@ const Titulo = styled.h3`
     text-transform: uppercase;
 `;
 
-const FranjaContenidoTematica = ({titulo, eventosMostrar, codigoInteres}) => {
+const FranjaContenidoTematica = ({titulo, eventosMostrar, codigoInteres, busqueda}) => {
 
     const [indicadores, setIndicadores] = useState(false);
     const [anchoEvento, setAnchoEvento] = useState(false);
@@ -101,7 +101,22 @@ const FranjaContenidoTematica = ({titulo, eventosMostrar, codigoInteres}) => {
                     >
                         {
                             eventosMostrar.map(ev => {
-                                if(ev.intereses.includes(codigoInteres)) {
+                                if(
+                                    (ev.intereses.includes(codigoInteres)) &&
+                                    (busqueda === '' ||
+                                    ev.es_titulo.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
+                                    ev.en_titulo.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
+                                    ev.po_titulo.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
+                                    ev.nombre_empresa.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
+                                    // ev.es_breve_descripcion.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
+                                    // ev.po_breve_descripcion.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
+                                    // ev.en_breve_descripcion.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
+                                    ev.orador_apellido.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
+                                    ev.orador_nombre.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
+                                    ev.dos_orador_apellido.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
+                                    ev.dos_orador_nombre.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()))
+                            
+                                    ) {
                                     return (
                                         <EventoNet
                                             // titulo=""

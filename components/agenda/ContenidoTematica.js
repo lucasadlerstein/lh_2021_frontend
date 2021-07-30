@@ -3,7 +3,7 @@ import FranjaContenido from './FranjaContenido';
 import FranjaContenidoTematica from './FranjaContenidoTematica';
 import {ListaIntereses} from '../../InteresesListado.js';
 
-const ContenidoTematica = ({eventos}) => {
+const ContenidoTematica = ({eventos, busqueda}) => {
     
     const [persona, setPersona] = useState({
         nombre: '',
@@ -67,7 +67,7 @@ const ContenidoTematica = ({eventos}) => {
             {
                 (interesesPersona !== undefined) ? (
                     interesesPersona.map(interesP => (
-                        <FranjaContenidoTematica eventosMostrar={eventos} titulo={interesP} codigoInteres={interesP} />
+                        <FranjaContenidoTematica busqueda={busqueda} eventosMostrar={eventos} titulo={interesP} codigoInteres={interesP} />
     
                     ))
                 ) : null

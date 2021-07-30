@@ -19,11 +19,10 @@ const Titulo = styled.h3`
     text-transform: uppercase;
 `;
 
-const FranjaContenido = ({titulo, eventosMostrar}) => {
+const FranjaContenido = ({titulo, eventosMostrar, busqueda}) => {
 
     const [indicadores, setIndicadores] = useState(false);
     const [anchoEvento, setAnchoEvento] = useState(false);
-
 
     useEffect(() => {
         if(document.querySelector('.thumbs-wrapper')) {
@@ -92,14 +91,31 @@ const FranjaContenido = ({titulo, eventosMostrar}) => {
                     // swipeScrollTolerance={2}
                     >
                         {
-                            eventosMostrar.map(ev => (
-                                <EventoNet
-                                    // titulo=""
-                                    imagen={`${process.env.backendURL}/static/${ev.portada_imagen}`}
-                                    alt={ev.es_titulo}
-                                    link={`/${Number(ev.categoria) === 1 ? 'mastertalk' : 'conferencia'}/${ev.slug}`}
-                                />
-                            ))
+                            eventosMostrar.map(ev => {
+                                if(
+                                    (busqueda === '' ||
+                                    ev.es_titulo.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
+                                    ev.en_titulo.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
+                                    ev.po_titulo.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
+                                    ev.nombre_empresa.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
+                                    // ev.es_breve_descripcion.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
+                                    // ev.po_breve_descripcion.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
+                                    // ev.en_breve_descripcion.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
+                                    ev.orador_apellido.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
+                                    ev.orador_nombre.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
+                                    ev.dos_orador_apellido.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
+                                    ev.dos_orador_nombre.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()))
+                                ) {
+                                    return (
+                                        <EventoNet
+                                            // titulo=""
+                                            imagen={`${process.env.backendURL}/static/${ev.portada_imagen}`}
+                                            alt={ev.es_titulo}
+                                            link={`/${Number(ev.categoria) === 1 ? 'mastertalk' : 'conferencia'}/${ev.slug}`}
+                                        />
+                                    )
+                                }
+                            })
                         }
                     </CarouselPersonalizado>
                 </div>

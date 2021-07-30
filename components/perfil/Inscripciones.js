@@ -65,7 +65,7 @@ const Inscripciones = ({eventos, misInscripciones}) => {
                 </TituloBox>
             </Container>
 
-            <FranjaContenido eventosMostrar={misEventosInscriptos} titulo={''} />
+            <FranjaContenido busqueda={''} eventosMostrar={misEventosInscriptos} titulo={''} />
 
             <Link href="/agenda">
                 <BtnVerAgenda className="btn-lh btn-blanco text-center mx-auto mt-5 " style={{maxWidth: '35rem'}} id="certificados">Ver agenda completa</BtnVerAgenda>

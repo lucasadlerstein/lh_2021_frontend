@@ -22,11 +22,42 @@ const BotonCambiarFiltro = styled.button`
     }
 `;
 
+const FondoBuscador = styled.div`
+    background-color: var(--colorSecundario);
+`;
+
+const Input = styled.input`
+    background-color: white;
+    color: var(--colorPrimario);
+    border-radius: 3rem;
+    font-size: 1.8rem;
+    border: 2px solid var(--colorPrimario);
+    padding: 2rem 1.5rem;
+    max-width: 100%;
+    width: 100%;
+    margin: 1rem 0;
+    font-weight: bold;
+
+    &:focus {
+        outline: none;
+    }
+
+    @media (max-width: 991px){
+        margin-bottom: 1rem;
+    }
+    @media (min-width: 991px){
+        max-width: 70%;
+        text-align: center;
+
+    }
+`;
+
 
 const ContenidoAgenda = () => {
     
     const [orden, setOrden] = useState('fecha');
     const [eventos, setEventos] = useState([]);
+    const [busqueda, setBusqueda] = useState('');
     
     useEffect(() => {
         async function traerEventos() {
@@ -48,9 +79,18 @@ const ContenidoAgenda = () => {
         // eslint-disable-next-line
     }, []);
 
+    
+    const handleChange = e => {
+        setBusqueda(e.target.value)
+    }
+
     return (
         <>
-            <Buscador />
+            <FondoBuscador>
+                <Container className="py-5r text-center">
+                    <Input type="text" name="busqueda" value={busqueda} onChange={handleChange} placeholder="Busque por rubro, especialidad, profesión, título, speaker" />
+                </Container>
+            </FondoBuscador>
             <div className="py-5r">
                 <Container style={{display: 'flex'}}>
                     <img width="40px" src="/img/iconos/n_filtro.svg" alt="Cambiar filtro a fecha o temática" />
@@ -63,7 +103,7 @@ const ContenidoAgenda = () => {
                         style={orden === 'tematica' ? {fontWeight: 'bold'} : {fontWeight: 'normal'}}
                     >Temática</BotonCambiarFiltro>
                 </Container>
-                { (orden === 'tematica') ? <ContenidoTematica eventos={eventos} /> : <ContenidoFecha eventos={eventos} /> }
+                { (orden === 'tematica') ? <ContenidoTematica busqueda={busqueda} eventos={eventos} /> : <ContenidoFecha busqueda={busqueda} eventos={eventos} /> }
             </div>
         </>
     );

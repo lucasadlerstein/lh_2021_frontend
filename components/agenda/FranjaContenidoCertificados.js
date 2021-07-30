@@ -96,52 +96,58 @@ const FranjaContenidoCertificados = ({titulo, eventosMostrar}) => {
 
     return (
         <>
-            <div className="pt-5r px-0">
-                <Titulo className="text-center">{titulo}</Titulo>
-                <CarouselPersonalizado showStatus={false}
-                showIndicators={indicadores}
-                stopOnHover={true}
-                swipeable={true}
-                interval={3000}
-                infiniteLoop={true}
-                autoPlay={true}
-                transitionTime={1000}
-                // emulateTouch={true}
-                showThumbs={false}
-                // useKeyboardArrows={true}
-                centerMode={true}
-                centerSlidePercentage={anchoEvento}
-                // swipeScrollTolerance={2}
-                >
-                    {
-                        eventosMostrar.map(ev => (
-                            <>
-                                <EventoNet
-                                    // titulo=""
-                                    imagen={`${process.env.backendURL}/static/${ev.portada_imagen}`}
-                                    alt={ev.es_titulo}
-                                    link={`${process.env.frontendURL}/${Number(ev.categoria) === 1 ? 'mastertalk' : 'conferencia'}/${ev.slug}`}
-                                />
-                                {
-                                    (titulo === 'PENDIENTES') ? (
-                                    <BotonCertificado
-                                        onClick={() => solicitarCertificado(ev.id)}
-                                    >
-                                        Solicitar certificado
-                                    </BotonCertificado>
-                                    ) : (
+        {
+            (eventosMostrar.length > 0) ? (
+                <div className="pt-5r px-0">
+                    <Titulo className="text-center">{titulo}</Titulo>
+                    <CarouselPersonalizado showStatus={false}
+                    showIndicators={indicadores}
+                    stopOnHover={true}
+                    swipeable={true}
+                    interval={3000}
+                    infiniteLoop={true}
+                    autoPlay={true}
+                    transitionTime={1000}
+                    // emulateTouch={true}
+                    showThumbs={false}
+                    // useKeyboardArrows={true}
+                    centerMode={true}
+                    centerSlidePercentage={anchoEvento}
+                    // swipeScrollTolerance={2}
+                    >
+                        {
+                            eventosMostrar.map(ev => (
+                                <>
+                                    <EventoNet
+                                        // titulo=""
+                                        imagen={`${process.env.backendURL}/static/${ev.portada_imagen}`}
+                                        key={ev.id}
+                                        alt={ev.es_titulo}
+                                        link={`${process.env.frontendURL}/${Number(ev.categoria) === 1 ? 'mastertalk' : 'conferencia'}/${ev.slug}`}
+                                    />
+                                    {
+                                        (titulo === 'PENDIENTES') ? (
                                         <BotonCertificado
-                                            onClick={() => descargarCertificado(ev.id)}
+                                            onClick={() => solicitarCertificado(ev.id)}
                                         >
-                                            Descargar
+                                            Solicitar certificado
                                         </BotonCertificado>
-                                    )
-                                }
-                            </>
-                        ))
-                    }
-                </CarouselPersonalizado>
-            </div>
+                                        ) : (
+                                            <BotonCertificado
+                                                onClick={() => descargarCertificado(ev.id)}
+                                            >
+                                                Descargar
+                                            </BotonCertificado>
+                                        )
+                                    }
+                                </>
+                            ))
+                        }
+                    </CarouselPersonalizado>
+                </div>
+            ) : null
+        }
+            
         </>
     );
 }

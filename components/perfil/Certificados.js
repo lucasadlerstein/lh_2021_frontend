@@ -61,7 +61,7 @@ const Certificados = ({eventos, misInscripciones}) => {
 
 
         // eslint-disable-next-line
-    }, [misInscripciones])
+    }, [misInscripciones, eventos])
 
     return (
         <div className="py-5 text-center">
@@ -72,8 +72,16 @@ const Certificados = ({eventos, misInscripciones}) => {
                 </TituloBox>
 
             </Container>
-            <FranjaContenidoCertificados eventosMostrar={misCertificadosPendientes} titulo={'PENDIENTES'} />
-            <FranjaContenidoCertificados eventosMostrar={misCertificadosPagos} titulo={'MIS CERTIFICADOS'} />
+            {
+                (misCertificadosPagos.length === 0 && misCertificadosPendientes === 0) ? (
+                    <p>Aquí podrás descargar y tramitar tus certificados de asistencia a Latam Hospitals.</p>
+                ) : (
+                    <>
+                        <FranjaContenidoCertificados busqueda={''} eventosMostrar={misCertificadosPendientes} titulo={'PENDIENTES'} />
+                        <FranjaContenidoCertificados busqueda={''} eventosMostrar={misCertificadosPagos} titulo={'MIS CERTIFICADOS'} />
+                    </>
+                )
+            }
         </div>
     );
 }

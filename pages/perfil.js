@@ -204,8 +204,8 @@ const Perfil = () => {
                             <Titulo>Mi perfil</Titulo>
                             <SubTitulo>Aquí podrás ver tus inscripciones, solicitar tus certificados, modificar tus intereses, y editar tus datos personales.</SubTitulo>
                             <SubTitulo id="inscripciones">
-                                <Link href="#"><a>Inscripciones</a></Link>
-                                <Link href="#"><a>Certificados</a></Link>
+                                <Link href="#inscripciones"><a>Inscripciones</a></Link>
+                                <Link href="#certificados"><a>Certificados</a></Link>
                                 <Link href="#intereses"><a>Intereses</a></Link>
                                 <Link href="#datos" ><a>Mis Datos</a></Link>
                             </SubTitulo>
