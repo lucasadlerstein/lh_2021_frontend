@@ -443,3 +443,39 @@ img {
   margin-left: 1rem!important;
   margin-right: 1rem!important;
 }
+
+.input-phone {
+    background-color: var(--colorPrimario)!important;
+    color: white!important;
+    border-radius: 3rem!important;
+    font-size: 1.8rem!important;
+    border: 2px solid white!important;
+    padding: 1rem 1.5rem 1rem 4rem!important;
+    max-width: 100%!important;
+    width: 100%!important;
+    margin: 1rem 0!important;
+    
+    /* font-weight: bold; */
+
+/*     
+    &:focus {
+        outline: none!important;
+    }
+    
+    &::placeholder {
+        color: #adadad;
+    }
+    
+    @media (max-width: 991px){
+        margin-bottom: 1rem;
+    } */
+
+}
+
+.flag-container .form-control {
+  height: unset!important;
+}
+
+.flag-container:focus, .allow-dropdown:focus {
+  outline: none!important;
+}

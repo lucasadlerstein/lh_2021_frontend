@@ -27,8 +27,9 @@ const ContenidoFecha = ({eventos, busqueda}) => {
                 }
             })
         }
-
-        dividirEventos();
+        if(eventos.length > 0) {
+            dividirEventos();
+        }
         function vaciarStates() {
             setDia18([]);
             setDia19([]);

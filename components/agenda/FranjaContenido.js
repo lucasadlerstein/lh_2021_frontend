@@ -21,6 +21,8 @@ const Titulo = styled.h3`
 
 const FranjaContenido = ({titulo, eventosMostrar, busqueda}) => {
 
+    console.log(Date.now(), '    ', eventosMostrar);
+
     const [indicadores, setIndicadores] = useState(false);
     const [anchoEvento, setAnchoEvento] = useState(false);
 
@@ -80,9 +82,11 @@ const FranjaContenido = ({titulo, eventosMostrar, busqueda}) => {
                     stopOnHover={true}
                     swipeable={true}
                     interval={3000}
+                    infiniteLoop={eventosMostrar.length > 3}
                     infiniteLoop={true}
                     autoPlay={true}
                     transitionTime={1000}
+                    
                     // emulateTouch={true}
                     showThumbs={false}
                     // useKeyboardArrows={true}
@@ -109,6 +113,7 @@ const FranjaContenido = ({titulo, eventosMostrar, busqueda}) => {
                                     return (
                                         <EventoNet
                                             // titulo=""
+                                            key={ev.id}
                                             imagen={`${process.env.backendURL}/static/${ev.portada_imagen}`}
                                             alt={ev.es_titulo}
                                             link={`/${Number(ev.categoria) === 1 ? 'mastertalk' : 'conferencia'}/${ev.slug}`}

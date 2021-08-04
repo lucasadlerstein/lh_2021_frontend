@@ -9,7 +9,10 @@ import clienteAxios from '../config/axios';
 import { withTranslation } from '../i18n';
 import { CircularProgress } from 'material-ui';
 import { useRouter } from 'next/router'
-
+// import intlTelInput from 'intl-tel-input';
+// import IntlTelInput from "react-intl-tel-input";
+// import "react-intl-tel-input/dist/main.css";
+import {Paises} from '../PaisesInfo.js';
 
 const Titulo = styled.h1`
     text-transform: uppercase;
@@ -60,6 +63,32 @@ const Input = styled.input`
         margin-bottom: 1rem;
     }
 `;
+
+// const IntlTelInputPersonalizado = styled(IntlTelInput)`
+//     background-color: var(--colorPrimario)!important;
+//     color: white!important;
+//     border-radius: 3rem!important;
+//     font-size: 1.8rem!important;
+//     border: 2px solid white!important;
+//     padding: 1rem 1.5rem!important;
+//     max-width: 100%!important;
+//     width: 100%!important;
+//     margin: 1rem 0!important;
+//     /* font-weight: bold; */
+
+//     &:focus {
+//         outline: none!important;
+//     }
+    
+//     &::placeholder {
+//         color: #adadad;
+//     }
+
+//     @media (max-width: 991px){
+//         margin-bottom: 1rem;
+//     }
+
+// `;
 
 const BotonEnviar = styled.button`
     background-color: white;
@@ -169,6 +198,12 @@ const Signup = () => {
         empresa: ''
     })
 
+    // const telInput = document.querySelector("#telefonoInput");
+    // intlTelInput(telInput, {
+    //     // any initialisation options go here
+    // });
+
+
     useEffect(() => {
         // if(localStorage.getItem('persona')) {
             // const persLS = JSON.parse(localStorage.getItem('persona'));
@@ -177,6 +212,7 @@ const Signup = () => {
         if(localStorage.getItem('token-21')) {
             router.push('/');
         }
+        
         // eslint-disable-next-line
     }, []);
 
@@ -187,11 +223,26 @@ const Signup = () => {
         })
     }
 
+    // const handleChangeTelefono = e => {
+    //     console.log(e);
+    //     // setPersona({
+    //     //     ...persona,
+    //     //     [persona.telefono]: e.target.value
+    //     // })
+    // }
+
     
     const handleChangePrefijo = e => {
         setPersona({
             ...persona,
             prefijo: e.target.value
+        })
+    }
+
+    const handleChangePaises = e => {
+        setPersona({
+            ...persona,
+            pais: e.target.value
         })
     }
 
@@ -340,11 +391,38 @@ const Signup = () => {
                                                 <Input type="text"  name="profesion" value={persona.profesion} onChange={handleChange} placeholder="Profesión" />
                                             </Col>
                                             <Col xs={12} sm={6} md={4}>
-                                                <Input type="tel"  name="telefono" value={persona.telefono} onChange={handleChange} placeholder="Teléfono" />
+                                                {/* <IntlTelInput
+                                                    preferredCountries={["ar", "br", "us"]}
+                                                    containerClassName="intl-tel-input"
+                                                    inputClassName="form-control input-tel input-phone"
+                                                    style={{margin: '1rem 0!important', height: '100%!important'}}
+                                                    name="telefono" 
+                                                    fieldName="telefono"
+                                                    value={persona.telefono}
+                                                    onChange={handleChangeTelefono}
+                                                    // onPhoneNumberChange={(valid, number, country) => {
+                                                    //     isValid = valid;
+                                                    // }}
+
+                                                /> */}
+                                                <Input type="tel"  name="telefono" value={persona.telefono} onChange={handleChange} placeholder="Teléfono" id="telefonoInput" />
                                             </Col>
                                             <Col xs={12} sm={6} md={4}>
-                                                <Input type="text"  name="pais" value={persona.pais} onChange={handleChange} placeholder="País" />
+                                                <Select
+                                                    onChange={(e) => handleChangePaises(e)}
+                                                    value={persona.pais}
+                                                    placeholder="País"
+                                                >
+                                                    <option disabled selected value="">País</option>
+                                                    {
+                                                        Paises.map(ps => (
+                                                            <option key={ps.cioc} data-cod={ps.callingCodes[0]} value={ps.name}>{ps.name}</option>
+                                                        ))
+                                                    }
+                                                </Select>
+                                                {/* <Input className={persona.email !== persona.email2 ? 'border-grosor-5 border-red' : 'border-grosor-5 border-green'} type="email"  name="email2" value={persona.email2} onChange={handleChange} placeholder="Confirmá tu Email" /> */}
                                             </Col>
+
                                             <Col xs={12} sm={6} md={6}>
                                                 <Input type="text"  name="cargo" value={persona.cargo} onChange={handleChange} placeholder="Cargo" />
                                             </Col>
@@ -365,10 +443,17 @@ const Signup = () => {
                                                     }
                                                 </BotonEnviar>
                                             </Col>
+                                            <p className="mt-5 text-center mx-auto w-100 normal-test">
+                                                Al registrarse, usted está aceptando los términos y condiciones<br/>de la
+                                                <Link href="/politicas-de-privacidad">
+                                                    <a target="_blank"> política de privacidad </a>
+                                                </Link>
+                                                de Latam Hospitals.
+                                            </p>
                                             </>
                                         )
                                     }
-                                    <div className="mt-5 w-100">
+                                    <div className="mt-4 w-100">
                                         <Link href="/login">
                                             <NoTengoCuenta className="normal-test">Ya tengo cuenta, quiero iniciar sesión.</NoTengoCuenta>
                                         </Link>
