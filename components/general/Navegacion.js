@@ -90,7 +90,10 @@ const Navegacion = ({t}) => {
     const [isOpenDropdownProfile, setIsOpenDropdownProfile] = useState(false);
     const [profile, setProfile] = useState(false);
     const [nomAp, setNomAp] = useState('Su perfil');
+    const [mobile, setMobile] = useState(false);
     const toggleProfile = () => setIsOpenDropdownProfile(!isOpenDropdownProfile);
+    const toggleProfileOn = () => setIsOpenDropdownProfile(true);
+    const toggleProfileOff = () => setIsOpenDropdownProfile(false);
     const toggle = () => setIsOpen(!isOpen);
 
     useEffect(() => {
@@ -100,6 +103,11 @@ const Navegacion = ({t}) => {
         if(localStorage.getItem('usuario')) {
             const usuario = JSON.parse(localStorage.getItem('usuario'));
             setNomAp(`${usuario.prefijo}. ${usuario.apellido}`)
+        }
+        if(window.innerWidth > 768) {
+            setMobile(false);
+        } else {
+            setMobile(true);
         }
         // eslint-disable-next-line
     }, [])
@@ -147,11 +155,11 @@ const Navegacion = ({t}) => {
                                 <div className="mt-0">
                                     <Dropdown
                                         isOpen={isOpenDropdownProfile}
-                                        onMouseLeave={toggleProfile}
-                                        >
+                                        toggle={toggleProfile}
+                                        onMouseLeave={(mobile) ? null : toggleProfile}
+                                        onMouseEnter={(mobile) ? null : toggleProfile}
+                                    >
                                         <DropdownToggle
-                                            toggle={toggleProfile}
-                                            onMouseEnter={toggleProfile}
                                             caret>
                                             {/* <NavItem style={{marginTop: '-1rem'}} className="list-unstyled"> */}
                                                 {/* <a href="#" className="nav-link"> */}
