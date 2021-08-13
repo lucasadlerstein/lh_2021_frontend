@@ -22,6 +22,7 @@ const SubTitulo = styled.p`
     font-size: 2.5rem;
     color: var(--colorPrimario);
     margin: 1rem 0 0 0;
+    max-width: 100%!important;
     a {
         text-decoration: none;
         color: var(--colorPrimario);
@@ -206,6 +207,7 @@ const Perfil = () => {
                             <SubTitulo id="inscripciones">
                                 <Link href="#inscripciones"><a>Inscripciones</a></Link>
                                 <Link href="#certificados"><a>Certificados</a></Link>
+                                <div className="hide-desktop"></div>
                                 <Link href="#intereses"><a>Intereses</a></Link>
                                 <Link href="#datos" ><a>Mis Datos</a></Link>
                             </SubTitulo>

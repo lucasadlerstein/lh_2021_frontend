@@ -10,7 +10,7 @@ const Layout = ({children}) => {
     const router = useRouter();
 
     useEffect(() => {
-        if(!(window.location.href.includes('login') || window.location.href.includes('signup'))){
+        if(!(window.location.href.includes('login') || window.location.href.includes('signup') || window.location.href.includes('recuperar-clave') )){
             setTimeout(() => {
                 if(!localStorage.getItem('token-21')) {
                     router.push('/login');

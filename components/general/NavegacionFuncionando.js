@@ -119,35 +119,10 @@ const Navegacion = ({t}) => {
                     <NavBarBrandP href="/">Latam Hospitals</NavBarBrandP>
                     <div style={{display: 'flex'}}>
                         <NavbarToggler onClick={toggle} />
-                    </div>
-                    <Collapse isOpen={isOpen} navbar>
-                        <Nav className="ml-auto" navbar>
-                            <NavItem className="my-auto">
-                                <Link href="/">
-                                    <MenuA className="nav-link">{t('Navegacion.Inicio')}</MenuA>
-                                </Link>
-                            </NavItem>
-                            <NavItem className="my-auto">
-                                <MenuA target="_blank" href="https://2020.latamhospitals.com/agenda" className="nav-link">Edición 2020</MenuA>
-                            </NavItem>
-                            <NavItem className="my-auto">
-                                <Link href="#empresas">
-                                    <MenuA className="nav-link">Empresas</MenuA>
-                                </Link>
-                            </NavItem>
-                            <NavItem className="my-auto">
-                                <Link href="/contacto">
-                                    <MenuA className="nav-link">{t('Navegacion.Contacto')}</MenuA>
-                                </Link>
-                            </NavItem>
-                        </Nav>
-                    </Collapse>
-                    {
+                        {
                             (profile === true) ? (
-                                <div className="mt-0">
+                                <div className="mt-0 hide-desktop">
                                     <Dropdown
-                                        onMouseEnter={toggleProfile}
-                                        onMouseLeave={toggleProfile}
                                         isOpen={isOpenDropdownProfile}
                                         toggle={toggleProfile}
                                         
@@ -202,8 +177,89 @@ const Navegacion = ({t}) => {
                                     </Dropdown>
 
                                 </div>
-                            ) : null
-                        }
+                                ) : null
+                            }
+                    </div>
+                    <Collapse isOpen={isOpen} navbar>
+                        <Nav className="ml-auto" navbar>
+                            <NavItem className="my-auto">
+                                <Link href="/">
+                                    <MenuA className="nav-link">{t('Navegacion.Inicio')}</MenuA>
+                                </Link>
+                            </NavItem>
+                            <NavItem className="my-auto">
+                                <MenuA target="_blank" href="https://2020.latamhospitals.com/agenda" className="nav-link">Edición 2020</MenuA>
+                            </NavItem>
+                            <NavItem className="my-auto">
+                                <Link href="#empresas">
+                                    <MenuA className="nav-link">Empresas</MenuA>
+                                </Link>
+                            </NavItem>
+                            <NavItem className="my-auto">
+                                <Link href="/contacto">
+                                    <MenuA className="nav-link">{t('Navegacion.Contacto')}</MenuA>
+                                </Link>
+                            </NavItem>
+                            {
+                                (profile === true) ? (
+                                <Dropdown className="hide-mobile" 
+                                toggle={() => setIsOpenDropdownProfile(!isOpenDropdownProfile)}
+                                // toggle={() => router.push('/perfil')}
+                                 isOpen={isOpenDropdownProfile} onMouseEnter={() => setIsOpenDropdownProfile(true)} onMouseLeave={() => setIsOpenDropdownProfile(false)}  nav inNavbar>
+                                    <DropdownToggle nav>
+                                        <NavItem className="my-auto hide-mobile">
+                                            <Link href="/perfil">
+                                                <a className="nav-link">
+                                                    <img style={{maxWidth: '75%!important'}} src="/img/iconos/n_perfil_usuario.svg" alt="Perfil del usuario" />
+                                                </a>
+                                            </Link>
+                                        </NavItem>
+                                    </DropdownToggle>
+                                    <DropdownMenu right>
+                                        <DropdownItem>
+                                            <Link href="/perfil">
+                                                <MenuB className="nav-link text-center font-weight-bold">MI PERFIL</MenuB>
+                                                {/* <MenuB className="nav-link">{nomAp}</MenuB> */}
+                                            </Link>
+                                        </DropdownItem>
+                                        <DropdownItem>
+                                            <Link href="/perfil#inscripciones">
+                                                <MenuB className="nav-link">
+                                                    <img src="/img/iconos/n_mis_inscripciones.svg" alt="Mis inscripciones" /> Mis inscripciones
+                                                </MenuB>
+                                            </Link>
+                                        </DropdownItem>
+                                        <DropdownItem>
+                                            <Link href="/perfil#certificados">
+                                                <MenuB className="nav-link">
+                                                    <img src="/img/iconos/n_mis_certificados.svg" alt="Mis certificados" /> Mis certificados
+                                                </MenuB>
+                                            </Link>
+                                        </DropdownItem>
+                                        <DropdownItem>
+                                            <Link href="/perfil#intereses">
+                                                <MenuB className="nav-link">
+                                                    <img src="/img/iconos/n_intereses.svg" alt="Mis intereses" /> Mis intereses
+                                                </MenuB>
+                                            </Link>
+                                        </DropdownItem>
+                                        <DropdownItem>
+                                            <Link href="/perfil#datos">
+                                                <MenuB className="nav-link">
+                                                    <img src="/img/iconos/n_editar.svg" alt="Editar mi perfil" /> Editar perfil
+                                                </MenuB>
+                                            </Link>
+                                        </DropdownItem>
+                                        <DropdownItem divider />
+                                        <DropdownItem onClick={() => cerrarSesion()}>
+                                            <MenuB className="nav-link">Cerrar sesión</MenuB>
+                                        </DropdownItem>
+                                    </DropdownMenu>
+                                </Dropdown>
+                                ) : null
+                            }
+                        </Nav>
+                    </Collapse>
                     
                 </Container>
             </NavBarP>
