@@ -146,13 +146,13 @@ const Navegacion = ({t}) => {
                             (profile === true) ? (
                                 <div className="mt-0">
                                     <Dropdown
-                                        onMouseEnter={toggleProfile}
-                                        onMouseLeave={toggleProfile}
                                         isOpen={isOpenDropdownProfile}
-                                        toggle={toggleProfile}
-                                        
+                                        onMouseLeave={toggleProfile}
                                         >
-                                        <DropdownToggle caret>
+                                        <DropdownToggle
+                                            toggle={toggleProfile}
+                                            onMouseEnter={toggleProfile}
+                                            caret>
                                             {/* <NavItem style={{marginTop: '-1rem'}} className="list-unstyled"> */}
                                                 {/* <a href="#" className="nav-link"> */}
                                                     <img src="/img/iconos/n_perfil_usuario.svg" alt="Perfil del usuario" />
@@ -160,44 +160,44 @@ const Navegacion = ({t}) => {
                                             {/* </NavItem> */}
                                         </DropdownToggle>
                                         <DropdownMenu right>
-                                        <DropdownItem>
-                                            <Link href="/perfil">
-                                                <MenuB className="nav-link text-center font-weight-bold">MI PERFIL</MenuB>
-                                                {/* <MenuB className="nav-link">{nomAp}</MenuB> */}
-                                            </Link>
-                                        </DropdownItem>
-                                        <DropdownItem>
-                                            <Link href="/perfil#inscripciones">
-                                                <MenuB className="nav-link">
-                                                    <img src="/img/iconos/n_mis_inscripciones.svg" alt="Mis inscripciones" /> Mis inscripciones
-                                                </MenuB>
-                                            </Link>
-                                        </DropdownItem>
-                                        <DropdownItem>
-                                            <Link href="/perfil#certificados">
-                                                <MenuB className="nav-link">
-                                                    <img src="/img/iconos/n_mis_certificados.svg" alt="Mis certificados" /> Mis certificados
-                                                </MenuB>
-                                            </Link>
-                                        </DropdownItem>
-                                        <DropdownItem>
-                                            <Link href="/perfil#intereses">
-                                                <MenuB className="nav-link">
-                                                    <img src="/img/iconos/n_intereses.svg" alt="Mis intereses" /> Mis intereses
-                                                </MenuB>
-                                            </Link>
-                                        </DropdownItem>
-                                        <DropdownItem>
-                                            <Link href="/perfil#datos">
-                                                <MenuB className="nav-link">
-                                                    <img src="/img/iconos/n_editar.svg" alt="Editar mi perfil" /> Editar perfil
-                                                </MenuB>
-                                            </Link>
-                                        </DropdownItem>
-                                        <DropdownItem divider />
-                                        <DropdownItem onClick={() => cerrarSesion()}>
-                                            <MenuB className="nav-link">Cerrar sesión</MenuB>
-                                        </DropdownItem>
+                                            <DropdownItem>
+                                                <Link href="/perfil">
+                                                    <MenuB className="nav-link text-center font-weight-bold">MI PERFIL</MenuB>
+                                                    {/* <MenuB className="nav-link">{nomAp}</MenuB> */}
+                                                </Link>
+                                            </DropdownItem>
+                                            <DropdownItem>
+                                                <Link href="/perfil#inscripciones">
+                                                    <MenuB className="nav-link">
+                                                        <img src="/img/iconos/n_mis_inscripciones.svg" alt="Mis inscripciones" /> Mis inscripciones
+                                                    </MenuB>
+                                                </Link>
+                                            </DropdownItem>
+                                            <DropdownItem>
+                                                <Link href="/perfil#certificados">
+                                                    <MenuB className="nav-link">
+                                                        <img src="/img/iconos/n_mis_certificados.svg" alt="Mis certificados" /> Mis certificados
+                                                    </MenuB>
+                                                </Link>
+                                            </DropdownItem>
+                                            <DropdownItem>
+                                                <Link href="/perfil#intereses">
+                                                    <MenuB className="nav-link">
+                                                        <img src="/img/iconos/n_intereses.svg" alt="Mis intereses" /> Mis intereses
+                                                    </MenuB>
+                                                </Link>
+                                            </DropdownItem>
+                                            <DropdownItem>
+                                                <Link href="/perfil#datos">
+                                                    <MenuB className="nav-link">
+                                                        <img src="/img/iconos/n_editar.svg" alt="Editar mi perfil" /> Editar perfil
+                                                    </MenuB>
+                                                </Link>
+                                            </DropdownItem>
+                                            <DropdownItem divider />
+                                            <DropdownItem onClick={() => cerrarSesion()}>
+                                                <MenuB className="nav-link">Cerrar sesión</MenuB>
+                                            </DropdownItem>
                                         </DropdownMenu>
                                     </Dropdown>
 
