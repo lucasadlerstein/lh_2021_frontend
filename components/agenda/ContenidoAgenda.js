@@ -58,16 +58,18 @@ const ContenidoAgenda = () => {
     const [orden, setOrden] = useState('fecha');
     const [eventos, setEventos] = useState([]);
     const [busqueda, setBusqueda] = useState('');
+    const [loading, setLoading] = useState(true);
     
     useEffect(() => {
         async function traerEventos() {
             await clienteAxios.get('/charlas/agenda')
                 .then(respuesta => {
-                    console.log(respuesta);
+                    // console.log(respuesta);
                     const ordenado = respuesta.data.resp.sort(function(a, b){
                         if(a.hora < b.hora) return -1;
                         if(a.hora > b.hora) return 1;
                     })
+                    setLoading(false);
                     setEventos(ordenado);
                     // setCargando(false);
                 })
@@ -91,20 +93,30 @@ const ContenidoAgenda = () => {
                     <Input type="text" name="busqueda" value={busqueda} onChange={handleChange} placeholder="Busque por rubro, especialidad, profesión, título, speaker" />
                 </Container>
             </FondoBuscador>
-            <div className="py-5r">
-                <Container style={{display: 'flex'}}>
-                    <img width="40px" src="/img/iconos/n_filtro.svg" alt="Cambiar filtro a fecha o temática" />
-                    <BotonCambiarFiltro
-                        onClick={() => setOrden('fecha')}
-                        style={orden === 'fecha' ? {fontWeight: 'bold'} : {fontWeight: 'normal'}}
-                    >Fecha</BotonCambiarFiltro>
-                    <BotonCambiarFiltro
-                        onClick={() => setOrden('tematica')}
-                        style={orden === 'tematica' ? {fontWeight: 'bold'} : {fontWeight: 'normal'}}
-                    >Temática</BotonCambiarFiltro>
-                </Container>
-                { (orden === 'tematica') ? <ContenidoTematica busqueda={busqueda} eventos={eventos} /> : <ContenidoFecha busqueda={busqueda} eventos={eventos} /> }
-            </div>
+            {
+                (loading) ? (
+                    <div className="spinner py-10">
+                        <div className="bounce1"></div>
+                        <div className="bounce2"></div>
+                        <div className="bounce3"></div>
+                    </div>
+                ) : (
+                    <div className="py-5r">
+                        <Container style={{display: 'flex'}}>
+                            <img width="40px" src="/img/iconos/n_filtro.svg" alt="Cambiar filtro a fecha o temática" />
+                            <BotonCambiarFiltro
+                                onClick={() => setOrden('fecha')}
+                                style={orden === 'fecha' ? {fontWeight: 'bold'} : {fontWeight: 'normal'}}
+                            >Fecha</BotonCambiarFiltro>
+                            <BotonCambiarFiltro
+                                onClick={() => setOrden('tematica')}
+                                style={orden === 'tematica' ? {fontWeight: 'bold'} : {fontWeight: 'normal'}}
+                            >Temática</BotonCambiarFiltro>
+                        </Container>
+                        { (orden === 'tematica') ? <ContenidoTematica busqueda={busqueda} eventos={eventos} /> : <ContenidoFecha busqueda={busqueda} eventos={eventos} /> }
+                    </div>
+                )
+            }
         </>
     );
 }

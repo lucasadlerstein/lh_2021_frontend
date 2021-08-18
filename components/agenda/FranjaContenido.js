@@ -21,7 +21,7 @@ const Titulo = styled.h3`
 
 const FranjaContenido = ({titulo, eventosMostrar, busqueda}) => {
 
-    console.log(Date.now(), '    ', eventosMostrar);
+    // console.log(Date.now(), '    ', eventosMostrar);
 
     const [indicadores, setIndicadores] = useState(false);
     const [anchoEvento, setAnchoEvento] = useState(false);

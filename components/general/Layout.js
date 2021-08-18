@@ -11,11 +11,15 @@ const Layout = ({children}) => {
 
     useEffect(() => {
         if(!(window.location.href.includes('login') || window.location.href.includes('signup') || window.location.href.includes('recuperar-clave') )){
-            setTimeout(() => {
-                if(!localStorage.getItem('token-21')) {
+            if(!localStorage.getItem('token-21')) {
+                if(window.location.href.includes('perfil')) {
                     router.push('/login');
+                } else {
+                    setTimeout(() => {
+                        router.push('/login');
+                    }, 5000);
                 }
-            }, 5000);
+            }
         }
         // Revisar si hay token
         const token = localStorage.getItem('token-21');

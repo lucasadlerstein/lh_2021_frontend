@@ -144,14 +144,16 @@ const Perfil = () => {
 
     const [persona, setPersona] = useState();
     const [eventos, setEventos] = useState([]);
+    const [existe, setExiste] = useState(false);
     const [inscripciones, setInscripciones] = useState([]);
 
     useEffect( () => {
         async function traerInformacion() {
             await clienteAxios.get('/usuarios/info')
                 .then(resp => {
+                    setExiste(true);
                     setPersona(resp.data.resp);
-                    console.log(resp.data.resp);
+                    // console.log(resp.data.resp);
                 })
                 .catch(err => {
                     console.log(err)
@@ -199,28 +201,40 @@ const Perfil = () => {
                 {/* <meta name="keywords" content={t('Contacto.SEO.PalabrasClave')} /> */}
             </Head>
             <Layout>
-                <Container className="mx-auto pt-5 pb-0">
-                    <Row>
-                        <Col sm={12} md={12} lg={7}>
-                            <Titulo>Mi perfil</Titulo>
-                            <SubTitulo>Aquí podrás ver tus inscripciones, solicitar tus certificados, modificar tus intereses, y editar tus datos personales.</SubTitulo>
-                            <SubTitulo id="inscripciones">
-                                <Link href="#inscripciones"><a>Inscripciones</a></Link>
-                                <Link href="#certificados"><a>Certificados</a></Link>
-                                <div className="hide-desktop"></div>
-                                <Link href="#intereses"><a>Intereses</a></Link>
-                                <Link href="#datos" ><a>Mis Datos</a></Link>
-                            </SubTitulo>
-                        </Col>
-                        <Col sm={0} md={0} lg={5} className="text-center">
-                            <img style={{maxHeight: '250px'}} src="/img/n_mi_perfil.png" alt="Mi Perfil | Latam Hospitals"    />
-                        </Col>
-                    </Row>
-                </Container>
-                <Inscripciones eventos={eventos} misInscripciones={inscripciones} />
-                <Certificados eventos={eventos} misInscripciones={inscripciones} />
-                <Intereses persona={persona} />
-                <EditarDatos datos={persona} />
+                {
+                    (existe) ? (
+                        <>
+                        <Container className="mx-auto pt-5 pb-0">
+                            <Row>
+                                <Col sm={12} md={12} lg={7}>
+                                    <Titulo>Mi perfil</Titulo>
+                                    <SubTitulo>Aquí podrás ver tus inscripciones, solicitar tus certificados, modificar tus intereses, y editar tus datos personales.</SubTitulo>
+                                    <SubTitulo id="inscripciones">
+                                        <Link href="#inscripciones"><a>Inscripciones</a></Link>
+                                        <Link href="#certificados"><a>Certificados</a></Link>
+                                        <div className="hide-desktop"></div>
+                                        <Link href="#intereses"><a>Intereses</a></Link>
+                                        <Link href="#datos" ><a>Mis Datos</a></Link>
+                                    </SubTitulo>
+                                </Col>
+                                <Col sm={0} md={0} lg={5} className="text-center">
+                                    <img style={{maxHeight: '250px'}} src="/img/n_mi_perfil.png" alt="Mi Perfil | Latam Hospitals"    />
+                                </Col>
+                            </Row>
+                        </Container>
+                        <Inscripciones eventos={eventos} misInscripciones={inscripciones} />
+                        <Certificados eventos={eventos} misInscripciones={inscripciones} />
+                        <Intereses persona={persona} />
+                        <EditarDatos datos={persona} />
+                        </>
+                    ) : (
+                        <div className="spinner py-10">
+                            <div className="bounce1"></div>
+                            <div className="bounce2"></div>
+                            <div className="bounce3"></div>
+                        </div>
+                    )
+                }
             </Layout>
         </>
     );

@@ -185,7 +185,7 @@ const Contacto = ({t}) => {
                     <Link href="#empresas">
                         <a className="btn-lh btn-blanco text-uppercase bor-rad-5 mb-5 hide-desktop">{t('Contacto.SoyEmpresa')}</a>
                     </Link>
-                        <div className="mx-auto" style={{maxWidth: '80%'}}>
+                        <div className="mx-auto" style={{maxWidth: '95%'}}>
                             <Formulario onSubmit={enviarFormularioPersonas}>
                                 <Quien>Contacto <strong>LH</strong></Quien>
                                 <Row>

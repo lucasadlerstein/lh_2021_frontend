@@ -156,8 +156,8 @@ const Navegacion = ({t}) => {
                                     <Dropdown
                                         isOpen={isOpenDropdownProfile}
                                         toggle={toggleProfile}
-                                        // onMouseLeave={(mobile) ? null : toggleProfile}
-                                        // onMouseEnter={(mobile) ? null : toggleProfile}
+                                        onMouseLeave={(mobile) ? null : toggleProfile}
+                                        onMouseEnter={(mobile) ? null : toggleProfile}
                                     >
                                         <DropdownToggle
                                             caret>
