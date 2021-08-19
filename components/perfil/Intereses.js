@@ -25,6 +25,9 @@ const Titulo = styled.h2`
     color: white;
     margin-bottom: 1.5rem;
     margin-left: 2rem;
+    @media (max-width: 768px){
+        text-align: left;
+    }
 `;
 
 const SubTitulo = styled.p`

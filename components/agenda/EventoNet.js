@@ -52,6 +52,11 @@ const EventoNet = ({imagen, titulo, link, alt}) => {
             position: relative;
             z-index: 999;
         }
+        @media (max-width: 580px){
+            max-width: 98%;
+            margin-left: auto;
+            margin-right: auto;
+        }
     `;
 
     const Imagen = styled.img`

@@ -206,10 +206,10 @@ const RecuperarClave = () => {
                                 <SubTitulo>Cree su nueva contraseña</SubTitulo>
                                 <Row>
                                     <Col xs={12} md={12} lg={7} className="mx-auto text-center">
-                                        <Input type="text" required name="password" value={persona.password} onChange={handleChange} placeholder={'Escriba su nueva contraseña'} />
+                                        <Input type="password" required name="password" value={persona.password} onChange={handleChange} placeholder={'Escriba su nueva contraseña'} />
                                     </Col>
                                     <Col xs={12} md={12} lg={7} className="mx-auto text-center">
-                                        <Input type="text" required name="passwordVerification" value={persona.passwordVerification} onChange={handleChange} placeholder={'Confirme su nueva contraseña'} />
+                                        <Input type="password" required name="passwordVerification" value={persona.passwordVerification} onChange={handleChange} placeholder={'Confirme su nueva contraseña'} />
                                     </Col>
                                     <Col xs={12} md={12} className="text-center margin-5-mobile">
                                         <BotonEnviar type="submit">

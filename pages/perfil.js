@@ -144,7 +144,7 @@ const Perfil = () => {
 
     const [persona, setPersona] = useState();
     const [eventos, setEventos] = useState([]);
-    const [existe, setExiste] = useState(false);
+    const [existe, setExiste] = useState(true);
     const [inscripciones, setInscripciones] = useState([]);
 
     useEffect( () => {
@@ -153,7 +153,7 @@ const Perfil = () => {
                 .then(resp => {
                     setExiste(true);
                     setPersona(resp.data.resp);
-                    // console.log(resp.data.resp);
+                    console.log('usuarioinfo ', resp.data.resp);
                 })
                 .catch(err => {
                     console.log(err)
@@ -164,6 +164,7 @@ const Perfil = () => {
             await clienteAxios.get('inscripciones/usuario')
                 .then(resp => {
                     setInscripciones(resp.data.resp)
+                    console.log('inscripciones ', resp);
 
                 })
                 .catch(err => {
@@ -179,6 +180,7 @@ const Perfil = () => {
                         if(a.hora > b.hora) return 1;
                     })
                     setEventos(ordenado);
+                    console.log('eventos ordenados ', ordenado)
                     // setCargando(false);
                 })
                 .catch(err => {
@@ -201,8 +203,8 @@ const Perfil = () => {
                 {/* <meta name="keywords" content={t('Contacto.SEO.PalabrasClave')} /> */}
             </Head>
             <Layout>
-                {
-                    (existe) ? (
+                {/* { */}
+                    {/* (existe) ? ( */}
                         <>
                         <Container className="mx-auto pt-5 pb-0">
                             <Row>
@@ -222,19 +224,25 @@ const Perfil = () => {
                                 </Col>
                             </Row>
                         </Container>
-                        <Inscripciones eventos={eventos} misInscripciones={inscripciones} />
-                        <Certificados eventos={eventos} misInscripciones={inscripciones} />
+                        {
+                            (inscripciones.length > 0) ? (
+                                <>
+                                    <Inscripciones eventos={eventos} misInscripciones={inscripciones} />
+                                    <Certificados eventos={eventos} misInscripciones={inscripciones} />
+                                </>
+                            ) : null
+                        }
                         <Intereses persona={persona} />
                         <EditarDatos datos={persona} />
                         </>
-                    ) : (
+                    {/* ) : (
                         <div className="spinner py-10">
                             <div className="bounce1"></div>
                             <div className="bounce2"></div>
                             <div className="bounce3"></div>
                         </div>
-                    )
-                }
+                    ) */}
+                {/* } */}
             </Layout>
         </>
     );

@@ -27,6 +27,9 @@ const Titulo = styled.h2`
     /* margin-bottom: 1.5rem; */
     margin-bottom: 0!important;
     margin-left: 2rem;
+    @media (max-width: 768px){
+        text-align: left;
+    }
 `;
 
 const BtnVerAgenda = styled.a`
@@ -42,11 +45,11 @@ const Inscripciones = ({eventos, misInscripciones}) => {
         function separarEventos() {
             if(misInscripciones && eventos) {
                 const misInscripcionesSoloCharlas = misInscripciones.map(ins => {
-                    return ins.charla;
+                    return ins.charlaId;
                 })
                 eventos.forEach(ev => {
                     if(misInscripcionesSoloCharlas.includes(ev.id)) {
-                        setMisEnventosInscriptos([...misEventosInscriptos, ev])
+                        setMisEnventosInscriptos(misEventosInscriptos => [...misEventosInscriptos, ev])
                     }
                 })
             }

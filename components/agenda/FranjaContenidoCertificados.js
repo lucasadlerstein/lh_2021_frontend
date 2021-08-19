@@ -27,6 +27,7 @@ const BotonCertificado = styled.button`
     font-size: 2rem;
     padding: 1rem 2rem;
     margin-top: 1.5rem;
+    /* margin-right: 3rem; */
     transition: all .5s ease;
     &:hover {
         background-color: var(--colorPrimario);
@@ -41,7 +42,7 @@ const FranjaContenidoCertificados = ({titulo, eventosMostrar}) => {
     const [indicadores, setIndicadores] = useState(false);
     const [anchoEvento, setAnchoEvento] = useState(false);
 
-
+console.log(eventosMostrar);
     useEffect(() => {
         if(document.querySelector('.thumbs-wrapper')) {
             document.querySelector('.thumbs-wrapper').parentElement.remove();
@@ -126,19 +127,25 @@ const FranjaContenidoCertificados = ({titulo, eventosMostrar}) => {
                                         link={`${process.env.frontendURL}/${Number(ev.categoria) === 1 ? 'mastertalk' : 'conferencia'}/${ev.slug}`}
                                     />
                                     {
-                                        (titulo === 'PENDIENTES') ? (
+                                        (ev.certificado.certificado === 0) ? (
                                         <BotonCertificado
                                             onClick={() => solicitarCertificado(ev.id)}
                                         >
                                             Solicitar certificado
                                         </BotonCertificado>
-                                        ) : (
+                                        ) : (ev.certificado.certificado === 1) ? (
+                                            <BotonCertificado
+                                                onClick={() => descargarCertificado(ev.id)}
+                                            >
+                                                Pagar certificado
+                                            </BotonCertificado>
+                                        ) : (ev.certificado.certificado === 2) ? (
                                             <BotonCertificado
                                                 onClick={() => descargarCertificado(ev.id)}
                                             >
                                                 Descargar
                                             </BotonCertificado>
-                                        )
+                                        ) : null
                                     }
                                 </>
                             ))

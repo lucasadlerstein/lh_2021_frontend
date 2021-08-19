@@ -26,6 +26,9 @@ const FranjaContenido = ({titulo, eventosMostrar, busqueda}) => {
     const [indicadores, setIndicadores] = useState(false);
     const [anchoEvento, setAnchoEvento] = useState(false);
 
+
+    console.log('eventos mostrar ', eventosMostrar);
+
     useEffect(() => {
         if(document.querySelector('.thumbs-wrapper')) {
             document.querySelector('.thumbs-wrapper').parentElement.remove();
@@ -63,69 +66,64 @@ const FranjaContenido = ({titulo, eventosMostrar, busqueda}) => {
         } else {
             setAnchoEvento(95);
         } 
-
         // eslint-disable-next-line
     }, [])
 
     return (
         <>
-        {
-            (eventosMostrar.length > 0) ? (
-                <div className="pt-5r px-0">
-                    {
-                        (titulo !== '') ? (
-                            <Titulo className="text-center">{titulo}</Titulo>
-                        ) : null
-                    }
-                    <CarouselPersonalizado showStatus={false}
-                    showIndicators={indicadores}
-                    stopOnHover={true}
-                    swipeable={true}
-                    interval={3000}
-                    infiniteLoop={eventosMostrar.length > 3}
-                    infiniteLoop={true}
-                    autoPlay={true}
-                    transitionTime={1000}
-                    
-                    // emulateTouch={true}
-                    showThumbs={false}
-                    // useKeyboardArrows={true}
-                    centerMode={true}
-                    centerSlidePercentage={anchoEvento}
-                    // swipeScrollTolerance={2}
-                    >
-                        {
-                            eventosMostrar.map(ev => {
-                                if(
-                                    (busqueda === '' ||
-                                    ev.es_titulo.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
-                                    ev.en_titulo.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
-                                    ev.po_titulo.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
-                                    ev.nombre_empresa.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
-                                    // ev.es_breve_descripcion.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
-                                    // ev.po_breve_descripcion.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
-                                    // ev.en_breve_descripcion.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
-                                    ev.orador_apellido.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
-                                    ev.orador_nombre.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
-                                    ev.dos_orador_apellido.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
-                                    ev.dos_orador_nombre.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()))
-                                ) {
-                                    return (
-                                        <EventoNet
-                                            // titulo=""
-                                            key={ev.id}
-                                            imagen={`${process.env.backendURL}/static/${ev.portada_imagen}`}
-                                            alt={ev.es_titulo}
-                                            link={`/${Number(ev.categoria) === 1 ? 'mastertalk' : 'conferencia'}/${ev.slug}`}
-                                        />
-                                    )
-                                }
-                            })
+        <div className="pt-5r px-0">
+            {
+                (titulo !== '') ? (
+                    <Titulo className="text-center">{titulo}</Titulo>
+                ) : null
+            }
+            <CarouselPersonalizado showStatus={false}
+            showIndicators={indicadores}
+            stopOnHover={true}
+            swipeable={true}
+            interval={3000}
+            infiniteLoop={eventosMostrar.length > 3}
+            infiniteLoop={true}
+            autoPlay={true}
+            transitionTime={1000}
+            
+            // emulateTouch={true}
+            showThumbs={false}
+            // useKeyboardArrows={true}
+            centerMode={true}
+            centerSlidePercentage={anchoEvento}
+            // swipeScrollTolerance={2}
+            >
+                {
+                    eventosMostrar.map(ev => {
+                        if(
+                            (busqueda === '' ||
+                            ev.es_titulo.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
+                            ev.en_titulo.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
+                            ev.po_titulo.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
+                            ev.nombre_empresa.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
+                            // ev.es_breve_descripcion.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
+                            // ev.po_breve_descripcion.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
+                            // ev.en_breve_descripcion.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
+                            ev.orador_apellido.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
+                            ev.orador_nombre.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
+                            ev.dos_orador_apellido.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()) ||
+                            ev.dos_orador_nombre.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(busqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()))
+                        ) {
+                            return (
+                                <EventoNet
+                                    // titulo=""
+                                    key={ev.id}
+                                    imagen={`${process.env.backendURL}/static/${ev.portada_imagen}`}
+                                    alt={ev.es_titulo}
+                                    link={`/${Number(ev.categoria) === 1 ? 'mastertalk' : 'conferencia'}/${ev.slug}`}
+                                />
+                            )
                         }
-                    </CarouselPersonalizado>
-                </div>
-            ) : null
-        }
+                    })
+                }
+            </CarouselPersonalizado>
+        </div>
 
         </>
     );

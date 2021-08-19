@@ -49,7 +49,7 @@ const Charla = ({enlace, t}) => {
     const quieroInscribirme = idCharla => {
 
         const infoInscripcion = {
-            charla: idCharla,
+            charla: enlace.id,
             nombre_charla: enlace.es_titulo,
             zoom_link: enlace.zoom_link,
             dia_charla: enlace.fecha
@@ -67,13 +67,22 @@ const Charla = ({enlace, t}) => {
           }).then( async result => {
             if (result.isConfirmed) {
                 await clienteAxios.post('/inscripciones', infoInscripcion)
-                    .then(resp => {
+                .then(resp => {
+                    console.log(resp);
+                    if(resp.data.inscripto) {
                         Swal.fire(
                           'Excelente',
                           'Inscripción realizada con éxito.',
                           'success'
                         )
-                    })
+                    } else {
+                        Swal.fire(
+                            'Error',
+                            'No pudimos realizar la inscripción.',
+                            'error'
+                          )
+                    }
+                })
                     .catch(err => {
                             console.log(err)
                     })
