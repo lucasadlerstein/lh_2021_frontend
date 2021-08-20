@@ -65,7 +65,7 @@ const ContenidoTematica = ({eventos, busqueda}) => {
                 (interesesPersona.length === 0) ? null : <FranjaContenido eventosMostrar={interesesPersona} titulo={`Recomendado para ${persona.nombre}`} />
             } */}
             {
-                (interesesPersona !== undefined) ? (
+                (interesesPersona !== undefined && interesesPersona !== null) ? (
                     interesesPersona.map(interesP => (
                         <FranjaContenidoTematica busqueda={busqueda} eventosMostrar={eventos} titulo={interesP} codigoInteres={interesP} />
     

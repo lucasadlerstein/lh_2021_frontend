@@ -97,6 +97,9 @@ const Intereses = ({persona, t}) => {
 
     async function clickInteres(intCode) {
         let intNow = misIntereses;
+        if (intNow === null) {
+            intNow = [];
+        }
         if(intNow.includes(intCode)) {
             intNow = intNow.filter(e => e !== intCode);
             document.querySelector(`#${intCode}`).classList.remove('bg-interesado');
@@ -140,7 +143,7 @@ const Intereses = ({persona, t}) => {
                                 
                                 return (
                                     <InteresInd
-                                        className={misIntereses.includes(interes.COD) ? 'bg-interesado' : null}
+                                        className={(misIntereses) ? (misIntereses.includes(interes.COD) ? 'bg-interesado' : null) : null}
                                         key={interes.COD}
                                         id={interes.COD}
                                         onClick={() => clickInteres(interes.COD)}
