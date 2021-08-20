@@ -140,7 +140,7 @@ const Formulario = styled.form`
     }
 `;
 
-const Perfil = () => {
+const Perfil = ({t}) => {
 
     const [persona, setPersona] = useState();
     const [eventos, setEventos] = useState([]);
@@ -198,9 +198,9 @@ const Perfil = () => {
 
         <>
             <Head>
-                {/* <title>{t('Contacto.SEO.Titulo')}</title> */}
-                {/* <meta name="description" content={t('Contacto.SEO.Descripcion')} /> */}
-                {/* <meta name="keywords" content={t('Contacto.SEO.PalabrasClave')} /> */}
+                <title>{t('SEO.Titulo')}</title>
+                <meta name="description" content={t('SEO.Descripcion')} />
+                <meta name="keywords" content={t('SEO.PalabrasClave')} />
             </Head>
             <Layout>
                 {/* { */}
@@ -209,18 +209,18 @@ const Perfil = () => {
                         <Container className="mx-auto pt-5 pb-0">
                             <Row>
                                 <Col sm={12} md={12} lg={7}>
-                                    <Titulo>Mi perfil</Titulo>
-                                    <SubTitulo>Aquí podrás ver tus inscripciones, solicitar tus certificados, modificar tus intereses, y editar tus datos personales.</SubTitulo>
+                                    <Titulo>{t('Titulo')}</Titulo>
+                                    <SubTitulo>{t('SubTitulo')}</SubTitulo>
                                     <SubTitulo id="inscripciones">
-                                        <Link href="#inscripciones"><a>Inscripciones</a></Link>
-                                        <Link href="#certificados"><a>Certificados</a></Link>
+                                        <Link href="#inscripciones"><a>{t('Nav.Inscripciones')}</a></Link>
+                                        <Link href="#certificados"><a>{t('Nav.Certificados')}</a></Link>
                                         <div className="hide-desktop"></div>
-                                        <Link href="#intereses"><a>Intereses</a></Link>
-                                        <Link href="#datos" ><a>Mis Datos</a></Link>
+                                        <Link href="#intereses"><a>{t('Nav.Intereses')}</a></Link>
+                                        <Link href="#datos" ><a>{t('Nav.MisDatos')}</a></Link>
                                     </SubTitulo>
                                 </Col>
                                 <Col sm={0} md={0} lg={5} className="text-center">
-                                    <img style={{maxHeight: '250px'}} src="/img/n_mi_perfil.png" alt="Mi Perfil | Latam Hospitals"    />
+                                    <img style={{maxHeight: '250px'}} src="/img/n_mi_perfil.png" alt={t('Titulo')}    />
                                 </Col>
                             </Row>
                         </Container>
@@ -248,4 +248,8 @@ const Perfil = () => {
     );
 }
  
-export default Perfil;
+Perfil.with18nextTranslation = async () => ({
+    namespacesRequired: ['perfil'],
+  });
+   
+  export default withTranslation('perfil')(Perfil);

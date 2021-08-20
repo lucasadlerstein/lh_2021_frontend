@@ -1,0 +1,29 @@
+{
+    "Buscador": "Pesquise por área, profissão, especialidade, título, orador",
+    "2020": {
+        "Titulo": "REVIVA AS CONFERÊNCIAS E AS PALESTRAS DE 2020"
+    },
+    "Items": {
+        "ConfEmpresas": "CONFERÊNCIAS DE NEGÓCIOS",
+        "Mastertalks": "MASTERTALKS",
+        "Mastertalk": "MASTERTALK",
+        "CamarasInstituciones": "CÂMARAS E INSTITUIÇÕES"
+    },
+    "Botones": {
+        "CambiarFiltro": "Cambiar filtro a fecha o temática",
+        "Fecha": "Encontro: Data",
+        "Tematica": "Tópico"   
+    },
+    "Fechas": {
+        "18": "18 DE OUTUBRO",
+        "19": "19 DE OUTUBRO",
+        "20": "20 DE OUTUBRO",
+        "21": "21 DE OUTUBRO",
+        "22": "22 DE OUTUBRO"
+    },
+    "Certificados": {
+        "Solicitar": "Solicitar certificado",
+        "Pagar": "Pagar certificado",
+        "Descargar": "Descargar"
+    }
+}

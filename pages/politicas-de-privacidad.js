@@ -19,9 +19,9 @@ const Politicas = ({t}) => {
   return ( 
     <>
       <Head>
-        <title>{t('SEO.Titulo')}</title>
-        <meta name="description" content={t('SEO.Descripcion')} />
-        <meta name="keywords" content={t('SEO.PalabrasClave')} />
+        <title>{t('Politicas.SEO.Titulo')}</title>
+        <meta name="description" content={t('Politicas.SEO.Descripcion')} />
+        <meta name="keywords" content={t('Politicas.SEO.PalabrasClave')} />
       </Head>
       <Layout>
         <Container className="py-5r">
@@ -159,7 +159,7 @@ Esta Pol&iacute;tica se revis&oacute; por &uacute;ltima vez en mayo de 2021.<br 
 }
 
 Politicas.with18nextTranslation = async () => ({
-  namespacesRequired: ['inicio'],
+  namespacesRequired: ['common'],
 });
  
-export default withTranslation('inicio')(Politicas);
+export default withTranslation('common')(Politicas);

@@ -3,6 +3,7 @@ import FranjaContenidoAnterior from './FranjaContenidoAnterior';
 import {Container} from 'reactstrap';
 import {conferenciasEmpresas2020, camarasInstituciones2020, mastertalks2020} from '../../arrEventos2020.js';
 import styled from '@emotion/styled';
+import {withTranslation} from '../../i18n';
  
 const Titulo = styled.h2`
     color: var(--colorPrimario);
@@ -11,16 +12,20 @@ const Titulo = styled.h2`
     text-transform: uppercase;
 `;
 
-const Contenido2020 = () => {
+const Contenido2020 = ({t}) => {
     return (
         <div className="py-5r">
-            <Titulo className="text-center">REVIVE LAS CONFERENCIAS Y MASTERTALKS DEL 2020</Titulo>
+            <Titulo className="text-center">{t('2020.Titulo')}</Titulo>
             
-            <FranjaContenidoAnterior eventosMostrar={conferenciasEmpresas2020} titulo={'CONFERENCIAS DE EMPRESAS'} />
-            <FranjaContenidoAnterior eventosMostrar={mastertalks2020} titulo={'MASTERTALKS'} />
-            <FranjaContenidoAnterior eventosMostrar={camarasInstituciones2020} titulo={'CÁMARAS E INSTITUCIONES'} />
+            <FranjaContenidoAnterior eventosMostrar={conferenciasEmpresas2020} titulo={t('Items.ConfEmpresas')} />
+            <FranjaContenidoAnterior eventosMostrar={mastertalks2020} titulo={t('Items.Mastertalks')} />
+            <FranjaContenidoAnterior eventosMostrar={camarasInstituciones2020} titulo={t('Items.CamarasInstituciones')} />
         </div>
     );
 }
  
-export default Contenido2020;
+Contenido2020.with18nextTranslation = async () => ({
+    namespacesRequired: ['agenda'],
+});
+
+export default withTranslation('agenda')(Contenido2020);

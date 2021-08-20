@@ -4,15 +4,15 @@
             "1": "Inscríbete y recibe novedades",
             "2": "de conferencias y master-talks"
         },
-        "Nombre": "Nombre",
-        "Apellido": "Apellido",
-        "Email": "Email",
+        "Nombre": "Nome",
+        "Apellido": "Sobrenome",
+        "Email": "E-mail",
         "Profesion": "Profesión",
-        "Cargo": "Cargo",
+        "Cargo": "Posição na empresa",
         "Pais": "Pais",
         "Empresa": "Empresa",
-        "Telefono": "Telefono",
-        "Mensaje": "Mensaje",
+        "Telefono": "Telefone",
+        "Mensaje": "Mensagem",
         "Boton": "Suscribirme ahora"
     },
     "Navegacion": {
@@ -24,19 +24,19 @@
         "Ed2020": "Edición 2020",
         "Empresas": "Empresas",
         "MiPerfil": "MI PERFIL",
-        "MisCertificados": "Mis certificados",        
         "MisIntereses": "Mis intereses",
+        "MisCertificados": "Mis certificados",
         "MisInscripciones": "Mis inscripciones",
         "EditarPerfil": "Editar perfil",
         "CerrarSesion": "Cerrar sesión"
 
     },
     "Extras": {
-        "QuieroParticipar": "Quiero participar",
+        "QuieroParticipar": "Eu quero participar",
         "QuieresQueTuEmpresa": {
-            "Uno": "¿Quieres que tu empresa",
-            "Dos": "participe de la edición 2021?",
-            "Tres": "Ponte en contacto con nosotros."
+            "Uno": "VOCÊ QUER SUA EMPRESA",
+            "Dos": "PARTICIPAR DA EDIÇÃO 2021?",
+            "Tres": "ENTRE EM CONTATO CONOSCO."
         }
     },
     "Politicas": {

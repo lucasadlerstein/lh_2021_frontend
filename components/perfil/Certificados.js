@@ -5,6 +5,7 @@ import Link from 'next/link';
 import EventoNet from '../agenda/EventoNet';
 import FranjaContenidoCertificados from '../agenda/FranjaContenidoCertificados';
 import clienteAxios from '../../config/axios';
+import {withTranslation} from '../../i18n';
 
 const TituloBox = styled.div`
     display: flex;
@@ -27,7 +28,7 @@ const BtnVerAgenda = styled.a`
     width: 100%;
 `;
 
-const Certificados = ({eventos, misInscripciones}) => {
+const Certificados = ({eventos, misInscripciones, t}) => {
 
     const [misCertificadosPagos, setMisCertificadosPagos] = useState([]);
     const [misCertificadosPendientes, setMisCertificadosPendientes] = useState([]);
@@ -94,22 +95,26 @@ const Certificados = ({eventos, misInscripciones}) => {
             <Container className="mx-auto">
                 <TituloBox>
                     <img src="/img/iconos/n_mis_certificados_azul.svg" alt="Mis Certificados" />    
-                    <Titulo>Mis certificados</Titulo>
+                    <Titulo>{t('Certificados.Titulo')}</Titulo>
                 </TituloBox>
 
             </Container>
             {
                 (misCertificadosPagos.length === 0 && misCertificadosPendientes === 0) ? (
-                    <p>Aquí podrás descargar y tramitar tus certificados de asistencia a Latam Hospitals.</p>
+                    <p>{t('Certificados.AquiPodras')}</p>
                 ) : (
                     <>
-                        <FranjaContenidoCertificados busqueda={''} eventosMostrar={misCertificadosPendientes} titulo={'PENDIENTES'} />
-                        <FranjaContenidoCertificados busqueda={''} eventosMostrar={misCertificadosPagos} titulo={'MIS CERTIFICADOS'} />
+                        <FranjaContenidoCertificados busqueda={''} eventosMostrar={misCertificadosPendientes} titulo={t('Certificados.Pendientes')} />
+                        <FranjaContenidoCertificados busqueda={''} eventosMostrar={misCertificadosPagos} titulo={t('Certificados.MisCertificados')} />
                     </>
                 )
             }
         </div>
     );
 }
- 
-export default Certificados;
+
+Certificados.with18nextTranslation = async () => ({
+    namespacesRequired: ['perfil'],
+});
+
+export default withTranslation('perfil')(Certificados);

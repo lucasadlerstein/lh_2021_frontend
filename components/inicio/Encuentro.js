@@ -53,7 +53,7 @@ const Encuentro = ({t}) => {
     return (
         <Container className="text-center mx-auto py-5">
             {
-                (ancho > 768) ? <Fecha>18 al 22 de Octubre</Fecha> : <Fecha>18/10 - 22/10</Fecha>
+                (ancho > 768) ? <Fecha>{t('Franja.Fecha')}</Fecha> : <Fecha>18/10 - 22/10</Fecha>
             }
             <Titulo>{t('Franja.Titulo')}</Titulo>
             {

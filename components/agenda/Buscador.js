@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Container} from 'reactstrap';
 import styled from '@emotion/styled';
+import {withTranslation} from '../../i18n';
 
 const Fondo = styled.div`
     background-color: var(--colorSecundario);
@@ -32,7 +33,7 @@ const Input = styled.input`
     }
 `;
 
-const Buscador = () => {
+const Buscador = ({t}) => {
     const [busqueda, setBusqueda] = useState('');
 
     const handleChange = e => {
@@ -42,10 +43,14 @@ const Buscador = () => {
     return (
         <Fondo>
             <Container className="py-5r text-center">
-                <Input type="text" name="busqueda" value={busqueda} onChange={handleChange} placeholder="Busque por rubro, especialidad, profesión, título, speaker" />
+                <Input type="text" name="busqueda" value={busqueda} onChange={handleChange} placeholder={t('Buscador')} />
             </Container>
         </Fondo>
     );
 }
  
-export default Buscador;
+Buscador.with18nextTranslation = async () => ({
+    namespacesRequired: ['agenda'],
+});
+
+export default withTranslation('agenda')(Buscador);

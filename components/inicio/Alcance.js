@@ -48,7 +48,7 @@ const Alcance = ({t}) => {
                         <span>{t('Alcance.Personas')}</span>
                     </Numero>
                     <Link href="/contacto">
-                        <a className="btn-lh btn-prim fs-2">Quiero participar</a>
+                        <a className="btn-lh btn-prim fs-2">{t('Alcance.BotonUno')}</a>
                     </Link>
                     {/* {t('Alcance.BotonUno')} */}
                     {/* <Link href="/contacto">

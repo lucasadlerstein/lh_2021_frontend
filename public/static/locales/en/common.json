@@ -1,0 +1,49 @@
+{
+    "Newsletter": {
+        "Titulo": {
+            "1": "Inscríbete y recibe novedades",
+            "2": "de conferencias y master-talks"
+        },
+        "Nombre": "Name",
+        "Apellido": "Last name",
+        "Email": "Email",
+        "Profesion": "Profesion",
+        "Cargo": "Charge",
+        "Pais": "Country",
+        "Empresa": "Company",
+        "Telefono": "Phone number",
+        "Mensaje": "Message",
+        "Boton": "Subscribe"
+    },
+    "Navegacion": {
+        "Inicio": "Home",
+        "ElEvento": "The event",
+        "Agenda": "Schedule",
+        "Contacto": "Contact",
+        "Perfil": "Profile",
+        "Ed2020": "2020 edition",
+        "Empresas": "Companies",
+        "MiPerfil": "Profile",
+        "MisCertificados": "My certificates",
+        "MisInscripciones": "My submissions",
+        "MisIntereses": "My interests",
+        "EditarPerfil": "Edit profile",
+        "CerrarSesion": "Sign out"
+
+    },
+    "Extras": {
+        "QuieroParticipar": "I want to participate",
+        "QuieresQueTuEmpresa": {
+            "Uno": "Do you want your company",
+            "Dos": "to participate in the 2021 edition?",
+            "Tres": "Get in contact with us."
+        }
+    },
+    "Politicas": {
+        "SEO": {
+            "Titulo": "Login | LATAM Hospitals - Virtual Summit",
+            "PalabrasClave": "Evento virtual salud, salud, charlas, conferencias, latinoamerica, medicos, latam hospitals, novedades salud",
+            "Descripcion": "Encuentro interdisciplinario de la Salud. Conferencias y MasterTalks de especialistas y grandes empresas del rubro."
+        }
+    }
+}

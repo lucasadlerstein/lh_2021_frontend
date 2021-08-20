@@ -56,14 +56,14 @@ const Charla = ({enlace, t}) => {
         }
 
         Swal.fire({
-            title: '¿Seguro quieres inscribirte?',
+            title: t('Evento.SeguroInscribirte'),
             text: `"${enlace.es_titulo}"`,
             icon: 'question',
             showCancelButton: true,
             confirmButtonColor: 'var(--colorPrimario)',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Si, quiero inscribirme.',
-            cancelButtonText: 'Cancelar'
+            confirmButtonText: t('Evento.SiInscribirme'),
+            cancelButtonText: t('Evento.Cancelar')
           }).then( async result => {
             if (result.isConfirmed) {
                 await clienteAxios.post('/inscripciones', infoInscripcion)
@@ -71,14 +71,14 @@ const Charla = ({enlace, t}) => {
                     console.log(resp);
                     if(resp.data.inscripto) {
                         Swal.fire(
-                          'Excelente',
-                          'Inscripción realizada con éxito.',
+                          t('Evento.Excelente'),
+                          t('Evento.InscripcionExito'),
                           'success'
                         )
                     } else {
                         Swal.fire(
-                            'Error',
-                            'No pudimos realizar la inscripción.',
+                            t('Evento.Error'),
+                            t('Evento.NoInscripcion'),
                             'error'
                           )
                     }

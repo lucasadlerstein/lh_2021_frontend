@@ -6,6 +6,7 @@ import Buscador from './Buscador.js';
 import clienteAxios from '../../config/axios';
 import styled from '@emotion/styled';
 import {conferenciasEmpresas2020, mastertalks2020} from '../../arrEventos2020.js';
+import {withTranslation} from '../../i18n';
 
 const BotonCambiarFiltro = styled.button`
     background-color: transparent;
@@ -53,7 +54,7 @@ const Input = styled.input`
 `;
 
 
-const ContenidoAgenda = () => {
+const ContenidoAgenda = ({t}) => {
     
     const [orden, setOrden] = useState('fecha');
     const [eventos, setEventos] = useState([]);
@@ -90,7 +91,7 @@ const ContenidoAgenda = () => {
         <>
             <FondoBuscador>
                 <Container className="py-5r text-center">
-                    <Input type="text" name="busqueda" value={busqueda} onChange={handleChange} placeholder="Busque por rubro, especialidad, profesión, título, speaker" />
+                    <Input type="text" name="busqueda" value={busqueda} onChange={handleChange} placeholder={t('Buscador')} />
                 </Container>
             </FondoBuscador>
             {
@@ -103,15 +104,15 @@ const ContenidoAgenda = () => {
                 ) : (
                     <div className="py-5r">
                         <Container style={{display: 'flex'}}>
-                            <img width="40px" src="/img/iconos/n_filtro.svg" alt="Cambiar filtro a fecha o temática" />
+                            <img width="40px" src="/img/iconos/n_filtro.svg" alt={t('Botones.CambiarFiltro')} />
                             <BotonCambiarFiltro
                                 onClick={() => setOrden('fecha')}
                                 style={orden === 'fecha' ? {fontWeight: 'bold'} : {fontWeight: 'normal'}}
-                            >Fecha</BotonCambiarFiltro>
+                            >{t('Botones.Fecha')}</BotonCambiarFiltro>
                             <BotonCambiarFiltro
                                 onClick={() => setOrden('tematica')}
                                 style={orden === 'tematica' ? {fontWeight: 'bold'} : {fontWeight: 'normal'}}
-                            >Temática</BotonCambiarFiltro>
+                            >{t('Botones.Tematica')}</BotonCambiarFiltro>
                         </Container>
                         { (orden === 'tematica') ? <ContenidoTematica busqueda={busqueda} eventos={eventos} /> : <ContenidoFecha busqueda={busqueda} eventos={eventos} /> }
                     </div>
@@ -121,4 +122,8 @@ const ContenidoAgenda = () => {
     );
 }
  
-export default ContenidoAgenda;
+ContenidoAgenda.with18nextTranslation = async () => ({
+    namespacesRequired: ['agenda'],
+});
+
+export default withTranslation('agenda')(ContenidoAgenda);

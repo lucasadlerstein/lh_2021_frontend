@@ -1,10 +1,10 @@
 {
     "Charla": {
         "Speaker": "Speaker",
-        "Inscribirme": "Inscribirme",
-        "Calendario": "Añadir a mi calendario",
-        "Cupos": "¡Cupos limitados!",
-        "QueTemas": "¿Qué temas se tratarán en esta actividad?",
+        "Inscribirme": "Register",
+        "Calendario": "Add to my calendar",
+        "Cupos": "Limited spaces!",
+        "QueTemas": "WHAT TOPICS WILL BE COVERED IN THIS ACTIVITY?",
         "Reunion": {
             "1": "¿Te gustaría agendar",
             "2": "una reunión con "

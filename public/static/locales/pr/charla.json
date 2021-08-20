@@ -1,0 +1,30 @@
+{
+    "Charla": {
+        "Speaker": "Speaker",
+        "Inscribirme": "Inscrever-se",
+        "Calendario": "Adicionar ao meu calendário",
+        "Cupos": "Lugares limitados!",
+        "QueTemas": "QUE TÓPICOS SERÃO ABRANGIDOS NESTA ATIVIDADE?",
+        "Reunion": {
+            "1": "¿Te gustaría agendar",
+            "2": "una reunión con "
+        },
+        "Botones": {
+            "Inscribirme": "Inscrever-se",
+            "MasInfo": "+ Información"
+        },
+        "Chatear": "Chatear ahora",
+        "Inscripcion": {
+            "Titulo": "Inscrever a",
+            "Nombre": "Nome",
+            "Apellido": "Sobrenome",
+            "Pais": "País",
+            "Email": "E-mail",
+            "Celular": "Telefone",
+            "Cargo": "Posição na empresa",
+            "Institucion": "Empresa",
+            "Boton": "Inscrever-se"
+        },
+        "VerGrabacion": "Mira la grabación aqui"
+    }
+}

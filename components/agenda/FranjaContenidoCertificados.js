@@ -5,6 +5,7 @@ import Link from 'next/link';
 import EventoNet from './EventoNet';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
+import {withTranslation} from '../../i18n';
 
 const CarouselPersonalizado = styled(Carousel)`
     .carousel .slide {
@@ -37,7 +38,7 @@ const BotonCertificado = styled.button`
     }
 `;
 
-const FranjaContenidoCertificados = ({titulo, eventosMostrar}) => {
+const FranjaContenidoCertificados = ({titulo, eventosMostrar, t}) => {
 
     const [indicadores, setIndicadores] = useState(false);
     const [anchoEvento, setAnchoEvento] = useState(false);
@@ -131,19 +132,19 @@ console.log(eventosMostrar);
                                         <BotonCertificado
                                             onClick={() => solicitarCertificado(ev.id)}
                                         >
-                                            Solicitar certificado
+                                            {t('Certificados.Solicitar')}
                                         </BotonCertificado>
                                         ) : (ev.certificado.certificado === 1) ? (
                                             <BotonCertificado
                                                 onClick={() => descargarCertificado(ev.id)}
                                             >
-                                                Pagar certificado
+                                                {t('Certificados.Pagar')}
                                             </BotonCertificado>
                                         ) : (ev.certificado.certificado === 2) ? (
                                             <BotonCertificado
                                                 onClick={() => descargarCertificado(ev.id)}
                                             >
-                                                Descargar
+                                                {t('Certificados.Descargar')}
                                             </BotonCertificado>
                                         ) : null
                                     }
@@ -159,4 +160,8 @@ console.log(eventosMostrar);
     );
 }
  
-export default FranjaContenidoCertificados;
+FranjaContenidoCertificados.with18nextTranslation = async () => ({
+    namespacesRequired: ['agenda'],
+});
+
+export default withTranslation('agenda')(FranjaContenidoCertificados);

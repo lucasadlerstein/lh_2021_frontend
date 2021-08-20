@@ -158,7 +158,7 @@ const BtnsLogin = styled.div`
     }
 `;
 
-const Login = () => {
+const Login = ({t}) => {
 
     const router = useRouter();
 
@@ -188,7 +188,7 @@ const Login = () => {
         setLoadingForm(true);
 
         if(persona.email === '' || persona.password === '') {
-            AlertaSwal('Error', 'Debe ingresar email y contraseña.', 'error', 3000);
+            AlertaSwal(t('Swal.Error'), t('Swal.EmailPass'), 'error', 3000);
         } else {
             await clienteAxios.post('/usuarios/login', persona)
                 .then(respuestaLogin => {
@@ -202,9 +202,9 @@ const Login = () => {
                 .catch(errorLogin => {
                     // console.log(errorLogin);
                     if(errorLogin.error === 'WrongPassword' || errorLogin.e_name === 'WrongPassword') {
-                        AlertaSwal('Error', 'El email y/o contraseña no son correctos.', 'error', 3000);
+                        AlertaSwal(t('Swal.Error'), t('Swal.LoginIncorrecto'), 'error', 3000);
                     } else {
-                        AlertaSwal('Error', 'No pudimos iniciar su sesión.', 'error', 3000);
+                        AlertaSwal(t('Swal.Error'), t('Swal.LoginNoPudimos'), 'error', 3000);
                     }
                 })
 
@@ -215,12 +215,12 @@ const Login = () => {
     async function olvidePass() {
 
         if(persona.email === '' || !persona.email.includes('@')) {
-            AlertaSwal('Atención', 'Escriba su email y luego vuelva a hacer clic para recuperar la contraseña.', 'warning', 5000);
+            AlertaSwal(t('Swal.Atencion'), t('Swal.LostFaltaEmail'), 'warning', 5000);
         } else {
             setLoadingOlvidePass(true);
             await clienteAxios.post('/usuarios/recuperar-password', persona)
                 .then(resp => {
-                    AlertaSwal('Listo', 'Recibirá instrucciones a su email para cambiar la contraseña.', 'success', 5000);
+                    AlertaSwal(t('Swal.Listo'), t('Swal.LostEnviado'), 'success', 5000);
 
                 })
                 .catch(err => {
@@ -238,25 +238,25 @@ const Login = () => {
     return (
         <>
             <Head>
-                {/* <title>{t('Contacto.SEO.Titulo')}</title> */}
-                {/* <meta name="description" content={t('Contacto.SEO.Descripcion')} /> */}
-                {/* <meta name="keywords" content={t('Contacto.SEO.PalabrasClave')} /> */}
+                <title>{t('Login.SEO.Titulo')}</title>
+                <meta name="description" content={t('Login.SEO.Descripcion')} />
+                <meta name="keywords" content={t('Login.SEO.PalabrasClave')} />
             </Head>
             <Layout>
 
                 <General>
                     <Der>
                         <Container className="text-center py-10">
-                            <Titulo>Inicia sesión en Latam Hospitals</Titulo>
-                            <SubTitulo>¿listo para más Latam Hospitals?</SubTitulo>
+                            <Titulo>{t('Login.Titulo')}</Titulo>
+                            <SubTitulo>{t('Login.SubTitulo')}</SubTitulo>
 
                             <Formulario onSubmit={enviarFormulario} className="text-center">
                                 <Row>
                                     <Col xs={12} sm={12} md={10} lg={8} className="mx-auto">
-                                        <Input type="email"  name="email" value={persona.email} onChange={handleChange} placeholder="Email" />
+                                        <Input type="email"  name="email" value={persona.email} onChange={handleChange} placeholder={t('Formulario.Email')} />
                                     </Col>
                                     <Col xs={12} sm={12} md={10} lg={8} className="mx-auto">
-                                        <Input type="password"  name="password" value={persona.password} onChange={handleChange} placeholder="Contraseña" />
+                                        <Input type="password"  name="password" value={persona.password} onChange={handleChange} placeholder={t('Formulario.Password')} />
                                     </Col>
                                     <Col xs={12} md={12} className="mx-auto text-center mt-3">
                                         <BotonEnviar type="submit">
@@ -267,12 +267,12 @@ const Login = () => {
                                                         <div className="bounce2"></div>
                                                         <div className="bounce3"></div>
                                                     </div>
-                                                ) : 'Iniciar sesión'
+                                                ) : t('Formulario.IniciarSesion')
                                             }
                                         </BotonEnviar>
                                         <BtnsLogin>
                                             <Link href="/signup">
-                                                <NoTengoCuenta className="normal-test">No tengo cuenta, quiero registrarme.</NoTengoCuenta>
+                                                <NoTengoCuenta className="normal-test">{t('Formulario.NoTengoCuenta')}</NoTengoCuenta>
                                             </Link>
                                             {
                                                 (loadingOlvidePass === true) ? (
@@ -282,7 +282,7 @@ const Login = () => {
                                                         <div className="bounce3"></div>
                                                     </div>
                                                 ) : (
-                                                    <NoTengoCuenta className="normal-test" onClick={() => olvidePass()}>Olvidé mi contraseña.</NoTengoCuenta>
+                                                    <NoTengoCuenta className="normal-test" onClick={() => olvidePass()}>{t('Formulario.OlvideMiPass')}</NoTengoCuenta>
                                                 )
                                             }
                                         </BtnsLogin>
@@ -301,4 +301,8 @@ const Login = () => {
     );
 }
  
-export default Login;
+Login.with18nextTranslation = async () => ({
+    namespacesRequired: ['auth'],
+  });
+   
+  export default withTranslation('auth')(Login);

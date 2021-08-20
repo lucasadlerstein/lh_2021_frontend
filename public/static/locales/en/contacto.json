@@ -1,16 +1,16 @@
 {
     "Contacto": {
         "SEO": {
-            "Titulo": "Contacto - LATAM Hospitals",
+            "Titulo": "Contact - LATAM Hospitals",
             "PalabrasClave": "contacto, latam hospitals, evento salud, evento virtual, medicina, conferencias, latam",
             "Descripcion": "¿Tienes alguna duda? Puedes escribirnos. ¿Quieres participar del evento? ¡Entonces también!"
         },
-        "Titulo": "Contáctate con nosotros",
-        "Subtitulo": "¿Tienes dudas?",
+        "Titulo": "Get in touch",
+        "Subtitulo": "Have doubts?",
         "TituloPersonas": {
-            "A": "¿Sos una ",
-            "Bold": "persona",
-            "C": " y querés contactarnos?"
+            "A": "¿Are you ",
+            "Bold": "an individual",
+            "C": " and want to contact us?"
         },
         "SoyEmpresa": "Soy una empresa",
         "TituloEmpresas": {
@@ -20,25 +20,25 @@
         },
         "SoyPersona": "Soy un particular",
         "FormLabel": {
-            "Boton": "Enviar",
-            "Nombre": "Nombre",
-            "NombreEnEmpresa": "Nombre y Apellido",
-            "Apellido": "Apellido",
+            "Boton": "Send",
+            "Nombre": "Name",
+            "NombreEnEmpresa": "Name and last name",
+            "Apellido": "Last name",
             "Email": "Email",
-            "Celular": "Celular",
-            "Pais": "Pais",
-            "Asunto": "Asunto",
-            "Mensaje": "Mensaje",
-            "Empresa": "Institución/Empresa",
-            "NombreEmpresa": "Nombre de la empresa",
+            "Celular": "Phone number",
+            "Pais": "Country",
+            "Asunto": "Subject",
+            "Mensaje": "Message",
+            "Empresa": "Company",
+            "NombreEmpresa": "Company's name",
             "Rubro": "Rubro"
         },
-        "Contacto": "Contacto"
+        "Contacto": "Contact"
     },
     "MensajesSwal": {
         "Error": "Error",
         "CamposObligatorios": "Todos los campos son obligatorios",
-        "Excelente": "Excelente",
+        "Excelente": "Excelent",
         "GraciasPorMensaje": "Gracias por su mensaje. Pronto estaremos en contacto contigo.",
         "NoPudimosMensaje": "No pudimos enviar el mensaje. Vuelva a intentar en unos minutos."
     }

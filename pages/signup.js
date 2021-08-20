@@ -177,7 +177,7 @@ const NoTengoCuenta = styled.a`
     }
 `;
 
-const Signup = () => {
+const Signup = ({t}) => {
 
     const router = useRouter();
 
@@ -263,19 +263,19 @@ const Signup = () => {
             persona.pais === '' ||
             persona.cargo === '' ||
             persona.empresa === '' ) {
-                AlertaSwal('Error', 'Todos los campos son obligatorios', 'error', 2500);
+                AlertaSwal(t('Swal.Error'), t('Swal.TodosObligatorios'), 'error', 2500);
         } else if (persona.email !== persona.email2) {
-            AlertaSwal('Error', 'Los emails no coinciden', 'error', 3000);
+            AlertaSwal(t('Swal.Error'), t('Swal.EmailsNoCoinciden'), 'error', 3000);
         } else if (persona.password !== persona.password2) {
-            AlertaSwal('Error', 'Las contraseñas no coindicen', 'error', 3000);
+            AlertaSwal(t('Swal.Error'), t('Swal.PassNoCoinciden'), 'error', 3000);
         } else {
             await clienteAxios.post('/usuarios/nuevo', persona)
                 .then( async resp => {
                     if(resp.data.registro === 'false' || resp.data.registro === false) {
                         if (resp.data.e_name === 'SequelizeUniqueConstraintError') {
-                            AlertaSwal('Error', 'Parece que su email ya se registró.', 'error', 3000);
+                            AlertaSwal(t('Swal.Error'), t('Swal.EmailYaRegistrado'), 'error', 3000);
                         } else {
-                            AlertaSwal('Error', 'No pudimos crear su cuenta.', 'error', 3000);
+                            AlertaSwal(t('Swal.Error'), t('Swal.NoPudimosCrearCuenta'), 'error', 3000);
                         }
                     } else {
                         await clienteAxios.post('/usuarios/login', {email: persona.email, password: persona.password})
@@ -294,7 +294,7 @@ const Signup = () => {
                 })
                 .catch(error => {
                     console.log(error);
-                    AlertaSwal('Error', 'No pudimos crear su cuenta.', 'error', 3000);
+                    AlertaSwal(t('Swal.Error'), t('Swal.NoPudimosCrearCuenta'), 'error', 3000);
 
                 })
         }
@@ -309,13 +309,13 @@ const Signup = () => {
         persona.email2 === '' ||
         persona.password === '' ||
         persona.password2 === '') {
-            AlertaSwal('Error', 'Todos los campos son obligatorios.', 'error', 3000);
+            AlertaSwal(t('Swal.Error'), t('Swal.TodosObligatorios'), 'error', 3000);
         } else if (persona.email !== persona.email2) {
-            AlertaSwal('Error', 'Los emails no coinciden.', 'error', 3000);
+            AlertaSwal(t('Swal.Error'), t('Swal.EmailsNoCoinciden'), 'error', 3000);
         } else if (persona.password !== persona.password2) {
-            AlertaSwal('Error', 'Las contraseñas no coinciden.', 'error', 3000);
+            AlertaSwal(t('Swal.Error'), t('Swal.PassNoCoinciden'), 'error', 3000);
         } else if (persona.password.length < 6) {
-            AlertaSwal('Error', 'La contraseña debe tener al menos 6 caracteres.', 'error', 3000);
+            AlertaSwal(t('Swal.Error'), t('Swal.Pass6'), 'error', 3000);
         } else {
             setEtapaSignUp(2);
         }
@@ -327,9 +327,9 @@ const Signup = () => {
     return (
         <>
             <Head>
-                {/* <title>{t('Contacto.SEO.Titulo')}</title> */}
-                {/* <meta name="description" content={t('Contacto.SEO.Descripcion')} /> */}
-                {/* <meta name="keywords" content={t('Contacto.SEO.PalabrasClave')} /> */}
+                <title>{t('Signup.SEO.Titulo')}</title>
+                <meta name="description" content={t('Signup.SEO.Descripcion')} />
+                <meta name="keywords" content={t('Signup.SEO.PalabrasClave')} />
             </Head>
             <Layout>
 
@@ -337,8 +337,8 @@ const Signup = () => {
                     <Izq></Izq>
                     <Der>
                         <Container className="text-center pt-10">
-                            <Titulo>Regístrate en Latam Hospitals</Titulo>
-                            <SubTitulo>Complete sus datos para una mejor experiencia.</SubTitulo>
+                            <Titulo>{t('Signup.Titulo')}</Titulo>
+                            <SubTitulo>{t('Signup.SubTitulo')}</SubTitulo>
 
                             <Formulario onSubmit={enviarFormulario}>
                                 <Row>
@@ -350,37 +350,37 @@ const Signup = () => {
                                                     onChange={(e) => handleChangePrefijo(e)}
                                                     value={persona.prefijo}
                                                 >
-                                                    <option value="Dr">Dr.</option>
-                                                    <option value="Dra">Dra.</option>
-                                                    <option value="Sr">Sr.</option>
-                                                    <option value="Sra">Sra.</option>
-                                                    <option value="Srta">Srta.</option>
-                                                    <option value="Ing">Ing.</option>
-                                                    <option value="Lic">Lic.</option>
+                                                    <option value="Dr">{t('Prefijos.Dr')}.</option>
+                                                    <option value="Dra">{t('Prefijos.Dra')}.</option>
+                                                    <option value="Sr">{t('Prefijos.Sr')}.</option>
+                                                    <option value="Sra">{t('Prefijos.Sra')}.</option>
+                                                    <option value="Srta">{t('Prefijos.Srta')}.</option>
+                                                    <option value="Ing">{t('Prefijos.Ing')}.</option>
+                                                    <option value="Lic">{t('Prefijos.Lic')}.</option>
                                                 </Select>
                                             </Col>
                                             <Col xs={12} sm={6} md={4}>
-                                                <Input type="text" required name="nombre" value={persona.nombre} onChange={handleChange} placeholder="Nombre" />
+                                                <Input type="text" required name="nombre" value={persona.nombre} onChange={handleChange} placeholder={t('Formulario.Nombre')} />
                                             </Col>
                                             <Col xs={12} sm={6} md={4}>
-                                                <Input type="text" required name="apellido" value={persona.apellido} onChange={handleChange} placeholder="Apellido" />
+                                                <Input type="text" required name="apellido" value={persona.apellido} onChange={handleChange} placeholder={t('Formulario.Apellido')} />
                                             </Col>
                                             
                                             <Col xs={12} sm={6} md={6}>
-                                                <Input type="email"  name="email" value={persona.email} onChange={handleChange} placeholder="Email" />
+                                                <Input type="email"  name="email" value={persona.email} onChange={handleChange} placeholder={t('Formulario.Email')} />
                                             </Col>
                                             <Col xs={12} sm={6} md={6}>
-                                                <Input className={persona.email !== persona.email2 ? 'border-grosor-5 border-red' : 'border-grosor-5 border-green'} type="email"  name="email2" value={persona.email2} onChange={handleChange} placeholder="Confirmá tu Email" />
+                                                <Input className={persona.email !== persona.email2 ? 'border-grosor-5 border-red' : 'border-grosor-5 border-green'} type="email"  name="email2" value={persona.email2} onChange={handleChange} placeholder={t('Formulario.EmailConfirm')} />
                                             </Col>
                                             <Col xs={12} sm={6} md={6}>
-                                                <Input className={persona.password.length < 6  ? 'border-grosor-5 border-red' : 'border-grosor-5 border-green'} type="password"  name="password" value={persona.password} onChange={handleChange} placeholder="Contraseña" />
+                                                <Input className={persona.password.length < 6  ? 'border-grosor-5 border-red' : 'border-grosor-5 border-green'} type="password"  name="password" value={persona.password} onChange={handleChange} placeholder={t('Formulario.Password')} />
                                             </Col>
                                             <Col xs={12} sm={6} md={6}>
-                                                <Input className={persona.password !== persona.password2 ? 'border-grosor-5 border-red' : 'border-grosor-5 border-green'} type="password"  name="password2" value={persona.password2} onChange={handleChange} placeholder="Confirmá tu contraseña" />
+                                                <Input className={persona.password !== persona.password2 ? 'border-grosor-5 border-red' : 'border-grosor-5 border-green'} type="password"  name="password2" value={persona.password2} onChange={handleChange} placeholder={t('Formulario.PasswordConfirm')} />
                                             </Col>
                                             <Col xs={12} md={12} className="mt-4 justify-content-end" style={{display: 'flex'}}>
                                                 <BotonEnviar onClick={() => irSiguienteForm()}>
-                                                    Siguiente
+                                                {t('Formulario.Siguiente')}
                                                 </BotonEnviar>
                                             </Col>
                                             </>
@@ -388,7 +388,7 @@ const Signup = () => {
                                         ) : (
                                             <>
                                             <Col xs={12} sm={6} md={4}>
-                                                <Input type="text"  name="profesion" value={persona.profesion} onChange={handleChange} placeholder="Profesión" />
+                                                <Input type="text"  name="profesion" value={persona.profesion} onChange={handleChange} placeholder={t('Formulario.Profesion')} />
                                             </Col>
                                             <Col xs={12} sm={6} md={4}>
                                                 {/* <IntlTelInput
@@ -405,15 +405,15 @@ const Signup = () => {
                                                     // }}
 
                                                 /> */}
-                                                <Input type="tel"  name="telefono" value={persona.telefono} onChange={handleChange} placeholder="Teléfono" id="telefonoInput" />
+                                                <Input type="tel"  name="telefono" value={persona.telefono} onChange={handleChange} placeholder={t('Formulario.Telefono')} id="telefonoInput" />
                                             </Col>
                                             <Col xs={12} sm={6} md={4}>
                                                 <Select
                                                     onChange={(e) => handleChangePaises(e)}
                                                     value={persona.pais}
-                                                    placeholder="País"
+                                                    placeholder={t('Formulario.Pais')}
                                                 >
-                                                    <option disabled selected value="">País</option>
+                                                    <option disabled selected value="">{t('Formulario.Pais')}</option>
                                                     {
                                                         Paises.map(ps => (
                                                             <option key={ps.cioc} data-cod={ps.callingCodes[0]} value={ps.name}>{ps.name}</option>
@@ -424,13 +424,13 @@ const Signup = () => {
                                             </Col>
 
                                             <Col xs={12} sm={6} md={6}>
-                                                <Input type="text"  name="cargo" value={persona.cargo} onChange={handleChange} placeholder="Cargo" />
+                                                <Input type="text"  name="cargo" value={persona.cargo} onChange={handleChange} placeholder={t('Formulario.Cargo')} />
                                             </Col>
                                             <Col xs={12} sm={6} md={6}>
-                                                <Input type="text"  name="empresa" value={persona.empresa} onChange={handleChange} placeholder="Empresa" />
+                                                <Input type="text"  name="empresa" value={persona.empresa} onChange={handleChange} placeholder={t('Formulario.Empresa')} />
                                             </Col>
                                             <Col xs={12} md={12} className="mt-4 justify-content-between" style={{display: 'flex'}}>
-                                                <BotonEnviar onClick={() => setEtapaSignUp(1)}>Volver</BotonEnviar>
+                                                <BotonEnviar onClick={() => setEtapaSignUp(1)}>{t('Formulario.Volver')}</BotonEnviar>
                                                 <BotonEnviar type="submit">
                                                     {
                                                         (loadingForm === true) ? (
@@ -439,23 +439,23 @@ const Signup = () => {
                                                                 <div className="bounce2"></div>
                                                                 <div className="bounce3"></div>
                                                             </div>
-                                                        ) : 'Registrarme' 
+                                                        ) : t('Formulario.Registrarme')
                                                     }
                                                 </BotonEnviar>
                                             </Col>
                                             <p className="mt-5 text-center mx-auto w-100 normal-test">
-                                                Al registrarse, usted está aceptando los términos y condiciones<br/>de la
+                                                {t('Formulario.TYC.Uno')}<br/>{t('Formulario.TYC.Dos')}
                                                 <Link href="/politicas-de-privacidad">
-                                                    <a target="_blank"> política de privacidad </a>
+                                                    <a target="_blank">{t('Formulario.TYC.Tres')}</a>
                                                 </Link>
-                                                de Latam Hospitals.
+                                                {t('Formulario.TYC.Cuatro')}
                                             </p>
                                             </>
                                         )
                                     }
                                     <div className="mt-4 w-100">
                                         <Link href="/login">
-                                            <NoTengoCuenta className="normal-test">Ya tengo cuenta, quiero iniciar sesión.</NoTengoCuenta>
+                                            <NoTengoCuenta className="normal-test">{t('Formulario.YaTengoCuenta')}</NoTengoCuenta>
                                         </Link>
                                     </div>
 
@@ -472,4 +472,8 @@ const Signup = () => {
     );
 }
  
-export default Signup;
+Signup.with18nextTranslation = async () => ({
+    namespacesRequired: ['auth'],
+  });
+   
+  export default withTranslation('auth')(Signup);

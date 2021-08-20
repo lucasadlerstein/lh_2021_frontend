@@ -1,0 +1,24 @@
+{
+    "SEO": {
+        "Titulo": "LATAM Hospitals - Evento Virtual de Salud",
+        "PalabrasClave": "Evento virtual salud, salud, charlas, conferencias, latinoamerica, medicos, latam hospitals, novedades salud",
+        "Descripcion": "Encuentro interdisciplinario de la Salud. Conferencias y MasterTalks de especialistas y grandes empresas del rubro."
+    },
+    "Franja": {
+        "Titulo": "INTERDISCIPLINARY VIRTUAL HEALTH MEETING",
+        "FechaDesktop": "This 2021 we renew ourselves and bring you new proposals. Follow us to keep up",
+        "FechaMobile": "This 2021 we renew ourselves and bring you new proposals. Follow us to keep up",
+        "Fecha": "October 18-22"
+    },
+    "CuentaRegresiva": {
+        "Titulo": "Away for",
+        "Dias": "days",
+        "Horas": "hours",
+        "Minutos": "min",
+        "Segundos": "secs"
+    },
+    "QueEsLatam21": {
+        "TextoA": "It is a virtual platform that combines Science and Industry in a cycle of conferences and MasterTalks telling the news of the new normal in the health sector.",
+        "TextoB": "We unite professionals, scientific institutions, chambers and companies to generate a positive exchange in this context of uncertainty and constant changes."
+    }
+}

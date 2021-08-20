@@ -1,0 +1,29 @@
+{
+    "Buscador": "Search by category, profession, specialty, title, speaker",
+    "2020": {
+        "Titulo": "WATCH AGAIN THE 2020 CONFERENCES AND MASTERTALKS"
+    },
+    "Items": {
+        "ConfEmpresas": "BUSINESS CONFERENCES",
+        "Mastertalks": "MASTERTALKS",
+        "Mastertalk": "MASTERTALK",
+        "CamarasInstituciones": "CHAMBERS AND INSTITUTIONS"
+    },
+    "Botones": {
+        "CambiarFiltro": "Cambiar filtro a fecha o temática",
+        "Fecha": "Date",
+        "Tematica": "Theme"   
+    },
+    "Fechas": {
+        "18": "OCTOBER 18",
+        "19": "OCTOBER 19",
+        "20": "OCTOBER 20",
+        "21": "OCTOBER 21",
+        "22": "OCTOBER 22"
+    },
+    "Certificados": {
+        "Solicitar": "Solicitar certificado",
+        "Pagar": "Pagar certificado",
+        "Descargar": "Download"
+    }
+}

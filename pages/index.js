@@ -27,8 +27,8 @@ const Inicio = ({t}) => {
         <BannerVideo />
         <Contenido2020 />
         <QueEsLatamHospitals
-          textoA={"Es una plataforma virtual que une a la Ciencia y la Industria en un ciclo de conferencias y mastertalks contando las novedades de la nueva normalidad en el sector salud."}
-          textoB={"Unimos profesionales, instituciones científicas, cámaras y empresas para generar un intercambio positivo en este contexto de incertidumbre y cambios constantes."}
+          textoA={t('QueEsLatam21.TextoA')}
+          textoB={t('QueEsLatam21.TextoB')}
         />
         <Participan /> 
         <Alcance />

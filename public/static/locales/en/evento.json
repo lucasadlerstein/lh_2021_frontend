@@ -1,0 +1,26 @@
+{
+    "SEO": {
+        "Titulo": "LATAM Hospitals - Evento Virtual",
+        "PalabrasClave": "latam hospitals, evento virtual salud, evento virtual, medicina, conferencias, charlas, webinar de salud",
+        "Descripcion": "Orientado a profesionales de la salud, bioquímicos, médicos, farmacéuticos y personas interesadas en todo latinoamérica."
+    },
+    "Mision": {
+        "Titulo": "Misión y objetivos",
+        "ParrafoUno": "Acercar información útil y novedosa para la comunidad del sector salud en toda América Latina.",
+        "ParrafoDos": "Crear un espacio de intercambio tanto de conocimientos como de contactos para poder fortalecer al rubro y conectar a distintos participantes con el objetivo de potenciarlos.",
+        "ParrafoTres": "El target del evento serán los profesionales de la salud, bioquímicos, médicos, farmacéuticos de toda latinoamérica."
+    },
+    "Virtual": {
+        "Titulo": "Modalidad virtual",
+        "ParrafoUno": "Realizaremos el evento a través de la plataforma Zoom Webinar. Desde nuestro sitio web se podrán realizar las inscripciones a las charlas y conferencias, ver el cronograma de actividades y acceder a los datos de todos los expositores del evento.",
+        "ParrafoDos": "El material del seminario quedará alojado en la web del evento para acceder en cualquier momento. Las conferencias cuentan con traducción en simultáneo (Español–Portugués)",
+        "BotonUno": "Quiero participar",
+        "BotonDos": "Ver actividades"
+    },
+    "VerAgenda": {
+        "Titulo": "See agenda"
+    },
+    "Empresas": {
+        "Titulo": "Company that trust us"
+    }
+}

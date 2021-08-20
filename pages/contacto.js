@@ -144,7 +144,7 @@ const Contacto = ({t}) => {
         e.preventDefault();
         // Validar
         if(persona.asunto === '' || persona.mensaje === '') {
-            AlertaSwal('Error', 'Todos los campos son obligatorios', 'error', 2500);
+            AlertaSwal(t('MensajesSwal.Error'), t('MensajesSwal.CamposObligatorios'), 'error', 2500);
             return;
         }
 
@@ -153,12 +153,12 @@ const Contacto = ({t}) => {
         await clienteAxios.post('contacto/logueado', persona)
             .then(respuesta => {
                 if(respuesta.data.enviado === true) {
-                    AlertaSwal('Excelente', 'Gracias por su mensaje. Pronto estaremos en contacto contigo', 'success', 3000);
+                    AlertaSwal(t('MensajesSwal.Excelente'), t('MensajesSwal.GraciasPorMensaje'), 'success', 3000);
                     setTimeout(() => {
                         router.push('/');
                     }, 5000);
                 } else {
-                    AlertaSwal('Error', 'No pudimos enviar el mensaje. Vuelva a intentar en unos minutos.', 'error', 5000);
+                    AlertaSwal(t('MensajesSwal.Error'), t('MensajesSwal.NoPudimosMensaje'), 'error', 5000);
                 }
                 setLoadingPersona(false);
             })
@@ -187,7 +187,7 @@ const Contacto = ({t}) => {
                     </Link>
                         <div className="mx-auto" style={{maxWidth: '95%'}}>
                             <Formulario onSubmit={enviarFormularioPersonas}>
-                                <Quien>Contacto <strong>LH</strong></Quien>
+                                <Quien>{t('Contacto.Contacto')} <strong>LH</strong></Quien>
                                 <Row>
                                     <Col xs={12} md={12}>
                                         <Input type="text" required name="asunto" value={persona.asunto} onChange={handleChangePersona} placeholder={t('Contacto.FormLabel.Asunto')} />

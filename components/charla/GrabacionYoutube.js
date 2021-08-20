@@ -1,6 +1,7 @@
 import React from 'react';
 import {Container} from 'reactstrap';
 import styled from '@emotion/styled';
+import {withTranslation} from '../../i18n';
 
 const Iframe = styled.iframe`
     width: 95%;
@@ -13,15 +14,15 @@ const Iframe = styled.iframe`
     margin-top: 2rem;
 `;
 
-const GrabacionYoutube = ({id}) => {
+const GrabacionYoutube = ({id, t}) => {
     return (
         <div className="py-5r">
             <Container className="text-center">
-                <h2>Mira la grabación aqui</h2>
+                <h2>{t('Charla.VerGrabacion')}</h2>
                 <Iframe src={`https://www.youtube.com/embed/${id}`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></Iframe>
             </Container>
         </div>
     );
 }
  
-export default GrabacionYoutube;
+export default withTranslation('charla')(GrabacionYoutube);

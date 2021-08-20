@@ -1,27 +1,27 @@
 {
     "QueEs": {
-        "Titulo": "¿Qué es Latam Hospitals?",
-        "Parrafo1": "Es un evento virtual que une a la Ciencia y la Industria en un ciclo de conferencias y MasterTalks contando las novedades de la nueva normalidad en el sector salud.",
-        "Parrafo2": "Unimos profesionales y empresas para generar un intercambio positivo en este contexto de incertidumbre y cambios constantes.",
+        "Titulo": "WHAT IS LATAM HOSPITALS?",
+        "Parrafo1": "It is a virtual platform that combines Science and Industry in a cycle of conferences and MasterTalks telling the news of the new normal in the health sector.",
+        "Parrafo2": "We unite professionals, scientific institutions, chambers and companies to generate a positive exchange in this context of uncertainty and constant changes.",
         "BotonUno": "Ver agenda",
-        "BotonDos": "Inscribirme",
-        "Ver2020": "Ver contenidos del 2020"
+        "BotonDos": "Register",
+        "Ver2020": "See 2020 edition agenda"
 
     },
     "Instituciones": {
         "Titulo": {
-            "1": "Empresas que participaron en 2020",
-            "2": "Cámaras que avalan LATAM HOSPITALS",
-            "3": "Instituciones que apoyan el evento",
-            "4": "Media partners"
+            "1": "COMPANIES THAT PARTICIPATED IN 2020",
+            "2": "CHAMBERS THAT ENDORSE LATAM HOSPITALS",
+            "3": "INSTITUTIONS THAT SUPPORT THE EVENT",
+            "4": "MEDIA PARTNERS"
         }
     },
     "Alcance": {    
-        "Titulo": "Alcance de la audiencia",
-        "Subtitulo": "Entre profesionales de la salud, empresas de la industria y comunidad científica.",
-        "Personas": "de personas en todo Latinoamérica",
-        "BotonUno": "Quiero participar",
-        "BotonDos": "Ver actividades"
+        "Titulo": "AUDIENCE REACH",
+        "Subtitulo": "Between health professionals, industry companies and the scientific community.",
+        "Personas": "people throughout Latin America.",
+        "BotonUno": "I want to participate",
+        "BotonDos": "Check activities"
     },
     "Agenda": {
         "Titulo": "¡INSCRÍBETE Y PARTICIPA DE CONFERENCIAS Y MASTER-TALKS CON LOS MEJORES ESPECIALISTAS! 100% GRATUITO.",
@@ -35,7 +35,7 @@
     },
     "Alertas": {
         "Titulos": {
-            "Exito": "Excelente",
+            "Exito": "Excelent",
             "Error": "Error"
         },
         "Textos": {

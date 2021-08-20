@@ -175,32 +175,32 @@ const QuieroParticipar = ({t}) => {
     return (
         <Fondo id="quiero-participar">
             <Container className="py-5r text-center">
-                <h2 className="text-white">¿Quieres que tu empresa<br />participe de la edición 2021?<br/>Ponte en contacto con nosotros.</h2>
+                <h2 className="text-white">{t('Extras.QuieresQueTuEmpresa.Uno')}<br />{t('Extras.QuieresQueTuEmpresa.Dos')}<br/>{t('Extras.QuieresQueTuEmpresa.Tres')}</h2>
                 <Formulario onSubmit={enviarFormulario}>
                     <Row>
                         <Col xs={12} md={6} lg={3}>
-                            <Input type="text" required name="nombre" value={persona.nombre} onChange={handleChange} placeholder="Nombre" />
+                            <Input type="text" required name="nombre" value={persona.nombre} onChange={handleChange} placeholder={t('Newsletter.Nombre')} />
                         </Col>
                         <Col xs={12} md={6} lg={3}>
-                            <Input type="text" required name="apellido" value={persona.apellido} onChange={handleChange} placeholder="Apellido" />
+                            <Input type="text" required name="apellido" value={persona.apellido} onChange={handleChange} placeholder={t('Newsletter.Apellido')} />
                         </Col>
                         <Col xs={12} md={6} lg={3}>
-                            <Input type="email"  name="email" value={persona.email} onChange={handleChange} placeholder="Email" />
+                            <Input type="email"  name="email" value={persona.email} onChange={handleChange} placeholder={t('Newsletter.Email')} />
                         </Col>
                         <Col xs={12} md={6} lg={3}>
-                            <Input type="tel"  name="telefono" value={persona.telefono} onChange={handleChange} placeholder="Teléfono" />
+                            <Input type="tel"  name="telefono" value={persona.telefono} onChange={handleChange} placeholder={t('Newsletter.Telefono')} />
                         </Col>
                         <Col xs={12} md={6} lg={4}>
-                            <Input type="text"  name="empresa" value={persona.empresa} onChange={handleChange} placeholder="Empresa" />
+                            <Input type="text"  name="empresa" value={persona.empresa} onChange={handleChange} placeholder={t('Newsletter.Empresa')} />
                         </Col>
                         <Col xs={12} md={6} lg={4}>
-                            <Input type="text"  name="cargo" value={persona.cargo} onChange={handleChange} placeholder="Cargo" />
+                            <Input type="text"  name="cargo" value={persona.cargo} onChange={handleChange} placeholder={t('Newsletter.Cargo')} />
                         </Col>
                         <Col xs={12} md={6} lg={4}>
-                            <Input type="text"  name="pais" value={persona.pais} onChange={handleChange} placeholder="País" />
+                            <Input type="text"  name="pais" value={persona.pais} onChange={handleChange} placeholder={t('Newsletter.Pais')} />
                         </Col>
                         <Col xs={12} md={6} lg={12}>
-                            <textarea name="mensaje" value={persona.mensaje} onChange={handleChange} placeholder="Mensaje"></textarea>
+                            <textarea name="mensaje" value={persona.mensaje} onChange={handleChange} placeholder={t('Newsletter.Mensaje')}></textarea>
                         </Col>
                         <Col xs={12} md={12} lg={12}>
                             <BotonEnviar type="submit">
@@ -211,7 +211,7 @@ const QuieroParticipar = ({t}) => {
                                             <div class="bounce2"></div>
                                             <div class="bounce3"></div>
                                         </div>
-                                    ) : 'Quiero participar' 
+                                    ) : t('Extras.QuieroParticipar') 
                                 }
                             </BotonEnviar>
                         </Col>

@@ -51,7 +51,7 @@ const Charla = ({enlace, t}) => {
     `;
 
     const router = useRouter();
-
+    
     const quieroInscribirme = idCharla => {
 
         const infoInscripcion = {
@@ -62,32 +62,33 @@ const Charla = ({enlace, t}) => {
         }
 
         Swal.fire({
-            title: '¿Seguro quieres inscribirte?',
+            title: t('Evento.SeguroInscribirte'),
             text: `"${enlace.es_titulo}"`,
             icon: 'question',
             showCancelButton: true,
             confirmButtonColor: 'var(--colorPrimario)',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Si, quiero inscribirme.',
-            cancelButtonText: 'Cancelar'
+            confirmButtonText: t('Evento.SiInscribirme'),
+            cancelButtonText: t('Evento.Cancelar')
           }).then( async result => {
             if (result.isConfirmed) {
                 await clienteAxios.post('/inscripciones', infoInscripcion)
-                    .then(resp => {
-                        if(resp.data.inscripto) {
-                            Swal.fire(
-                              'Excelente',
-                              'Inscripción realizada con éxito.',
-                              'success'
-                            )
-                        } else {
-                            Swal.fire(
-                                'Error',
-                                'No pudimos realizar la inscripción.',
-                                'error'
-                              )
-                        }
-                    })
+                .then(resp => {
+                    console.log(resp);
+                    if(resp.data.inscripto) {
+                        Swal.fire(
+                          t('Evento.Excelente'),
+                          t('Evento.InscripcionExito'),
+                          'success'
+                        )
+                    } else {
+                        Swal.fire(
+                            t('Evento.Error'),
+                            t('Evento.NoInscripcion'),
+                            'error'
+                          )
+                    }
+                })
                     .catch(err => {
                             console.log(err)
                     })

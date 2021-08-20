@@ -1,0 +1,35 @@
+{
+    "SEO": {
+        "Titulo": "Iniciar Sesión | LATAM Hospitals - Evento Virtual de Salud",
+        "PalabrasClave": "Evento virtual salud, salud, charlas, conferencias, latinoamerica, medicos, latam hospitals, novedades salud",
+        "Descripcion": "Encuentro interdisciplinario de la Salud. Conferencias y MasterTalks de especialistas y grandes empresas del rubro."
+    },
+    "Titulo": "Mi perfil",
+    "SubTitulo": "Aquí podrás ver tus inscripciones, solicitar tus certificados, modificar tus intereses, y editar tus datos personales.",
+    "Nav": {
+        "Inscripciones": "Inscripciones",
+        "Certificados": "Certificados",
+        "Intereses": "Intereses",
+        "MisDatos": "Mis Datos"
+    },
+    "Certificados": {
+        "Titulo": "Mis certificados",
+        "AquiPodras": "Aquí podrás descargar y tramitar tus certificados de asistencia a Latam Hospitals.",
+        "Pendientes": "PENDIENTES",
+        "MisCertificados": "MIS CERTIFICADOS"
+    },
+    "Inscripciones": {
+        "Titulo": "Mis inscripciones",
+        "VerAgendaCompleta": "Ver agenda completa"
+    },
+    "Intereses": {
+        "Titulo": "Mis intereses",
+        "SubTitulo": {
+            "Uno": "Al hacer clic podrás elegir tus intereses",
+            "Dos": "para tener una mejor experiencia en LATAM Hospitals.",
+            "Tres": "Si está con fondo blanco, no está seleccionado.",
+            "Buscador": "Buscador por palabra clave"
+        }
+    }
+
+}

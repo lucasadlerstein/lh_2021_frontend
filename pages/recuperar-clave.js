@@ -156,13 +156,13 @@ const RecuperarClave = () => {
         e.preventDefault();
         // Validar
         if(persona.password === '' || persona.passwordVerification === '') {
-            AlertaSwal('Error', 'Ambos campos son obligatorios', 'error', 2500);
+            AlertaSwal(t('Swal.Error'), t('Swal.AmbosObligatorios'), 'error', 2500);
             return;
         } else if( persona.password.length < 6) {
-            AlertaSwal('Error', 'La contraseña debe tener más de 6 caracteres.', 'error', 2500);
+            AlertaSwal(t('Swal.Error'), t('Swal.Pass6'), 'error', 2500);
             return;
         } else if(persona.password !== persona.passwordVerification) {
-            AlertaSwal('Error', 'Las contraseñas no coinciden', 'error', 2500);
+            AlertaSwal(t('Swal.Error'), t('Swal.PassNoCoinciden'), 'error', 2500);
             return;
         }
 
@@ -172,17 +172,17 @@ const RecuperarClave = () => {
             .then(respuesta => {
                 console.log(respuesta);
                 if(respuesta.data.transaction === 'done') {
-                    AlertaSwal('Excelente', 'Su contraseña ha sido modificada.', 'success', 3000);
+                    AlertaSwal(t('Swal.Excelente'), t('Swal.PassCambiada'), 'success', 3000);
                     setTimeout(() => {
                         router.push('/login');
                     }, 1000);
                 } else {
-                    AlertaSwal('Error', 'No pudimos modificar su contraseña.', 'error', 5000);
+                    AlertaSwal(t('Swal.Error'), t('Swal.PassNoCambiada'), 'error', 5000);
                 }
                 setLoading(false);
             })
             .catch(error => {
-                AlertaSwal('Error', 'No pudimos modificar la contraseña.', 'error', 5000);
+                AlertaSwal(t('Swal.Error'), t('Swal.PassNoCambiada'), 'error', 5000);
                 setLoading(false);
             })
     }
@@ -190,26 +190,26 @@ const RecuperarClave = () => {
     return (
         <>
             <Head>
-                <title>Recuperar Contraseña - Latam Hospitals</title>
-                {/* <meta name="description" content={t('Contacto.SEO.Descripcion')} /> */}
-                {/* <meta name="keywords" content={t('Contacto.SEO.PalabrasClave')} /> */}
+                <title>{t('Recuperar.SEO.Descripcion')}</title>
+                <meta name="description" content={t('Recuperar.SEO.Descripcion')} />
+                <meta name="keywords" content={t('Recuperar.SEO.PalabrasClave')} />
             </Head>
             <Layout>
                 <Container className="text-center mx-auto py-5">
-                    <Titulo>Recuperar contraseña</Titulo>
+                    <Titulo>{t('Recuperar.Titulo')}</Titulo>
                 </Container>
                 <FondoUno className="py-5r">
                     <Container>
                         <div className="mx-auto" style={{maxWidth: '80%'}}>
                             <Formulario onSubmit={enviarFormularioCambiarClave}>
-                                <Quien>Hola <strong>{nombre}</strong>,</Quien>
-                                <SubTitulo>Cree su nueva contraseña</SubTitulo>
+                                <Quien>{t('Recuperar.Hola')} <strong>{nombre}</strong>,</Quien>
+                                <SubTitulo>{t('Recuperar.SubTitulo')}</SubTitulo>
                                 <Row>
                                     <Col xs={12} md={12} lg={7} className="mx-auto text-center">
-                                        <Input type="password" required name="password" value={persona.password} onChange={handleChange} placeholder={'Escriba su nueva contraseña'} />
+                                        <Input type="password" required name="password" value={persona.password} onChange={handleChange} placeholder={t('Formulario.NewPass')} />
                                     </Col>
                                     <Col xs={12} md={12} lg={7} className="mx-auto text-center">
-                                        <Input type="password" required name="passwordVerification" value={persona.passwordVerification} onChange={handleChange} placeholder={'Confirme su nueva contraseña'} />
+                                        <Input type="password" required name="passwordVerification" value={persona.passwordVerification} onChange={handleChange} placeholder={t('Formulario.NewPassConfirm')} />
                                     </Col>
                                     <Col xs={12} md={12} className="text-center margin-5-mobile">
                                         <BotonEnviar type="submit">
@@ -220,7 +220,7 @@ const RecuperarClave = () => {
                                                         <div className="bounce2"></div>
                                                         <div className="bounce3"></div>
                                                     </div>
-                                                ) : 'Confirmar'
+                                                ) : t('Formulario.Confirmar')
                                             }
                                         </BotonEnviar>
                                     </Col>

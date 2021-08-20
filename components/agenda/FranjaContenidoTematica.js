@@ -6,6 +6,7 @@ import EventoNet from './EventoNet';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import {ListaIntereses} from '../../InteresesListado.js';
+import {withTranslation} from '../../i18n';
 
 const CarouselPersonalizado = styled(Carousel)`
     .carousel .slide {
@@ -20,7 +21,7 @@ const Titulo = styled.h3`
     text-transform: uppercase;
 `;
 
-const FranjaContenidoTematica = ({titulo, eventosMostrar, codigoInteres, busqueda}) => {
+const FranjaContenidoTematica = ({titulo, eventosMostrar, codigoInteres, busqueda, t}) => {
 
     const [indicadores, setIndicadores] = useState(false);
     const [anchoEvento, setAnchoEvento] = useState(false);

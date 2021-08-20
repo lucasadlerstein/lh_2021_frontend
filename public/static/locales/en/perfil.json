@@ -1,0 +1,35 @@
+{
+    "SEO": {
+        "Titulo": "Login | LATAM Hospitals",
+        "PalabrasClave": "Evento virtual salud, salud, charlas, conferencias, latinoamerica, medicos, latam hospitals, novedades salud",
+        "Descripcion": "Encuentro interdisciplinario de la Salud. Conferencias y MasterTalks de especialistas y grandes empresas del rubro."
+    },
+    "Titulo": "My profile",
+    "SubTitulo": "Here you can view your inscriptions, request your certificates, modify your interests, and edit your personal data.",
+    "Nav": {
+        "Inscripciones": "Inscriptions",
+        "Certificados": "Certificates",
+        "Intereses": "Interests",
+        "MisDatos": "My information"
+    },
+    "Certificados": {
+        "Titulo": "MY CERTIFICATES",
+        "AquiPodras": "Aquí podrás descargar y tramitar tus certificados de asistencia a Latam Hospitals.",
+        "Pendientes": "PENDING",
+        "MisCertificados": "MY CERTIFICATES"
+    },
+    "Inscripciones": {
+        "Titulo": "MY SUBMISSIONS",
+        "VerAgendaCompleta": "See the full agenda"
+    },
+    "Intereses": {
+        "Titulo": "MY INTERESTS",
+        "SubTitulo": {
+            "Uno": "By clicking you will be able to choose your interests",
+            "Dos": "to have a better experience in LATAM Hospitals.",
+            "Tres": "If it has a white background, it is not selected.",
+            "Buscador": "Search by keyword"
+        }
+    }
+
+}

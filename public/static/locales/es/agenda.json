@@ -1,0 +1,29 @@
+{
+    "Buscador": "Busque por rubro, especialidad, profesión, título, speaker",
+    "2020": {
+        "Titulo": "REVIVE LAS CONFERENCIAS Y MASTERTALKS DEL 2020"
+    },
+    "Items": {
+        "ConfEmpresas": "CONFERENCIAS DE EMPRESAS",
+        "Mastertalks": "MASTERTALKS",
+        "Mastertalk": "MASTERTALK",
+        "CamarasInstituciones": "CÁMARAS E INSTITUCIONES"
+    },
+    "Botones": {
+        "CambiarFiltro": "Cambiar filtro a fecha o temática",
+        "Fecha": "Fecha",
+        "Tematica": "Temática"   
+    },
+    "Fechas": {
+        "18": "18 DE OCTUBRE",
+        "19": "19 DE OCTUBRE",
+        "20": "20 DE OCTUBRE",
+        "21": "21 DE OCTUBRE",
+        "22": "22 DE OCTUBRE"
+    },
+    "Certificados": {
+        "Solicitar": "Solicitar certificado",
+        "Pagar": "Pagar certificado",
+        "Descargar": "Descargar"
+    }
+}
