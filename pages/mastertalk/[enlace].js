@@ -68,19 +68,25 @@ const Charla = ({enlace, t}) => {
             if (result.isConfirmed) {
                 await clienteAxios.post('/inscripciones', infoInscripcion)
                 .then(resp => {
-                    console.log(resp);
                     if(resp.data.inscripto) {
                         Swal.fire(
-                          t('Evento.Excelente'),
-                          t('Evento.InscripcionExito'),
-                          'success'
+                            t('Evento.Excelente'),
+                            t('Evento.InscripcionExito'),
+                            'success'
+                        )
+                    } else if(resp.data.error === 'YaInscripto') {
+                        Swal.fire(
+                            t('Evento.Atencion'),
+                            t('Evento.YaInscripto'),
+                            'warning'
                         )
                     } else {
                         Swal.fire(
                             t('Evento.Error'),
                             t('Evento.NoInscripcion'),
                             'error'
-                          )
+                        )
+
                     }
                 })
                     .catch(err => {

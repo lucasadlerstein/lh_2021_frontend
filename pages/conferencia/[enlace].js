@@ -13,11 +13,6 @@ import clienteAxios from '../../config/axios';
 import {useRouter} from 'next/router';
 import {withTranslation} from '../../i18n';
 import styled from '@emotion/styled';
-import ApartadoMerck from '../../components/charla/ApartadoMerck';
-import ApartadoBG from '../../components/charla/ApartadoBG';
-import ApartadoTBS from '../../components/charla/ApartadoTBS';
-import ApartadoOPTIMEDICAL from '../../components/charla/ApartadoOPTIMEDICAL';
-import ApartadoDiestro from '../../components/charla/ApartadoDiestro';
 import Swal from 'sweetalert2';
 
 
@@ -73,24 +68,30 @@ const Charla = ({enlace, t}) => {
           }).then( async result => {
             if (result.isConfirmed) {
                 await clienteAxios.post('/inscripciones', infoInscripcion)
-                .then(resp => {
-                    console.log(resp);
-                    if(resp.data.inscripto) {
-                        Swal.fire(
-                          t('Evento.Excelente'),
-                          t('Evento.InscripcionExito'),
-                          'success'
-                        )
-                    } else {
-                        Swal.fire(
-                            t('Evento.Error'),
-                            t('Evento.NoInscripcion'),
-                            'error'
-                          )
-                    }
-                })
+                    .then(resp => {
+                        if(resp.data.inscripto) {
+                            Swal.fire(
+                                t('Evento.Excelente'),
+                                t('Evento.InscripcionExito'),
+                                'success'
+                            )
+                        } else if(resp.data.error === 'YaInscripto') {
+                            Swal.fire(
+                                t('Evento.Atencion'),
+                                t('Evento.YaInscripto'),
+                                'warning'
+                            )
+                        } else {
+                            Swal.fire(
+                                t('Evento.Error'),
+                                t('Evento.NoInscripcion'),
+                                'error'
+                            )
+
+                        }
+                    })
                     .catch(err => {
-                            console.log(err)
+                        console.log(err)
                     })
             }
         })

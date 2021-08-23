@@ -45,6 +45,7 @@
             "SuscripcionError": "No pudimos suscribirte",
             "DobleSuscripcion": "Ya te has suscripto previamente",
             "VolveIntentar": "Vuelve a intentarlo en unos minutos"
+
         }
     },
     "Evento": {
@@ -54,6 +55,8 @@
         "Excelente": "Excelente",
         "InscripcionExito": "Inscripción realizada con éxito",
         "Error": "Error",
-        "NoInscripcion": "No pudimos realizar la inscripción"
+        "NoInscripcion": "No pudimos realizar la inscripción",
+        "Atencion": "Atencion",
+        "YaInscripto": "Usted ya está inscripto a esta conferencia."
     }
 }

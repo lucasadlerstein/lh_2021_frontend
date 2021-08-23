@@ -55,6 +55,8 @@
         "Excelente": "Excelente",
         "InscripcionExito": "Inscripción realizada con éxito",
         "Error": "Error",
-        "NoInscripcion": "No pudimos realizar la inscripción"
+        "NoInscripcion": "No pudimos realizar la inscripción",
+        "YaInscripto": "Usted ya está inscripto a esta conferencia.",
+        "Atencion": "Check this..."
     }
 }
