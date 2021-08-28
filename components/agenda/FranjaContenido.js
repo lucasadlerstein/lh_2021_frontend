@@ -5,6 +5,7 @@ import Link from 'next/link';
 import EventoNet from './EventoNet';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
+import {i18n} from '../../i18n';
 
 const CarouselPersonalizado = styled(Carousel)`
     .carousel .slide {
@@ -21,13 +22,11 @@ const Titulo = styled.h3`
 
 const FranjaContenido = ({titulo, eventosMostrar, busqueda}) => {
 
-    // console.log(Date.now(), '    ', eventosMostrar);
 
     const [indicadores, setIndicadores] = useState(false);
     const [anchoEvento, setAnchoEvento] = useState(false);
 
 
-    console.log('eventos mostrar ', eventosMostrar);
 
     useEffect(() => {
         if(document.querySelector('.thumbs-wrapper')) {
@@ -71,7 +70,7 @@ const FranjaContenido = ({titulo, eventosMostrar, busqueda}) => {
 
     return (
         <>
-        { (eventosMostrar.length !== 0) ? ( 
+        { (eventosMostrar) ? (eventosMostrar.length !== 0) ? ( 
             <>
                 <div className="pt-5r px-0">
                     {
@@ -115,8 +114,8 @@ const FranjaContenido = ({titulo, eventosMostrar, busqueda}) => {
                                         <EventoNet
                                             // titulo=""
                                             key={ev.id}
-                                            imagen={`${process.env.backendURL}/static/${ev.portada_imagen}`}
-                                            alt={ev.es_titulo}
+                                            imagen={`${process.env.backendURL}/static/${i18n.language === 'es' ? ev.portada_imagen : i18n.language === 'en' ? ev.en_portada_imagen : ev.po_portada_imagen}`}
+                                            alt={i18n.language === 'es' ? ev.es_titulo : i18n.language === 'en' ? ev.en_titulo : ev.po_titulo}
                                             link={`/${Number(ev.categoria) === 1 ? 'mastertalk' : 'conferencia'}/${ev.slug}`}
                                         />
                                     )
@@ -126,7 +125,7 @@ const FranjaContenido = ({titulo, eventosMostrar, busqueda}) => {
                     </CarouselPersonalizado>
                 </div>
             </>
-        ) : null
+        ) : null : null
         }
         </>
     );

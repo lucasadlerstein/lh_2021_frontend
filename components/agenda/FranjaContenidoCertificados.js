@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import styled from '@emotion/styled';
+import Head from 'next/head';
 import {Container, Row, Col, Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 import Link from 'next/link';
 import EventoNet from './EventoNet';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-import {withTranslation} from '../../i18n';
+import {withTranslation, i18n} from '../../i18n';
+import { loadScript } from "@paypal/paypal-js";
 
 const CarouselPersonalizado = styled(Carousel)`
     .carousel .slide {
@@ -42,8 +44,11 @@ const FranjaContenidoCertificados = ({titulo, eventosMostrar, t}) => {
 
     const [indicadores, setIndicadores] = useState(false);
     const [anchoEvento, setAnchoEvento] = useState(false);
+    const [quieroPagar, setQuieroPagar] = useState(false);
+    const [persona, setPersona] = useState({});
 
-console.log(eventosMostrar);
+    console.log(eventosMostrar);
+
     useEffect(() => {
         if(document.querySelector('.thumbs-wrapper')) {
             document.querySelector('.thumbs-wrapper').parentElement.remove();
@@ -82,12 +87,29 @@ console.log(eventosMostrar);
             setAnchoEvento(95);
         } 
 
+        if(localStorage.getItem('usuario')) {
+            setPersona(JSON.parse(localStorage.getItem('usuario')));
+        }
+
         // eslint-disable-next-line
     }, [])
 
     function solicitarCertificado(charla) {
         // PAGAR
-
+        loadScript({
+            "client-id": "test",
+            "data-client-email": persona.email,
+            "data-charla": charla,
+            
+            
+        })
+        .then((paypal) => {
+            paypal.Buttons().render("#boton-pago-certificado");
+        })
+        .catch((err) => {
+            console.error("failed to load the PayPal JS SDK script", err);
+        });
+    
 
         // SI el pago es exitoso, entonces cambiar en la BDD
     }
@@ -98,10 +120,14 @@ console.log(eventosMostrar);
 
     return (
         <>
+        {/* <Head>
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+        </Head> */}
         {
             (eventosMostrar.length > 0) ? (
                 <div className="pt-5r px-0">
-                    <Titulo className="text-center">{titulo}</Titulo>
+                    <Titulo className="text-left container">{titulo}</Titulo>
                     <CarouselPersonalizado showStatus={false}
                     showIndicators={indicadores}
                     stopOnHover={true}
@@ -122,31 +148,29 @@ console.log(eventosMostrar);
                                 <>
                                     <EventoNet
                                         // titulo=""
-                                        imagen={`${process.env.backendURL}/static/${ev.portada_imagen}`}
+                                        imagen={`${process.env.backendURL}/static/${i18n.language === 'es' ? ev.portada_imagen : i18n.language === 'en' ? ev.en_portada_imagen : ev.po_portada_imagen}`}
                                         key={ev.id}
-                                        alt={ev.es_titulo}
+                                        alt={i18n.language === 'es' ? ev.es_titulo : i18n.language === 'en' ? ev.en_titulo : ev.po_titulo}
                                         link={`${process.env.frontendURL}/${Number(ev.categoria) === 1 ? 'mastertalk' : 'conferencia'}/${ev.slug}`}
                                     />
                                     {
                                         (ev.certificado.certificado === 0) ? (
-                                        <BotonCertificado
-                                            onClick={() => solicitarCertificado(ev.id)}
-                                        >
-                                            {t('Certificados.Solicitar')}
-                                        </BotonCertificado>
-                                        ) : (ev.certificado.certificado === 1) ? (
-                                            <BotonCertificado
-                                                onClick={() => descargarCertificado(ev.id)}
-                                            >
-                                                {t('Certificados.Pagar')}
-                                            </BotonCertificado>
-                                        ) : (ev.certificado.certificado === 2) ? (
+                                            (quieroPagar) ? (
+                                                <div id="boton-pago-certificado"></div>
+                                            ) : (
+                                                <BotonCertificado
+                                                    onClick={() => solicitarCertificado(ev.id)}
+                                                >
+                                                    {t('Certificados.Solicitar')}
+                                                </BotonCertificado>
+                                            )
+                                        ) : (
                                             <BotonCertificado
                                                 onClick={() => descargarCertificado(ev.id)}
                                             >
                                                 {t('Certificados.Descargar')}
                                             </BotonCertificado>
-                                        ) : null
+                                        )
                                     }
                                 </>
                             ))

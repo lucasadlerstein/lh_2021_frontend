@@ -25,5 +25,11 @@
         "Solicitar": "Solicitar certificado",
         "Pagar": "Pagar certificado",
         "Descargar": "Download"
+    },
+    "Tematicas": {
+        "Recomendado": "Recomendadas para",
+        "Patrocinadas": "Conferencias Patrocinadas",
+        "Conferencias": "Conferencias",
+        "Mastertalks": "Mastertalks"
     }
 }
