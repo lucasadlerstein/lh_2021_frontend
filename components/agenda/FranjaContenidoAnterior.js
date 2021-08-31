@@ -24,9 +24,6 @@ const FranjaContenidoAnterior = ({titulo, eventosMostrar}) => {
     const [indicadores, setIndicadores] = useState(false);
     const [anchoEvento, setAnchoEvento] = useState(false);
 
-    console.log(eventosMostrar);
-
-
     useEffect(() => {
         if(document.querySelector('.thumbs-wrapper')) {
             document.querySelector('.thumbs-wrapper').parentElement.remove();
@@ -96,6 +93,7 @@ const FranjaContenidoAnterior = ({titulo, eventosMostrar}) => {
                         eventosMostrar.map(ev => (
                             <EventoNet
                                 // titulo=""
+                                key={ev.id}
                                 imagen={`/img/flyers2020/${ev.imagen}`}
                                 // alt={ev.es_titulo}
                                 link={ev.link}

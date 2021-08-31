@@ -31,5 +31,13 @@
         "Patrocinadas": "Conferencias Patrocinadas",
         "Conferencias": "Conferencias",
         "Mastertalks": "Mastertalks"
+    },
+    "Alertas": {
+        "Excelente": "Excelente",
+        "Error": "Error",
+        "CertificadoDescargado": "El certificado fue descargado con éxito.",
+        "NoPudimosDescargar": "No pudimos descargar su certificado.",
+        "PagoExito": "El pago se realizó con éxito.",
+        "PagoError": "No pudimos procesar el pago."
     }
 }

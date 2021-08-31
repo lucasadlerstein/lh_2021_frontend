@@ -8,6 +8,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import {withTranslation, i18n} from '../../i18n';
 import { loadScript } from "@paypal/paypal-js";
+import {AlertaSwal} from '../../helpers/helpers';
 
 const CarouselPersonalizado = styled(Carousel)`
     .carousel .slide {
@@ -111,11 +112,17 @@ const FranjaContenidoCertificados = ({titulo, eventosMostrar, t}) => {
         });
     
 
-        // SI el pago es exitoso, entonces cambiar en la BDD
+        // Pago exitoso => cambiar en la BDD
     }
 
-    function descargarCertificado(charla) {
-        // Generar y descargar certificado PDF
+    async function descargarCertificado(charla) {
+        await clienteAxios.get(`/certificados/descargar/${i18n.language}/${charla}`)
+            .then(resp => {
+                AlertaSwal(t('Alertas.Excelente'), t('Alertas.CertificadoDescargado'), 'success', 2500);
+            })
+            .catch(err => {
+                AlertaSwal(t('Alertas.Error'), t('Alertas.NoPudimosDescargar'), 'error', 2500);
+            })
     }
 
     return (

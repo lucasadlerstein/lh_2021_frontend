@@ -66,8 +66,8 @@ const ContenidoTematica = ({eventos, busqueda}) => {
             } */}
             {
                 (interesesPersona !== undefined && interesesPersona !== null) ? (
-                    interesesPersona.map(interesP => (
-                        <FranjaContenidoTematica busqueda={busqueda} eventosMostrar={eventos} titulo={interesP} codigoInteres={interesP} />
+                    interesesPersona.map((interesP, index) => (
+                        <FranjaContenidoTematica key={index} busqueda={busqueda} eventosMostrar={eventos} titulo={interesP} codigoInteres={interesP} />
     
                     ))
                 ) : null
