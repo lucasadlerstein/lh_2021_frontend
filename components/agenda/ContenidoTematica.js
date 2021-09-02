@@ -20,9 +20,19 @@ const ContenidoTematica = ({eventos, busqueda, t}) => {
     const [patrocinados, setPatrocinados] = useState([]);
     const [agrupadosCategoria, setAgroupadosCategoria] = useState([]);
 
+    // function agruparPorCategoriaTematica(eventos) {
+    //     let eventosAgrupados = eventos.reduce((r, a) => {
+    //         r[a.categoriaTematica] = [...r[a.categoriaTematica] || [], a];
+    //         return r;
+    //        }, {});
+    //     setAgroupadosCategoria(eventosAgrupados);
+    // }
+
     function agruparPorCategoriaTematica(eventos) {
         let eventosAgrupados = eventos.reduce((r, a) => {
-            r[a.categoriaTematica] = [...r[a.categoriaTematica] || [], a];
+            r[a.categoriaTematicaUno] = [...r[a.categoriaTematicaUno] || [], a];
+            r[a.categoriaTematicaDos] = [...r[a.categoriaTematicaDos] || [], a];
+            r[a.categoriaTematicaTres] = [...r[a.categoriaTematicaTres] || [], a];
             return r;
            }, {});
         setAgroupadosCategoria(eventosAgrupados);
