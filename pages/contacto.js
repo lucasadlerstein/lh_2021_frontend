@@ -122,6 +122,17 @@ const Formulario = styled.form`
     }
 `;
 
+const DivEmails = styled.div`
+    a {
+        text-decoration: none;
+        color: white;
+        font-size: 2.2rem;
+        padding: 1rem 0;
+    }
+    margin: 2rem auto;
+    text-align: center;
+`;
+
 const Contacto = ({t}) => {
 
     const [persona, setPersona] = useState({
@@ -310,6 +321,11 @@ const Contacto = ({t}) => {
                                 </Formulario>
                             </Col>
                         </Row>
+                        <DivEmails>
+                            <a href="mailto:mexico@latamhospitals.com">mexico@latamhospitals.com</a><br />
+                            <a href="mailto:brasil@latamhospitals.com">brasil@latamhospitals.com</a><br />
+                            <a href="mailto:chile@latamhospitals.com">chile@latamhospitals.com</a>
+                        </DivEmails>
                     </Container>
                 </FondoUno>
             </Layout>
