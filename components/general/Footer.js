@@ -110,7 +110,10 @@ const Footer = () => {
             </FooterPersonalizado>
             <LogosRealizadores>
                 <div>
-                    <a href="https://www.infoque.com.ar" target="_blank">
+                    <p style={{color: 'white'}}>
+                        LH DIGITAL LLC
+                    </p>
+                    {/* <a href="https://www.infoque.com.ar" target="_blank">
                         <img src="/img/logos/Logo_Infoque.png" alt="Logo Infoque" />
                     </a>
                     <a href="https://www.midiainnovation.com" target="_blank">
@@ -118,7 +121,7 @@ const Footer = () => {
                     </a>
                     <a href="https://infinidad.com.ar" target="_blank">
                         <img src="/img/logos/Logo_Infinidad.png" alt="Logo Infinidad" />
-                    </a>
+                    </a> */}
                 </div>
             </LogosRealizadores>
             <Scripts />

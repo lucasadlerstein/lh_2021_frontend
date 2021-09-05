@@ -71,7 +71,7 @@ const FranjaContenidoAnterior = ({titulo, eventosMostrar}) => {
             <div className="pt-5r px-0">
                 {
                     (titulo !== '') ? (
-                        <Titulo className="text-center">{titulo}</Titulo>
+                        <Titulo className="container">{titulo}</Titulo>
                     ) : null
                 }
                 <CarouselPersonalizado showStatus={false}

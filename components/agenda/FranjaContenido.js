@@ -75,7 +75,9 @@ const FranjaContenido = ({titulo, eventosMostrar, busqueda}) => {
                 <div className="pt-5r px-0">
                     {
                         (titulo !== '') ? (
-                            <Titulo className="text-center">{titulo}</Titulo>
+                            <Container>
+                                <Titulo className="">{titulo}</Titulo>
+                            </Container>
                         ) : null
                     }
                     <CarouselPersonalizado showStatus={false}
