@@ -19,16 +19,18 @@
         "Inicio": "Inicio",
         "ElEvento": "El evento",
         "Agenda": "Agenda",
-        "Contacto": "Contacto",
+        "Contacto": "Contato",
         "Perfil": "Perfil",
-        "Ed2020": "Edición 2020",
+        "Ediciones": "Edição",
+        "Ed2020": "Edição 2020",
+        "Ed2021": "Edição 2021",
         "Empresas": "Empresas",
-        "MiPerfil": "MI PERFIL",
-        "MisIntereses": "Mis intereses",
-        "MisCertificados": "Mis certificados",
-        "MisInscripciones": "Mis inscripciones",
+        "MiPerfil": "MEU PERFIL",
+        "MisIntereses": "Meus interesses",
+        "MisCertificados": "Meus certificados",
+        "MisInscripciones": "Meus registros",
         "EditarPerfil": "Editar perfil",
-        "CerrarSesion": "Cerrar sesión"
+        "CerrarSesion": "Fechar sessão"
 
     },
     "Extras": {

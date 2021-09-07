@@ -47,7 +47,7 @@ const Alcance = ({t}) => {
                         <p>+18.000.000</p>
                         <span>{t('Alcance.Personas')}</span>
                     </Numero>
-                    <Link href="/contacto">
+                    <Link href="/agenda">
                         <a className="btn-lh btn-prim fs-2">{t('Alcance.BotonUno')}</a>
                     </Link>
                     {/* {t('Alcance.BotonUno')} */}

@@ -11,9 +11,20 @@ const Idiomas = styled.div`
     margin: 0 auto;
     text-align: center;
     background-color: var(--colorPrimario);
+    padding-bottom: .5rem;
     max-width: fit-content;
     border-bottom-left-radius: 2rem;
     border-bottom-right-radius: 2rem;
+    /* position: fixed; */
+    /* left: 40%; */
+    /* right: 40%; */
+    img {
+        max-width: 4.5rem;
+        transition: all .5s ease;
+        &:hover {
+            transform: rotate(360deg);
+        }
+    }
     
 `;
 
@@ -78,18 +89,30 @@ const Layout = ({children}) => {
                 {
                     (i18n.language === 'es') ? (
                         <>
-                            <BtnIdioma onClick={() => i18n.changeLanguage('en')}>EN</BtnIdioma>
-                            <BtnIdioma onClick={() => i18n.changeLanguage('pr')}>PR</BtnIdioma>
+                            <BtnIdioma onClick={() => i18n.changeLanguage('en')}>
+                                <img src="/img/iconos/en.png" alt="English version" />
+                            </BtnIdioma>
+                            <BtnIdioma onClick={() => i18n.changeLanguage('pr')}>
+                                <img src="/img/iconos/pr.png" alt="Portugues version" />
+                            </BtnIdioma>
                         </>
                     ) : (i18n.language === 'en') ? (
                         <>
-                            <BtnIdioma onClick={() => i18n.changeLanguage('es')}>ES</BtnIdioma>
-                            <BtnIdioma onClick={() => i18n.changeLanguage('pr')}>PR</BtnIdioma>
+                            <BtnIdioma onClick={() => i18n.changeLanguage('es')}>
+                                <img src="/img/iconos/es.png" alt="Versión en español" />
+                            </BtnIdioma>
+                            <BtnIdioma onClick={() => i18n.changeLanguage('pr')}>
+                                <img src="/img/iconos/pr.png" alt="Portugues version" />
+                            </BtnIdioma>
                         </>
                     ) : (
                         <>
-                            <BtnIdioma onClick={() => i18n.changeLanguage('es')}>ES</BtnIdioma>
-                            <BtnIdioma onClick={() => i18n.changeLanguage('en')}>EN</BtnIdioma>
+                            <BtnIdioma onClick={() => i18n.changeLanguage('es')}>
+                                <img src="/img/iconos/es.png" alt="Versión en español" />
+                            </BtnIdioma>
+                            <BtnIdioma onClick={() => i18n.changeLanguage('en')}>
+                                <img src="/img/iconos/en.png" alt="English version" />
+                            </BtnIdioma>
                         </>
                     )
                 }

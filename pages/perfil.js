@@ -28,8 +28,14 @@ const SubTitulo = styled.p`
         color: var(--colorPrimario);
         font-size: 2rem;
         margin-right: 1rem;
+        border: 1px solid transparent;
         border-right: 1px solid var(--colorPrimario);
         padding-right: 1rem;
+        font-weight: normal;
+        transition: all .5s ease;
+        &:hover {
+            font-weight: bold;
+        }
     }
     a:last-of-type {
         margin-right: 0;

@@ -115,8 +115,6 @@ const EditarDatos = ({datos, t}) => {
         profesion: '',
         email: '',
         email2: '',
-        password: '',
-        password2: '',
         telefono: '',
         pais: '',
         cargo: '',
@@ -141,7 +139,6 @@ const EditarDatos = ({datos, t}) => {
     const enviarFormulario = async e => {
         e.preventDefault();
         setLoadingForm(true);
-
         if( persona.prefijo === '' ||
             persona.nombre === '' ||
             persona.apellido === '' ||
@@ -155,12 +152,6 @@ const EditarDatos = ({datos, t}) => {
         } else {
             if (persona.email !== emailViejo && persona.email !== persona.email2 && persona.email2 !== '') {
                 AlertaSwal(t('Swal.Error'), t('Swal.EmailNoCoinciden'), 'error', 3000);
-            } else if (persona.password !== '') {
-                if (persona.password !== persona.password2) {
-                    AlertaSwal(t('Swal.Error'), t('Swal.PassNoCoinciden'), 'error', 3000);
-                } else if (persona.password < 6) {
-                    AlertaSwal(t('Swal.Error'), t('Swal.Pass6'), 'error', 3000);
-                }
             } else {
                 await clienteAxios.put('/usuarios/editar', persona)
                     .then( async resp => {
@@ -175,7 +166,7 @@ const EditarDatos = ({datos, t}) => {
                     })
             }
         } 
-        setLoadingForm(true);
+        setLoadingForm(false);
     }
 
     const handleChangePrefijo = e => {
@@ -195,7 +186,7 @@ const EditarDatos = ({datos, t}) => {
                 </TituloBox>
                 <Formulario onSubmit={enviarFormulario}>
                 <input id="email" style={{display: 'none'}} type="email" name="fakeemail" />
-                <input id="password" style={{display: 'none'}} type="password" name="fakepassword" />
+                {/* <input id="password" style={{display: 'none'}} type="password" name="fakepassword" /> */}
 
                     <Row>
                         <Col xs={12} sm={12} md={2}>
@@ -227,12 +218,7 @@ const EditarDatos = ({datos, t}) => {
                         <Col xs={12} sm={6} md={3}>
                             <Input type="email"  name="email2" value={persona.email2} onChange={handleChange} placeholder={t('Formulario.EmailConfirm')} />
                         </Col>
-                        <Col xs={12} sm={6} md={3}>
-                            <Input type="password" name="password" value={persona.password} onChange={handleChange} placeholder={t('Formulario.Password')} />
-                        </Col>
-                        <Col xs={12} sm={6} md={3}>
-                            <Input type="password" name="password2" value={persona.password2} onChange={handleChange} placeholder={t('Formulario.PasswordConfirm')} />
-                        </Col>
+
                         <Col xs={12} sm={6} md={3}>
                             <Input type="tel"  name="telefono" value={persona.telefono} onChange={handleChange} placeholder={t('Formulario.Telefono')}  />
                         </Col>
@@ -246,14 +232,14 @@ const EditarDatos = ({datos, t}) => {
                         <Col xs={12} sm={6} md={3}>
                             <Input type="text"  name="empresa" value={persona.empresa} onChange={handleChange} placeholder={t('Formulario.Empresa')} />
                         </Col>
-                        <Col xs={12} sm={12} md={4} className="ml-auto mr-0">
+                        <Col xs={12} sm={12} md={5} className="ml-auto mr-0">
                             <BotonEnviar type="submit">
                                 {
                                     (loadingForm === true) ? (
-                                        <div class="spinner">
-                                            <div class="bounce1"></div>
-                                            <div class="bounce2"></div>
-                                            <div class="bounce3"></div>
+                                        <div className="spinner spinner-white">
+                                            <div className="bounce1"></div>
+                                            <div className="bounce2"></div>
+                                            <div className="bounce3"></div>
                                         </div>
                                     ) : t('EditarDatos.GuardarCambios') 
                                 }

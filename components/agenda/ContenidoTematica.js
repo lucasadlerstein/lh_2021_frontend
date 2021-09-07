@@ -43,6 +43,7 @@ const ContenidoTematica = ({eventos, busqueda, t}) => {
         if(localStorage.getItem('usuario')) {
             user = JSON.parse(localStorage.getItem('usuario'));
             setPersona(user);
+            console.log(user);
             setInteresesPersona(JSON.parse(user.intereses));
         }
         if(eventos) {

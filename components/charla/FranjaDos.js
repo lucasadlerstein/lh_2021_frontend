@@ -145,7 +145,7 @@ const FranjaDos = ({duracion, titulo, fechaEvento, horaEvento, descripcionEvento
                     <Dura className="fs-2">{duracion} min</Dura>
                 </Col>
                 <Col xs={12} lg={7} className="text-center">
-                    {
+                    {/* {
                         (showCalendar === false) ? (
                             <button onClick={mostrarCalendario} className="btn-lh btn-prim fs-2 bor-rad-5 no-border" style={{display: 'inline-block'}}>{t('Charla.Calendario')}</button>
                         ) : (
@@ -156,13 +156,13 @@ const FranjaDos = ({duracion, titulo, fechaEvento, horaEvento, descripcionEvento
                                 <Link href={icsArchivo}>
                                     <a className="btn-lh btn-prim bor-rad-5 no-border m-2" rel="nofollow">Apple Calendar</a>
                                 </Link>
-                                {/* <button onClick={botonEvento('google')} className="btn-lh btn-prim bor-rad-5 no-border m-2">Apple Calendar</button> */}
+                                <button onClick={botonEvento('google')} className="btn-lh btn-prim bor-rad-5 no-border m-2">Apple Calendar</button>
                                 <Link href={linkOutlook}>
                                     <a className="btn-lh btn-prim bor-rad-5 no-border m-2" target="_blank" rel="nofollow">Outlook Calendar</a>
                                 </Link>
                             </>
                         )
-                    }
+                    } */}
                     
                 </Col>
                 <Col xs={12} lg={3} className="text-center">

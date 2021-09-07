@@ -88,10 +88,12 @@ const Navegacion = ({t}) => {
 
     const [isOpen, setIsOpen] = useState(false);
     const [isOpenDropdownProfile, setIsOpenDropdownProfile] = useState(false);
+    const [isOpenDropdownEd, setIsOpenDropdownEd] = useState(false);
     const [profile, setProfile] = useState(false);
     const [nomAp, setNomAp] = useState('Su perfil');
     const [mobile, setMobile] = useState(false);
     const toggleProfile = () => setIsOpenDropdownProfile(!isOpenDropdownProfile);
+    const toggleEd = () => setIsOpenDropdownEd(!isOpenDropdownEd);
     const toggleProfileOn = () => setIsOpenDropdownProfile(true);
     const toggleProfileOff = () => setIsOpenDropdownProfile(false);
     const toggle = () => setIsOpen(!isOpen);
@@ -135,9 +137,30 @@ const Navegacion = ({t}) => {
                                     <MenuA className="nav-link">{t('Navegacion.Inicio')}</MenuA>
                                 </Link>
                             </NavItem>
-                            <NavItem className="my-auto">
+                            {/* <NavItem className="my-auto">
                                 <MenuA target="_blank" href="https://2020.latamhospitals.com/agenda" className="nav-link">{t('Navegacion.Ed2020')}</MenuA>
-                            </NavItem>
+                            </NavItem> */}
+                            <Dropdown
+                                isOpen={isOpenDropdownEd}
+                                toggle={toggleEd}
+                                onMouseLeave={(mobile) ? null : toggleEd}
+                                onMouseEnter={(mobile) ? null : toggleEd}
+                            >
+                                <DropdownToggle
+                                    caret>
+                                    <MenuA className="nav-link">{t('Navegacion.Ediciones')}</MenuA>
+                                </DropdownToggle>
+                                <DropdownMenu right>
+                                    <DropdownItem>
+                                        <MenuB href="https://2020.latamhospitals.com" target="_blank" className="nav-link text-center">{t('Navegacion.Ed2020')}</MenuB>
+                                    </DropdownItem>
+                                    <DropdownItem>
+                                        <Link href="/">
+                                            <MenuB className="nav-link text-center">{t('Navegacion.Ed2021')}</MenuB>
+                                        </Link>
+                                    </DropdownItem>
+                                </DropdownMenu>
+                            </Dropdown>
                             <NavItem className="my-auto">
                                 <Link href="#empresas">
                                     <MenuA className="nav-link">{t('Navegacion.Empresas')}</MenuA>
@@ -150,7 +173,7 @@ const Navegacion = ({t}) => {
                             </NavItem>
                         </Nav>
                     </Collapse>
-                    {
+                        {
                             (profile === true) ? (
                                 <div className="mt-0">
                                     <Dropdown
@@ -212,7 +235,6 @@ const Navegacion = ({t}) => {
                                 </div>
                             ) : null
                         }
-                    
                 </Container>
             </NavBarP>
         </header>  

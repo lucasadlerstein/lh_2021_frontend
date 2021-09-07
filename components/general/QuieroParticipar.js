@@ -31,6 +31,16 @@ const Input = styled.input`
     @media (max-width: 991px){
         margin-bottom: 1rem;
     }
+
+    &::placeholder {
+        color: #909090;
+    }
+`;
+
+const TextArea = styled.textarea`
+    &::placeholder {
+        color: #909090;
+    }
 `;
 
 const BotonEnviar = styled.button`
@@ -200,7 +210,7 @@ const QuieroParticipar = ({t}) => {
                             <Input type="text"  name="pais" value={persona.pais} onChange={handleChange} placeholder={t('Newsletter.Pais')} />
                         </Col>
                         <Col xs={12} md={6} lg={12}>
-                            <textarea name="mensaje" value={persona.mensaje} onChange={handleChange} placeholder={t('Newsletter.Mensaje')}></textarea>
+                            <TextArea name="mensaje" value={persona.mensaje} onChange={handleChange} placeholder={t('Newsletter.Mensaje')}></TextArea>
                         </Col>
                         <Col xs={12} md={12} lg={12}>
                             <BotonEnviar type="submit">
