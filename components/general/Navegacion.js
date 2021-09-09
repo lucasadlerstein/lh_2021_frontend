@@ -162,8 +162,8 @@ const Navegacion = ({t}) => {
                                 </DropdownMenu>
                             </Dropdown>
                             <NavItem className="my-auto">
-                                <Link href="#empresas">
-                                    <MenuA className="nav-link">{t('Navegacion.Empresas')}</MenuA>
+                                <Link href="/agenda">
+                                    <MenuA className="nav-link">{t('Navegacion.Agenda')}</MenuA>
                                 </Link>
                             </NavItem>
                             <NavItem className="my-auto">

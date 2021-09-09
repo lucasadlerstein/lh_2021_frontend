@@ -37,12 +37,12 @@ const FranjaContenidoAnterior = ({titulo, eventosMostrar}) => {
 
         if (window.innerWidth > 1600) {
             // setAnchoEvento(30);
-            setAnchoEvento(18);
+            setAnchoEvento(25);
         } else if (window.innerWidth > 1200) {
             // setAnchoEvento(30);
-            setAnchoEvento(23);
+            setAnchoEvento(30);
         } else if (window.innerWidth > 1050) {
-            setAnchoEvento(35);
+            setAnchoEvento(40);
         } else if (window.innerWidth > 991) {
             setAnchoEvento(40);
         } else if (window.innerWidth > 850) {

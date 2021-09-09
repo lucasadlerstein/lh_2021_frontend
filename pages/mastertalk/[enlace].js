@@ -96,7 +96,9 @@ const Charla = ({enlace, t}) => {
                             t('Evento.Excelente'),
                             t('Evento.InscripcionExito'),
                             'success'
-                        )
+                        ).then(nada => {
+                            location.reload();
+                        })
                     } else if(resp.data.error === 'YaInscripto') {
                         Swal.fire(
                             t('Evento.Atencion'),
