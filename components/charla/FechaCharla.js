@@ -6,6 +6,7 @@ import axios from 'axios';
 const Franja = styled.div`
     padding: 2rem 0;
     text-align: center;
+    padding-top: 8rem;
     p {
         margin: 0;
         font-size: 3rem;

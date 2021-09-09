@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Head from 'next/head';
 import Layout from '../../components/general/Layout';
 import FechaCharla from '../../components/charla/FechaCharla';
@@ -8,12 +8,14 @@ import MasInfo from '../../components/charla/MasInfo';
 import SobreElSpeaker from '../../components/charla/SobreElSpeaker';
 import AgendarReunion from '../../components/charla/AgendarReunion';
 import Inscripcion from '../../components/charla/Inscripcion';
+import VerAgendaCompleta from '../../components/charla/VerAgendaCompleta';
 import GrabacionYoutube from '../../components/charla/GrabacionYoutube';
 import clienteAxios from '../../config/axios';
 import {useRouter} from 'next/router';
 import {withTranslation} from '../../i18n';
 import styled from '@emotion/styled';
 import Swal from 'sweetalert2';
+import {verificarInscripcion} from '../../helpers/helpers';
 
 
 // Generar un enlace por cada slug
@@ -46,6 +48,26 @@ const Charla = ({enlace, t}) => {
     `;
 
     const router = useRouter();
+
+    const [fueInscripto, setFueInscripto] = useState(false);
+
+    useEffect( () => {
+        async function Verificar() {
+            await clienteAxios.get(`/inscripciones/verificar/${enlace.id}`)
+                .then(resp => {
+                    if(resp.data.resp !== null) {
+                        setFueInscripto(true);
+                    } else {
+                        setFueInscripto(false);
+                    }
+                })
+                .catch(err => {
+                    setFueInscripto(false);
+                })
+        }
+        Verificar()
+        // eslint-disable-next-line
+    }, []);
     
     const quieroInscribirme = idCharla => {
 
@@ -53,7 +75,8 @@ const Charla = ({enlace, t}) => {
             charla: enlace.id,
             nombre_charla: enlace.es_titulo,
             zoom_link: enlace.zoom_link,
-            dia_charla: enlace.fecha
+            dia_charla: enlace.fecha,
+            link: `https://latamhospitals.com/${Number(enlace.categoria) === 1 ? 'mastertalk' : 'conferencia'}/${enlace.slug}`
         }
 
         Swal.fire({
@@ -129,15 +152,16 @@ const Charla = ({enlace, t}) => {
                         nombre3={`${enlace.tres_orador_nombre} ${enlace.tres_orador_apellido}`}
                         nombre4={`${enlace.cuatro_orador_nombre} ${enlace.cuatro_orador_apellido}`}
                         funcionBotonInscribirme={quieroInscribirme}
+                        inscripto={fueInscripto}
                     />
                     
                     {(enlace.youtube !== '') ? (
                         <GrabacionYoutube id={enlace.youtube} />
                     ) : (
-                        <FranjaDos duracion={`${enlace.duracion}`} titulo={enlace.es_titulo} horaEvento={enlace.hora} fechaEvento={enlace.fecha} descripcionEvento={enlace.es_breve_descripcion} />
+                        <FranjaDos duracion={`${enlace.duracion}`} titulo={enlace.es_titulo} horaEvento={enlace.hora} fechaEvento={enlace.fecha} descripcionEvento={enlace.es_breve_descripcion}  inscripto={fueInscripto} />
                     )}
 
-                    <MasInfo funcionBotonInscribirme={quieroInscribirme} descripcion={enlace.es_larga_descripcion} />
+                    <MasInfo funcionBotonInscribirme={quieroInscribirme} descripcion={enlace.es_larga_descripcion} inscripto={fueInscripto} />
                     
                     <SobreElSpeaker nombre={`${enlace.orador_nombre} ${enlace.orador_apellido}`} cv={enlace.es_orador_cv} foto={enlace.orador_imagen} linkedin={enlace.orador_linkedin} />
 
@@ -171,7 +195,7 @@ const Charla = ({enlace, t}) => {
                     {
                         (enlace.wpp !== '' && enlace.wpp !== 0) ? <AgendarReunion wpp={enlace.wpp} nombre={enlace.nombre_empresa} /> : null 
                     }
-
+                    <VerAgendaCompleta />
                 </Layout>
             </>
         );

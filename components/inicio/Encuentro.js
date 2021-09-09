@@ -15,6 +15,7 @@ const Fecha = styled.p`
     color: var(--colorPrimario);
     margin: 1rem auto;
     width: 80%;
+    margin-top: 5rem;
 `;
 
 const Redes = styled.div`

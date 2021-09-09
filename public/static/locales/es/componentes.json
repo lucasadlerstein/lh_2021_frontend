@@ -49,7 +49,7 @@
         }
     },
     "Evento": {
-        "SeguroInscribirte": "¿Seguro quiere inscribirse?",
+        "SeguroInscribirte": "Confirme su inscripción",
         "SiInscribirme": "Si, inscríbeme.",
         "Cancelar": "Cancelar",
         "Excelente": "Excelente",

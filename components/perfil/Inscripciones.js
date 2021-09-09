@@ -33,6 +33,13 @@ const Titulo = styled.h2`
     }
 `;
 
+const AunNada = styled.p`
+    color: white;
+    text-align: center;
+    margin: 5rem 0 3rem;
+    font-size: 2rem; 
+`;
+
 const BtnVerAgenda = styled.a`
     width: 100%;
 `;
@@ -69,7 +76,13 @@ const Inscripciones = ({eventos, misInscripciones, t}) => {
                 </TituloBox>
             </Container>
 
-            <FranjaContenido busqueda={''} eventosMostrar={misEventosInscriptos} titulo={''} />
+            {
+                (misEventosInscriptos.length > 0) ? (
+                    <FranjaContenido busqueda={''} eventosMostrar={misEventosInscriptos} titulo={''} />
+                ) : (
+                    <AunNada>{t('Inscripciones.AunNada')}</AunNada>
+                )
+            }
 
             <Link href="/agenda">
                 <BtnVerAgenda className="btn-lh btn-blanco text-center mx-auto mt-5 " style={{maxWidth: '35rem'}} id="certificados">{t('Inscripciones.VerAgendaCompleta')}</BtnVerAgenda>

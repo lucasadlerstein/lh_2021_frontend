@@ -14,13 +14,14 @@
     },
     "Certificados": {
         "Titulo": "MY CERTIFICATES",
-        "AquiPodras": "Aquí podrás descargar y tramitar tus certificados de asistencia a Latam Hospitals.",
+        "AquiPodras": "Todavía no has solicitado ningún certificado. Una vez que finalice tu participación en una conferencia podrás solicitarlo desde aquí.",
         "Pendientes": "PENDING",
         "MisCertificados": "MY CERTIFICATES"
     },
     "Inscripciones": {
         "Titulo": "MY SUBMISSIONS",
-        "VerAgendaCompleta": "See the full agenda"
+        "VerAgendaCompleta": "See the full agenda",
+        "AunNada": "Aún no te has inscripto a ninguna conferencia, hazlo ahora!"
     },
     "Intereses": {
         "Titulo": "MY INTERESTS",

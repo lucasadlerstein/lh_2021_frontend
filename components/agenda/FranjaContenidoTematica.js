@@ -40,10 +40,10 @@ const FranjaContenidoTematica = ({titulo, eventosMostrar, codigoInteres, busqued
 
         if (window.innerWidth > 1600) {
             // setAnchoEvento(30);
-            setAnchoEvento(18);
+            setAnchoEvento(20);
         } else if (window.innerWidth > 1200) {
             // setAnchoEvento(30);
-            setAnchoEvento(23);
+            setAnchoEvento(25);
         } else if (window.innerWidth > 1050) {
             setAnchoEvento(35);
         } else if (window.innerWidth > 991) {
@@ -72,8 +72,8 @@ const FranjaContenidoTematica = ({titulo, eventosMostrar, codigoInteres, busqued
         <>
         {
             (eventosMostrar.length > 0) ? (
-                <div className="pt-5r px-0">
-                    <Titulo className="container">
+                <div className="pt-5r container">
+                    <Titulo>
                         {
                             ListaIntereses.map(interThis => {
                                 if(interThis.COD === titulo) {
@@ -90,8 +90,8 @@ const FranjaContenidoTematica = ({titulo, eventosMostrar, codigoInteres, busqued
                     stopOnHover={true}
                     swipeable={true}
                     interval={3000}
-                    infiniteLoop={true}
-                    autoPlay={true}
+                    // infiniteLoop={true}
+                    // autoPlay={true}
                     transitionTime={1000}
                     // emulateTouch={true}
                     showThumbs={false}

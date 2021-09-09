@@ -96,7 +96,7 @@ const SolapaBlanca = styled.div`
 
 `;
 
-const BannerPrincipal = ({slug, titulo, desc, nombre, nombre2, nombre3, nombre4, logo, empresa, funcionBotonInscribirme, t}) => {
+const BannerPrincipal = ({slug, titulo, desc, nombre, nombre2, nombre3, nombre4, logo, empresa, funcionBotonInscribirme, inscripto, t}) => {
     return (
         <Fondo>
             <Container>
@@ -116,7 +116,13 @@ const BannerPrincipal = ({slug, titulo, desc, nombre, nombre2, nombre3, nombre4,
                                 (nombre4.trim() !== '') ? `, ${nombre4}` : null
                             }
                         </Speaker>
-                        <BotonInscribirme onClick={() => funcionBotonInscribirme(1)} className="btn-lh btn-prim fs-2">{t('Charla.Inscribirme')}</BotonInscribirme>
+                        {
+                            (inscripto) ? (
+                                null
+                            ) : (
+                                <BotonInscribirme onClick={() => funcionBotonInscribirme(1)} className="btn-lh btn-prim fs-2">{t('Charla.Inscribirme')}</BotonInscribirme>
+                            )
+                        }
                     </div>
                     {
                         (logo === '' || logo === null || logo === undefined ) ? null : (

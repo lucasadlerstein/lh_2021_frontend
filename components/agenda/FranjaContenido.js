@@ -41,10 +41,10 @@ const FranjaContenido = ({titulo, eventosMostrar, busqueda}) => {
 
         if (window.innerWidth > 1600) {
             // setAnchoEvento(30);
-            setAnchoEvento(18);
+            setAnchoEvento(25);
         } else if (window.innerWidth > 1200) {
             // setAnchoEvento(30);
-            setAnchoEvento(23);
+            setAnchoEvento(30);
         } else if (window.innerWidth > 1050) {
             setAnchoEvento(35);
         } else if (window.innerWidth > 991) {
@@ -72,22 +72,21 @@ const FranjaContenido = ({titulo, eventosMostrar, busqueda}) => {
         <>
         { (eventosMostrar) ? (eventosMostrar.length !== 0) ? ( 
             <>
-                <div className="pt-5r px-0">
+                <div className="pt-5r container">
                     {
                         (titulo !== '') ? (
-                            <Container>
-                                <Titulo className="">{titulo}</Titulo>
-                            </Container>
+                            <Titulo>{titulo}</Titulo>
                         ) : null
                     }
-                    <CarouselPersonalizado showStatus={false}
-                    showIndicators={indicadores}
+                    <CarouselPersonalizado
+                    showStatus={false}
+                    showIndicators={indicadores && eventosMostrar.length > 6}
                     stopOnHover={true}
                     swipeable={true}
                     interval={3000}
-                    // infiniteLoop={eventosMostrar.length > 3}
-                    infiniteLoop={true}
-                    autoPlay={true}
+                    // infiniteLoop={eventosMostrar.length > 6}
+                    // infiniteLoop={true}
+                    // autoPlay={true}
                     transitionTime={1000}
                     // emulateTouch={true}
                     showThumbs={false}

@@ -20,14 +20,18 @@ const Informacion = styled.div`
     }
 `;
 
-const MasInfo = ({funcionBotonInscribirme, descripcion, t}) => {
+const MasInfo = ({funcionBotonInscribirme, descripcion, inscripto, t}) => {
     return (
         <Fondo className="py-10">
             <Container>
                 <Informacion>    
                     <h2 className="text-white">{t('Charla.QueTemas')}</h2>
                     <p className="text-white fs-2">{descripcion}</p>
-                    <button onClick={() => funcionBotonInscribirme()} className="fs-2 btn-lh btn-sec btn-blanco no-border bor-rad-5" style={{marginTop: '2rem', padding: '1rem 5rem'}}>{t('Charla.Inscribirme')}</button>
+                    {
+                        (!inscripto) ? (
+                            <button onClick={() => funcionBotonInscribirme()} className="fs-2 btn-lh btn-sec btn-blanco no-border bor-rad-5" style={{marginTop: '2rem', padding: '1rem 5rem'}}>{t('Charla.Inscribirme')}</button>
+                        ) : null
+                    }
                 </Informacion>
             </Container>
         </Fondo>

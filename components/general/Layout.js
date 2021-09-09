@@ -15,16 +15,26 @@ const Idiomas = styled.div`
     max-width: fit-content;
     border-bottom-left-radius: 2rem;
     border-bottom-right-radius: 2rem;
-    /* position: fixed; */
-    /* left: 40%; */
-    /* right: 40%; */
+    position: absolute;
+    left: 10%;
+    right: 10%;
+
+    
     img {
-        max-width: 4.5rem;
+        max-width: 3rem;
         transition: all .5s ease;
         &:hover {
             transform: rotate(360deg);
         }
     }
+    @media (min-width: 991px){
+        left: 40%;
+        right: 40%;
+        img {
+            max-width: 4.5rem;
+        }
+    }
+    
     
 `;
 
@@ -35,13 +45,16 @@ const BtnIdioma = styled.button`
     font-size: 2rem;
     transition: all .5s ease;
     font-weight: normal;
-    padding: .5rem 1rem;
+    padding: .5rem ;
     margin:  0 1rem;
     &:hover {
         font-weight: bold;
     }
     &:focus {
         outline: none;
+    }
+    @media (min-width: 768px){
+        padding: .5rem 1rem;
     }
 
 `;
@@ -85,38 +98,38 @@ const Layout = ({children}) => {
                 <meta property="og:site_name" content="LATAM HOSPITALS" />
             </Head>
             <Navegacion />
-            <Idiomas>
-                {
-                    (i18n.language === 'pr') ? (
-                        <>
-                            <BtnIdioma onClick={() => i18n.changeLanguage('es')}>
-                                <img src="img/iconos/es.png" alt="Versión en español" />
-                            </BtnIdioma>
+                <Idiomas>
+                    {
+                        (i18n.language === 'pr') ? (
+                            <>
+                                <BtnIdioma onClick={() => i18n.changeLanguage('es')}>
+                                    <img src="/img/iconos/es.png" alt="Versión en español" />
+                                </BtnIdioma>
+                                <BtnIdioma onClick={() => i18n.changeLanguage('en')}>
+                                    <img src="/img/iconos/en.png" alt="English version" />
+                                </BtnIdioma>
+                            </>
+                        ) : (i18n.language === 'en') ? (
+                            <>
+                                <BtnIdioma onClick={() => i18n.changeLanguage('es')}>
+                                    <img src="/img/iconos/es.png" alt="Versión en español" />
+                                </BtnIdioma>
+                                <BtnIdioma onClick={() => i18n.changeLanguage('pr')}>
+                                    <img src="/img/iconos/pr.png" alt="Portugues version" />
+                                </BtnIdioma>
+                            </>
+                        ) : (
+                            <>
                             <BtnIdioma onClick={() => i18n.changeLanguage('en')}>
-                                <img src="img/iconos/en.png" alt="English version" />
-                            </BtnIdioma>
-                        </>
-                    ) : (i18n.language === 'en') ? (
-                        <>
-                            <BtnIdioma onClick={() => i18n.changeLanguage('es')}>
-                                <img src="img/iconos/es.png" alt="Versión en español" />
+                                <img src="/img/iconos/en.png" alt="English version" />
                             </BtnIdioma>
                             <BtnIdioma onClick={() => i18n.changeLanguage('pr')}>
-                                <img src="img/iconos/pr.png" alt="Portugues version" />
+                                <img src="/img/iconos/pr.png" alt="Portugues version" />
                             </BtnIdioma>
                         </>
-                    ) : (
-                        <>
-                        <BtnIdioma onClick={() => i18n.changeLanguage('en')}>
-                            <img src="img/iconos/en.png" alt="English version" />
-                        </BtnIdioma>
-                        <BtnIdioma onClick={() => i18n.changeLanguage('pr')}>
-                            <img src="img/iconos/pr.png" alt="Portugues version" />
-                        </BtnIdioma>
-                    </>
-                    )
-                }
-            </Idiomas>
+                        )
+                    }
+                </Idiomas>
                 {children}
             <Footer />
         </>

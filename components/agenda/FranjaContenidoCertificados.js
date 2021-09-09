@@ -133,15 +133,15 @@ const FranjaContenidoCertificados = ({titulo, eventosMostrar, t}) => {
         </Head> */}
         {
             (eventosMostrar.length > 0) ? (
-                <div className="pt-5r px-0">
-                    <Titulo className="text-left container">{titulo}</Titulo>
+                <div className="pt-5r container">
+                    <Titulo className="text-left">{titulo}</Titulo>
                     <CarouselPersonalizado showStatus={false}
                     showIndicators={indicadores}
                     stopOnHover={true}
                     swipeable={true}
                     interval={3000}
-                    infiniteLoop={true}
-                    autoPlay={true}
+                    // infiniteLoop={true}
+                    // autoPlay={true}
                     transitionTime={1000}
                     // emulateTouch={true}
                     showThumbs={false}

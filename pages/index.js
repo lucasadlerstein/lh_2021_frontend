@@ -10,11 +10,19 @@ import Alcance from '../components/inicio/Alcance';
 import CuentaRegresiva from '../components/inicio/CuentaRegresiva';
 import QuieroParticipar from '../components/general/QuieroParticipar';
 import Contenido2020 from '../components/agenda/Contenido2020';
+import styled from '@emotion/styled';
 
 import { withTranslation } from '../i18n';
 
+const Iframe = styled.iframe`
+  width: 100%;
+  height: 50rem;
+`;
+
 const Inicio = ({t}) => {
   
+  const meetingID = '75526477432';
+  // https://us04web.zoom.us/j/75526477432?pwd=OC9GYVNVN1pnY1p3d3NXWFVTbzh6QT09
   return ( 
     <>
       <Head>
@@ -24,6 +32,8 @@ const Inicio = ({t}) => {
       </Head>
       <Layout>
         <Encuentro />
+        {/* <Iframe src={`https://zoom.us/wc/${meetingID}/join?prefer=1&un=THVjYXM`} sandbox="allow-forms allow-scripts" allow="microphone; camera; fullscreen"></Iframe> */}
+
         <BannerVideo />
         <Contenido2020 />
         <QueEsLatamHospitals

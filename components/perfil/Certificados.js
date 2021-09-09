@@ -53,6 +53,7 @@ const Certificados = ({eventos, misInscripciones, t}) => {
             // console.log('pendientes ', mCerPend);
             // console.log('pagos ', mCerPagos);
             if(eventos) {
+                const ahora = new Date();
                 eventos.forEach(ev => {
                     let mCerPendNow   = mCerPend.filter(function(e) { return e.charla === ev.id; });
                     let mCerPagNow    = mCerPagos.filter(function(e) { return e.charla === ev.id; });
@@ -66,14 +67,21 @@ const Certificados = ({eventos, misInscripciones, t}) => {
                             po_portada_imagen: ev.po_portada_imagen,
                             po_titulo: ev.po_titulo,
                             id: ev.id,
+                            fecha: ev.fecha,
+                            hora: ev.hora,
                             slug: ev.slug,
                             certificado: mCerPendNow.filter(function(e) { return e.charla === ev.id; })[0]
                         }
-                        if (mCerPendNow.length > 0) {
-                            setMisCertificadosPendientes(misCertificadosPendientes => [...misCertificadosPendientes, objEvCert])
-                        }  else if (mCerPagNow.length > 0) {
-                            setMisCertificadosPagos(misCertificadosPagos => [...misCertificadosPagos, objEvCert])
-                        } 
+                        const evFecha = new Date(`${objEvCert.fecha}T${objEvCert.hora}`);
+                        if(evFecha < ahora) {
+                            console.log('pasado');
+                            // ya empezo
+                            if (mCerPendNow.length > 0) {
+                                setMisCertificadosPendientes(misCertificadosPendientes => [...misCertificadosPendientes, objEvCert])
+                            }  else if (mCerPagNow.length > 0) {
+                                setMisCertificadosPagos(misCertificadosPagos => [...misCertificadosPagos, objEvCert])
+                            } 
+                        }
                     }
                     // if(mCerPend.includes(ev.id)) {
                     //     setMisCertificadosPendientes(misCertificadosPendientes => [...misCertificadosPendientes, ev])
@@ -100,8 +108,8 @@ const Certificados = ({eventos, misInscripciones, t}) => {
 
             </Container>
             {
-                (misCertificadosPagos.length === 0 && misCertificadosPendientes === 0) ? (
-                    <p>{t('Certificados.AquiPodras')}</p>
+                (misCertificadosPagos.length === 0 && misCertificadosPendientes.length === 0) ? (
+                    <p className="container">{t('Certificados.AquiPodras')}</p>
                 ) : (
                     <>
                         <FranjaContenidoCertificados busqueda={''} eventosMostrar={misCertificadosPendientes} titulo={t('Certificados.Pendientes')} />

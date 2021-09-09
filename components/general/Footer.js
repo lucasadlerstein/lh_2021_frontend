@@ -110,7 +110,7 @@ const Footer = () => {
             </FooterPersonalizado>
             <LogosRealizadores>
                 <div>
-                    <p style={{color: 'white'}}>
+                    <p style={{color: 'white', marginBottom: '0'}}>
                         LH DIGITAL LLC
                     </p>
                     {/* <a href="https://www.infoque.com.ar" target="_blank">

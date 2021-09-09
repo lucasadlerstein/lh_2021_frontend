@@ -13,6 +13,7 @@ const Titulo = styled.h1`
     text-transform: uppercase;
     font-size: 3.5rem;
     font-weight: bold;
+    margin-top: 5rem;
 `;
 
 const SubTitulo = styled.p`

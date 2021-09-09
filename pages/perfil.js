@@ -16,6 +16,9 @@ const Titulo = styled.h1`
     text-transform: uppercase;
     font-size: 3.5rem;
     font-weight: bold;
+    @media (max-width: 540px ){
+        margin-top: 2rem;
+    }
 `;
 
 const SubTitulo = styled.p`
@@ -146,6 +149,10 @@ const Formulario = styled.form`
     }
 `;
 
+const NoInscripto = styled.p`
+
+`;
+
 const Perfil = ({t}) => {
 
     const [persona, setPersona] = useState();
@@ -230,12 +237,10 @@ const Perfil = ({t}) => {
                                 </Col>
                             </Row>
                         </Container>
+                        <Inscripciones eventos={eventos} misInscripciones={inscripciones} />
                         {
                             (inscripciones.length > 0) ? (
-                                <>
-                                    <Inscripciones eventos={eventos} misInscripciones={inscripciones} />
-                                    <Certificados eventos={eventos} misInscripciones={inscripciones} />
-                                </>
+                                <Certificados eventos={eventos} misInscripciones={inscripciones} />
                             ) : null
                         }
                         <Intereses persona={persona} />

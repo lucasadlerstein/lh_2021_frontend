@@ -1,5 +1,11 @@
 export const CategoriasListado = [
     {
+        COD: "patro",
+        ES: "PATROCINADAS",
+        PR: "PATROCINADAS",
+        EN: "SPONSORED"
+    },
+    {
         COD: "neuro",
         ES: "NEUROLOGÍA",
         PR: "NEUROLOGIA",

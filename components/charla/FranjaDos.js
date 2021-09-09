@@ -17,7 +17,7 @@ const Dura = styled.p`
     }
 `;
 
-const FranjaDos = ({duracion, titulo, fechaEvento, horaEvento, descripcionEvento, t}) => {
+const FranjaDos = ({duracion, titulo, fechaEvento, horaEvento, descripcionEvento, inscripto, t}) => {
 
     const dias = [
         {
@@ -145,24 +145,27 @@ const FranjaDos = ({duracion, titulo, fechaEvento, horaEvento, descripcionEvento
                     <Dura className="fs-2">{duracion} min</Dura>
                 </Col>
                 <Col xs={12} lg={7} className="text-center">
-                    {/* {
-                        (showCalendar === false) ? (
-                            <button onClick={mostrarCalendario} className="btn-lh btn-prim fs-2 bor-rad-5 no-border" style={{display: 'inline-block'}}>{t('Charla.Calendario')}</button>
-                        ) : (
-                            <>
-                                <Link href={linkGoogle}>
-                                    <a className="btn-lh btn-prim bor-rad-5 no-border m-2" target="_blank" rel="nofollow">Google Calendar</a>
-                                </Link>
-                                <Link href={icsArchivo}>
-                                    <a className="btn-lh btn-prim bor-rad-5 no-border m-2" rel="nofollow">Apple Calendar</a>
-                                </Link>
-                                <button onClick={botonEvento('google')} className="btn-lh btn-prim bor-rad-5 no-border m-2">Apple Calendar</button>
-                                <Link href={linkOutlook}>
-                                    <a className="btn-lh btn-prim bor-rad-5 no-border m-2" target="_blank" rel="nofollow">Outlook Calendar</a>
-                                </Link>
-                            </>
-                        )
-                    } */}
+                    
+                    {
+                        (inscripto) ? (
+                            (showCalendar === false) ? (
+                                <button onClick={mostrarCalendario} className="btn-lh btn-prim fs-2 bor-rad-5 no-border" style={{display: 'inline-block'}}>{t('Charla.Calendario')}</button>
+                            ) : (
+                                <>
+                                    <Link href={linkGoogle}>
+                                        <a className="btn-lh btn-prim bor-rad-5 no-border m-2" target="_blank" rel="nofollow">Google Calendar</a>
+                                    </Link>
+                                    <Link href={icsArchivo}>
+                                        <a className="btn-lh btn-prim bor-rad-5 no-border m-2" rel="nofollow">Apple Calendar</a>
+                                    </Link>
+                                    <button onClick={botonEvento('google')} className="btn-lh btn-prim bor-rad-5 no-border m-2">Apple Calendar</button>
+                                    <Link href={linkOutlook}>
+                                        <a className="btn-lh btn-prim bor-rad-5 no-border m-2" target="_blank" rel="nofollow">Outlook Calendar</a>
+                                    </Link>
+                                </>
+                            )
+                        ) : null
+                    }
                     
                 </Col>
                 <Col xs={12} lg={3} className="text-center">

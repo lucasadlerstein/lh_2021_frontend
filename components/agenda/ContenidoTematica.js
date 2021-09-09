@@ -50,7 +50,7 @@ const ContenidoTematica = ({eventos, busqueda, t}) => {
             agruparPorCategoriaTematica(eventos);
 
             eventos.forEach(ev => {
-                if(Number(ev.categoria) === 1) {
+                if(Number(ev.categoria) === 2) {
                     // agregar a CONFERENCIAS
                     setConferencias(conferencias => [...conferencias, ev])
                 } else {

@@ -68,19 +68,21 @@ const FranjaContenidoAnterior = ({titulo, eventosMostrar}) => {
     return (
         <>
         
-            <div className="pt-5r px-0">
+            <div className="pt-5px-0 container">
                 {
                     (titulo !== '') ? (
-                        <Titulo className="container">{titulo}</Titulo>
+                        <Titulo >{titulo}</Titulo>
                     ) : null
                 }
-                <CarouselPersonalizado showStatus={false}
+                <CarouselPersonalizado
+                
+                showStatus={false}
                 showIndicators={indicadores}
                 stopOnHover={true}
                 swipeable={true}
                 interval={3000}
-                infiniteLoop={true}
-                autoPlay={true}
+                // infiniteLoop={true}
+                // autoPlay={true}
                 transitionTime={1000}
                 // emulateTouch={true}
                 showThumbs={false}
