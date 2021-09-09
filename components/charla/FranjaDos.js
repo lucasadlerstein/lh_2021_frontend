@@ -118,24 +118,15 @@ const FranjaDos = ({duracion, titulo, fechaEvento, horaEvento, descripcionEvento
             duration: [duracion, "minutes"],
         };
 
-        // let fechaInicia = '';
-    
-        // dias.forEach(day => {
-        //     if(day.dia === fechaEvento) {
-        //         fechaInicia = day.start;
-        //     }
-        // });
-
-        console.log(fechaEvento.replaceAll('-', '/'))
-
-        event.start = fechaEvento.replaceAll('-', '') + 'T' + horaEvento.slice(0, 2) + '' + horaEvento.slice(3, 5) + '000300Z';
-        eventOutlook.start = fechaEvento.replaceAll('-', '/') + horaEvento.slice(0, 2) + ':' + horaEvento.slice(3, 5) + ':00 +0000';
+        // event.start = fechaEvento.replaceAll('-', '') + 'T' + horaEvento.slice(0, 2) + '' + horaEvento.slice(3, 5) + '000300Z';
+        // eventOutlook.start = fechaEvento.replaceAll('-', '/') + horaEvento.slice(0, 2) + ':' + horaEvento.slice(3, 5) + ':00 +0000';
+        
+        event.start = `${fechaEvento} ${horaEvento} -0300`;
+        eventOutlook.start =`${fechaEvento} ${horaEvento} -0000`;
 
         setLinkGoogle(google(event));
         setLinkOutlook(outlook(eventOutlook));
         setIcsArchivo(ics(event));
-
-        console.log(event)
     }
 
     return (
@@ -149,7 +140,7 @@ const FranjaDos = ({duracion, titulo, fechaEvento, horaEvento, descripcionEvento
                     {
                         (inscripto) ? (
                             (showCalendar === false) ? (
-                                <button onClick={mostrarCalendario} className="btn-lh btn-prim fs-2 bor-rad-5 no-border" style={{display: 'inline-block'}}>{t('Charla.Calendario')}</button>
+                                <button onClick={() => mostrarCalendario()} className="btn-lh btn-prim fs-2 bor-rad-5 no-border" style={{display: 'inline-block'}}>{t('Charla.Calendario')}</button>
                             ) : (
                                 <>
                                     <Link href={linkGoogle}>
@@ -158,7 +149,7 @@ const FranjaDos = ({duracion, titulo, fechaEvento, horaEvento, descripcionEvento
                                     <Link href={icsArchivo}>
                                         <a className="btn-lh btn-prim bor-rad-5 no-border m-2" rel="nofollow">Apple Calendar</a>
                                     </Link>
-                                    <button onClick={botonEvento('google')} className="btn-lh btn-prim bor-rad-5 no-border m-2">Apple Calendar</button>
+                                    {/* <button onClick={() => botonEvento('google')} className="btn-lh btn-prim bor-rad-5 no-border m-2">Apple Calendar</button> */}
                                     <Link href={linkOutlook}>
                                         <a className="btn-lh btn-prim bor-rad-5 no-border m-2" target="_blank" rel="nofollow">Outlook Calendar</a>
                                     </Link>

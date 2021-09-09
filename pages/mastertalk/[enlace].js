@@ -157,7 +157,11 @@ const Charla = ({enlace, t}) => {
                     {(enlace.youtube !== '') ? (
                         <GrabacionYoutube id={enlace.youtube} />
                     ) : (
-                        <FranjaDos duracion={`${enlace.duracion}`} titulo={enlace.es_titulo} horaEvento={enlace.hora} fechaEvento={enlace.fecha} descripcionEvento={enlace.es_breve_descripcion} inscripto={fueInscripto} />
+                        <FranjaDos duracion={`${enlace.duracion}`} titulo={enlace.es_titulo} horaEvento={enlace.hora} fechaEvento={enlace.fecha} 
+                        descripcionEvento={`${enlace.es_breve_descripcion}
+                        
+                        ${process.env.frontendURL}/${Number(enlace.categoria) === 1 ? 'mastertalk' : 'conferencia'}/${enlace.slug}`}  
+                        inscripto={fueInscripto} />
                     )}
                     
                     <MasInfo funcionBotonInscribirme={quieroInscribirme} descripcion={enlace.es_larga_descripcion} inscripto={fueInscripto} />
