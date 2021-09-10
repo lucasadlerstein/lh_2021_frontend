@@ -123,9 +123,15 @@ const BannerPrincipal = ({slug, titulo, desc, nombre, nombre2, nombre3, nombre4,
                         </Speaker>
                         {
                             (inscripto) ? (
-                                <YaInscripto>
-                                    {t('Charla.YaInscripto')}
-                                </YaInscripto>
+                                <>
+                                    <YaInscripto>
+                                        {t('Charla.YaInscripto')}
+                                    </YaInscripto>
+                                    <Link href="/perfil#inscripciones">
+                                        <a className="btn-lh btn-prim bor-rad-5" style={{padding: '1rem 2rem'}}>
+                                            {t('Charla.VerTodasMisInscripciones')}
+                                        </a>
+                                    </Link>                                </>
                             ) : (
                                 <BotonInscribirme onClick={() => funcionBotonInscribirme(1)} className="btn-lh btn-prim fs-2">{t('Charla.Inscribirme')}</BotonInscribirme>
                             )

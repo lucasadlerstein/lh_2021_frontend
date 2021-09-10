@@ -123,6 +123,12 @@ const Charla = ({enlace, t}) => {
         })
     }
 
+    function convertDateForIos(date) {
+        var arr = date.split(/[- :]/);
+        date = new Date(arr[0], arr[1]-1, arr[2], arr[3], arr[4], arr[5]);
+        return date;
+    }
+
     if (router.isFallback) {
         return (
             <Layout>
@@ -158,7 +164,8 @@ const Charla = ({enlace, t}) => {
                         inscripto={fueInscripto}
                     />
                     
-                    <CuentaRegresiva fechaYHora={new Date(`${enlace.fecha} ${enlace.hora} -0300`)} zoomLink={enlace.zoom_link} />
+                    {/* <CuentaRegresiva fechaYHora={new Date(`${enlace.fecha} ${enlace.hora} -0300`)} zoomLink={enlace.zoom_link} /> */}
+                    <CuentaRegresiva fechaYHora={convertDateForIos(`${enlace.fecha} ${enlace.hora} -0300`)} zoomLink={enlace.zoom_link} />
 
                     {(enlace.youtube !== '') ? (
                         <GrabacionYoutube id={enlace.youtube} />

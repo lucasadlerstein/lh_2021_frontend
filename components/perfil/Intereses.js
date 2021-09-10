@@ -148,7 +148,7 @@ const Intereses = ({persona, t}) => {
                                         id={interes.COD}
                                         onClick={() => clickInteres(interes.COD)}
                                             >   {
-                                                    (i18n.language === 'es' ? interes.ES : i18n.language === 'en' ? interes.EN : interes.PR)
+                                                    (i18n.language === 'es' ? interes.ES : i18n.language === 'en' ? (interes.EN !== '' ? interes.EN : interes.ES ) : (interes.PR !== '' ? interes.PR : interes.ES ))
                                                 }
                                     </InteresInd>
                                 )

@@ -161,7 +161,7 @@ const FranjaContenidoCertificados = ({titulo, eventosMostrar, t}) => {
                                         link={`${process.env.frontendURL}/${Number(ev.categoria) === 1 ? 'mastertalk' : 'conferencia'}/${ev.slug}`}
                                     />
                                     {
-                                        (ev.certificado.certificado === 0) ? (
+                                        (ev.certificado.certificado === 1) ? (
                                             (quieroPagar) ? (
                                                 <div id="boton-pago-certificado"></div>
                                             ) : (
@@ -171,13 +171,13 @@ const FranjaContenidoCertificados = ({titulo, eventosMostrar, t}) => {
                                                     {t('Certificados.Solicitar')}
                                                 </BotonCertificado>
                                             )
-                                        ) : (
+                                        ) : (ev.certificado.certificado === 2) ? (
                                             <BotonCertificado
                                                 onClick={() => descargarCertificado(ev.id)}
                                             >
                                                 {t('Certificados.Descargar')}
                                             </BotonCertificado>
-                                        )
+                                        ) : null
                                     }
                                 </>
                             ))

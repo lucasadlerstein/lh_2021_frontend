@@ -27,6 +27,7 @@
             "Boton": "Inscrever-se"
         },
         "VerGrabacion": "Mira la grabación aqui",
-        "YaInscripto": "Ya estás inscripto a este evento."
+        "YaInscripto": "Ya estás inscripto a este evento.",
+        "VerTodasMisInscripciones": "Ver todas mis inscripciones"
     }
 }

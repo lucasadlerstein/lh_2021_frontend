@@ -40,10 +40,10 @@ const Certificados = ({eventos, misInscripciones, t}) => {
             let mCerPend = [], mCerPagos = [];
             if(misInscripciones) {
                 misInscripciones.forEach(ins => {
-                    if (ins.certificado === 0) {
+                    if (ins.certificado === 1) {
                         mCerPend.push({charla: ins.charlaId, certificado: ins.certificado});
                         // mCerPend.push(ins.charlaId);
-                    } else {
+                    } else if(ins.certificado === 2) {
                         mCerPagos.push({charla: ins.charlaId, certificado: ins.certificado});
                         // mCerPagos.push(ins.charlaId);
                     }
