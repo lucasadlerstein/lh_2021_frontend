@@ -13,6 +13,7 @@ const Titulo = styled.h1`
     text-transform: uppercase;
     font-size: 3.5rem;
     font-weight: bold;
+    margin-top: 5rem;
 `;
 
 const SubTitulo = styled.p`
@@ -100,7 +101,7 @@ const Formulario = styled.form`
     }
 `;
 
-const RecuperarClave = () => {
+const RecuperarClave = ({t}) => {
 
     const router = useRouter();
     const [persona, setPersona] = useState({
@@ -172,7 +173,7 @@ const RecuperarClave = () => {
             .then(respuesta => {
                 console.log(respuesta);
                 if(respuesta.data.transaction === 'done') {
-                    AlertaSwal(t('Swal.Excelente'), t('Swal.PassCambiada'), 'success', 3000);
+                    AlertaSwal(t('Swal.Listo'), t('Swal.PassCambiada'), 'success', 3000);
                     setTimeout(() => {
                         router.push('/login');
                     }, 1000);
@@ -234,4 +235,8 @@ const RecuperarClave = () => {
     );
 }
  
-export default RecuperarClave;
+RecuperarClave.with18nextTranslation = async () => ({
+    namespacesRequired: ['auth'],
+  });
+   
+  export default withTranslation('auth')(RecuperarClave);
