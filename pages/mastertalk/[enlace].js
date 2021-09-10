@@ -4,6 +4,7 @@ import Layout from '../../components/general/Layout';
 import FechaCharla from '../../components/charla/FechaCharla';
 import BannerPrincipal from '../../components/charla/BannerPrincipal';
 import FranjaDos from '../../components/charla/FranjaDos';
+import CuentaRegresiva from '../../components/inicio/CuentaRegresiva';
 import MasInfo from '../../components/charla/MasInfo';
 import SobreElSpeaker from '../../components/charla/SobreElSpeaker';
 import AgendarReunion from '../../components/charla/AgendarReunion';
@@ -153,6 +154,7 @@ const Charla = ({enlace, t}) => {
                         funcionBotonInscribirme={quieroInscribirme}
                         inscripto={fueInscripto}
                     />
+                    <CuentaRegresiva fechaYHora={new Date(`${enlace.fecha} ${enlace.hora} -0300`)} zoomLink={enlace.zoom_link} />
 
                     {(enlace.youtube !== '') ? (
                         <GrabacionYoutube id={enlace.youtube} />

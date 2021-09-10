@@ -7,6 +7,7 @@ import FranjaDos from '../../components/charla/FranjaDos';
 import MasInfo from '../../components/charla/MasInfo';
 import SobreElSpeaker from '../../components/charla/SobreElSpeaker';
 import AgendarReunion from '../../components/charla/AgendarReunion';
+import CuentaRegresiva from '../../components/inicio/CuentaRegresiva';
 import Inscripcion from '../../components/charla/Inscripcion';
 import VerAgendaCompleta from '../../components/charla/VerAgendaCompleta';
 import GrabacionYoutube from '../../components/charla/GrabacionYoutube';
@@ -157,6 +158,8 @@ const Charla = ({enlace, t}) => {
                         inscripto={fueInscripto}
                     />
                     
+                    <CuentaRegresiva fechaYHora={new Date(`${enlace.fecha} ${enlace.hora} -0300`)} zoomLink={enlace.zoom_link} />
+
                     {(enlace.youtube !== '') ? (
                         <GrabacionYoutube id={enlace.youtube} />
                     ) : (
@@ -166,6 +169,7 @@ const Charla = ({enlace, t}) => {
                         ${process.env.frontendURL}/${Number(enlace.categoria) === 1 ? 'mastertalk' : 'conferencia'}/${enlace.slug}`}  
                         inscripto={fueInscripto} />
                     )}
+
 
                     <MasInfo funcionBotonInscribirme={quieroInscribirme} descripcion={enlace.es_larga_descripcion} inscripto={fueInscripto} />
                     

@@ -96,6 +96,11 @@ const SolapaBlanca = styled.div`
 
 `;
 
+const YaInscripto = styled.p`
+    color: greenyellow;
+    font-weight: bold;
+`;
+
 const BannerPrincipal = ({slug, titulo, desc, nombre, nombre2, nombre3, nombre4, logo, empresa, funcionBotonInscribirme, inscripto, t}) => {
     return (
         <Fondo>
@@ -118,7 +123,9 @@ const BannerPrincipal = ({slug, titulo, desc, nombre, nombre2, nombre3, nombre4,
                         </Speaker>
                         {
                             (inscripto) ? (
-                                null
+                                <YaInscripto>
+                                    {t('Charla.YaInscripto')}
+                                </YaInscripto>
                             ) : (
                                 <BotonInscribirme onClick={() => funcionBotonInscribirme(1)} className="btn-lh btn-prim fs-2">{t('Charla.Inscribirme')}</BotonInscribirme>
                             )

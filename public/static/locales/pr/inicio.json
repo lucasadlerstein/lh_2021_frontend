@@ -15,7 +15,8 @@
         "Dias": "días",
         "Horas": "horas",
         "Minutos": "mins",
-        "Segundos": "segs"
+        "Segundos": "segs",
+        "BotonZoom": "Ingresar al evento"
     },
     "QueEsLatam21": {
         "TextoA": "Es una plataforma virtual que une a la Ciencia y la Industria en un ciclo de conferencias y mastertalks contando las novedades de la nueva normalidad en el sector salud.",

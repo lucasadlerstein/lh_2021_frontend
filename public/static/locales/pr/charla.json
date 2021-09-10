@@ -26,6 +26,7 @@
             "Institucion": "Empresa",
             "Boton": "Inscrever-se"
         },
-        "VerGrabacion": "Mira la grabación aqui"
+        "VerGrabacion": "Mira la grabación aqui",
+        "YaInscripto": "Ya estás inscripto a este evento."
     }
 }

@@ -41,27 +41,46 @@ const Fecha = styled.p`
     }
 `;
 
-const CuentaRegresiva = ({t}) => {
+const Zoom = styled.a`
+    border: 2px solid transparent;
+    border-radius: 5rem;
+    padding: 1rem 4rem;
+    transition: all .3s ease;
+    &:hover {
+        border: 2px solid var(--colorPrimario);
+        padding: 1rem 4rem;
+        border-radius: 5rem;
+    }
+    &:focus {
+        outline: none;
+    }
 
-    const Completionist = () => null;
+`;
+
+const CuentaRegresiva = ({fechaYHora, zoomLink, t}) => {
     
     const renderer = ({ days, hours, minutes, seconds, completed }) => {
         if (completed) {
           // Render a complete state
-          return null;
+          return (
+              <Zoom className="btn-lh btn-blanco fs-2" href={zoomLink} target="_blank">
+                  {t('CuentaRegresiva.BotonZoom')}
+              </Zoom>
+          )
         } else {
           // Render a countdown
           return (
-            <p>{days}<span>{t('CuentaRegresiva.Dias')}</span> {hours}<span>{t('CuentaRegresiva.Horas')}</span> {minutes}<span>{t('CuentaRegresiva.Minutos')}</span> {seconds}<span>{t('CuentaRegresiva.Segundos')}</span></p>
+            <>
+                <Fecha>{t('CuentaRegresiva.Titulo')}</Fecha>
+                <p>{days}<span>{t('CuentaRegresiva.Dias')}</span> {hours}<span>{t('CuentaRegresiva.Horas')}</span> {minutes}<span>{t('CuentaRegresiva.Minutos')}</span> {seconds}<span>{t('CuentaRegresiva.Segundos')}</span></p>
+            </>
           );
         }
     };
 
     return (
         <Contenedor className="py-5r">
-            <Fecha>{t('CuentaRegresiva.Titulo')}</Fecha>
-            <Countdown date={1606129200000} renderer={renderer}>
-                {/* <Completionist /> */}
+            <Countdown date={fechaYHora} renderer={renderer}>
             </Countdown>    
         </Contenedor>
     );
