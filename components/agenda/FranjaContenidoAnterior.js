@@ -37,12 +37,12 @@ const FranjaContenidoAnterior = ({titulo, eventosMostrar}) => {
 
         if (window.innerWidth > 1600) {
             // setAnchoEvento(30);
-            setAnchoEvento(25);
+            setAnchoEvento(18);
         } else if (window.innerWidth > 1200) {
             // setAnchoEvento(30);
-            setAnchoEvento(30);
+            setAnchoEvento(23);
         } else if (window.innerWidth > 1050) {
-            setAnchoEvento(40);
+            setAnchoEvento(30);
         } else if (window.innerWidth > 991) {
             setAnchoEvento(40);
         } else if (window.innerWidth > 850) {
@@ -68,10 +68,12 @@ const FranjaContenidoAnterior = ({titulo, eventosMostrar}) => {
     return (
         <>
         
-            <div className="pt-5px-0 container">
+            <div className="pt-5px-0">
                 {
                     (titulo !== '') ? (
-                        <Titulo >{titulo}</Titulo>
+                        <Container>
+                            <Titulo >{titulo}</Titulo>
+                        </Container>
                     ) : null
                 }
                 <CarouselPersonalizado
@@ -81,7 +83,7 @@ const FranjaContenidoAnterior = ({titulo, eventosMostrar}) => {
                 stopOnHover={true}
                 swipeable={true}
                 interval={3000}
-                // infiniteLoop={true}
+                infiniteLoop={true}
                 // autoPlay={true}
                 transitionTime={1000}
                 // emulateTouch={true}
