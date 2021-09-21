@@ -84,7 +84,7 @@ const FranjaContenidoHome = ({titulo, eventosMostrar}) => {
                 stopOnHover={true}
                 swipeable={true}
                 interval={3000}
-                infiniteLoop={true}
+                infiniteLoop={eventosMostrar.length > 7}
                 // autoPlay={true}
                 transitionTime={1000}
                 // emulateTouch={true}
