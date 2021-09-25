@@ -9,6 +9,9 @@ import { Carousel } from 'react-responsive-carousel';
 import {withTranslation, i18n} from '../../i18n';
 import { loadScript } from "@paypal/paypal-js";
 import {AlertaSwal} from '../../helpers/helpers';
+import { PayPalScriptProvider, PayPalButtons, BraintreePayPalButtons } from "@paypal/react-paypal-js";
+import clienteAxios from '../../config/axios';
+import axios from 'axios';
 
 const CarouselPersonalizado = styled(Carousel)`
     .carousel .slide {
@@ -41,12 +44,19 @@ const BotonCertificado = styled.button`
     }
 `;
 
+const ContenedorPago = styled.div`
+    max-width: 750px;
+    margin: 1rem auto;
+`;
+
 const FranjaContenidoCertificados = ({titulo, eventosMostrar, t}) => {
 
     const [indicadores, setIndicadores] = useState(false);
     const [anchoEvento, setAnchoEvento] = useState(false);
-    const [quieroPagar, setQuieroPagar] = useState(false);
+    const [quieroPagar, setQuieroPagar] = useState('');
+    const [pagarID, setPagarID] = useState(null);
     const [persona, setPersona] = useState({});
+    const NUM_CERT_PAGAR = 1;
 
     console.log(eventosMostrar);
 
@@ -62,11 +72,11 @@ const FranjaContenidoCertificados = ({titulo, eventosMostrar, t}) => {
         }
 
         if (window.innerWidth > 1600) {
-            // setAnchoEvento(30);
-            setAnchoEvento(18);
+            setAnchoEvento(30);
+            // setAnchoEvento(18);
         } else if (window.innerWidth > 1200) {
-            // setAnchoEvento(30);
-            setAnchoEvento(23);
+            setAnchoEvento(30);
+            // setAnchoEvento(23);
         } else if (window.innerWidth > 1050) {
             setAnchoEvento(35);
         } else if (window.innerWidth > 991) {
@@ -95,33 +105,69 @@ const FranjaContenidoCertificados = ({titulo, eventosMostrar, t}) => {
         // eslint-disable-next-line
     }, [])
 
-    function solicitarCertificado(charla) {
-        // PAGAR
-        loadScript({
-            "client-id": "test",
-            "data-client-email": persona.email,
-            "data-charla": charla,
-            
-            
-        })
-        .then((paypal) => {
-            paypal.Buttons().render("#boton-pago-certificado");
-        })
-        .catch((err) => {
-            console.error("failed to load the PayPal JS SDK script", err);
-        });
-    
-
-        // Pago exitoso => cambiar en la BDD
-    }
-
     async function descargarCertificado(charla) {
-        await clienteAxios.get(`/certificados/descargar/${i18n.language}/${charla}`)
-            .then(resp => {
+
+
+        // axios({
+        //     url: `${process.env.backendURL}/api/certificados/descargar/${i18n.language}/${charla}`,
+        //     method: 'GET',
+        //     responseType: 'blob',
+        //   }).then((response) => {
+        //       console.log(response)
+        //      const url = window.URL.createObjectURL(new Blob([response.data]));
+        //      const link = document.createElement('a');
+        //      link.href = url;
+        //      link.setAttribute('download', response.data.nombreArchivo);
+        //      document.body.appendChild(link);
+        //      link.click();
+        //   });
+
+
+
+        await clienteAxios.get(`/certificados/descargar/${i18n.language}/${charla}`, { responseType: 'blob' })
+            .then(response => {
+                console.log(response);
+
+                const url = window.URL.createObjectURL(new Blob([response.data]));
+                const link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', 'certificado_latam_hospitals.pdf');
+                document.body.appendChild(link);
+                link.click();
+
                 AlertaSwal(t('Alertas.Excelente'), t('Alertas.CertificadoDescargado'), 'success', 2500);
             })
             .catch(err => {
+                console.log(err);
                 AlertaSwal(t('Alertas.Error'), t('Alertas.NoPudimosDescargar'), 'error', 2500);
+            })
+    }
+
+    const txAprobada = async (data, actions) => {
+        const info = {
+            idCharla: pagarID,
+            orderID: data.orderID
+        }
+        await clienteAxios.put(`/certificados/pagar`, info)
+            .then(resp => {
+                if(resp.data.editado) {
+                    AlertaSwal(t('Alertas.Excelente'), t('Alertas.PagoExito'), 'success', 3500);
+                    setTimeout(() => {
+                        location.reload();
+                    }, 2000);
+                } else {
+                    AlertaSwal(t('Alertas.Excelente'), t('Alertas.NoPudimosGuardarElPagoEnBaseDeDatos'), 'success', 3500);
+                    setTimeout(() => {
+                        location.reload();
+                    }, 2000);
+                }
+            })
+            .catch(err => {
+                console.log(err);
+                AlertaSwal(t('Alertas.Error'), t('Alertas.NoPudimosGuardarElPagoEnBaseDeDatos'), 'error', 3500);
+                setTimeout(() => {
+                    location.reload();
+                }, 2000);
             })
     }
 
@@ -161,28 +207,81 @@ const FranjaContenidoCertificados = ({titulo, eventosMostrar, t}) => {
                                         link={`${process.env.frontendURL}/${Number(ev.categoria) === 1 ? 'mastertalk' : 'conferencia'}/${ev.slug}`}
                                     />
                                     {
-                                        (ev.certificado.certificado === 1) ? (
-                                            (quieroPagar) ? (
-                                                <div id="boton-pago-certificado"></div>
-                                            ) : (
-                                                <BotonCertificado
-                                                    onClick={() => solicitarCertificado(ev.id)}
-                                                >
-                                                    {t('Certificados.Solicitar')}
-                                                </BotonCertificado>
-                                            )
-                                        ) : (ev.certificado.certificado === 2) ? (
+                                        (Number(ev.certificado.certificado) === NUM_CERT_PAGAR) ? (
+                                            <BotonCertificado
+                                                onClick={() => {
+                                                    setQuieroPagar(i18n.language === 'es' ? ev.es_titulo : i18n.language === 'en' ? ev.en_titulo : ev.es_titulo)
+                                                    setPagarID(ev.id)
+                                                    window.location.href = '#abonar'
+                                                }} 
+                                            >
+                                                {t('Certificados.Solicitar')}
+                                            </BotonCertificado>   
+                                        ) : (
                                             <BotonCertificado
                                                 onClick={() => descargarCertificado(ev.id)}
                                             >
                                                 {t('Certificados.Descargar')}
                                             </BotonCertificado>
-                                        ) : null
+                                        )
                                     }
                                 </>
                             ))
                         }
                     </CarouselPersonalizado>
+                    {
+                        (quieroPagar !== '') ? (
+                            <ContenedorPago>
+                            <div id="abonar"></div>
+                            <PayPalScriptProvider options={{ "client-id": process.env.clientID }}>
+                                <p className="mt-5 text-center">
+                                    {t('Certificados.Abone5USD')}
+                                    <br />
+                                    <span className="font-weight-bold">"{quieroPagar}"</span>
+                                </p>
+                                <PayPalButtons
+                                    style={{ color: "blue", shape: "pill", label: "pay", height: 40, margin: '0 auto!important' }}
+                                    // style={{ layout: "horizontal" }}
+                                    createOrder={(data, actions) => {
+                                        return actions.order.create({
+                                            purchase_units: [
+                                                {
+                                                    description: "Latam Hospitals",
+                                                    amount: {
+                                                        currency_code: "USD",
+                                                        value: 5.00,
+                                                        breakdown: {
+                                                        item_total: {
+                                                            currency_code: "USD",
+                                                            value: 5.00
+                                                        }
+                                                        }
+                                                    },
+                                                    
+                                                    name: quieroPagar,
+                                                    unit_amount: {
+                                                    currency_code: "USD",
+                                                    value: 5.00
+                                                    },
+                                                    quantity: "1"
+                                                }
+                                            ]
+                                        });
+                                    }}
+                                    onApprove={(data, actions) => txAprobada(data, actions)}
+                                    onError={ (err) => {
+                                        AlertaSwal(t('Alertas.Error'), `${t('Alertas.NoPudimosRegistrarElPago')}`+<br/>+`${err}`, 'error', 3500)
+                                    }}      
+                                    onCancel={(cancel) => {
+                                        AlertaSwal(t('Alertas.Error'), t('Alertas.ElPagoFueCancelado'), 'error', 3500)
+                                    }}                                          
+                                />
+                            </PayPalScriptProvider>
+                            </ContenedorPago>
+                        ) : null
+                    }
+                    
+
                 </div>
             ) : null
         }

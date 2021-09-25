@@ -480,3 +480,25 @@ img {
   outline: none!important;
 }
 
+
+.paypal-buttons, .paypal-buttons-context-iframe {
+  max-width: 80%!important;
+  width: 80%!important;
+  margin: 1rem auto!important;
+}
+
+.paypal-buttons iframe {
+  margin: 0!important;
+  /* width: 80%; */
+  /* margin: 1rem 3rem!important; */
+}
+
+#abonar {
+  position: absolute;
+  transform: translateY(-50vh);
+}
+
+.paypal-button-container {
+  max-width: 100%!important;
+  margin: 0 auto!important;
+}

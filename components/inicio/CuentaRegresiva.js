@@ -1,7 +1,7 @@
 import React from 'react';
 import Countdown from "react-countdown";
 import styled from '@emotion/styled';
-
+import clienteAxios from '../../config/axios';
 import {withTranslation} from '../../i18n';
 
 const Contenedor = styled.div`
@@ -41,7 +41,7 @@ const Fecha = styled.p`
     }
 `;
 
-const Zoom = styled.a`
+const Zoom = styled.button`
     border: 2px solid transparent;
     border-radius: 5rem;
     padding: 1rem 4rem;
@@ -57,32 +57,61 @@ const Zoom = styled.a`
 
 `;
 
-const CuentaRegresiva = ({fechaYHora, zoomLink, t}) => {
+const CuentaRegresiva = ({fechaYHora, zoomLink, idCharla, t}) => {
+    
+    function mostrarBotonZoom() {
+        const fechaEvento = new Date(fechaYHora);
+        const ahora = Date.now();
+        const diffTime = Math.abs(fechaEvento - ahora);
+        const diffMin = Math.floor(diffTime / (1000 * 60)); 
+        console.log(diffTime + " milisegundos");
+        console.log(diffMin + " minutos");
+        if (diffMin < 15) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    async function ingresarAlEventoBtn(e) {
+        e.preventDefault();
+        await clienteAxios.put(`/certificados/visita/${idCharla}`)
+            .then( resp => {
+                window.open(zoomLink, '_blank').focus();
+            })
+    }
     
     const renderer = ({ days, hours, minutes, seconds, completed }) => {
         if (completed) {
-          // Render a complete state
-          return (
-              <Zoom className="btn-lh btn-blanco fs-2" href={zoomLink} target="_blank">
-                  {t('CuentaRegresiva.BotonZoom')}
-              </Zoom>
-          )
+            // completado
+            <Zoom className="btn-lh btn-blanco fs-2" onClick={(e) => ingresarAlEventoBtn(e)}>
+                {t('CuentaRegresiva.BotonZoom')}
+            </Zoom>
         } else {
-          // Render a countdown
+          // Render countdown
           return (
             <>
                 <Fecha>{t('CuentaRegresiva.Titulo')}</Fecha>
                 <p>{days}<span>{t('CuentaRegresiva.Dias')}</span> {hours}<span>{t('CuentaRegresiva.Horas')}</span> {minutes}<span>{t('CuentaRegresiva.Minutos')}</span> {seconds}<span>{t('CuentaRegresiva.Segundos')}</span></p>
+                {
+                    (mostrarBotonZoom()) ? (
+                        <Zoom className="btn-lh btn-blanco fs-2" onClick={(e) => ingresarAlEventoBtn(e)}>
+                            {t('CuentaRegresiva.BotonZoom')}
+                        </Zoom>
+                    ) : null
+                }
             </>
           );
         }
     };
 
     return (
-        <Contenedor className="py-5r">
-            <Countdown date={fechaYHora} renderer={renderer}>
-            </Countdown>    
-        </Contenedor>
+        <>
+            <Contenedor className="py-5r">
+                <Countdown date={fechaYHora} renderer={renderer}>
+                </Countdown>
+            </Contenedor>
+        </>
     );
 }
  

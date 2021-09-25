@@ -24,7 +24,9 @@
     "Certificados": {
         "Solicitar": "Solicitar certificado",
         "Pagar": "Pagar certificado",
-        "Descargar": "Download"
+        "Descargar": "Download",
+        "BotonDebajo": "Haz clic en el botón debajo para completar el pago",
+        "Abone5USD": "Abone el certificado de U$D 5 para el evento"
     },
     "Tematicas": {
         "Recomendado": "Suggested for",
@@ -38,7 +40,9 @@
         "CertificadoDescargado": "El certificado fue descargado con éxito.",
         "NoPudimosDescargar": "No pudimos descargar su certificado.",
         "PagoExito": "El pago se realizó con éxito.",
-        "PagoError": "No pudimos procesar el pago."
+        "PagoError": "No pudimos procesar el pago.",
+        "ElPagoFueCancelado": "Su pago ha sido cancelado.",
+        "NoPudimosGuardarElPagoEnBaseDeDatos": "No pudimos reflejar el pago."
     },
     "VerAgenda2021": "See agenda 2021"
 }
