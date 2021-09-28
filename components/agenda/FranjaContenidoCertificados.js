@@ -75,7 +75,7 @@ const FranjaContenidoCertificados = ({titulo, eventosMostrar, t}) => {
             setAnchoEvento(30);
             // setAnchoEvento(18);
         } else if (window.innerWidth > 1200) {
-            setAnchoEvento(30);
+            setAnchoEvento(32);
             // setAnchoEvento(23);
         } else if (window.innerWidth > 1050) {
             setAnchoEvento(35);

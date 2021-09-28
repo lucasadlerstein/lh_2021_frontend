@@ -66,11 +66,11 @@ const FranjaContenidoTematica = ({titulo, eventosMostrar, codigoInteres, busqued
         }
 
         if (window.innerWidth > 1600) {
-            // setAnchoEvento(30);
-            setAnchoEvento(20);
+            setAnchoEvento(30);
+            // setAnchoEvento(20);
         } else if (window.innerWidth > 1200) {
-            // setAnchoEvento(30);
-            setAnchoEvento(25);
+            setAnchoEvento(32);
+            // setAnchoEvento(25);
         } else if (window.innerWidth > 1050) {
             setAnchoEvento(35);
         } else if (window.innerWidth > 991) {

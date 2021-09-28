@@ -68,11 +68,11 @@ const FranjaContenido = ({titulo, eventosMostrar, busqueda}) => {
         }
 
         if (window.innerWidth > 1600) {
-            // setAnchoEvento(30);
-            setAnchoEvento(25);
-        } else if (window.innerWidth > 1200) {
-            // setAnchoEvento(30);
             setAnchoEvento(30);
+            // setAnchoEvento(25);
+        } else if (window.innerWidth > 1200) {
+            setAnchoEvento(32);
+            // setAnchoEvento(30);
         } else if (window.innerWidth > 1050) {
             setAnchoEvento(35);
         } else if (window.innerWidth > 991) {

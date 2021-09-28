@@ -36,13 +36,13 @@ const FranjaContenidoAnterior = ({titulo, eventosMostrar}) => {
         }
 
         if (window.innerWidth > 1600) {
-            // setAnchoEvento(30);
-            setAnchoEvento(18);
-        } else if (window.innerWidth > 1200) {
-            // setAnchoEvento(30);
-            setAnchoEvento(23);
-        } else if (window.innerWidth > 1050) {
             setAnchoEvento(30);
+            // setAnchoEvento(18);
+        } else if (window.innerWidth > 1200) {
+            setAnchoEvento(32);
+            // setAnchoEvento(23);
+        } else if (window.innerWidth > 1050) {
+            setAnchoEvento(35);
         } else if (window.innerWidth > 991) {
             setAnchoEvento(40);
         } else if (window.innerWidth > 850) {
