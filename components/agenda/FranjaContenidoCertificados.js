@@ -153,12 +153,12 @@ const FranjaContenidoCertificados = ({titulo, eventosMostrar, t}) => {
                 if(resp.data.editado) {
                     AlertaSwal(t('Alertas.Excelente'), t('Alertas.PagoExito'), 'success', 3500);
                     setTimeout(() => {
-                        location.reload();
+                        window.location.href = window.location.href + '?pago=exito';
                     }, 2000);
                 } else {
                     AlertaSwal(t('Alertas.Excelente'), t('Alertas.NoPudimosGuardarElPagoEnBaseDeDatos'), 'success', 3500);
                     setTimeout(() => {
-                        location.reload();
+                        window.location.href = window.location.href + '?pago=error';
                     }, 2000);
                 }
             })
@@ -166,7 +166,7 @@ const FranjaContenidoCertificados = ({titulo, eventosMostrar, t}) => {
                 console.log(err);
                 AlertaSwal(t('Alertas.Error'), t('Alertas.NoPudimosGuardarElPagoEnBaseDeDatos'), 'error', 3500);
                 setTimeout(() => {
-                    location.reload();
+                    window.location.href = window.location.href + '?pago=notDB';
                 }, 2000);
             })
     }

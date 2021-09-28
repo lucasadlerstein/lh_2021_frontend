@@ -96,6 +96,7 @@ const Layout = ({children}) => {
                 <meta property="og:image" content="\img\Latam_Hospitals_2020_Share.jpg" />
                 <meta property="og:url" content="https://latamhospitals.com" />
                 <meta property="og:site_name" content="LATAM HOSPITALS" />
+                <meta name="facebook-domain-verification" content="qe1gctbieljxzalyr32rn4dlj03wji" />
             </Head>
             <Navegacion />
                 <Idiomas>

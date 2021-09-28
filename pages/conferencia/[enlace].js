@@ -99,7 +99,7 @@ const Charla = ({enlace, t}) => {
                                 t('Evento.InscripcionExito'),
                                 'success'
                             ).then(nada => {
-                                location.reload();
+                                window.location.href = window.location.href + '?inscripcion=exito';
                             })
                         } else if(resp.data.error === 'YaInscripto') {
                             Swal.fire(
@@ -112,12 +112,15 @@ const Charla = ({enlace, t}) => {
                                 t('Evento.Error'),
                                 t('Evento.NoInscripcion'),
                                 'error'
-                            )
+                            ).then(no => {
+                                window.location.href = window.location.href + '?inscripcion=error';
+                            })
 
                         }
                     })
                     .catch(err => {
                         console.log(err)
+                        window.location.href = window.location.href + '?inscripcion=error';
                     })
             }
         })
