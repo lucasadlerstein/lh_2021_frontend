@@ -40,38 +40,38 @@ const Participan = ({t}) => {
                 <Container className="py-5r">
                     <h2 className="text-center mb-5">{t('Instituciones.Titulo.1')}</h2>
                     <Row>
-                        <Col xs={6} md={5} lg={5} className="text-center my-auto mx-auto">
-                            <Imagen75 alt="Merck" src="img/logos/empresas/02_MERCK_logo_Latam_Hospitals-min.png" />
-                        </Col>
-                        <Col xs={6} md={5} lg={5} className="text-center my-auto mx-auto">
-                            <Imagen75 alt="BG Analizadores" src="img/logos/empresas/03_BG_Analizadores_logo_Latam_Hospitals-min.jpg" />
-                        </Col>
-                        <Col xs={6} md={4} lg={4} className="text-center my-auto">
-                            <Imagen75 alt="Diestro - Medical Device Technology" src="img/logos/empresas/04_DIESTRO_logo_Latam_Hospitals-min.png" />
-                        </Col>
-                        <Col xs={6} md={4} lg={4} className="text-center my-auto">
-                            <Imagen75 alt="Siemens Healthineers" src="img/logos/empresas/01_SIEMENS_logo_Latam_Hospitals-min.png" />
-                        </Col>
-                        <Col xs={6} md={4} lg={4} className="text-center my-auto">
-                            <Imagen75 alt="Diagnochile" src="img/logos/empresas/05_DIAGNOCHILE_logo_Latam_Hospitals-min.png" />
-                        </Col>
-                        <Col xs={6} md={4} lg={4} className="text-center my-auto">
-                            <Imagen75 alt="Seido - Consultora Chile" src="img/logos/empresas/06_SEIDO_logo_Latam_Hospitals-min.png" />
-                        </Col>
-                        <Col xs={6} md={4} lg={4} className="text-center my-auto">
-                            <Imagen75 alt="Optimedical" src="img/logos/empresas/logo_optimedical.jpg" />
-                        </Col>
-                        <Col xs={6} md={4} lg={4} className="text-center my-auto">
-                            <Imagen75 alt="NOVA" src="img/logos/empresas/NOVA.png" />
-                        </Col>
-                        <Col xs={6} md={4} lg={4} className="text-center my-auto">
-                            <Imagen75 alt="Sebia" src="img/logos/empresas/sebia.jpg" />
+                        <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
+                            <Imagen75 alt="Snibe" src="img/logos/21/empresas/Empresa_01.jpg" />
                         </Col>
                         <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
-                            <Imagen75 style={{width: '65%'}} alt="Binding Site" src="img/logos/empresas/binding-site-logo.svg" />
+                            <Imagen75 alt="BG ANALIZADORES" src="img/logos/21/empresas/Empresa_02.jpg" />
                         </Col>
                         <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
-                            <Imagen75 style={{width: '65%'}} alt="MindRay" src="img/logos/empresas/mindray.png" />
+                            <Imagen75 alt="MERCK" src="img/logos/21/empresas/Empresa_03.jpg" />
+                        </Col>
+                        <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
+                            <Imagen75 alt="Mindray" src="img/logos/21/empresas/Empresa_04.jpg" />
+                        </Col>
+                        <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
+                            <Imagen75 alt="Exo" src="img/logos/21/empresas/Empresa_05.jpg" />
+                        </Col>
+                        <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
+                            <Imagen75 alt="Nova Biomedical" src="img/logos/21/empresas/Empresa_06.jpg" />
+                        </Col>
+                        <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
+                            <Imagen75 alt="Stamboulian" src="img/logos/21/empresas/Empresa_07.jpg" />
+                        </Col>
+                        <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
+                            <Imagen75 alt="Binding Site" src="img/logos/21/empresas/Empresa_08.jpg" />
+                        </Col>
+                        <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
+                            <Imagen75 alt="Sebia" src="img/logos/21/empresas/Empresa_09.jpg" />
+                        </Col>
+                        <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
+                            <Imagen75 alt="OPTIMedical" src="img/logos/21/empresas/Empresa_10.jpg" />
+                        </Col>
+                        <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
+                            <Imagen75 alt="Bernardo Lew" src="img/logos/21/empresas/Empresa_11.jpg" />
                         </Col>
                     </Row>
                 </Container>
@@ -80,53 +80,54 @@ const Participan = ({t}) => {
                 <Container className="py-5r">
                     <h2 className="text-center mb-5">{t('Instituciones.Titulo.2')}</h2>
                     <Row>
-                        <Col xs={6} md={3} lg={3} className="text-center m-auto">
-                            <img alt="CADIME - Camara de Instituciones de Diagnostico Medico" src="img/logos/camaras/01_CADIME_logo_Latam_Hospitals-min.png" />
+                        <Col xs={6} md={4} lg={4} className="text-center m-auto">
+                            <img alt="ANMAT" src="img/logos/21/camaras/Camaras_Asociaciones_01.jpg" />
+                        </Col>
+                        <Col xs={6} md={4} lg={4} className="text-center m-auto">
+                            <img alt="ALPCML" src="img/logos/21/camaras/Camaras_Asociaciones_02.jpg" />
+                        </Col>
+                        <Col xs={6} md={4} lg={4} className="text-center m-auto">
+                            <img alt="ACC HSO" src="img/logos/21/camaras/Camaras_Asociaciones_03.jpg" />
+                        </Col>
+                        <Col xs={6} md={4} lg={4} className="text-center m-auto">
+                            <img alt="Red Interamericana Informatica de Salud" src="img/logos/21/camaras/Camaras_Asociaciones_04.jpg" />
+                        </Col>
+                        <Col xs={6} md={4} lg={4} className="text-center m-auto">
+                            <img alt="Sociedad Argentina de Diabetes" src="img/logos/21/camaras/Camaras_Asociaciones_05.jpg" />
+                        </Col>
+                        <Col xs={6} md={4} lg={4} className="text-center m-auto">
+                            <img alt="APTM" src="img/logos/21/camaras/Camaras_Asociaciones_06.jpg" />
+                        </Col>
+                        <Col xs={6} md={4} lg={4} className="text-center m-auto">
+                            <img alt="Asociacion medica peruana" src="img/logos/21/camaras/Camaras_Asociaciones_07.jpg" />
+                        </Col>
+                        <Col xs={6} md={4} lg={4} className="text-center m-auto">
+                            <img alt="SAEM" src="img/logos/21/camaras/Camaras_Asociaciones_08.jpg" />
+                        </Col>
+                        <Col xs={6} md={4} lg={4} className="text-center m-auto">
+                            <img alt="SATI" src="img/logos/21/camaras/Camaras_Asociaciones_09.jpg" />
+                        </Col>
+                        <Col xs={6} md={4} lg={4} className="text-center m-auto">
+                            <img alt="ABA" src="img/logos/21/camaras/Camaras_Asociaciones_10.jpg" />
+                        </Col>
+                        <Col xs={6} md={4} lg={4} className="text-center m-auto">
+                            <img alt="ACHA" src="img/logos/21/camaras/Camaras_Asociaciones_11.jpg" />
+                        </Col>
+                        <Col xs={6} md={4} lg={4} className="text-center m-auto">
+                            <img alt="CAPRODI" src="img/logos/21/camaras/Camaras_Asociaciones_12.jpg" />
+                        </Col>
+                        <Col xs={6} md={4} lg={4} className="text-center m-auto">
+                            <img alt="UAPE" src="img/logos/21/camaras/Camaras_Asociaciones_13.jpg" />
+                        </Col>
+                        <Col xs={6} md={4} lg={4} className="text-center m-auto">
+                            <img alt="CALAB" src="img/logos/21/camaras/Camaras_Asociaciones_14.jpg" />
                         </Col>
                         <Col xs={6} md={3} lg={3} className="text-center m-auto">
-                            <img alt="UAPE" src="img/logos/camaras/03_UAPE_logo_Latam_Hospitals-min.png" />
-                        </Col>
-                        <Col xs={6} md={3} lg={3} className="text-center  m-auto">
-                            <img alt="CAPRODI" src="img/logos/camaras/02_CAPRODI_logo_Latam_Hospitals-min.png" />
-                        </Col>
-                        <Col xs={6} md={3} lg={3} className="text-center m-auto">
-                            <img alt="CALAB" src="img/logos/camaras/04_CALAB.png" />
+                            <img alt="FBA" src="img/logos/21/camaras/Camaras_Asociaciones_15.jpg" />
                         </Col>
                     </Row>
                 </Container>
             </div>
-            <div>
-                <Container className="py-5r">
-                    <h2 className="text-center mb-5">{t('Instituciones.Titulo.3')}</h2>
-                    <Row>
-                        <Col xs={6} md={4} lg={4} className="text-center">
-                            <Imagen75 alt="ABA" src="img/logos/instituciones/01_ABA_logo_Latam_Hospitals-min.png" />
-                        </Col>
-                        <Col xs={6} md={4} lg={4} className="text-center">
-                            <Imagen75 alt="CUBRA" src="img/logos/instituciones/02_CUBRA_logo_Latam_Hospitals-min.png" />
-                        </Col>
-                        <Col xs={6} md={4} lg={4} className="text-center">
-                            <Imagen75 alt="FBA" src="img/logos/instituciones/03_FBA_logo_Latam_Hospitals-min.png" />
-                        </Col>
-                        <Col xs={6} md={4} lg={4} className="text-center">
-                            <Imagen75 alt="COFyBCF" src="img/logos/instituciones/04_COFyBCF_logo_Latam_Hospitals-min.png" />
-                        </Col>
-                        <Col xs={6} md={4} lg={4} className="text-center">
-                            <Imagen75 alt="SATI" src="img/logos/instituciones/05_SATI_logo_Latam_Hospitals-min.png" />
-                        </Col>
-                        <Col xs={6} md={4} lg={4} className="text-center">
-                            <Imagen75 alt="SMLC" src="img/logos/instituciones/06_SMLC_logo_Latam_Hospitals-min.png" />
-                        </Col>
-                        <Col xs={6} md={4} lg={4} className="mx-auto text-center my-auto">
-                            <Imagen75 alt="RED INTENSIVA" src="img/logos/instituciones/07_REDINTENSIVA_logo_Latam_Hospitals-min.png" />
-                        </Col>
-                        <Col xs={6} md={4} lg={4} className="mx-auto text-center my-auto">
-                            <Imagen75 alt="ANMAT" src="img/logos/instituciones/Logo_ANMAT.png" />
-                        </Col>
-                    </Row>
-                </Container>
-            </div>
-
             <Fondo>
                 <Container className="py-5r">
                     <h2 className="text-white text-center mb-5">{t('Instituciones.Titulo.4')}</h2>
