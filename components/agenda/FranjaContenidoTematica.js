@@ -132,9 +132,9 @@ const FranjaContenidoTematica = ({titulo, eventosMostrar, codigoInteres, busqued
                                 <EventoNet
                                     // titulo=""
                                     key={ev.id}
-                                    imagen={`${process.env.backendURL}/static/${ev.portada_imagen}`}
+                                    imagen={`${process.env.NEXT_PUBLIC_BACKEND_URL}/static/${ev.portada_imagen}`}
                                     alt={ev.es_titulo}
-                                    link={`${process.env.frontendURL}/${Number(ev.categoria) === 1 ? 'mastertalk' : 'conferencia'}/${ev.slug}`}
+                                    link={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/${Number(ev.categoria) === 1 ? 'mastertalk' : 'conferencia'}/${ev.slug}`}
                                 />
                             ))
                         }

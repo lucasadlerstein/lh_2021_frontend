@@ -109,7 +109,7 @@ const FranjaContenidoCertificados = ({titulo, eventosMostrar, t}) => {
 
 
         // axios({
-        //     url: `${process.env.backendURL}/api/certificados/descargar/${i18n.language}/${charla}`,
+        //     url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/certificados/descargar/${i18n.language}/${charla}`,
         //     method: 'GET',
         //     responseType: 'blob',
         //   }).then((response) => {
@@ -203,10 +203,10 @@ const FranjaContenidoCertificados = ({titulo, eventosMostrar, t}) => {
                                 <>
                                     <EventoNet
                                         // titulo=""
-                                        imagen={`${process.env.backendURL}/static/${i18n.language === 'es' ? ev.portada_imagen : i18n.language === 'en' ? ev.en_portada_imagen : ev.po_portada_imagen}`}
+                                        imagen={`${process.env.NEXT_PUBLIC_BACKEND_URL}/static/${i18n.language === 'es' ? ev.portada_imagen : i18n.language === 'en' ? ev.en_portada_imagen : ev.po_portada_imagen}`}
                                         key={ev.id}
                                         alt={i18n.language === 'es' ? ev.es_titulo : i18n.language === 'en' ? ev.en_titulo : ev.po_titulo}
-                                        link={`${process.env.frontendURL}/${Number(ev.categoria) === 1 ? 'mastertalk' : 'conferencia'}/${ev.slug}`}
+                                        link={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/${Number(ev.categoria) === 1 ? 'mastertalk' : 'conferencia'}/${ev.slug}`}
                                     />
                                     {
                                         (Number(ev.certificado.certificado) === NUM_CERT_PAGAR) ? (
@@ -236,7 +236,7 @@ const FranjaContenidoCertificados = ({titulo, eventosMostrar, t}) => {
                         (quieroPagar !== '') ? (
                             <ContenedorPago>
                             <div id="abonar"></div>
-                            <PayPalScriptProvider options={{ "client-id": process.env.clientID }}>
+                            <PayPalScriptProvider options={{ "client-id": process.env.NEXT_PUBLIC_CLIENT_ID }}>
                                 <p className="mt-5 text-center">
                                     {t('Certificados.Abone5USD')}
                                     <br />

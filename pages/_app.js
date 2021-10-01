@@ -5,12 +5,12 @@ import { appWithTranslation } from '../i18n';
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 
-const initialOptions = {
-  "client-id": process.env.clientID,
-  currency: "USD",
-  intent: "capture",
-  "data-client-token": process.env.secretTKN,
-};
+// const initialOptions = {
+//   "client-id": process.env.clientID,
+//   currency: "USD",
+//   intent: "capture",
+//   "data-client-token": process.env.secretTKN,
+// };
 
 function MyApp({ Component, pageProps }) {
   return (

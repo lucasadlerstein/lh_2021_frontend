@@ -176,7 +176,7 @@ const Charla = ({enlace, t}) => {
                         <FranjaDos duracion={`${enlace.duracion}`} titulo={enlace.es_titulo} horaEvento={enlace.hora} fechaEvento={enlace.fecha} 
                         descripcionEvento={`${enlace.es_breve_descripcion}
                         
-                        ${process.env.frontendURL}/${Number(enlace.categoria) === 1 ? 'mastertalk' : 'conferencia'}/${enlace.slug}`}  
+                        ${process.env.NEXT_PUBLIC_FRONTEND_URL}/${Number(enlace.categoria) === 1 ? 'mastertalk' : 'conferencia'}/${enlace.slug}`}  
                         inscripto={fueInscripto} />
                     )}
 

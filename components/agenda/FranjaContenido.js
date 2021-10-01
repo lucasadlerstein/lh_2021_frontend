@@ -128,7 +128,7 @@ const FranjaContenido = ({titulo, eventosMostrar, busqueda}) => {
                                 <EventoNet
                                     // titulo=""
                                     key={ev.id}
-                                    imagen={`${process.env.backendURL}/static/${i18n.language === 'es' ? ev.portada_imagen : i18n.language === 'en' ? ev.en_portada_imagen : ev.po_portada_imagen}`}
+                                    imagen={`${process.env.NEXT_PUBLIC_BACKEND_URL}/static/${i18n.language === 'es' ? ev.portada_imagen : i18n.language === 'en' ? ev.en_portada_imagen : ev.po_portada_imagen}`}
                                     alt={i18n.language === 'es' ? ev.es_titulo : i18n.language === 'en' ? ev.en_titulo : ev.po_titulo}
                                     link={`/${Number(ev.categoria) === 1 ? 'mastertalk' : 'conferencia'}/${ev.slug}`}
                                 />
