@@ -6,11 +6,10 @@ import Link from 'next/link';
 import EventoNet from './EventoNet';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-import {useRouter} from 'next/router';
 import {withTranslation, i18n} from '../../i18n';
 import { loadScript } from "@paypal/paypal-js";
 import {AlertaSwal} from '../../helpers/helpers';
-import { PayPalButton } from "react-paypal-button-v2";
+import { PayPalScriptProvider, PayPalButtons, BraintreePayPalButtons } from "@paypal/react-paypal-js";
 import clienteAxios from '../../config/axios';
 import axios from 'axios';
 
@@ -58,7 +57,6 @@ const FranjaContenidoCertificados = ({titulo, eventosMostrar, t}) => {
     const [pagarID, setPagarID] = useState(null);
     const [persona, setPersona] = useState({});
     const NUM_CERT_PAGAR = 1;
-    const router = useRouter();
 
     console.log(eventosMostrar);
 
@@ -148,37 +146,31 @@ const FranjaContenidoCertificados = ({titulo, eventosMostrar, t}) => {
     const txAprobada = async (data, actions) => {
         const info = {
             idCharla: pagarID,
-            orderID: data.id
+            orderID: data.orderID
         }
-        console.log('data ', data)
-        console.log('actions ', actions)
-        await clienteAxios.put(`/certificados/pagar`, info)
-            .then(resp => {
-                if(resp.data.editado) {
-                    AlertaSwal(t('Alertas.Excelente'), t('Alertas.PagoExito'), 'success', 3500);
-                    setTimeout(() => {
-                        // window.location.href = window.location.href + '?pago=exito';
-                        router.push('/perfil?pago=exito');
-                        window.location.reload();
-                    }, 2000);
-                } else {
-                    AlertaSwal(t('Alertas.Excelente'), t('Alertas.NoPudimosGuardarElPagoEnBaseDeDatos'), 'success', 3500);
-                    setTimeout(() => {
-                        // window.location.href = window.location.href + '?pago=error';
-                        router.push('/perfil??pago=error');
-                        window.location.reload();
-                    }, 2000);
-                }
-            })
-            .catch(err => {
-                console.log(err);
-                AlertaSwal(t('Alertas.Error'), t('Alertas.NoPudimosGuardarElPagoEnBaseDeDatos'), 'error', 3500);
-                setTimeout(() => {
-                    // window.location.href = window.location.href + '?pago=notDB';
-                    router.push('/perfil??pago=notDB');
-                    window.location.reload();
-                }, 2000);
-            })
+        AlertaSwal(t('Alertas.Excelente'), t('Alertas.PagoExito'), 'success', 3500);
+
+        // await clienteAxios.put(`/certificados/pagar`, info)
+        //     .then(resp => {
+        //         if(resp.data.editado) {
+        //             AlertaSwal(t('Alertas.Excelente'), t('Alertas.PagoExito'), 'success', 3500);
+        //             setTimeout(() => {
+        //                 window.location.href = window.location.href + '?pago=exito';
+        //             }, 2000);
+        //         } else {
+        //             AlertaSwal(t('Alertas.Excelente'), t('Alertas.NoPudimosGuardarElPagoEnBaseDeDatos'), 'success', 3500);
+        //             setTimeout(() => {
+        //                 window.location.href = window.location.href + '?pago=error';
+        //             }, 2000);
+        //         }
+        //     })
+        //     .catch(err => {
+        //         console.log(err);
+        //         AlertaSwal(t('Alertas.Error'), t('Alertas.NoPudimosGuardarElPagoEnBaseDeDatos'), 'error', 3500);
+        //         setTimeout(() => {
+        //             window.location.href = window.location.href + '?pago=notDB';
+        //         }, 2000);
+        //     })
     }
 
     return (
@@ -239,33 +231,55 @@ const FranjaContenidoCertificados = ({titulo, eventosMostrar, t}) => {
                             ))
                         }
                     </CarouselPersonalizado>
-
+                    
                     {
                         (quieroPagar !== '') ? (
                             <ContenedorPago>
                             <div id="abonar"></div>
-                            <p className="mt-5 text-center">
-                                {t('Certificados.Abone5USD')}
-                                <br />
-                                <span className="font-weight-bold">"{quieroPagar}"</span>
-                            </p>
-                            <PayPalButton
-                                amount="5.0"
-                                shippingPreference="NO_SHIPPING"
-                                onSuccess={(details, data) => {
-                                    txAprobada(details, data)
-                                }}
-                                onApprove={(data, actions) => txAprobada(data, actions)}
-                                onError={ (err) => {
-                                    AlertaSwal(t('Alertas.Error'), `${t('Alertas.NoPudimosRegistrarElPago')}`+<br/>+`${err}`, 'error', 3500)
-                                }}      
-                                onCancel={(cancel) => {
-                                    AlertaSwal(t('Alertas.Error'), t('Alertas.ElPagoFueCancelado'), 'error', 3500)
-                                }}                                          
-                                options={{
-                                    clientId: process.env.NEXT_PUBLIC_CLIENT_ID
-                                }}                          
-                            />
+                            <PayPalScriptProvider options={{ "client-id": process.env.clientID }}>
+                                <p className="mt-5 text-center">
+                                    {t('Certificados.Abone5USD')}
+                                    <br />
+                                    <span className="font-weight-bold">"{quieroPagar}"</span>
+                                </p>
+                                <PayPalButtons
+                                    style={{ color: "blue", shape: "pill", label: "pay", height: 40, margin: '0 auto!important' }}
+                                    // style={{ layout: "horizontal" }}
+                                    createOrder={(data, actions) => {
+                                        return actions.order.create({
+                                            purchase_units: [
+                                                {
+                                                    description: `Latam Hospitals${(persona) ? ` - ${persona.apellido} ${persona.nombre}` : ''}`,
+                                                    amount: {
+                                                        currency_code: "USD",
+                                                        value: 5.00,
+                                                        breakdown: {
+                                                        item_total: {
+                                                            currency_code: "USD",
+                                                            value: 5.00
+                                                        }
+                                                        }
+                                                    },
+                                                    
+                                                    name: quieroPagar,
+                                                    unit_amount: {
+                                                    currency_code: "USD",
+                                                    value: 5.00
+                                                    },
+                                                    quantity: "1"
+                                                }
+                                            ]
+                                        });
+                                    }}
+                                    onApprove={(data, actions) => txAprobada(data, actions)}
+                                    onError={ (err) => {
+                                        AlertaSwal(t('Alertas.Error'), `${t('Alertas.NoPudimosRegistrarElPago')}`+<br/>+`${err}`, 'error', 3500)
+                                    }}      
+                                    onCancel={(cancel) => {
+                                        AlertaSwal(t('Alertas.Error'), t('Alertas.ElPagoFueCancelado'), 'error', 3500)
+                                    }}                                          
+                                />
+                            </PayPalScriptProvider>
                             </ContenedorPago>
                         ) : null
                     }

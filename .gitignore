@@ -2,3 +2,4 @@
 /.next
 variables.env
 .env
+.env.local
