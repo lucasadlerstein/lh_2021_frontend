@@ -71,6 +71,13 @@ const Charla = ({enlace, t}) => {
 
     const quieroInscribirme = idCharla => {
 
+        if(!localStorage.getItem('token-21')) {
+            // router.push('/login');
+            // window.open('/login', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');
+            window.open('/login', '_blank');
+            return;
+        } 
+
         const infoInscripcion = {
             charla: enlace.id,
             nombre_charla: enlace.es_titulo,

@@ -35,7 +35,7 @@ const Inicio = ({t}) => {
         <Encuentro />
         {/* <Iframe src={`https://zoom.us/wc/${meetingID}/join?prefer=1&un=THVjYXM`} sandbox="allow-forms allow-scripts" allow="microphone; camera; fullscreen"></Iframe> */}
 
-        <BannerVideo />
+        {/* <BannerVideo /> */}
         <Contenido2021Home />
         <QueEsLatamHospitals
           textoA={t('QueEsLatam21.TextoA')}

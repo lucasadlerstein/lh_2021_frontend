@@ -145,6 +145,39 @@ const FranjaContenidoCertificados = ({titulo, eventosMostrar, t}) => {
             })
     }
 
+    async function compartirCertificado(charla) {
+        let nombreEvento = '';
+        eventosMostrar.forEach(evento => {
+            if(evento.id === charla) {
+                switch (i18n.language) {
+                    case 'es':
+                    case 'ES':
+                        nombreEvento = evento.es_titulo;
+                        break;
+
+                    case 'en':
+                    case 'EN':
+                        nombreEvento = evento.en_titulo;
+                        break;
+
+                    case 'pr':
+                    case 'PR':
+                    case 'po':
+                    case 'PO':
+                        nombreEvento = evento.po_titulo;
+                        break;
+                
+                    default:
+                        nombreEvento = evento.e_titulo;
+                        break;
+                }
+            }
+        })
+        const url = `https://www.linkedin.com/in/lucasadlerstein/edit/certification/new/?isFromA2p=true&issueMonth=10&issueYear=2021&name=${nombreEvento}&organizationId=68864901`;
+        window.open(url, '_blank');
+
+    }
+
     const txAprobada = async (data, actions) => {
         const info = {
             idCharla: pagarID,
@@ -228,11 +261,25 @@ const FranjaContenidoCertificados = ({titulo, eventosMostrar, t}) => {
                                                 {t('Certificados.Solicitar')}
                                             </BotonCertificado>   
                                         ) : (
-                                            <BotonCertificado
-                                                onClick={() => descargarCertificado(ev.id)}
-                                            >
-                                                {t('Certificados.Descargar')}
-                                            </BotonCertificado>
+                                            <>
+                                                <BotonCertificado
+                                                    onClick={() => descargarCertificado(ev.id)}
+                                                >
+                                                    {t('Certificados.Descargar')}
+                                                </BotonCertificado>
+                                                <BotonCertificado
+                                                    className="ml-3"
+                                                    style={{maxHeight: '54px'}}
+                                                    onClick={() => compartirCertificado(ev.id)}
+                                                >
+                                                    <img
+                                                        alt="Compartir en Linkedin"
+                                                        src="img/iconos/share.png"
+                                                        style={{width: '55%'}}
+                                                    />
+                                                </BotonCertificado>
+
+                                            </>
                                         )
                                     }
                                 </>

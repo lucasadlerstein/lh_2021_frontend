@@ -71,7 +71,7 @@ const Layout = ({children}) => {
                 } else {
                     setTimeout(() => {
                         router.push('/login');
-                    }, 5000);
+                    }, 45000);
                 }
             }
         }

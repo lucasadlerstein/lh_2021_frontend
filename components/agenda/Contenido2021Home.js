@@ -21,7 +21,7 @@ const Contenido2021Home = ({t}) => {
             <div className="text-center pb-5"> 
                 <Link href="/agenda">
                     <a className="btn-lh btn-prim bor-rad-5 text-center text-uppercase" style={{padding: '1rem 3rem'}}>
-                        {t('VerAgenda2021')}
+                        {t('VerAgendaCompleta')}
                     </a>
                 </Link>
             </div>
