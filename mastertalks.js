@@ -47,5 +47,16 @@ export const mastertalks2021 = [
         "portadaEN": "Conferencia_AvancesDeLaSaludDigital_EN-min.jpg",
         "portadaPR": "Conferencia_AvancesDeLaSaludDigital_PT-min.jpg",
     },
-
+	{
+        "slug": "mastertalk/aplicacion-de-tecnologia-informatica-en-salud",
+        "portadaES": "Mastertalk_Aplicacion_Tecnologia_Latam_Hospitals_Web_ES-min.jpg",
+        "portadaEN": "Mastertalk_Aplicacion_Tecnologia_Latam_Hospitals_Web_EN-min.jpg",
+        "portadaPR": "Mastertalk_Aplicacion_Tecnologia_Latam_Hospitals_Web_PT-min.jpg",
+    },
+	{
+        "slug": "mastertalk/actualizaciones-en-medicina-del-dolor",
+        "portadaES": "Conferencia_ActualizacionesenMedicinadelDolor_ES-min.jpg",
+        "portadaEN": "Conferencia_ActualizacionesenMedicinadelDolor_EN-min.jpg",
+        "portadaPR": "Conferencia_ActualizacionesenMedicinadelDolor_PT-min.jpg",
+    },
 ]

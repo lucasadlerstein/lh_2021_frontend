@@ -5,15 +5,25 @@ export const camarasInstituciones2021 = [
         "portadaEN": "Conferencia_CovidyDiabetes_EN-min.jpg",
         "portadaPR": "Conferencia_CovidyDiabetes_PT-min.jpg",
     },
-
+	{
+        "slug": "conferencia/regulacion-de-productos-para-diagnostico-in-vitro",
+        "portadaES": "Conferencia_AsuntosRegulatorios_ES-min.jpg",
+        "portadaEN": "Conferencia_AsuntosRegulatorios_EN-min.jpg",
+        "portadaPR": "Conferencia_AsuntosRegulatorios_PT-min.jpg",
+    },
 
     {
         "slug": "mastertalk/marcadores-serologicos-en-posvacunacion-covid-19",
-        "portadaES": "Conferencia_MarcadoresSerologicos_ES-min.jpg",
-        "portadaEN": "Conferencia_MarcadoresSerologicos_EN-min.jpg",
-        "portadaPR": "Conferencia_MarcadoresSerologicos_PT-min.jpg",
+        "portadaES": "Conferencia_Marcadores_Serologicos_ES.jpg",
+        "portadaEN": "Conferencia_Marcadores_Serologicos_EN.jpg",
+        "portadaPR": "Conferencia_Marcadores_Serologicos_PT.jpg",
     },
-
+	{
+        "slug": "conferencia/descubriendo-el-valor-de-las-tecnologias-diagnosticas",
+        "portadaES": "Conferencia_Caprodi_Descubriendo_Tecnologia_Diagnostica_ES-min.jpg",
+        "portadaEN": "Conferencia_Caprodi_Descubriendo_Tecnologia_Diagnostica_EN-min.jpg",
+        "portadaPR": "Conferencia_Caprodi_Descubriendo_Tecnologia_Diagnostica_PT-min.jpg",
+    },
     {
         "slug": "mastertalk/transformacion-digital-para-la-inclusion",
         "portadaES": "Conferencia_Transformaciondigitalparalainclusion_ES-min.jpg",
@@ -49,10 +59,22 @@ export const camarasInstituciones2021 = [
         "portadaPR": "Conferencia_Perfileshormonales_PT-min.jpg",
     },
 
-    {
+    // {
+    //     "slug": "conferencia/aptm-trayectoria-evolucion-desarrollo-1992-2021",
+    //     "portadaES": "Conferencia_APTM_ES-min.jpg",
+    //     "portadaEN": "Conferencia_APTM_EN-min.jpg",
+    //     "portadaPR": "Conferencia_APTM_PT-min.jpg",
+    // },
+	{
         "slug": "conferencia/aptm-trayectoria-evolucion-desarrollo-1992-2021",
         "portadaES": "Conferencia_APTM_ES-min.jpg",
         "portadaEN": "Conferencia_APTM_EN-min.jpg",
         "portadaPR": "Conferencia_APTM_PT-min.jpg",
+    },
+	{
+        "slug": "mastertalk/uape-como-adelantarse-a-los-cambios",
+        "portadaES": "Conferencia_UAPE_ES.jpg",
+        "portadaEN": "Conferencia_UAPE_EN.jpg",
+        "portadaPR": "Conferencia_UAPE_PT.jpg",
     },
 ]
