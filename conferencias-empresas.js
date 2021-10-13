@@ -3,10 +3,10 @@
 export const conferenciasEmpresas2021 = [
 
     {
-        "slug": "conferencia/snibe-sars-cov-2",
-        "portadaES": "Conferencia_SNIBE_ES-min.jpg",
-        "portadaEN": "Conferencia_SNIBE_EN-min.jpg",
-        "portadaPR": "Conferencia_SNIBE_PT-min.jpg",
+        "slug": "conferencia/snibe-inmunidad-humoral",
+        "portadaES": "Conferencia_SNIBE_Inmunidad_Humoral_ES-min.jpg",
+        "portadaEN": "Conferencia_SNIBE_Inmunidad_Humoral_EN-min.jpg",
+        "portadaPR": "Conferencia_SNIBE_Inmunidad_Humoral_PT-min.jpg",
     },
     {
         "slug": "conferencia/conferencia/snibe-experiencia-laboratorio-endocrinologia",
