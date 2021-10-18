@@ -175,7 +175,7 @@ const Charla = ({enlace, t}) => {
                     />
                     
                     {/* <CuentaRegresiva fechaYHora={new Date(`${enlace.fecha} ${enlace.hora} -0300`)} zoomLink={enlace.zoom_link} /> */}
-                    <CuentaRegresiva fechaYHora={convertDateForIos(`${enlace.fecha} ${enlace.hora} -0300`)} zoomLink={enlace.zoom_link} idCharla={enlace.id} />
+                    <CuentaRegresiva fechaYHora={convertDateForIos(`${enlace.fecha} ${enlace.hora} -0300`)} zoomLink={enlace.zoom_link} idCharla={enlace.id} inscripto={fueInscripto} />
 
                     {(enlace.youtube !== '') ? (
                         <GrabacionYoutube id={enlace.youtube} />
