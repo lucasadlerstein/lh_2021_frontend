@@ -67,7 +67,7 @@ const CuentaRegresiva = ({fechaYHora, zoomLink, idCharla, inscripto, t}) => {
         const diffMin = Math.floor(diffTime / (1000 * 60)); 
         // console.log(diffTime + " milisegundos");
         // console.log(diffMin + " minutos");
-        if (diffMin < 30) {
+        if (diffMin < 60) {
             return true;
         } else {
             return false;
