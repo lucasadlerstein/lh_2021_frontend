@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Countdown from "react-countdown";
 import styled from '@emotion/styled';
 import clienteAxios from '../../config/axios';
@@ -40,6 +40,9 @@ const Fecha = styled.p`
     @media (min-width: 768px ){
         font-size: 5rem!important;
     }
+    .mensaje {
+        font-size: 2.5rem!important;
+    }
 `;
 
 const Zoom = styled.button`
@@ -59,11 +62,14 @@ const Zoom = styled.button`
 `;
 
 const CuentaRegresiva = ({fechaYHora, zoomLink, idCharla, inscripto, t}) => {
+
+   
     
     function mostrarBotonZoom() {
         const fechaEvento = new Date(fechaYHora);
         // Mon Oct 18 2021 13:20:00 GMT-0500 (hora estándar de Colombia)
-
+        
+        console.log(fechaEvento);
         const ahora = Date.now();
         const diffTime = Math.abs(fechaEvento - ahora);
         const diffMin = Math.floor(diffTime / (1000 * 60)); 
@@ -85,6 +91,7 @@ const CuentaRegresiva = ({fechaYHora, zoomLink, idCharla, inscripto, t}) => {
     }
     
     const renderer = ({ days, hours, minutes, seconds, completed }) => {
+
         if (completed) {
             // completado
             if(inscripto) {
@@ -94,7 +101,9 @@ const CuentaRegresiva = ({fechaYHora, zoomLink, idCharla, inscripto, t}) => {
                     </Zoom>
                 )
             } else {
-                return null;
+                return (
+                    <h5 className="mensaje" style={{fontSize: '2.5rem', color: 'white'}}>Debes inscribirte al evento primero para acceder al enlace.</h5>
+                );
             }
         } else {
           // Render countdown
@@ -103,7 +112,7 @@ const CuentaRegresiva = ({fechaYHora, zoomLink, idCharla, inscripto, t}) => {
                 <Fecha>{t('CuentaRegresiva.Titulo')}</Fecha>
                 <p>{days}<span>{t('CuentaRegresiva.Dias')}</span> {hours}<span>{t('CuentaRegresiva.Horas')}</span> {minutes}<span>{t('CuentaRegresiva.Minutos')}</span> {seconds}<span>{t('CuentaRegresiva.Segundos')}</span></p>
                 {
-                    (inscripto) ? (
+                    (mostrarBotonZoom() && inscripto) ? (
                         <Zoom className="btn-lh btn-blanco fs-2" onClick={(e) => ingresarAlEventoBtn(e)}>
                             {t('CuentaRegresiva.BotonZoom')}
                         </Zoom>
@@ -117,8 +126,15 @@ const CuentaRegresiva = ({fechaYHora, zoomLink, idCharla, inscripto, t}) => {
     return (
         <>
             <Contenedor className="py-5r">
-                <Countdown date={fechaYHora} renderer={renderer}>
-                </Countdown>
+                {/* <Countdown date={fechaYHora} renderer={renderer}>
+                </Countdown> */}
+                {
+                    (zoomLink !== '' && zoomLink !== undefined) ? (
+                        <Zoom className="btn-lh btn-blanco fs-2" onClick={(e) => ingresarAlEventoBtn(e)}>
+                            {t('CuentaRegresiva.BotonZoom')}
+                        </Zoom>
+                    ) : null
+                }
             </Contenedor>
         </>
     );
