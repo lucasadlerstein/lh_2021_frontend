@@ -84,9 +84,11 @@ const CuentaRegresiva = ({fechaYHora, zoomLink, idCharla, t}) => {
     const renderer = ({ days, hours, minutes, seconds, completed }) => {
         if (completed) {
             // completado
-            <Zoom className="btn-lh btn-blanco fs-2" onClick={(e) => ingresarAlEventoBtn(e)}>
-                {t('CuentaRegresiva.BotonZoom')}
-            </Zoom>
+            return (
+                <Zoom className="btn-lh btn-blanco fs-2" onClick={(e) => ingresarAlEventoBtn(e)}>
+                    {t('CuentaRegresiva.BotonZoom')}
+                </Zoom>
+            )
         } else {
           // Render countdown
           return (
