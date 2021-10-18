@@ -62,12 +62,14 @@ const CuentaRegresiva = ({fechaYHora, zoomLink, idCharla, inscripto, t}) => {
     
     function mostrarBotonZoom() {
         const fechaEvento = new Date(fechaYHora);
+        // Mon Oct 18 2021 13:20:00 GMT-0500 (hora estándar de Colombia)
+
         const ahora = Date.now();
         const diffTime = Math.abs(fechaEvento - ahora);
         const diffMin = Math.floor(diffTime / (1000 * 60)); 
         // console.log(diffTime + " milisegundos");
         // console.log(diffMin + " minutos");
-        if (diffMin < 60) {
+        if (diffMin < 30) {
             return true;
         } else {
             return false;
@@ -101,7 +103,7 @@ const CuentaRegresiva = ({fechaYHora, zoomLink, idCharla, inscripto, t}) => {
                 <Fecha>{t('CuentaRegresiva.Titulo')}</Fecha>
                 <p>{days}<span>{t('CuentaRegresiva.Dias')}</span> {hours}<span>{t('CuentaRegresiva.Horas')}</span> {minutes}<span>{t('CuentaRegresiva.Minutos')}</span> {seconds}<span>{t('CuentaRegresiva.Segundos')}</span></p>
                 {
-                    (mostrarBotonZoom() && inscripto) ? (
+                    (inscripto) ? (
                         <Zoom className="btn-lh btn-blanco fs-2" onClick={(e) => ingresarAlEventoBtn(e)}>
                             {t('CuentaRegresiva.BotonZoom')}
                         </Zoom>

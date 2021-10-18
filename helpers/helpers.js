@@ -84,7 +84,8 @@ export function getLocationAndTimeZone(hora, pais, codigo) {
                 obj: {
                     hora,
                     localizacion: 'Arg/Bra/Chi/Par/Uru',
-                    codigo: 'Arg'
+                    codigo: 'Arg',
+                    diferencia: 0
                 }
             }
     }
