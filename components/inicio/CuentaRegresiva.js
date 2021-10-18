@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import Countdown from "react-countdown";
+import Countdown, {calcTimeDelta} from "react-countdown";
 import styled from '@emotion/styled';
 import clienteAxios from '../../config/axios';
 import {withTranslation} from '../../i18n';
@@ -63,13 +63,18 @@ const Zoom = styled.button`
 
 const CuentaRegresiva = ({fechaYHora, zoomLink, idCharla, inscripto, t}) => {
 
-   
-    
+    const [ahoraState, setAhoraState] = useState(null);
+
+    useEffect(() => {
+
+        const ahoraUTC = new Date();
+        setAhoraState(ahoraUTC.toUTCString())
+
+        // eslint-disable-next-line
+    }, [])
+
     function mostrarBotonZoom() {
         const fechaEvento = new Date(fechaYHora);
-        // Mon Oct 18 2021 13:20:00 GMT-0500 (hora estándar de Colombia)
-        
-        console.log(fechaEvento);
         const ahora = Date.now();
         const diffTime = Math.abs(fechaEvento - ahora);
         const diffMin = Math.floor(diffTime / (1000 * 60)); 
@@ -81,6 +86,7 @@ const CuentaRegresiva = ({fechaYHora, zoomLink, idCharla, inscripto, t}) => {
             return false;
         }
     }
+
 
     async function ingresarAlEventoBtn(e) {
         e.preventDefault();
@@ -126,15 +132,20 @@ const CuentaRegresiva = ({fechaYHora, zoomLink, idCharla, inscripto, t}) => {
     return (
         <>
             <Contenedor className="py-5r">
-                {/* <Countdown date={fechaYHora} renderer={renderer}>
-                </Countdown> */}
+                {/* <Countdown date={fechaYHora} renderer={renderer}> */}
+                {/* </Countdown> */}
                 {
-                    (zoomLink !== '' && zoomLink !== undefined && inscripto) ? (
-                        <Zoom className="btn-lh btn-blanco fs-2" onClick={(e) => ingresarAlEventoBtn(e)}>
-                            {t('CuentaRegresiva.BotonZoom')}
-                        </Zoom>
+                    (zoomLink !== '' && zoomLink !== undefined) ? (
+                        (inscripto) ? (
+                            <Zoom className="btn-lh btn-blanco fs-2" onClick={(e) => ingresarAlEventoBtn(e)}>
+                                {t('CuentaRegresiva.BotonZoom')}
+                            </Zoom>
+                        ) : (
+                            <h5 className="mensaje" style={{fontSize: '2.5rem', color: 'white'}}>Debes inscribirte al evento primero para acceder al enlace.</h5>
+                        )
                     ) : null
                 }
+
             </Contenedor>
         </>
     );
