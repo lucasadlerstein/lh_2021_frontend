@@ -175,17 +175,16 @@ const Charla = ({enlace, t}) => {
                         inscripto={fueInscripto}
                     />
                     
-                    {/* <CuentaRegresiva fechaYHora={new Date(`${enlace.fecha} ${enlace.hora} -0300`)} zoomLink={enlace.zoom_link} /> */}
-                    <CuentaRegresiva fechaYHora={convertDateForIos(`${enlace.fecha} ${enlace.hora} -0300`)} zoomLink={enlace.zoom_link} idCharla={enlace.id} inscripto={fueInscripto} />
 
                     {(enlace.youtube !== '') ? (
                         <GrabacionYoutube id={enlace.youtube} />
                     ) : (
-                        <FranjaDos duracion={`${enlace.duracion}`} titulo={enlace.es_titulo} horaEvento={enlace.hora} fechaEvento={enlace.fecha} 
-                        descripcionEvento={`${enlace.es_breve_descripcion}
-                        
-                        ${process.env.NEXT_PUBLIC_FRONTEND_URL}/${Number(enlace.categoria) === 1 ? 'mastertalk' : 'conferencia'}/${enlace.slug}`}  
-                        inscripto={fueInscripto} />
+                        <>
+                            {/* <CuentaRegresiva fechaYHora={new Date(`${enlace.fecha} ${enlace.hora} -0300`)} zoomLink={enlace.zoom_link} /> */}
+                            <CuentaRegresiva fechaYHora={convertDateForIos(`${enlace.fecha} ${enlace.hora} -0300`)} zoomLink={enlace.zoom_link} idCharla={enlace.id} inscripto={fueInscripto} />
+                            <FranjaDos duracion={`${enlace.duracion}`} titulo={enlace.es_titulo} horaEvento={enlace.hora} fechaEvento={enlace.fecha} descripcionEvento={`${enlace.es_breve_descripcion}
+                            ${process.env.NEXT_PUBLIC_FRONTEND_URL}/${Number(enlace.categoria) === 1 ? 'mastertalk' : 'conferencia'}/${enlace.slug}`} inscripto={fueInscripto} />
+                        </>
                     )}
 
 
