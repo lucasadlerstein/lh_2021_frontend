@@ -129,7 +129,7 @@ const CuentaRegresiva = ({fechaYHora, zoomLink, idCharla, inscripto, t}) => {
                 {/* <Countdown date={fechaYHora} renderer={renderer}>
                 </Countdown> */}
                 {
-                    (zoomLink !== '' && zoomLink !== undefined) ? (
+                    (zoomLink !== '' && zoomLink !== undefined && inscripto) ? (
                         <Zoom className="btn-lh btn-blanco fs-2" onClick={(e) => ingresarAlEventoBtn(e)}>
                             {t('CuentaRegresiva.BotonZoom')}
                         </Zoom>
