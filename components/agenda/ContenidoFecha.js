@@ -44,11 +44,11 @@ const ContenidoFecha = ({eventos, busqueda, t}) => {
     
     return (
         <>
-            <FranjaContenido busqueda={busqueda} eventosMostrar={dia20} titulo={t('Fechas.20')} />
             <FranjaContenido busqueda={busqueda} eventosMostrar={dia21} titulo={t('Fechas.21')} />
             <FranjaContenido busqueda={busqueda} eventosMostrar={dia22} titulo={t('Fechas.22')} />
             <FranjaContenido busqueda={busqueda} eventosMostrar={dia18} titulo={t('Fechas.18')} />
             <FranjaContenido busqueda={busqueda} eventosMostrar={dia19} titulo={t('Fechas.19')} />
+            <FranjaContenido busqueda={busqueda} eventosMostrar={dia20} titulo={t('Fechas.20')} />
         </>
     );
 }
