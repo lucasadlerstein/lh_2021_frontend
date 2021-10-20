@@ -188,10 +188,44 @@ const FranjaContenidoCertificados = ({titulo, eventosMostrar, t}) => {
         await clienteAxios.put(`/certificados/pagar`, info)
             .then(resp => {
                 if(resp.data.editado) {
-                    AlertaSwal(t('Alertas.Excelente'), t('Alertas.PagoExito'), 'success', 3500);
+                    AlertaSwal(t('Alertas.Excelente'), '', 'success', 3500);
                     setTimeout(() => {
                         // window.location.href = window.location.href + '?pago=exito';
                         router.push('/perfil?pago=exito');
+                        window.location.reload();
+                    }, 2000);
+                } else {
+                    AlertaSwal(t('Alertas.Excelente'), '', 'success', 3500);
+                    setTimeout(() => {
+                        // window.location.href = window.location.href + '?pago=error';
+                        router.push('/perfil??pago=error');
+                        window.location.reload();
+                    }, 2000);
+                }
+            })
+            .catch(err => {
+                console.log(err);
+                AlertaSwal(t('Alertas.Error'), '', 'error', 3500);
+                setTimeout(() => {
+                    // window.location.href = window.location.href + '?pago=notDB';
+                    router.push('/perfil??pago=notDB');
+                    window.location.reload();
+                }, 2000);
+            })
+    }
+
+    async function pagarDirecto(id) {
+        const info = {
+            idCharla: id,
+            orderID: 'GRATIS'
+        }
+        await clienteAxios.put(`/certificados/pagar`, info)
+            .then(resp => {
+                if(resp.data.editado) {
+                    AlertaSwal(t('Alertas.Excelente'), t('Alertas.PagoExito'), 'success', 3500);
+                    setTimeout(() => {
+                        // window.location.href = window.location.href + '?pago=exito';
+                        router.push('/perfil?pago=gratis');
                         window.location.reload();
                     }, 2000);
                 } else {
@@ -253,9 +287,13 @@ const FranjaContenidoCertificados = ({titulo, eventosMostrar, t}) => {
                                         (Number(ev.certificado.certificado) === NUM_CERT_PAGAR) ? (
                                             <BotonCertificado
                                                 onClick={() => {
-                                                    setQuieroPagar(i18n.language === 'es' ? ev.es_titulo : i18n.language === 'en' ? ev.en_titulo : ev.es_titulo)
-                                                    setPagarID(ev.id)
-                                                    window.location.href = '#abonar'
+                                                    if(ev.id === 33 || ev.id === 34 || ev.id === 26 || ev.id === 32 || ev.id === 24 || ev.id === 23) {
+                                                        pagarDirecto(ev.id);
+                                                    } else {
+                                                        setQuieroPagar(i18n.language === 'es' ? ev.es_titulo : i18n.language === 'en' ? ev.en_titulo : ev.es_titulo)
+                                                        setPagarID(ev.id)
+                                                        window.location.href = '#abonar'
+                                                    }
                                                 }} 
                                             >
                                                 {t('Certificados.Solicitar')}
