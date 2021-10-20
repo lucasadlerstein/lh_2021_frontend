@@ -92,7 +92,8 @@ const CuentaRegresiva = ({fechaYHora, zoomLink, idCharla, inscripto, t}) => {
         e.preventDefault();
         await clienteAxios.put(`/certificados/visita/${idCharla}`)
             .then( resp => {
-                window.open(zoomLink, '_blank').focus();
+                window.location.href = zoomLink; 
+                // window.open(zoomLink, '_blank').focus();
             })
     }
     
