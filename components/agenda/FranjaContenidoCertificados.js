@@ -335,22 +335,56 @@ const FranjaContenidoCertificados = ({titulo, eventosMostrar, t}) => {
                                 <span className="font-weight-bold">"{quieroPagar}"</span>
                             </p>
                             <PayPalButton
-                                amount="5.0"
+                                amount={5}
                                 shippingPreference="NO_SHIPPING"
                                 onSuccess={(details, data) => {
                                     txAprobada(details, data)
                                 }}
                                 onApprove={(data, actions) => txAprobada(data, actions)}
                                 onError={ (err) => {
+                                    console.log(err)
                                     AlertaSwal(t('Alertas.Error'), `${t('Alertas.NoPudimosRegistrarElPago')}`+<br/>+`${err}`, 'error', 3500)
                                 }}      
                                 onCancel={(cancel) => {
+                                    console.log(cancel)
                                     AlertaSwal(t('Alertas.Error'), t('Alertas.ElPagoFueCancelado'), 'error', 3500)
                                 }}                                          
                                 options={{
                                     clientId: process.env.NEXT_PUBLIC_CLIENT_ID
                                 }}                          
                             />
+                            {/* <div id="smart-button-container">
+                                <div style="text-align: center;">
+                                    <div id="paypal-button-container"></div>
+                                </div>
+                            </div>
+                            <script src="https://www.paypal.com/sdk/js?client-id=ASPJioLKxr0P2RQ35tfRSYVQiN5njf21k7TLmCWgqro97fcmjLcmVtZbEVtTn-atGiq8lCSIFt122RkF&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
+                            <script dangerouslySetInnerHTML={{ __html: `function initPayPalButton() {
+                                paypal.Buttons({
+                                    style: {
+                                    shape: 'pill',
+                                    color: 'blue',
+                                    layout: 'vertical',
+                                    label: 'paypal',
+                                    
+                                    },
+
+                                    createOrder: function(data, actions) {
+                                    return actions.order.create({
+                                        purchase_units: [{"description":"Compra tu certificado ahora","amount":{"currency_code":"USD","value":5}}]
+                                    });
+                                    },
+
+                                    onApprove: function(data, actions) {
+                                        txAprobada(data, actions);
+                                    },
+                                    onError: function(err) {
+                                        AlertaSwal(t('Alertas.Error'), 'Error 0X44522', 'error', 3500)
+                                        console.log(err);
+                                    }
+                                }).render('#paypal-button-container');
+                                }
+                                initPayPalButton();` }} /> */}
                             </ContenedorPago>
                         ) : null
                     }
