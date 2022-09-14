@@ -41,7 +41,7 @@ const Participan = ({t}) => {
                     <h2 className="text-center mb-5">{t('Instituciones.Titulo.1')}</h2>
                     <Row>
                         <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
-                            <Imagen75 alt="Snibe" src="img/logos/21/empresas/Empresa_01.jpg" />
+                            <Imagen75 alt="Wiener Lab Group" src="img/logos/empresas/wiener_lab.png" />
                         </Col>
                         <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
                             <Imagen75 alt="BG ANALIZADORES" src="img/logos/21/empresas/Empresa_02.jpg" />
@@ -73,6 +73,9 @@ const Participan = ({t}) => {
                         <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
                             <Imagen75 alt="Bernardo Lew" src="img/logos/21/empresas/Empresa_11.jpg" />
                         </Col>
+                        <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
+                            <Imagen75 alt="Snibe" src="img/logos/21/empresas/Empresa_01.jpg" />
+                        </Col>
                     </Row>
                 </Container>
             </div>
@@ -80,6 +83,23 @@ const Participan = ({t}) => {
                 <Container className="py-5r">
                     <h2 className="text-center mb-5">{t('Instituciones.Titulo.2')}</h2>
                     <Row>
+                        <Col xs={6} md={4} lg={4} className="text-center m-auto">
+                            <img alt="SNA" src="img/logos/camaras/05_SNA.jpg" />
+                        </Col>
+                        <Col xs={6} md={4} lg={4} className="text-center m-auto">
+                            <img alt="Sociedad brasilera de patologia" src="img/logos/camaras/06_brasilera_patologia.png" />
+                        </Col>
+                        <Col xs={6} md={4} lg={4} className="text-center m-auto">
+                            <img alt="Hospital Italiano" src="img/logos/camaras/08_italiano.jpg" />
+                        </Col>
+                        <Col xs={6} md={4} lg={4} className="text-center m-auto">
+                            <img alt="Cubra" src="img/logos/camaras/09_cubra.jpg" />
+                        </Col>
+                        <Col xs={6} md={4} lg={4} className="text-center m-auto">
+                            <img alt="Programa de Acreditacao e Controle da Qualidade" src="img/logos/camaras/10_pacq.png" />
+                        </Col>
+
+
                         <Col xs={6} md={4} lg={4} className="text-center m-auto">
                             <img alt="ANMAT" src="img/logos/21/camaras/Camaras_Asociaciones_01.jpg" />
                         </Col>

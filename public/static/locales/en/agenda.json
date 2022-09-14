@@ -1,13 +1,14 @@
 {
     "Buscador": "Search by category, profession, specialty, title, speaker",
     "2020": {
-        "Titulo": "WATCH AGAIN THE 2020 CONFERENCES AND MASTERTALKS"
+        "Titulo": "WATCH AGAIN THE 2020 CONFERENCES AND MASTERTALKS",
+        "Titulo21": "WATCH AGAIN THE 2021 CONFERENCES AND MASTERTALKS"
     },
     "Items": {
         "ConfEmpresas": "BUSINESS CONFERENCES",
         "Mastertalks": "MASTERTALKS",
         "Mastertalk": "MASTERTALK",
-        "CamarasInstituciones": "CHAMBERS AND INSTITUTIONS"
+        "CamarasInstituciones": "INSTITUTIONS"
     },
     "Botones": {
         "CambiarFiltro": "Cambiar filtro a fecha o temática",

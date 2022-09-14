@@ -19,13 +19,13 @@ const Contenido2021Home = ({t}) => {
     return (
         <div className="py-5r">
             <div className="text-center pb-5"> 
-                <Link href="/agenda">
-                    <a className="btn-lh btn-prim bor-rad-5 text-center text-uppercase" style={{padding: '1rem 3rem'}}>
+                <Link href="https://2021.latamhospitals.com/agenda">
+                    <a target="_blank" className="btn-lh btn-prim bor-rad-5 text-center text-uppercase" style={{padding: '1rem 3rem'}}>
                         {t('VerAgendaCompleta')}
                     </a>
                 </Link>
             </div>
-            {/* <Titulo className="text-center">{t('2020.Titulo')}</Titulo> */}
+            <Titulo className="text-center">{t('2020.Titulo21')}</Titulo>
             
             <FranjaContenidoHome eventosMostrar={conferenciasEmpresas2021} titulo={t('Items.ConfEmpresas')} />
             <FranjaContenidoHome eventosMostrar={mastertalks2021} titulo={t('Items.Mastertalks')} />

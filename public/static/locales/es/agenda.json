@@ -1,13 +1,14 @@
 {
     "Buscador": "Busque por rubro, especialidad, profesión, título, speaker",
     "2020": {
-        "Titulo": "REVIVE LAS CONFERENCIAS Y MASTERTALKS DEL 2020"
+        "Titulo": "REVIVE LAS CONFERENCIAS Y MASTERTALKS DEL 2020",
+        "Titulo21": "REVIVE LAS CONFERENCIAS Y MASTERTALKS DEL 2021"
     },
     "Items": {
         "ConfEmpresas": "CONFERENCIAS DE EMPRESAS",
         "Mastertalks": "MASTERTALKS",
         "Mastertalk": "MASTERTALK",
-        "CamarasInstituciones": "CÁMARAS E INSTITUCIONES"
+        "CamarasInstituciones": "INSTITUCIONES"
     },
     "Botones": {
         "CambiarFiltro": "Cambiar filtro a fecha o temática",

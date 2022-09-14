@@ -44,7 +44,7 @@ const Alcance = ({t}) => {
                     <h2 className="mb-1">{t('Alcance.Titulo')}</h2>
                     <Subtitulo>{t('Alcance.Subtitulo')}</Subtitulo>
                     <Numero>
-                        <p>+18.000.000</p>
+                        <p>+6.000</p>
                         <span>{t('Alcance.Personas')}</span>
                     </Numero>
                     <Link href="/agenda">
