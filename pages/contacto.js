@@ -9,6 +9,8 @@ import clienteAxios from '../config/axios';
 import { withTranslation } from '../i18n';
 import {useRouter} from 'next/router';
 
+
+
 const Titulo = styled.h1`
     text-transform: uppercase;
     font-size: 3.5rem;
