@@ -4,6 +4,7 @@ import {withTranslation} from '../../i18n';
 
 const ContenidoFecha = ({eventos, busqueda, t}) => {
 
+    const [dia17, setDia17] = useState([]);
     const [dia18, setDia18] = useState([]);
     const [dia19, setDia19] = useState([]);
     const [dia20, setDia20] = useState([]);
@@ -15,15 +16,17 @@ const ContenidoFecha = ({eventos, busqueda, t}) => {
         async function dividirEventos() {
             // vaciarStates()
             await eventos.forEach(ev => {
-                if(ev.fecha === '2021-10-18') {
+                if(ev.fecha === '2022-10-17') {
+                    setDia17(dia17 => [...dia17, ev ]);
+                } else if(ev.fecha === '2022-10-18') {
                     setDia18(dia18 => [...dia18, ev ]);
-                } else if(ev.fecha === '2021-10-19') {
+                } else if(ev.fecha === '2022-10-19') {
                     setDia19(dia19 => [...dia19, ev ])
-                } else if(ev.fecha === '2021-10-20') {
+                } else if(ev.fecha === '2022-10-20') {
                     setDia20(dia20 => [...dia20, ev ])
-                } else if(ev.fecha === '2021-10-21') {
+                } else if(ev.fecha === '2022-10-21') {
                     setDia21(dia21 => [...dia21, ev ])
-                } else if(ev.fecha === '2021-10-22') {
+                } else if(ev.fecha === '2022-10-22') {
                     setDia22(dia22 => [...dia22, ev ])
                 }
             })
@@ -32,6 +35,7 @@ const ContenidoFecha = ({eventos, busqueda, t}) => {
             dividirEventos();
         }
         function vaciarStates() {
+            setDia17([]);
             setDia18([]);
             setDia19([]);
             setDia20([]);
@@ -44,6 +48,7 @@ const ContenidoFecha = ({eventos, busqueda, t}) => {
     
     return (
         <>
+            <FranjaContenido busqueda={busqueda} eventosMostrar={dia17} titulo={t('Fechas.17')} />
             <FranjaContenido busqueda={busqueda} eventosMostrar={dia18} titulo={t('Fechas.18')} />
             <FranjaContenido busqueda={busqueda} eventosMostrar={dia19} titulo={t('Fechas.19')} />
             <FranjaContenido busqueda={busqueda} eventosMostrar={dia20} titulo={t('Fechas.20')} />
