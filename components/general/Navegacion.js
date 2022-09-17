@@ -152,9 +152,7 @@ const Navegacion = ({t}) => {
                                 </DropdownToggle>
                                 <DropdownMenu right>
                                     <DropdownItem>
-                                        <Link href="https://2021.latamhospitals.com" target="_blank">
-                                            <MenuB className="nav-link text-center">{t('Navegacion.Ed2021')}</MenuB>
-                                        </Link>
+                                        <MenuB href="https://2021.latamhospitals.com"  target="_blank" className="nav-link text-center">{t('Navegacion.Ed2021')}</MenuB>
                                     </DropdownItem>
                                     <DropdownItem>
                                         <MenuB href="https://2020.latamhospitals.com" target="_blank" className="nav-link text-center">{t('Navegacion.Ed2020')}</MenuB>
