@@ -90,6 +90,9 @@ const Participan = ({t}) => {
                             <img alt="Sociedad brasilera de patologia" src="img/logos/camaras/06_brasilera_patologia.png" />
                         </Col>
                         <Col xs={6} md={4} lg={4} className="text-center m-auto">
+                            <img alt="Sociedad Argentina de Hematología" src="img/logos/camaras/07_sociedad_hematologia.png" />
+                        </Col>
+                        <Col xs={6} md={4} lg={4} className="text-center m-auto">
                             <img alt="Hospital Italiano" src="img/logos/camaras/08_italiano.jpg" />
                         </Col>
                         <Col xs={6} md={4} lg={4} className="text-center m-auto">
