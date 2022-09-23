@@ -83,5 +83,11 @@ export const CategoriasListado = [
         PR: "DIABETES",
         EN: "DIABETES"
     },
+    {
+        COD: "blockch",
+        ES: "BLOCKCHAIN",
+        PR: "BLOCKCHAIN",
+        EN: "BLOCKCHAIN"
+    },
 
 ];
