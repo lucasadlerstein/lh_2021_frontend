@@ -99,7 +99,7 @@ const Participan = ({t}) => {
                             <img alt="Cubra" src="img/logos/camaras/09_cubra.jpg" />
                         </Col>
                         <Col xs={6} md={4} lg={4} className="text-center m-auto">
-                            <img alt="Programa de Acreditacao e Controle da Qualidade" src="img/logos/camaras/10_pacq.png" />
+                            <img alt="Programa de Acreditacao e Controle da Qualidade" src="img/logos/camaras/10_pacq_nuevo.png" />
                         </Col>
 
 
