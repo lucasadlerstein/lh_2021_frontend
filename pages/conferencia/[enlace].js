@@ -160,14 +160,19 @@ const Charla = ({enlace, t}) => {
         return (
             <>
                 <Head>
-                    <title>{enlace.es_titulo} | Latam Hospitals</title>
+                    <title>{(i18n.language === 'es') ? enlace.es_titulo : (i18n.language === 'en') ? enlace.en_titulo : enlace.po_titulo} | Latam Hospitals</title>
                     <meta name="description" content={enlace.es_breve_descripcion} />
                     <meta name="keywords" content={`latam hospitals, conferencia, latam, hospitals, master talk, mastertalk, salud, ${enlace.orador_nombre} ${enlace.orador_apellido}, ${enlace.es_titulo}`} />
                 </Head>
                 <Layout>
                     <FechaCharla fecha={enlace.fecha} hora={enlace.hora.slice(0, -3)} />
     
-                    <BannerPrincipal slug={enlace.slug} titulo={enlace.es_titulo} desc={enlace.es_breve_descripcion} nombre={`${enlace.orador_nombre} ${enlace.orador_apellido}`} logo={enlace.logo_empresa} empresa={enlace.nombre_empresa}
+                    <BannerPrincipal
+                        slug={enlace.slug}
+                        titulo={(i18n.language === 'es') ? enlace.es_titulo : (i18n.language === 'en') ? enlace.en_titulo : enlace.po_titulo}
+                        desc={(i18n.language === 'es') ? enlace.es_breve_descripcion : (i18n.language === 'en') ? enlace.en_breve_descripcion : enlace.po_breve_descripcion}
+                        nombre={`${enlace.orador_nombre} ${enlace.orador_apellido}`}
+                        logo={enlace.logo_empresa} empresa={enlace.nombre_empresa}
                         nombre2={`${enlace.dos_orador_nombre} ${enlace.dos_orador_apellido}`}
                         nombre3={`${enlace.tres_orador_nombre} ${enlace.tres_orador_apellido}`}
                         nombre4={`${enlace.cuatro_orador_nombre} ${enlace.cuatro_orador_apellido}`}
@@ -182,30 +187,35 @@ const Charla = ({enlace, t}) => {
                         <>
                             {/* <CuentaRegresiva fechaYHora={new Date(`${enlace.fecha} ${enlace.hora} -0300`)} zoomLink={enlace.zoom_link} /> */}
                             <CuentaRegresiva fechaYHora={convertDateForIos(`${enlace.fecha} ${enlace.hora} -0300`)} zoomLink={enlace.zoom_link} idCharla={enlace.id} inscripto={fueInscripto} />
-                            <FranjaDos duracion={`${enlace.duracion}`} titulo={enlace.es_titulo} horaEvento={enlace.hora} fechaEvento={enlace.fecha} descripcionEvento={`${enlace.es_breve_descripcion}
-                            ${process.env.NEXT_PUBLIC_FRONTEND_URL}/${Number(enlace.categoria) === 1 ? 'mastertalk' : 'conferencia'}/${enlace.slug}`} inscripto={fueInscripto} />
-                        </>
+                            <FranjaDos
+                                duracion={`${enlace.duracion}`}
+                                titulo={(i18n.language === 'es') ? enlace.es_titulo : (i18n.language === 'en') ? enlace.en_titulo : enlace.po_titulo}
+                                horaEvento={enlace.hora} fechaEvento={enlace.fecha}
+                                descripcionEvento={`${(i18n.language === 'es') ? enlace.es_breve_descripcion : (i18n.language === 'en') ? enlace.en_breve_descripcion : enlace.po_breve_descripcion} ${process.env.NEXT_PUBLIC_FRONTEND_URL}/${Number(enlace.categoria) === 1 ? 'mastertalk' : 'conferencia'}/${enlace.slug}`}
+                                inscripto={fueInscripto}
+                            />                        </>
                     )}
 
 
-                    <MasInfo funcionBotonInscribirme={quieroInscribirme} descripcion={enlace.es_larga_descripcion} inscripto={fueInscripto} />
+                    <MasInfo funcionBotonInscribirme={quieroInscribirme} descripcion={(i18n.language === 'es') ? enlace.es_larga_descripcion : (i18n.language === 'en') ? enlace.en_larga_descripcion : enlace.po_larga_descripcion} inscripto={fueInscripto} />
                     
-                    <SobreElSpeaker nombre={`${enlace.orador_nombre} ${enlace.orador_apellido}`} cv={enlace.es_orador_cv} foto={enlace.orador_imagen} linkedin={enlace.orador_linkedin} />
+                    <SobreElSpeaker nombre={`${enlace.orador_nombre} ${enlace.orador_apellido}`} cv={(i18n.language === 'es') ? enlace.es_orador_cv : (i18n.language === 'en') ? enlace.en_orador_cv : enlace.po_orador_cv} foto={enlace.orador_imagen} linkedin={enlace.orador_linkedin} />
 
                     {
                         (enlace.dos_orador_nombre !== '' && enlace.dos_orador_nombre !== null) ? (
                             <>
                                 <FranjaBlanca></FranjaBlanca>
-                                <SobreElSpeaker nombre={`${enlace.dos_orador_nombre} ${enlace.dos_orador_apellido}`} cv={enlace.dos_es_orador_cv} foto={enlace.dos_orador_imagen} linkedin={enlace.dos_orador_linkedin} />
+                                <SobreElSpeaker nombre={`${enlace.dos_orador_nombre} ${enlace.dos_orador_apellido}`} cv={(i18n.language === 'es') ? enlace.dos_es_orador_cv : (i18n.language === 'en') ? enlace.dos_en_orador_cv : enlace.dos_po_orador_cv} foto={enlace.dos_orador_imagen} linkedin={enlace.dos_orador_linkedin} />
                             </>
                         ) : null
                     }
 
-                    {
+
+{
                         (enlace.tres_orador_nombre !== '' && enlace.tres_orador_nombre !== null) ? (
                             <>
                                 <FranjaBlanca></FranjaBlanca>
-                                <SobreElSpeaker nombre={`${enlace.tres_orador_nombre} ${enlace.tres_orador_apellido}`} cv={enlace.tres_es_orador_cv} foto={enlace.tres_orador_imagen} linkedin={enlace.tres_orador_linkedin} />
+                                <SobreElSpeaker nombre={`${enlace.tres_orador_nombre} ${enlace.tres_orador_apellido}`} cv={(i18n.language === 'es') ? enlace.tres_es_orador_cv : (i18n.language === 'en') ? enlace.tres_en_orador_cv : enlace.tres_po_orador_cv} foto={enlace.tres_orador_imagen} linkedin={enlace.tres_orador_linkedin} />
                             </>
                         ) : null
                     }
@@ -214,7 +224,7 @@ const Charla = ({enlace, t}) => {
                         (enlace.cuatro_orador_nombre !== '' && enlace.cuatro_orador_nombre !== null) ? (
                             <>
                                 <FranjaBlanca></FranjaBlanca>
-                                <SobreElSpeaker nombre={`${enlace.cuatro_orador_nombre} ${enlace.cuatro_orador_apellido}`} cv={enlace.cuatro_es_orador_cv} foto={enlace.cuatro_orador_imagen} linkedin={enlace.cuatro_orador_linkedin} />
+                                <SobreElSpeaker nombre={`${enlace.cuatro_orador_nombre} ${enlace.cuatro_orador_apellido}`} cv={(i18n.language === 'es') ? enlace.cuatro_es_orador_cv : (i18n.language === 'en') ? enlace.cuatro_en_orador_cv : enlace.cuatro_po_orador_cv} foto={enlace.cuatro_orador_imagen} linkedin={enlace.cuatro_orador_linkedin} />
                             </>
                         ) : null
                     }

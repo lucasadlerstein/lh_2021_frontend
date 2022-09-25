@@ -371,20 +371,20 @@ const EventoIndividualPremium = ({t, evento}) => {
                         (
                             (evento.orador_imagen === null || evento.orador_imagen === '') ? null : (
                                 <FotoOrador>
-                                    <img src={`https://p.api.latamhospitals.com/static/${evento.orador_imagen}`} alt={evento.orador_nombre + ' ' + evento.orador_apellido} />
+                                    <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/static/${evento.orador_imagen}`} alt={evento.orador_nombre + ' ' + evento.orador_apellido} />
                                     {
                                         (evento.dos_orador_imagen === null || evento.dos_orador_imagen === '') ? null : (
-                                            <img src={`https://p.api.latamhospitals.com/static/${evento.dos_orador_imagen}`} className="m-3" alt={evento.dos_orador_nombre + ' ' + evento.dos_orador_apellido} />
+                                            <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/static/${evento.dos_orador_imagen}`} className="m-3" alt={evento.dos_orador_nombre + ' ' + evento.dos_orador_apellido} />
                                         )
                                     }
                                     {
                                         (evento.tres_orador_imagen === null || evento.tres_orador_imagen === '') ? null : (
-                                            <img src={`https://p.api.latamhospitals.com/static/${evento.tres_orador_imagen}`} alt={evento.tres_orador_nombre + ' ' + evento.tres_orador_apellido} />
+                                            <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/static/${evento.tres_orador_imagen}`} alt={evento.tres_orador_nombre + ' ' + evento.tres_orador_apellido} />
                                         )
                                     }
                                     {
                                         (evento.cuatro_orador_imagen === null || evento.cuatro_orador_imagen === '') ? null : (
-                                            <img src={`https://p.api.latamhospitals.com/static/${evento.cuatro_orador_imagen}`} className="m-3" alt={evento.cuatro_orador_nombre + ' ' + evento.cuatro_orador_apellido} />
+                                            <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/static/${evento.cuatro_orador_imagen}`} className="m-3" alt={evento.cuatro_orador_nombre + ' ' + evento.cuatro_orador_apellido} />
                                         )
                                     }
                                 </FotoOrador>
@@ -392,7 +392,7 @@ const EventoIndividualPremium = ({t, evento}) => {
                             
                             
                         ) : (
-                            <Logo src={`https://p.api.latamhospitals.com/static/${evento.logo_empresa}`} alt={evento.nombre_empresa} />
+                            <Logo src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/static/${evento.logo_empresa}`} alt={evento.nombre_empresa} />
                         )
                     }
                 </Col>

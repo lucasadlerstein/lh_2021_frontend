@@ -140,7 +140,7 @@ const BannerPrincipal = ({slug, titulo, desc, nombre, nombre2, nombre3, nombre4,
                     {
                         (logo === '' || logo === null || logo === undefined ) ? null : (
                             <SolapaBlanca>
-                                <LogoEmpresa src={`https://p.api.latamhospitals.com/static/${logo}`} alt={empresa} />
+                                <LogoEmpresa src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/static/${logo}`} alt={empresa} />
                             </SolapaBlanca>
                         )
                     }

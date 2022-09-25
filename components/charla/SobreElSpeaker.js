@@ -63,7 +63,7 @@ const SobreElSpeaker = ({nombre, cv, linkedin, foto}) => {
                         <Col xs={12} lg={6}>
                             {
                                 (foto !== null && foto !== undefined && foto !== '') ? (
-                                    <ImagenOrador src={`https://p.api.latamhospitals.com/static/${foto}`} alt={nombre} />
+                                    <ImagenOrador src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/static/${foto}`} alt={nombre} />
                                 ) : null
                             }
                         </Col>
