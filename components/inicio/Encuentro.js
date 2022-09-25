@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import Link from 'next/link';
 import {Container} from 'reactstrap';
 import styled from '@emotion/styled';
 import { withTranslation } from '../../i18n';
@@ -74,6 +75,7 @@ const Encuentro = ({t}) => {
                     <img src="/img/logos/whatsapp-blue.svg" />
                 </a> */}
             </Redes>
+           
         </Container>
     );
 }

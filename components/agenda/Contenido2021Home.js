@@ -19,6 +19,13 @@ const Contenido2021Home = ({t}) => {
     return (
         <div className="py-5r">
             <div className="text-center pb-5"> 
+                <Link href="/agenda">
+                    <a target="_blank" className="btn-lh btn-prim bor-rad-5 text-center text-uppercase fs-3"  style={{padding: '1rem 3rem'}}>
+                        {t('2022')}
+                    </a>
+                </Link>
+            </div>
+            <div className="text-center pb-5"> 
                 <Link href="https://2021.latamhospitals.com/agenda">
                     <a target="_blank" className="btn-lh btn-prim bor-rad-5 text-center text-uppercase" style={{padding: '1rem 3rem'}}>
                         {t('VerAgendaCompleta')}
