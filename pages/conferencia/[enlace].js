@@ -13,7 +13,7 @@ import VerAgendaCompleta from '../../components/charla/VerAgendaCompleta';
 import GrabacionYoutube from '../../components/charla/GrabacionYoutube';
 import clienteAxios from '../../config/axios';
 import {useRouter} from 'next/router';
-import {withTranslation} from '../../i18n';
+import {withTranslation, i18n} from '../../i18n';
 import styled from '@emotion/styled';
 import Swal from 'sweetalert2';
 import {verificarInscripcion} from '../../helpers/helpers';
