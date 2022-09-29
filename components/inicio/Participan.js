@@ -40,23 +40,17 @@ const Participan = ({t}) => {
                 <Container className="py-5r">
                     <h2 className="text-center mb-5">{t('Instituciones.Titulo.1')}</h2>
                     <Row>
-                        <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
-                            <Imagen75 alt="Wiener Lab Group" src="img/logos/empresas/wiener_lab.png" />
-                        </Col>
-                        <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
-                            <Imagen75 alt="BG ANALIZADORES" src="img/logos/21/empresas/Empresa_02.jpg" />
-                        </Col>
-                        <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
+                        <Col xs={6} md={6} lg={6} className="text-center my-auto mx-auto">
                             <Imagen75 alt="MERCK" src="img/logos/21/empresas/Empresa_03.jpg" />
                         </Col>
-                        <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
-                            <Imagen75 alt="Mindray" src="img/logos/21/empresas/Empresa_04.jpg" />
+                        <Col xs={6} md={6} lg={6} className="text-center my-auto mx-auto">
+                            <Imagen75 alt="BG ANALIZADORES" src="img/logos/21/empresas/Empresa_02.jpg" />
                         </Col>
-                        <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
-                            <Imagen75 alt="Exo" src="img/logos/21/empresas/Empresa_05.jpg" />
+                        <Col xs={6} md={6} lg={6} className="text-center my-auto mx-auto">
+                            <Imagen75 style={{maxHeight: '10rem!important;', width: "auto"}} alt="Wiener Lab Group" src="img/logos/empresas/wiener_lab.png" />
                         </Col>
-                        <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
-                            <Imagen75 alt="Nova Biomedical" src="img/logos/21/empresas/Empresa_06.jpg" />
+                        <Col xs={6} md={6} lg={6} className="text-center my-auto mx-auto">
+                            <Imagen75 style={{maxHeight: '10rem!important;', width: "auto"}} alt="Roche" src="img/logos/empresas/roche.png" />
                         </Col>
                         <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
                             <Imagen75 alt="Stamboulian" src="img/logos/21/empresas/Empresa_07.jpg" />
@@ -65,16 +59,26 @@ const Participan = ({t}) => {
                             <Imagen75 alt="Binding Site" src="img/logos/21/empresas/Empresa_08.jpg" />
                         </Col>
                         <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
-                            <Imagen75 alt="Sebia" src="img/logos/21/empresas/Empresa_09.jpg" />
+                            <Imagen75 alt="OPTIMedical" src="img/logos/21/empresas/Empresa_10.jpg" />
                         </Col>
                         <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
-                            <Imagen75 alt="OPTIMedical" src="img/logos/21/empresas/Empresa_10.jpg" />
+                            <Imagen75 alt="Alifax" src="img/logos/21/empresas/Empresa_09.jpg" />
                         </Col>
                         <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
                             <Imagen75 alt="Bernardo Lew" src="img/logos/21/empresas/Empresa_11.jpg" />
                         </Col>
                         <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
                             <Imagen75 alt="Snibe" src="img/logos/21/empresas/Empresa_01.jpg" />
+                        </Col>
+                        
+                        <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
+                            <Imagen75 alt="Mindray" src="img/logos/21/empresas/Empresa_04.jpg" />
+                        </Col>
+                        <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
+                            <Imagen75 alt="Exo" src="img/logos/21/empresas/Empresa_05.jpg" />
+                        </Col>
+                        <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
+                            <Imagen75 alt="Nova Biomedical" src="img/logos/21/empresas/Empresa_06.jpg" />
                         </Col>
                     </Row>
                 </Container>
