@@ -36,12 +36,12 @@ const NavBarP = styled(Navbar)`
     }
     @media (min-width: 1100px){
         background: rgba(34,52,85,1);
-        background: -moz-linear-gradient(-45deg, rgba(34,52,85,1) 0%, rgba(34,52,85,1) 38%, rgba(44,88,127,1) 38%, rgba(44,88,127,1) 71%, rgba(44,88,127,1) 100%);
-        background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(34,52,85,1)), color-stop(38%, rgba(34,52,85,1)), color-stop(38%, rgba(44,88,127,1)), color-stop(71%, rgba(44,88,127,1)), color-stop(100%, rgba(44,88,127,1)));
-        background: -webkit-linear-gradient(-45deg, rgba(34,52,85,1) 0%, rgba(34,52,85,1) 38%, rgba(44,88,127,1) 38%, rgba(44,88,127,1) 71%, rgba(44,88,127,1) 100%);
-        background: -o-linear-gradient(-45deg, rgba(34,52,85,1) 0%, rgba(34,52,85,1) 38%, rgba(44,88,127,1) 38%, rgba(44,88,127,1) 71%, rgba(44,88,127,1) 100%);
-        background: -ms-linear-gradient(-45deg, rgba(34,52,85,1) 0%, rgba(34,52,85,1) 38%, rgba(44,88,127,1) 38%, rgba(44,88,127,1) 71%, rgba(44,88,127,1) 100%);
-        background: linear-gradient(135deg, rgba(34,52,85,1) 0%, rgba(34,52,85,1) 38%, rgba(44,88,127,1) 38%, rgba(44,88,127,1) 71%, rgba(44,88,127,1) 100%);
+        background: -moz-linear-gradient(-45deg, rgba(34,52,85,1) 0%, rgba(34,52,85,1) 32%, rgba(44,88,127,1) 32%, rgba(44,88,127,1) 71%, rgba(44,88,127,1) 100%);
+        background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(34,52,85,1)), color-stop(32%, rgba(34,52,85,1)), color-stop(32%, rgba(44,88,127,1)), color-stop(71%, rgba(44,88,127,1)), color-stop(100%, rgba(44,88,127,1)));
+        background: -webkit-linear-gradient(-45deg, rgba(34,52,85,1) 0%, rgba(34,52,85,1) 32%, rgba(44,88,127,1) 32%, rgba(44,88,127,1) 71%, rgba(44,88,127,1) 100%);
+        background: -o-linear-gradient(-45deg, rgba(34,52,85,1) 0%, rgba(34,52,85,1) 32%, rgba(44,88,127,1) 32%, rgba(44,88,127,1) 71%, rgba(44,88,127,1) 100%);
+        background: -ms-linear-gradient(-45deg, rgba(34,52,85,1) 0%, rgba(34,52,85,1) 32%, rgba(44,88,127,1) 32%, rgba(44,88,127,1) 71%, rgba(44,88,127,1) 100%);
+        background: linear-gradient(135deg, rgba(34,52,85,1) 0%, rgba(34,52,85,1) 32%, rgba(44,88,127,1) 32%, rgba(44,88,127,1) 71%, rgba(44,88,127,1) 100%);
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#223455', endColorstr='#2c587f', GradientType=1 );
     }
 `;
@@ -50,6 +50,9 @@ const NavBarBrandP = styled(NavbarBrand)`
     text-transform: uppercase;
     font-size: 2rem;
     font-weight: bold;
+    @media(max-width: 768px){
+        margin-top: .7rem;
+    }
 `;
 
 const MenuA = styled.a`
@@ -63,6 +66,10 @@ const MenuA = styled.a`
 
     &:hover {
         border-bottom: 1px solid white;
+    }
+
+    @media(max-width: 1150px){
+        font-size: 1.6rem!important;
     }
 `;
 
@@ -81,6 +88,23 @@ const MenuB = styled(MenuA)`
     &:hover {
         border-bottom: 1px solid transparent;
         color: #a0a0a0!important;
+    }
+`;
+
+const MenuC = styled(MenuA)`
+    background-color: white!important;
+    color:var(--colorSecundario)!important;
+    font-weight:bold;
+    border-radius: 5rem;
+    padding: .2rem 1rem;
+    border:1px solid white;
+    transition: all .3s ease;
+    &:hover {
+        background-color: var(--colorSecundario)!important;
+        color: white!important;
+    }
+    @media(max-width: 768px){
+        padding: .2rem 1.2rem;
     }
 `;
 
@@ -126,8 +150,8 @@ const Navegacion = ({t}) => {
         <header>
             <NavBarP dark expand="md" className="navfixed">
                 <Container>
-                    <NavBarBrandP href="/">Latam Hospitals</NavBarBrandP>
-                    <div style={{display: 'flex'}}>
+                    <NavBarBrandP className="mob-order-2" href="/">Latam Hospitals</NavBarBrandP>
+                    <div className="mob-order-3" style={{display: 'flex'}}>
                         <NavbarToggler onClick={toggle} />
                     </div>
                     <Collapse isOpen={isOpen} navbar>
@@ -231,7 +255,20 @@ const Navegacion = ({t}) => {
                                     </Dropdown>
 
                                 </div>
-                            ) : null
+                            ) : (
+                                <Nav className="mob-order-1 mob-mx-auto mob-w-100 mob-justify-center">
+                                    <NavItem className="my-auto">
+                                        <Link href="/signup">
+                                            <MenuC className="nav-link mob-mx-05">{t('Navegacion.SignUp')}</MenuC>
+                                        </Link>
+                                    </NavItem>
+                                    <NavItem className="my-auto">
+                                        <Link href="/login">
+                                            <MenuA className="nav-link mob-mx-05">{t('Navegacion.Login')}</MenuA>
+                                        </Link>
+                                    </NavItem>
+                                </Nav>
+                            )
                         }
                 </Container>
             </NavBarP>

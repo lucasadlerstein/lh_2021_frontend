@@ -30,8 +30,10 @@
         "MisIntereses": "Mis intereses",
         "MisInscripciones": "Mis inscripciones",
         "EditarPerfil": "Editar perfil",
-        "CerrarSesion": "Cerrar sesión"
+        "CerrarSesion": "Cerrar sesión",
 
+        "SignUp": "Registrarse",
+        "Login": "Iniciar sesión"
     },
     "Extras": {
         "QuieroParticipar": "Quiero participar",

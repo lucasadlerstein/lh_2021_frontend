@@ -30,7 +30,10 @@
         "MisInscripciones": "My submissions",
         "MisIntereses": "My interests",
         "EditarPerfil": "Edit profile",
-        "CerrarSesion": "Sign out"
+        "CerrarSesion": "Sign out",
+
+        "SignUp": "Signup",
+        "Login": "Login"
 
     },
     "Extras": {

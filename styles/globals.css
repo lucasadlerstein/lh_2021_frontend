@@ -228,13 +228,40 @@ img {
 
 @media (max-width: 768px){
   .hide-mobile {
-    display: none; 
+    display: none!important; 
   }
 }
 
 @media (min-width: 768px){
   .hide-desktop {
-    display: none; 
+    display: none!important; 
+  }
+}
+
+/* Login and Signup */
+@media(max-width: 768px){
+  .mob-order-1 {
+    order: 1;
+  }
+  .mob-order-2 {
+    order: 2;
+  }
+  .mob-order-3 {
+    order: 3;
+  }
+  .mob-mx-auto {
+    margin-left:auto;
+    margin-right: auto;
+  }
+  .mob-mx-05 {
+    margin-right: 0.5rem!important;
+    margin-left: 0.5rem!important;
+  }
+  .mob-w-100 {
+    width: 100%;
+  }
+  .mob-justify-center {
+    justify-content: space-around;
   }
 }
 

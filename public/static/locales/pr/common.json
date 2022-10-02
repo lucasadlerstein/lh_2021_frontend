@@ -30,7 +30,10 @@
         "MisCertificados": "Meus certificados",
         "MisInscripciones": "Meus registros",
         "EditarPerfil": "Editar perfil",
-        "CerrarSesion": "Fechar sessão"
+        "CerrarSesion": "Fechar sessão",
+
+        "SignUp": "Inscrever-se",
+        "Login": "Conecte-se"
 
     },
     "Extras": {
