@@ -70,6 +70,23 @@ const Participan = ({t}) => {
                         <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
                             <Imagen75 alt="Snibe" src="img/logos/21/empresas/Empresa_01.jpg" />
                         </Col>
+
+
+                        <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
+                            <Imagen75 alt="Seido" src="img/logos/empresas/06_SEIDO_logo_Latam_Hospitals-min.png" />
+                        </Col>
+                        <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
+                            <Imagen75 alt="Diestro" src="img/logos/empresas/04_DIESTRO_logo_Latam_Hospitals-min.png" />
+                        </Col>
+                        <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
+                            <Imagen75 alt="Siemens" src="img/logos/empresas/01_SIEMENS_logo_Latam_Hospitals-min.png" />
+                        </Col>
+                        <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
+                            <Imagen75 alt="Diagnostico Chile" src="img/logos/empresas/05_DIAGNOCHILE_logo_Latam_Hospitals-min.png" />
+                        </Col>
+                        <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
+                            <Imagen75 alt="Sebia" src="img/logos/empresas/sebia.jpg" />
+                        </Col>
                         
                         <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
                             <Imagen75 alt="Mindray" src="img/logos/21/empresas/Empresa_04.jpg" />
