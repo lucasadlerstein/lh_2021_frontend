@@ -111,7 +111,7 @@ const Footer = () => {
             <LogosRealizadores>
                 <div>
                     <p style={{color: 'white', marginBottom: '0'}}>
-                        LH DIGITAL LLC
+                        LH DIGITAL LLC & Marisa Medero
                     </p>
                     {/* <a href="https://www.infoque.com.ar" target="_blank">
                         <img src="/img/logos/Logo_Infoque.png" alt="Logo Infoque" />
