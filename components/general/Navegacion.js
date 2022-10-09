@@ -176,6 +176,9 @@ const Navegacion = ({t}) => {
                                 </DropdownToggle>
                                 <DropdownMenu right>
                                     <DropdownItem>
+                                        <MenuB href="/agenda" className="nav-link text-center">{t('Navegacion.Ed2022')}</MenuB>
+                                    </DropdownItem>
+                                    <DropdownItem>
                                         <MenuB href="https://2021.latamhospitals.com/agenda"  target="_blank" className="nav-link text-center">{t('Navegacion.Ed2021')}</MenuB>
                                     </DropdownItem>
                                     <DropdownItem>

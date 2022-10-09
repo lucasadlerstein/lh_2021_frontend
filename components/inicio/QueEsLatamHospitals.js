@@ -29,10 +29,15 @@ const QueEsLatamHospitals = ({textoA, textoB, t}) => {
                     <h2>{t('QueEs.Titulo')}</h2>
                     <p>{textoA}</p>
                     <p style={{marginBottom: '3rem'}}>{textoB}</p>
-                    <Link href="https://biblioteca.latamhospitals.com">
+                    <Link href="https://2021.latamhospitals.com">
+                        <a target="_blank" className="btn-lh btn-prim fs-2">{t('QueEs.Ver2021')}</a>
+                        {/* {t('QueEs.BotonUno')} */}
+                    </Link>
+                    <Link href="https://2020.latamhospitals.com">
                         <a target="_blank" className="btn-lh btn-prim fs-2">{t('QueEs.Ver2020')}</a>
                         {/* {t('QueEs.BotonUno')} */}
                     </Link>
+                    
                     {/* <Link href="#newsletter">
                         <a className="btn-lh btn-prim fs-2">{t('QueEs.BotonDos')}</a>
                     </Link> */}
