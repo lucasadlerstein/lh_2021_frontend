@@ -64,22 +64,22 @@ const Layout = ({children}) => {
     const router = useRouter();
 
     useEffect(() => {
-        if(!(window.location.href.includes('login') || window.location.href.includes('signup') || window.location.href.includes('recuperar-clave') )){
-            if(!localStorage.getItem('token-21')) {
-                if(window.location.href.includes('perfil')) {
-                    router.push('/login');
-                } else {
-                    setTimeout(() => {
-                        router.push('/login');
-                    }, 45000);
-                }
-            }
-        }
+        // if(!(window.location.href.includes('login') || window.location.href.includes('signup') || window.location.href.includes('recuperar-clave') )){
+        //     if(!localStorage.getItem('token-21')) {
+        //         if(window.location.href.includes('perfil')) {
+        //             router.push('/login');
+        //         } else {
+        //             setTimeout(() => {
+        //                 router.push('/login');
+        //             }, 45000);
+        //         }
+        //     }
+        // }
         // Revisar si hay token
-        const token = localStorage.getItem('token-21');
-        if(token){
-            tokenAuth(token);
-        }
+        // const token = localStorage.getItem('token-21');
+        // if(token){
+        //     tokenAuth(token);
+        // }
         // eslint-disable-next-line
     }, []);
     return (

@@ -99,13 +99,13 @@ const Navegacion = ({t}) => {
     const toggle = () => setIsOpen(!isOpen);
 
     useEffect(() => {
-        if (localStorage.getItem('token-21')) {
-            setProfile(true);
-        }
-        if(localStorage.getItem('usuario')) {
-            const usuario = JSON.parse(localStorage.getItem('usuario'));
-            setNomAp(`${usuario.prefijo}. ${usuario.apellido}`)
-        }
+        // if (localStorage.getItem('token-21')) {
+        //     setProfile(true);
+        // }
+        // if(localStorage.getItem('usuario')) {
+        //     const usuario = JSON.parse(localStorage.getItem('usuario'));
+        //     setNomAp(`${usuario.prefijo}. ${usuario.apellido}`)
+        // }
         if(window.innerWidth > 768) {
             setMobile(false);
         } else {

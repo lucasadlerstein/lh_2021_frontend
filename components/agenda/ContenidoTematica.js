@@ -40,12 +40,12 @@ const ContenidoTematica = ({eventos, busqueda, t}) => {
 
     useEffect(() => {
         let user;
-        if(localStorage.getItem('usuario')) {
-            user = JSON.parse(localStorage.getItem('usuario'));
-            setPersona(user);
-            console.log(user);
-            setInteresesPersona(JSON.parse(user.intereses));
-        }
+        // if(localStorage.getItem('usuario')) {
+        //     user = JSON.parse(localStorage.getItem('usuario'));
+        //     setPersona(user);
+        //     console.log(user);
+        //     setInteresesPersona(JSON.parse(user.intereses));
+        // }
         if(eventos) {
             agruparPorCategoriaTematica(eventos);
 
@@ -61,7 +61,7 @@ const ContenidoTematica = ({eventos, busqueda, t}) => {
                 let isOk = 0;
                 const interesesArray = JSON.parse(ev.intereses);
                 interesesArray.forEach(inter00 => {
-                    if(isOk === 0 && user.intereses.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(inter00.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase())) {
+                    if(isOk === 0 && user?.intereses.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(inter00.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase())) {
                         isOk = 1;
                         setInteresesEnviar(interesesEnviar => [...interesesEnviar, ev]);
                     }

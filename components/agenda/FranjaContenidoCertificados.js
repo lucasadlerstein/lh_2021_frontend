@@ -100,9 +100,9 @@ const FranjaContenidoCertificados = ({titulo, eventosMostrar, t}) => {
             setAnchoEvento(95);
         } 
 
-        if(localStorage.getItem('usuario')) {
-            setPersona(JSON.parse(localStorage.getItem('usuario')));
-        }
+        // if(localStorage.getItem('usuario')) {
+        //     setPersona(JSON.parse(localStorage.getItem('usuario')));
+        // }
 
         // eslint-disable-next-line
     }, [])
