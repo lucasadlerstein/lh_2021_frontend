@@ -52,6 +52,12 @@ const Participan = ({t}) => {
                         <Col xs={6} md={6} lg={6} className="text-center my-auto mx-auto">
                             <Imagen75 style={{maxHeight: '10rem!important;', width: "auto"}} alt="Roche" src="img/logos/empresas/roche.png" />
                         </Col>
+                        <Col xs={6} md={6} lg={6} className="text-center my-auto mx-auto">
+                            <Imagen75 style={{maxHeight: '10rem!important;', width: "auto"}} alt="Thermofisher" src="img/logos/empresas/Logo_thermofisher_latamhospitals.jpg" />
+                        </Col>
+                        <Col xs={6} md={6} lg={6} className="text-center my-auto mx-auto">
+                            <Imagen75 style={{maxHeight: '10rem!important;', width: "auto"}} alt="Bioartis" src="img/logos/empresas/Logo_bioartis_latamhospitals.jpg" />
+                        </Col>
                         <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
                             <Imagen75 alt="Stamboulian" src="img/logos/21/empresas/Empresa_07.jpg" />
                         </Col>
