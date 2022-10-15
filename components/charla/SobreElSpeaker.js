@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import {Container, Row, Col} from 'reactstrap';
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const Fondo = styled.div`
     background-color: var(--colorSecundario);
@@ -9,7 +10,7 @@ const Fondo = styled.div`
     }
 `;
 
-const ImagenOrador = styled.img`
+const ImagenOrador = styled(LazyLoadImage)`
     border-radius: 100%;
     height: 25rem;
     width: 25rem;
@@ -72,7 +73,7 @@ const SobreElSpeaker = ({nombre, cv, linkedin, foto}) => {
                             <p className="fs-2 text-white">{cv}</p>
                             {(linkedin !== null && linkedin !== undefined && linkedin !== '') ? (
                                 <BtnLinkedin href={linkedin} target="_blank">
-                                    <img src="/img/logos/linkedin.svg" alt={`Linkedin - ${nombre}`} />
+                                    <LazyLoadImage src="/img/logos/linkedin.svg" alt={`Linkedin - ${nombre}`} />
                                 </BtnLinkedin>
                             ) : null}
                         </ColumnaOrador>

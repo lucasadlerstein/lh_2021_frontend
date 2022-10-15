@@ -2,11 +2,12 @@
     "Buscador": "Busque por rubro, especialidad, profesión, título, speaker",
     "2020": {
         "Titulo": "REVIVE LAS CONFERENCIAS Y MASTERTALKS DEL 2020",
-        "Titulo21": "REVIVE LAS CONFERENCIAS Y MASTERTALKS DEL 2021"
+        "Titulo21": "REVIVE LAS CONFERENCIAS Y MASTERTALKS DEL 2021",
+        "Titulo22": "REVIVE LAS CONFERENCIAS Y MASTERTALKS DEL 2022"
     },
     "2022": "VER AGENDA 2022",
     "Items": {
-        "ConfEmpresas": "CONFERENCIAS DE EMPRESAS",
+        "ConfEmpresas": "EMPRESAS",
         "Mastertalks": "MASTERTALKS",
         "Mastertalk": "MASTERTALK",
         "CamarasInstituciones": "INSTITUCIONES"

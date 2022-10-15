@@ -11,6 +11,7 @@ import CuentaRegresiva from '../components/inicio/CuentaRegresiva';
 import QuieroParticipar from '../components/general/QuieroParticipar';
 import Contenido2020 from '../components/agenda/Contenido2020';
 import Contenido2021Home from '../components/agenda/Contenido2021Home';
+import Contenido2022Home from '../components/agenda/Contenido2022Home';
 import styled from '@emotion/styled';
 
 import { withTranslation } from '../i18n';
@@ -36,7 +37,7 @@ const Inicio = ({t}) => {
         {/* <Iframe src={`https://zoom.us/wc/${meetingID}/join?prefer=1&un=THVjYXM`} sandbox="allow-forms allow-scripts" allow="microphone; camera; fullscreen"></Iframe> */}
 
         {/* <BannerVideo /> */}
-        <Contenido2021Home />
+        <Contenido2022Home />
 
         <QueEsLatamHospitals
           textoA={t('QueEsLatam21.TextoA')}
@@ -46,6 +47,7 @@ const Inicio = ({t}) => {
         <Alcance />
         {/* <CuentaRegresiva /> */}
         <QuieroParticipar />
+        <Contenido2021Home />
         <Contenido2020 />
 
       </Layout>

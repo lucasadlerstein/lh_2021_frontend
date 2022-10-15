@@ -1,9 +1,7 @@
 import React from 'react';
-import FranjaContenidoHome from './FranjaContenidoHome';
+import FranjaContenidoHome22 from './FranjaContenidoHome22';
 import {Container} from 'reactstrap';
-import {camarasInstituciones2021} from '../../camaras-e-instituciones.js';
-import {conferenciasEmpresas2021} from '../../conferencias-empresas.js';
-import {mastertalks2021} from '../../mastertalks.js';
+import {empresas,mastertalks,instituciones} from '../../home2022.js';
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import {withTranslation} from '../../i18n';
@@ -15,34 +13,34 @@ const Titulo = styled.h2`
     text-transform: uppercase;
 `;
 
-const Contenido2021Home = ({t}) => {
+const Contenido2022Home = ({t}) => {
     return (
         <div className="py-5r">
-            {/* <div className="text-center pb-5"> 
+            <div className="text-center pb-5"> 
                 <Link href="/agenda">
                     <a target="_blank" className="btn-lh btn-prim bor-rad-5 text-center text-uppercase fs-3"  style={{padding: '1rem 3rem'}}>
                         {t('2022')}
                     </a>
                 </Link>
-            </div> */}
-            {/* <div className="text-center pb-5"> 
+            </div>
+            <div className="text-center pb-5"> 
                 <Link href="https://2021.latamhospitals.com/agenda">
                     <a target="_blank" className="btn-lh btn-prim bor-rad-5 text-center text-uppercase" style={{padding: '1rem 3rem'}}>
                         {t('VerAgendaCompleta')}
                     </a>
                 </Link>
-            </div> */}
-            <Titulo className="text-center">{t('2020.Titulo21')}</Titulo>
+            </div>
+            <Titulo className="text-center">{t('2020.Titulo22')}</Titulo>
             
-            <FranjaContenidoHome eventosMostrar={conferenciasEmpresas2021} titulo={t('Items.ConfEmpresas')} />
-            <FranjaContenidoHome eventosMostrar={mastertalks2021} titulo={t('Items.Mastertalks')} />
-            <FranjaContenidoHome eventosMostrar={camarasInstituciones2021} titulo={t('Items.CamarasInstituciones')} />
+            <FranjaContenidoHome22 eventosMostrar={empresas} titulo={t('Items.ConfEmpresas')} />
+            <FranjaContenidoHome22 eventosMostrar={instituciones} titulo={t('Items.CamarasInstituciones')} />
+            <FranjaContenidoHome22 eventosMostrar={mastertalks} titulo={t('Items.Mastertalks')} />
         </div>
     );
 }
  
-Contenido2021Home.with18nextTranslation = async () => ({
+Contenido2022Home.with18nextTranslation = async () => ({
     namespacesRequired: ['agenda'],
 });
 
-export default withTranslation('agenda')(Contenido2021Home);
+export default withTranslation('agenda')(Contenido2022Home);

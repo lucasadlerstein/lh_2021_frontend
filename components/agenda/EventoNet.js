@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
+// import Image from 'next/image'
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const Titulo = styled.p`
     color: white;
@@ -59,7 +62,7 @@ const EventoNet = ({imagen, titulo, link, alt}) => {
         }
     `;
 
-    const Imagen = styled.img`
+    const Imagen = styled(LazyLoadImage)`
         width: 100%;
         height: 100%;
         border-radius: 3rem;
@@ -68,7 +71,9 @@ const EventoNet = ({imagen, titulo, link, alt}) => {
     return (
         <a href={link} target="_blank">
             <Evento>
-                <Imagen src={imagen} alt={alt} />
+                <Imagen src={imagen} alt={alt}
+                    effect="blur" 
+                />
                 {/* <Titulo>Hola este es un titulo</Titulo> */}
             </Evento>
         </a>

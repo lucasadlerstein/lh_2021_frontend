@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import {Container, Row, Col} from 'reactstrap';
 import Link from 'next/link';
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import {withTranslation} from '../../i18n';
 
@@ -10,7 +11,7 @@ const Fondo = styled.section`
     padding: 5rem 0;
     overflow-x: hidden;
 `;
-const LogoEmpresa = styled.img`
+const LogoEmpresa = styled(LazyLoadImage)`
     height: 8rem;
     @media (max-width: 768px){
         margin: 3rem auto;
