@@ -147,7 +147,7 @@ const FranjaContenidoCertificados = ({titulo, eventosMostrar, t}) => {
 
     async function compartirCertificado(charla) {
         let nombreEvento = '';
-        eventosMostrar.forEach(evento => {
+        eventosMostrar?.forEach(evento => {
             if(evento.id === charla) {
                 switch (i18n.language) {
                     case 'es':
@@ -255,7 +255,7 @@ const FranjaContenidoCertificados = ({titulo, eventosMostrar, t}) => {
             <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
         </Head> */}
         {
-            (eventosMostrar.length > 0) ? (
+            (eventosMostrar?.length > 0) ? (
                 <div className="pt-5r container">
                     <Titulo className="text-left">{titulo}</Titulo>
                     <CarouselPersonalizado showStatus={false}
@@ -274,7 +274,7 @@ const FranjaContenidoCertificados = ({titulo, eventosMostrar, t}) => {
                     // swipeScrollTolerance={2}
                     >
                         {
-                            eventosMostrar.map(ev => (
+                            eventosMostrar?.map(ev => (
                                 <>
                                     <EventoNet
                                         // titulo=""
@@ -284,7 +284,7 @@ const FranjaContenidoCertificados = ({titulo, eventosMostrar, t}) => {
                                         link={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/${Number(ev.categoria) === 1 ? 'mastertalk' : 'conferencia'}/${ev.slug}`}
                                     />
                                     {
-                                        (Number(ev.certificado.certificado) === NUM_CERT_PAGAR) ? (
+                                        (Number(ev.certificado?.certificado) === NUM_CERT_PAGAR) ? (
                                             <BotonCertificado
                                                 onClick={() => {
                                                     if(ev.id === 33 || ev.id === 34 || ev.id === 26 || ev.id === 32 || ev.id === 24 || ev.id === 23) {

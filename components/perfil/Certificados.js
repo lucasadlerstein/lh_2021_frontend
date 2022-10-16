@@ -32,6 +32,7 @@ const Certificados = ({eventos, misInscripciones, t}) => {
 
     const [misCertificadosPagos, setMisCertificadosPagos] = useState([]);
     const [misCertificadosPendientes, setMisCertificadosPendientes] = useState([]);
+    const [misCertificados, setMisCertificados] = useState([]);
 
     const NUM_CERT_PAGAR = 1;
 
@@ -43,79 +44,115 @@ const Certificados = ({eventos, misInscripciones, t}) => {
         }
     }
 
-    useEffect(() => {
-
-        
-        function separarEventos() {
-            let mCerPend = [], mCerPagos = [];
-            if(misInscripciones) {
-                misInscripciones.forEach(ins => {
-                    if (Number(ins.certificado) === NUM_CERT_PAGAR) {
-                        mCerPend.push({charla: ins.charlaId, certificado: ins.certificado});
-                        // mCerPend.push(ins.charlaId);
-                    } else if(ins.certificado.length > 2) {
-                        mCerPagos.push({charla: ins.charlaId, certificado: ins.certificado});
-                        // mCerPagos.push(ins.charlaId);
-                    }
-                })
-            }
-
-            // console.log('pendientes ', mCerPend);
-            // console.log('pagos ', mCerPagos);
-            if(eventos) {
-                const ahora = new Date();
-                console.log('mCerPend', mCerPend);
-                console.log('mCerPagos', mCerPagos);
-                eventos.forEach(ev => {
-                    let mCerPendNow   = mCerPend.filter(function(e) { return e.charla === ev.id; });
-                    let mCerPagNow    = mCerPagos.filter(function(e) { return e.charla === ev.id; });
-                    if(mCerPendNow.length > 0 || mCerPagNow.length > 0) {
-                        let objEvCert = {
-                            categoria: ev.categoria,
-                            en_portada_imagen: ev.en_portada_imagen,
-                            en_titulo: ev.en_titulo,
-                            portada_imagen: ev.portada_imagen,
-                            es_titulo: ev.es_titulo,
-                            po_portada_imagen: ev.po_portada_imagen,
-                            po_titulo: ev.po_titulo,
-                            id: ev.id,
-                            fecha: ev.fecha,
-                            hora: ev.hora,
-                            slug: ev.slug,
-                            certificado: retornarEstadoDelPedido(mCerPendNow.filter(function(e) { return e.charla === ev.id; })[0], mCerPagNow.filter(function(e) { return e.charla === ev.id; })[0])
-                        }
-                        const evFecha = new Date(`${objEvCert.fecha}T${objEvCert.hora}`);
-                        
-                        if (mCerPendNow.length > 0) {
-                            setMisCertificadosPendientes(misCertificadosPendientes => [...misCertificadosPendientes, objEvCert])
-                        } 
-                        if (mCerPagNow.length > 0) {
-                            setMisCertificadosPagos(misCertificadosPagos => [...misCertificadosPagos, objEvCert])
-                        } 
-
-                        // if(evFecha < ahora) {
-                        //     console.log('pasado');
-                        //     // ya empezo
-                        //     if (mCerPendNow.length > 0) {
-                        //         setMisCertificadosPendientes(misCertificadosPendientes => [...misCertificadosPendientes, objEvCert])
-                        //     } 
-                        //     if (mCerPagNow.length > 0) {
-                        //         setMisCertificadosPagos(misCertificadosPagos => [...misCertificadosPagos, objEvCert])
-                        //     } 
-                        // }
-                    }
-                    // if(mCerPend.includes(ev.id)) {
-                    //     setMisCertificadosPendientes(misCertificadosPendientes => [...misCertificadosPendientes, ev])
-                    // } else if (mCerPagos.includes(ev.id)) {
-                    //     setMisCertificadosPagos(misCertificadosPagos => [...misCertificadosPagos, ev])
-                    // }
-                })
-            }
+    function separarEventos() {
+        let mCerPend = [], mCerPagos = [];
+        if(misInscripciones) {
+            misInscripciones.forEach(ins => {
+                if (Number(ins.certificado) === NUM_CERT_PAGAR) {
+                    mCerPend.push({charla: ins.charlaId, certificado: ins.certificado});
+                    // mCerPend.push(ins.charlaId);
+                } else if(ins.certificado.length > 2) {
+                    mCerPagos.push({charla: ins.charlaId, certificado: ins.certificado});
+                    // mCerPagos.push(ins.charlaId);
+                }
+            })
         }
-        separarEventos();
 
+        // console.log('pendientes ', mCerPend);
+        // console.log('pagos ', mCerPagos);
+        if(eventos) {
+            const ahora = new Date();
+            // console.log('mCerPend', mCerPend);
+            // console.log('mCerPagos', mCerPagos);
+            eventos.forEach(ev => {
+                let mCerPendNow   = mCerPend.filter(function(e) { return e.charla === ev.id; });
+                let mCerPagNow    = mCerPagos.filter(function(e) { return e.charla === ev.id; });
+                if(mCerPendNow.length > 0 || mCerPagNow.length > 0) {
+                    let objEvCert = {
+                        categoria: ev.categoria,
+                        en_portada_imagen: ev.en_portada_imagen,
+                        en_titulo: ev.en_titulo,
+                        portada_imagen: ev.portada_imagen,
+                        es_titulo: ev.es_titulo,
+                        po_portada_imagen: ev.po_portada_imagen,
+                        po_titulo: ev.po_titulo,
+                        id: ev.id,
+                        fecha: ev.fecha,
+                        hora: ev.hora,
+                        slug: ev.slug,
+                        certificado: retornarEstadoDelPedido(mCerPendNow.filter(function(e) { return e.charla === ev.id; })[0], mCerPagNow.filter(function(e) { return e.charla === ev.id; })[0])
+                    }
+                    const evFecha = new Date(`${objEvCert.fecha}T${objEvCert.hora}`);
+                    
+                    if (mCerPendNow.length > 0) {
+                        setMisCertificadosPendientes(misCertificadosPendientes => [...misCertificadosPendientes, objEvCert])
+                    } 
+                    if (mCerPagNow.length > 0) {
+                        setMisCertificadosPagos(misCertificadosPagos => [...misCertificadosPagos, objEvCert])
+                    } 
 
+                    // if(evFecha < ahora) {
+                    //     console.log('pasado');
+                    //     // ya empezo
+                    //     if (mCerPendNow.length > 0) {
+                    //         setMisCertificadosPendientes(misCertificadosPendientes => [...misCertificadosPendientes, objEvCert])
+                    //     } 
+                    //     if (mCerPagNow.length > 0) {
+                    //         setMisCertificadosPagos(misCertificadosPagos => [...misCertificadosPagos, objEvCert])
+                    //     } 
+                    // }
+                }
+                // if(mCerPend.includes(ev.id)) {
+                //     setMisCertificadosPendientes(misCertificadosPendientes => [...misCertificadosPendientes, ev])
+                // } else if (mCerPagos.includes(ev.id)) {
+                //     setMisCertificadosPagos(misCertificadosPagos => [...misCertificadosPagos, ev])
+                // }
+            })
+        }
+    }
 
+    function filtrarAsistencias() {
+        return misInscripciones.filter(function(e) { return Number(e.certificado) > 0 })
+    }
+
+    // todos los certificados gratis
+    function traerEventosConInscripcion() {
+        console.log(misInscripciones);
+        console.log(eventos)
+        const asistencias = filtrarAsistencias();
+        const asistenciasFormat = [];
+        if(asistencias) {
+            asistencias.forEach(ins => {
+                asistenciasFormat.push({charla: ins.charlaId, certificado: 2});
+            })
+        }
+        if(eventos) {
+            eventos.forEach(ev => {
+                let asistenciasPlusCharlas   = asistenciasFormat.filter(function(e) { return e.charla === ev.id; });
+                if(asistenciasPlusCharlas.length > 0) {
+                    let objEvCert = {
+                        categoria: ev.categoria,
+                        en_portada_imagen: ev.en_portada_imagen,
+                        en_titulo: ev.en_titulo,
+                        portada_imagen: ev.portada_imagen,
+                        es_titulo: ev.es_titulo,
+                        po_portada_imagen: ev.po_portada_imagen,
+                        po_titulo: ev.po_titulo,
+                        id: ev.id,
+                        fecha: ev.fecha,
+                        hora: ev.hora,
+                        slug: ev.slug,
+                    }
+                    console.log(objEvCert )
+                    setMisCertificados(misCertificados => [...misCertificados, objEvCert])
+                }
+            })
+        }
+    }
+
+    useEffect(() => {
+        traerEventosConInscripcion()
+        // separarEventos();
         // eslint-disable-next-line
     }, [misInscripciones, eventos])
 
@@ -129,12 +166,14 @@ const Certificados = ({eventos, misInscripciones, t}) => {
 
             </Container>
             {
-                (misCertificadosPagos.length === 0 && misCertificadosPendientes.length === 0) ? (
+                // (misCertificadosPagos.length === 0 && misCertificadosPendientes.length === 0) ? (
+                (misCertificados.length === 0) ? (
                     <p className="container">{t('Certificados.AquiPodras')}</p>
                 ) : (
                     <>
-                        <FranjaContenidoCertificados busqueda={''} eventosMostrar={misCertificadosPendientes} titulo={t('Certificados.Pendientes')} />
-                        <FranjaContenidoCertificados busqueda={''} eventosMostrar={misCertificadosPagos} titulo={t('Certificados.MisCertificados')} />
+                        {/* <FranjaContenidoCertificados busqueda={''} eventosMostrar={misCertificadosPendientes} titulo={t('Certificados.Pendientes')} /> */}
+                        {/* <FranjaContenidoCertificados busqueda={''} eventosMostrar={misCertificadosPagos} titulo={t('Certificados.MisCertificados')} /> */}
+                        <FranjaContenidoCertificados busqueda={''} eventosMostrar={misCertificados} titulo={t('Certificados.MisCertificados')} />
                     </>
                 )
             }
