@@ -16,6 +16,9 @@ const Fondo = styled.div`
 const Imagen75 = styled(LazyLoadImage)`
     width: 75%;
 `;
+const Imagen60 = styled(LazyLoadImage)`
+    width: 60%;
+`;
 
 const Imagen40 = styled(LazyLoadImage)`
     width: 100%;
@@ -54,10 +57,10 @@ const Participan = ({t}) => {
                             <Imagen75 style={{maxHeight: '10rem!important;', width: "auto"}} alt="Roche" src="img/logos/empresas/roche.png" />
                         </Col>
                         <Col xs={6} md={6} lg={6} className="text-center my-auto mx-auto">
-                            <Imagen75 style={{maxHeight: '10rem!important;', width: "auto"}} alt="Thermofisher" src="img/logos/empresas/Logo_thermofisher_latamhospitals.jpg" />
+                            <Imagen60 alt="Thermofisher" src="img/logos/empresas/Logo_thermofisher_latamhospitals.jpg" />
                         </Col>
                         <Col xs={6} md={6} lg={6} className="text-center my-auto mx-auto">
-                            <Imagen75 style={{maxHeight: '10rem!important;', width: "auto"}} alt="Bioartis" src="img/logos/empresas/Logo_bioartis_latamhospitals.jpg" />
+                            <Imagen60 alt="Bioartis" src="img/logos/empresas/Logo_bioartis_latamhospitals.jpg" />
                         </Col>
                         <Col xs={6} md={4} lg={4} className="text-center my-auto mx-auto">
                             <Imagen75 alt="Stamboulian" src="img/logos/21/empresas/Empresa_07.jpg" />
