@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import FranjaContenido from './FranjaContenido';
 import {withTranslation} from '../../i18n';
+import { LazyLoadComponent } from 'react-lazy-load-image-component';
 
 const ContenidoFecha = ({eventos, busqueda, t}) => {
 
@@ -48,12 +49,24 @@ const ContenidoFecha = ({eventos, busqueda, t}) => {
     
     return (
         <>
-            <FranjaContenido busqueda={busqueda} eventosMostrar={dia17} titulo={t('Fechas.17')} />
-            <FranjaContenido busqueda={busqueda} eventosMostrar={dia18} titulo={t('Fechas.18')} />
-            <FranjaContenido busqueda={busqueda} eventosMostrar={dia19} titulo={t('Fechas.19')} />
-            <FranjaContenido busqueda={busqueda} eventosMostrar={dia20} titulo={t('Fechas.20')} />
-            <FranjaContenido busqueda={busqueda} eventosMostrar={dia21} titulo={t('Fechas.21')} />
-            <FranjaContenido busqueda={busqueda} eventosMostrar={dia22} titulo={t('Fechas.22')} />
+            <LazyLoadComponent>
+                <FranjaContenido busqueda={busqueda} eventosMostrar={dia17} titulo={t('Fechas.17')} />
+            </LazyLoadComponent>
+            <LazyLoadComponent>
+                <FranjaContenido busqueda={busqueda} eventosMostrar={dia18} titulo={t('Fechas.18')} />
+            </LazyLoadComponent>
+            <LazyLoadComponent>
+                <FranjaContenido busqueda={busqueda} eventosMostrar={dia19} titulo={t('Fechas.19')} />            
+            </LazyLoadComponent>
+            <LazyLoadComponent>
+                <FranjaContenido busqueda={busqueda} eventosMostrar={dia20} titulo={t('Fechas.20')} />
+            </LazyLoadComponent>
+            <LazyLoadComponent>
+                <FranjaContenido busqueda={busqueda} eventosMostrar={dia21} titulo={t('Fechas.21')} />            
+            </LazyLoadComponent>
+            <LazyLoadComponent>
+                <FranjaContenido busqueda={busqueda} eventosMostrar={dia22} titulo={t('Fechas.22')} />            
+            </LazyLoadComponent>
         </>
     );
 }

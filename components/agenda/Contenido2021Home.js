@@ -7,6 +7,7 @@ import {mastertalks2021} from '../../mastertalks.js';
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import {withTranslation} from '../../i18n';
+import { LazyLoadComponent } from 'react-lazy-load-image-component';
  
 const Titulo = styled.h2`
     color: var(--colorPrimario);
@@ -33,10 +34,15 @@ const Contenido2021Home = ({t}) => {
                 </Link>
             </div> */}
             <Titulo className="text-center">{t('2020.Titulo21')}</Titulo>
-            
-            <FranjaContenidoHome eventosMostrar={conferenciasEmpresas2021} titulo={t('Items.ConfEmpresas')} />
-            <FranjaContenidoHome eventosMostrar={mastertalks2021} titulo={t('Items.Mastertalks')} />
-            <FranjaContenidoHome eventosMostrar={camarasInstituciones2021} titulo={t('Items.CamarasInstituciones')} />
+            <LazyLoadComponent>
+                <FranjaContenidoHome eventosMostrar={conferenciasEmpresas2021} titulo={t('Items.ConfEmpresas')} />
+            </LazyLoadComponent>
+            <LazyLoadComponent>
+                <FranjaContenidoHome eventosMostrar={mastertalks2021} titulo={t('Items.Mastertalks')} />
+            </LazyLoadComponent>
+            <LazyLoadComponent>
+                <FranjaContenidoHome eventosMostrar={camarasInstituciones2021} titulo={t('Items.CamarasInstituciones')} />
+            </LazyLoadComponent>
         </div>
     );
 }

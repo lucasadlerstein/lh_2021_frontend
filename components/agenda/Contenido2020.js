@@ -5,6 +5,7 @@ import {conferenciasEmpresas2020, camarasInstituciones2020, mastertalks2020} fro
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import {withTranslation} from '../../i18n';
+import { LazyLoadComponent } from 'react-lazy-load-image-component';
  
 const Titulo = styled.h2`
     color: var(--colorPrimario);
@@ -24,10 +25,15 @@ const Contenido2020 = ({t}) => {
                 </Link>
             </div>
             <Titulo className="text-center">{t('2020.Titulo')}</Titulo>
-            
-            <FranjaContenidoAnterior eventosMostrar={conferenciasEmpresas2020} titulo={t('Items.ConfEmpresas')} />
-            <FranjaContenidoAnterior eventosMostrar={mastertalks2020} titulo={t('Items.Mastertalks')} />
-            <FranjaContenidoAnterior eventosMostrar={camarasInstituciones2020} titulo={t('Items.CamarasInstituciones')} />
+            <LazyLoadComponent>
+                <FranjaContenidoAnterior eventosMostrar={conferenciasEmpresas2020} titulo={t('Items.ConfEmpresas')} />
+            </LazyLoadComponent>
+            <LazyLoadComponent>
+                <FranjaContenidoAnterior eventosMostrar={mastertalks2020} titulo={t('Items.Mastertalks')} />
+            </LazyLoadComponent>
+            <LazyLoadComponent>
+                <FranjaContenidoAnterior eventosMostrar={camarasInstituciones2020} titulo={t('Items.CamarasInstituciones')} />
+            </LazyLoadComponent>
         </div>
     );
 }

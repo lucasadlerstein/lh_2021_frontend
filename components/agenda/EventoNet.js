@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
 // import Image from 'next/image'
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import 'react-lazy-load-image-component/src/effects/blur.css';
+// import { LazyLoadImage } from "react-lazy-load-image-component";
+// import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const Titulo = styled.p`
     color: white;
@@ -62,7 +62,7 @@ const EventoNet = ({imagen, titulo, link, alt}) => {
         }
     `;
 
-    const Imagen = styled(LazyLoadImage)`
+    const Imagen = styled.img`
         width: 100%;
         height: 100%;
         border-radius: 3rem;

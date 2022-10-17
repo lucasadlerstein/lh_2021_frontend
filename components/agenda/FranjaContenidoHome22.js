@@ -68,7 +68,6 @@ const FranjaContenidoHome22 = ({titulo, eventosMostrar}) => {
 
     return (
         <>
-        
             <div className="pt-5px-0">
                 {
                     (titulo !== '') ? (

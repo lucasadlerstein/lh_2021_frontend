@@ -5,6 +5,7 @@ import {ListaIntereses} from '../../InteresesListado.js';
 import {CategoriasListado} from '../../CategoriasListado.js';
 import {withTranslation, i18n} from '../../i18n';
 import clienteAxios from '../../config/axios';
+import { LazyLoadComponent } from 'react-lazy-load-image-component';
 
 const ContenidoTematica = ({eventos, busqueda, t}) => {
     
@@ -77,13 +78,19 @@ const ContenidoTematica = ({eventos, busqueda, t}) => {
         <>
             {
                 (interesesPersona !== undefined && interesesPersona !== null) ? (
-                    <FranjaContenido busqueda={busqueda} eventosMostrar={interesesEnviar} titulo={`${t('Tematicas.Recomendado')} ${persona.nombre}`} />
+                    <LazyLoadComponent>
+                        <FranjaContenido busqueda={busqueda} eventosMostrar={interesesEnviar} titulo={`${t('Tematicas.Recomendado')} ${persona.nombre}`} />
+                    </LazyLoadComponent>
                 ) : null
             }
-            <FranjaContenido busqueda={busqueda} eventosMostrar={patrocinados} titulo={t('Tematicas.Patrocinadas')} />
+            <LazyLoadComponent>
+                <FranjaContenido busqueda={busqueda} eventosMostrar={patrocinados} titulo={t('Tematicas.Patrocinadas')} />
+            </LazyLoadComponent>
             {
                 CategoriasListado.map((categ, index) => (
-                    <FranjaContenido key={index} busqueda={busqueda} eventosMostrar={agrupadosCategoria[categ.COD]} titulo={i18n.language === 'es' ? categ.ES : i18n.language === 'en' ? categ.EN : categ.PR} />
+                    <LazyLoadComponent>
+                        <FranjaContenido key={index} busqueda={busqueda} eventosMostrar={agrupadosCategoria[categ.COD]} titulo={i18n.language === 'es' ? categ.ES : i18n.language === 'en' ? categ.EN : categ.PR} />
+                    </LazyLoadComponent>
                 ))
             }
             {/* {
@@ -91,8 +98,12 @@ const ContenidoTematica = ({eventos, busqueda, t}) => {
                     <FranjaContenido key={cat.id} busqueda={busqueda} eventosMostrar={null} titulo={'Titulo'} />
                 ))
             } */}
-            <FranjaContenido busqueda={busqueda} eventosMostrar={conferencias} titulo={t('Tematicas.Conferencias')} />
-            <FranjaContenido busqueda={busqueda} eventosMostrar={mastertalks} titulo={t('Tematicas.Mastertalks')} />
+            <LazyLoadComponent>
+                <FranjaContenido busqueda={busqueda} eventosMostrar={conferencias} titulo={t('Tematicas.Conferencias')} />
+            </LazyLoadComponent>
+            <LazyLoadComponent>
+                <FranjaContenido busqueda={busqueda} eventosMostrar={mastertalks} titulo={t('Tematicas.Mastertalks')} />
+            </LazyLoadComponent>
 
         </>
     );
