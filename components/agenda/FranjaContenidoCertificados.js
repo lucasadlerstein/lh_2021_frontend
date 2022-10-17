@@ -136,7 +136,6 @@ const FranjaContenidoCertificados = ({titulo, eventosMostrar, t}) => {
                 link.setAttribute('download', 'certificado_latam_hospitals.pdf');
                 document.body.appendChild(link);
                 link.click();
-
                 AlertaSwal(t('Alertas.Excelente'), t('Alertas.CertificadoDescargado'), 'success', 2500);
             })
             .catch(err => {
@@ -173,7 +172,7 @@ const FranjaContenidoCertificados = ({titulo, eventosMostrar, t}) => {
                 }
             }
         })
-        const url = `https://www.linkedin.com/in/lucasadlerstein/edit/certification/new/?isFromA2p=true&issueMonth=10&issueYear=2021&name=${nombreEvento}&organizationId=68864901`;
+        const url = `https://www.linkedin.com/in/marisa-medero-müller/edit/certification/new/?isFromA2p=true&issueMonth=10&issueYear=2022&name=${nombreEvento}&organizationId=68864901`;
         window.open(url, '_blank');
 
     }
