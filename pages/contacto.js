@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Head from 'next/head';
 import Layout from '../components/general/Layout';
 import {Container, Row, Col} from 'reactstrap';
@@ -8,8 +8,6 @@ import {AlertaSwal} from '../helpers/helpers';
 import clienteAxios from '../config/axios';
 import { withTranslation } from '../i18n';
 import {useRouter} from 'next/router';
-
-
 
 const Titulo = styled.h1`
     text-transform: uppercase;
@@ -127,6 +125,13 @@ const Formulario = styled.form`
 `;
 
 const Contacto = ({t}) => {
+
+    useEffect(() => {
+        if(!localStorage.getItem('token-21')) {
+            router.push('/signup')
+        }
+        // eslint-disable-next-line
+    }, [])
     
     const router = useRouter();
     const [persona, setPersona] = useState({
