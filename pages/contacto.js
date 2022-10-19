@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Head from 'next/head';
 import Layout from '../components/general/Layout';
 import {Container, Row, Col} from 'reactstrap';
@@ -125,6 +125,11 @@ const Formulario = styled.form`
 `;
 
 const Contacto = ({t}) => {
+
+    useEffect(() => {
+        window.location.href = `${process.env.NEXT_PUBLIC_FRONTEND_URL}/contacto`
+        // eslint-disable-next-line
+    }, [])
     
     const router = useRouter();
     const [persona, setPersona] = useState({

@@ -167,9 +167,7 @@ const Navegacion = ({t}) => {
                                 </Link>
                             </NavItem>
                             <NavItem className="my-auto">
-                                <Link href="/contacto">
-                                    <MenuA className="nav-link">{t('Navegacion.Contacto')}</MenuA>
-                                </Link>
+                                <MenuA href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/contacto`} className="nav-link">{t('Navegacion.Contacto')}</MenuA>
                             </NavItem>
                         </Nav>
                     </Collapse>
