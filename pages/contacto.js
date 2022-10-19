@@ -128,7 +128,7 @@ const Contacto = ({t}) => {
 
     useEffect(() => {
         if(!localStorage.getItem('token-21')) {
-            router.push('/signup')
+            router.push('/login')
         }
         // eslint-disable-next-line
     }, [])
