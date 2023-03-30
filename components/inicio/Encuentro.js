@@ -2,7 +2,8 @@ import React, {useEffect, useState} from 'react';
 import Link from 'next/link';
 import {Container} from 'reactstrap';
 import styled from '@emotion/styled';
-import { withTranslation } from '../../i18n';
+import { i18n, withTranslation } from '../../i18n';
+
 
 const Titulo = styled.h1`
     text-transform: uppercase;
@@ -54,10 +55,22 @@ const Encuentro = ({t}) => {
 
     return (
         <Container className="text-center mx-auto py-5">
-            {
+            {/* {
                 (ancho > 768) ? <Fecha>{t('Franja.Fecha')}</Fecha> : <Fecha>17/10 - 22/10</Fecha>
+            } */}
+            {/* <Titulo>{t('Franja.Titulo')}</Titulo> */}
+            
+
+            {
+                i18n.language == 'pr' ? (
+                    <img src="/img/banners/Long_Covid_Latam_Hospitals_PT-min.jpg" alt="Evento LongCovid 2023" />
+                ) : i18n.language == 'en' ? (
+                    <img src="/img/banners/Long_Covid_Latam_Hospitals_EN-min.jpg" alt="Evento LongCovid 2023" />
+                ) : (
+                    <img src="/img/banners/Long_Covid_Latam_Hospitals_ES-min.jpg" alt="Evento LongCovid 2023" />
+                )
             }
-            <Titulo>{t('Franja.Titulo')}</Titulo>
+
             {
                 (ancho > 768) ? <Fecha>{t('Franja.FechaDesktop')}</Fecha> : <Fecha>{t('Franja.FechaMobile')}</Fecha>
             }
